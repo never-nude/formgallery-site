@@ -15,8 +15,53 @@ function smkSource({ summary, recordUrl, fullUrl, fallbackUrl, note = "" }) {
 }
 
 const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
+const DONATELLO_SUBTITLE = "Artist: Donatello (c. 1386-1466)";
 
 export const museumPiecesExtension = {
+  "donatello-david-bronze": {
+    kind: "stl",
+    path: "/donatello/david/",
+    sectionId: "early-renaissance",
+    sortOrder: 76,
+    viewerTitle: "David with the Head of Goliath (c. 1440s)",
+    subtitle: DONATELLO_SUBTITLE,
+    lobbyMeta: "Source: Wikimedia Commons / Scan the World; bronze material pass",
+    source: source(
+      "Rendered from the Scan the World STL on Wikimedia Commons, mirrored locally and decimated to the gallery's ~20 MB target for reliable native loading.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Scan_the_World_-_SMK17_-_KAS2036_-_David_With_The_Head_of_Goliath_(Donatello).stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/5/56/Scan_the_World_-_SMK17_-_KAS2036_-_David_With_The_Head_of_Goliath_%28Donatello%29.stl")
+      ],
+      "The original bronze is in the Museo Nazionale del Bargello. The viewer uses a local 400,000-face binary STL derivative to keep the delivered model close to 20 MB."
+    ),
+    defaults: {
+      zoom: 2.95,
+      lightAngle: 28,
+      lightPower: 2.18,
+      exposure: 0.46,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./donatello_david_source_small.stl",
+      fallbackUrl: "./donatello_david_source_small.stl"
+    },
+    scene: {
+      defaultYaw: -Math.PI * 0.08,
+      targetHeight: 1.73,
+      defaultViewVector: [1.72, 0.74, 1.88],
+      mobileViewVector: [1.08, 0.48, 2.08]
+    },
+    material: {
+      color: "#6e5b3a",
+      metalness: 0.86,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.44,
+      sheen: 0.0,
+      sheenRoughness: 1.0,
+      sheenColor: "#000000",
+      reflectivity: 0.84
+    }
+  },
   "michelangelo-risen-christ": {
     kind: "stl",
     path: "/michelangelo/risen-christ/",

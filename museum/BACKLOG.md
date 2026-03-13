@@ -454,7 +454,7 @@ Long-range sculpture backlog for the ad-arma museum.
 394. Giovanni Pisano Madonna, c. 1300 CE
 395. Donatello Saint George, c. 1417 CE
 396. Donatello David (marble), c. 1408 CE
-397. Donatello David (bronze), c. 1440s
+397. Donatello David (bronze), c. 1440s: `live`
 398. Donatello Judith and Holofernes, c. 1460 CE
 399. Donatello Gattamelata, 1453 CE
 400. Donatello Penitent Magdalene, c. 1455 CE
