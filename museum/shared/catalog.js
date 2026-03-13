@@ -233,9 +233,10 @@ export const museumPieces = {
       fallbackUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-2048-medium.glb"
     },
     scene: {
-      rotateX: -Math.PI * 0.006,
-      rotateZ: Math.PI * 0.043,
-      verticalOffset: -0.086,
+      autoLevel: true,
+      autoLevelBottomPercentile: 0.01,
+      autoLevelBottomRatio: 0.028,
+      verticalOffset: 0,
       targetHeight: 1.24,
       defaultYaw: Math.PI * 0.12,
       defaultViewVector: [1.22, 0.62, 1.86],

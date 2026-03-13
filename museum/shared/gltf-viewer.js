@@ -130,6 +130,144 @@ function triangleCountForObject(root) {
   return Math.round(total);
 }
 
+function solveLinear3x3(matrix, vector) {
+  const augmented = matrix.map((row, index) => [...row, vector[index]]);
+
+  for (let pivotIndex = 0; pivotIndex < 3; pivotIndex += 1) {
+    let pivotRow = pivotIndex;
+    for (let row = pivotIndex + 1; row < 3; row += 1) {
+      if (Math.abs(augmented[row][pivotIndex]) > Math.abs(augmented[pivotRow][pivotIndex])) {
+        pivotRow = row;
+      }
+    }
+
+    const pivotValue = augmented[pivotRow][pivotIndex];
+    if (Math.abs(pivotValue) < 1e-8) {
+      return null;
+    }
+
+    if (pivotRow !== pivotIndex) {
+      [augmented[pivotIndex], augmented[pivotRow]] = [augmented[pivotRow], augmented[pivotIndex]];
+    }
+
+    for (let row = pivotIndex + 1; row < 3; row += 1) {
+      const factor = augmented[row][pivotIndex] / augmented[pivotIndex][pivotIndex];
+      for (let column = pivotIndex; column < 4; column += 1) {
+        augmented[row][column] -= augmented[pivotIndex][column] * factor;
+      }
+    }
+  }
+
+  const solution = [0, 0, 0];
+  for (let row = 2; row >= 0; row -= 1) {
+    let value = augmented[row][3];
+    for (let column = row + 1; column < 3; column += 1) {
+      value -= augmented[row][column] * solution[column];
+    }
+    solution[row] = value / augmented[row][row];
+  }
+
+  return solution;
+}
+
+function fitBottomPlaneNormal(points, THREE) {
+  if (points.length < 3) return null;
+
+  let sumXX = 0;
+  let sumXZ = 0;
+  let sumX = 0;
+  let sumZZ = 0;
+  let sumZ = 0;
+  let sumXY = 0;
+  let sumZY = 0;
+  let sumY = 0;
+
+  for (const point of points) {
+    const { x, y, z } = point;
+    sumXX += x * x;
+    sumXZ += x * z;
+    sumX += x;
+    sumZZ += z * z;
+    sumZ += z;
+    sumXY += x * y;
+    sumZY += z * y;
+    sumY += y;
+  }
+
+  const coefficients = solveLinear3x3(
+    [
+      [sumXX, sumXZ, sumX],
+      [sumXZ, sumZZ, sumZ],
+      [sumX, sumZ, points.length]
+    ],
+    [sumXY, sumZY, sumY]
+  );
+
+  if (!coefficients) return null;
+
+  const [a, b] = coefficients;
+  const normal = new THREE.Vector3(-a, 1, -b).normalize();
+  if (normal.y < 0) {
+    normal.multiplyScalar(-1);
+  }
+  return normal;
+}
+
+function collectBottomPlaneNormal(root, THREE, options = {}) {
+  const sampledPoints = [];
+  let vertexCount = 0;
+
+  root.traverse((child) => {
+    if (!child.isMesh || !child.geometry) return;
+    const positions = child.geometry.getAttribute("position");
+    if (!positions) return;
+    vertexCount += positions.count;
+  });
+
+  if (vertexCount < 3) return null;
+
+  const maxSamples = options.maxSamples ?? 18000;
+  const stride = Math.max(1, Math.ceil(vertexCount / maxSamples));
+  const temp = new THREE.Vector3();
+  let sampledIndex = 0;
+  let minY = Infinity;
+  let maxY = -Infinity;
+
+  root.updateMatrixWorld(true);
+
+  root.traverse((child) => {
+    if (!child.isMesh || !child.geometry) return;
+    const positions = child.geometry.getAttribute("position");
+    if (!positions) return;
+
+    for (let index = 0; index < positions.count; index += 1) {
+      if (sampledIndex % stride !== 0) {
+        sampledIndex += 1;
+        continue;
+      }
+
+      sampledIndex += 1;
+      temp.fromBufferAttribute(positions, index).applyMatrix4(child.matrixWorld);
+      sampledPoints.push({ x: temp.x, y: temp.y, z: temp.z });
+      minY = Math.min(minY, temp.y);
+      maxY = Math.max(maxY, temp.y);
+    }
+  });
+
+  if (sampledPoints.length < 3) return null;
+
+  const height = Math.max(maxY - minY, 1e-6);
+  const sortedY = sampledPoints.map((point) => point.y).sort((a, b) => a - b);
+  const percentile = options.bottomPercentile ?? 0.015;
+  const percentileIndex = Math.min(sortedY.length - 1, Math.floor(sortedY.length * percentile));
+  const bottomStart = sortedY[percentileIndex];
+  const bottomRatio = options.bottomRatio ?? 0.04;
+  const threshold = bottomStart + height * bottomRatio;
+  const bottomPoints = sampledPoints.filter((point) => point.y <= threshold);
+
+  return fitBottomPlaneNormal(bottomPoints, THREE);
+}
+
 export async function initGltfMuseumPage(piece) {
   const defaults = createViewerDefaults(piece.defaults);
   const model = piece.model || {};
@@ -160,6 +298,7 @@ export async function initGltfMuseumPage(piece) {
   const rotateY = sceneConfig.rotateY ?? 0;
   const rotateZ = sceneConfig.rotateZ ?? 0;
   const verticalOffset = sceneConfig.verticalOffset ?? 0;
+  const autoLevel = sceneConfig.autoLevel ?? false;
   const targetHeight = sceneConfig.targetHeight ?? DEFAULT_TARGET_HEIGHT;
   const showPedestal = sceneConfig.showPedestal ?? true;
   const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.02);
@@ -297,6 +436,19 @@ export async function initGltfMuseumPage(piece) {
 
       rawGroup.rotation.set(rotateX, rotateY, rotateZ);
       rawGroup.updateMatrixWorld(true);
+
+      if (autoLevel) {
+        const bottomNormal = collectBottomPlaneNormal(rawGroup, THREE, {
+          maxSamples: sceneConfig.autoLevelMaxSamples,
+          bottomPercentile: sceneConfig.autoLevelBottomPercentile,
+          bottomRatio: sceneConfig.autoLevelBottomRatio
+        });
+        if (bottomNormal) {
+          const levelQuaternion = new THREE.Quaternion().setFromUnitVectors(bottomNormal, new THREE.Vector3(0, 1, 0));
+          rawGroup.applyQuaternion(levelQuaternion);
+          rawGroup.updateMatrixWorld(true);
+        }
+      }
 
       rawGroup.traverse((child) => {
         if (!child.isMesh) return;
