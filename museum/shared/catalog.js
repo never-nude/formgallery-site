@@ -101,7 +101,7 @@ export const museumPieces = {
     defaults: {
       zoom: 2.85,
       exposure: 0.43,
-      rough: 0.62
+      rough: 0.2
     },
     model: {
       primaryUrl: "./ashurnasirpal_lion_hunt_source_small.stl",
@@ -145,7 +145,7 @@ export const museumPieces = {
     defaults: {
       zoom: 2.55,
       exposure: 0.43,
-      rough: 0.62
+      rough: 0.2
     },
     model: {
       primaryUrl: "./lion_released_from_cage_source_small.stl",
@@ -191,7 +191,7 @@ export const museumPieces = {
       lightAngle: 24,
       lightPower: 2.05,
       exposure: 0.58,
-      rough: 0.46
+      rough: 0.2
     },
     model: {
       primaryUrl: "https://3d-api.si.edu/content/document/d8c62792-4ebc-11ea-b77f-2e728ce88125/nmk_buddha_combined_100k-2048_std.glb",
@@ -226,15 +226,15 @@ export const museumPieces = {
       lightAngle: 18,
       lightPower: 2.0,
       exposure: 0.5,
-      rough: 0.68
+      rough: 0.2
     },
     model: {
       primaryUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-4096-high.glb",
       fallbackUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-2048-medium.glb"
     },
     scene: {
-      rotateZ: -Math.PI * 0.012,
-      verticalOffset: -0.045,
+      rotateZ: -Math.PI * 0.03,
+      verticalOffset: -0.065,
       targetHeight: 1.24,
       defaultYaw: Math.PI * 0.12,
       defaultViewVector: [1.22, 0.62, 1.86],
@@ -339,7 +339,7 @@ export const museumPieces = {
       lightAngle: 30,
       lightPower: 2.28,
       exposure: 0.48,
-      rough: 0.34
+      rough: 0.2
     },
     model: {
       primaryUrl: "./artemision_bronze_source_small.stl",
@@ -382,7 +382,7 @@ export const museumPieces = {
       lightAngle: 30,
       lightPower: 2.26,
       exposure: 0.47,
-      rough: 0.4
+      rough: 0.2
     },
     model: {
       primaryUrl: "./athena_lemnia_source_small.stl",
@@ -631,7 +631,7 @@ export const museumPieces = {
       zoom: 1.95,
       lightPower: 2.55,
       exposure: 0.62,
-      rough: 0.64
+      rough: 0.2
     },
     model: {
       uid: "b637727d39544f6d998ab996ded86f0c",
@@ -1104,7 +1104,7 @@ export const museumPieces = {
       lightAngle: 28,
       lightPower: 2.35,
       exposure: 0.48,
-      rough: 0.46
+      rough: 0.2
     },
     model: {
       primaryUrl: "./thinker_source.stl",

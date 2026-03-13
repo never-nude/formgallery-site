@@ -387,13 +387,13 @@ export async function initGltfMuseumPage(piece) {
     }
 
     function updateLook() {
-      const roughnessFactor = ui.n("rough") / defaults.rough;
+      const roughnessValue = ui.n("rough");
       renderer.toneMappingExposure = ui.n("exposure");
 
       for (const entry of trackedMaterials) {
         const { material, roughness, wireframe } = entry;
         if (roughness !== null) {
-          material.roughness = Math.max(0, Math.min(1, roughness * roughnessFactor));
+          material.roughness = Math.max(0, Math.min(1, roughnessValue));
         }
         material.wireframe = document.getElementById("wire").checked ? true : wireframe;
         material.needsUpdate = true;
