@@ -610,6 +610,9 @@ export const museumPieces = {
     model: {
       primaryUrl: "./pieta_source_small.stl",
       fallbackUrl: "./pieta_source_small.stl"
+    },
+    scene: {
+      rotateX: 0
     }
   },
   "michelangelo-david": {
