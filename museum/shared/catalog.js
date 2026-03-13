@@ -236,7 +236,7 @@ export const museumPieces = {
       autoLevel: true,
       autoLevelBottomPercentile: 0.01,
       autoLevelBottomRatio: 0.028,
-      verticalOffset: 0,
+      verticalOffset: -0.03,
       targetHeight: 1.24,
       defaultYaw: Math.PI * 0.12,
       defaultViewVector: [1.22, 0.62, 1.86],
