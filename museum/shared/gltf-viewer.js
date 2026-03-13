@@ -16,8 +16,9 @@ function getThreeModules() {
       const THREE = await import("https://esm.sh/three@0.161.0?bundle");
       const { OrbitControls } = await import("https://esm.sh/three@0.161.0/examples/jsm/controls/OrbitControls.js?bundle");
       const { GLTFLoader } = await import("https://esm.sh/three@0.161.0/examples/jsm/loaders/GLTFLoader.js?bundle");
+      const { DRACOLoader } = await import("https://esm.sh/three@0.161.0/examples/jsm/loaders/DRACOLoader.js?bundle");
       const { RoomEnvironment } = await import("https://esm.sh/three@0.161.0/examples/jsm/environments/RoomEnvironment.js?bundle");
-      return { THREE, OrbitControls, GLTFLoader, RoomEnvironment };
+      return { THREE, OrbitControls, GLTFLoader, DRACOLoader, RoomEnvironment };
     })();
   }
 
@@ -167,7 +168,7 @@ export async function initGltfMuseumPage(piece) {
   const loading = ui.loading;
 
   try {
-    const { THREE, OrbitControls, GLTFLoader, RoomEnvironment } = await getThreeModules();
+    const { THREE, OrbitControls, GLTFLoader, DRACOLoader, RoomEnvironment } = await getThreeModules();
     const isMobileRender = window.matchMedia("(max-width: 820px)").matches;
     let modelUrlsInUse = initialUrls;
 
@@ -261,6 +262,9 @@ export async function initGltfMuseumPage(piece) {
 
     try {
       const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+      loader.setDRACOLoader(dracoLoader);
       let models = null;
       const startUrls = modelUrlsInUse;
       const startTimeout = sameUrlSet(startUrls, primaryUrls) ? primaryTimeoutMs : fallbackTimeoutMs;
@@ -329,6 +333,7 @@ export async function initGltfMuseumPage(piece) {
 
       loading.remove();
       stage.appendChild(renderer.domElement);
+      dracoLoader.dispose();
     } catch (error) {
       stats.textContent = "Failed to load source model.";
       loading.textContent = `Model load error: ${error.message}`;
