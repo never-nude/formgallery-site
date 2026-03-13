@@ -159,6 +159,7 @@ export async function initGltfMuseumPage(piece) {
   const rotateX = sceneConfig.rotateX ?? 0;
   const rotateY = sceneConfig.rotateY ?? 0;
   const rotateZ = sceneConfig.rotateZ ?? 0;
+  const verticalOffset = sceneConfig.verticalOffset ?? 0;
   const targetHeight = sceneConfig.targetHeight ?? DEFAULT_TARGET_HEIGHT;
   const showPedestal = sceneConfig.showPedestal ?? true;
   const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.02);
@@ -321,10 +322,10 @@ export async function initGltfMuseumPage(piece) {
       const scale = targetHeight / size.y;
       sculpture.scale.setScalar(scale);
       sculpture.rotation.y = defaultYaw;
-      sculpture.position.y = pedestalHeight;
+      sculpture.position.y = pedestalHeight + verticalOffset;
       scene.add(sculpture);
 
-      focusY = pedestalHeight + targetHeight * focusYRatio;
+      focusY = pedestalHeight + verticalOffset + targetHeight * focusYRatio;
 
       const triCount = triangleCountForObject(rawGroup);
       const sizeLabel = modelByteLength ? `${(modelByteLength / (1024 * 1024)).toFixed(1)} MB GLB` : "High-fidelity GLB";
