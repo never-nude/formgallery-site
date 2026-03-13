@@ -1,10 +1,51 @@
-const MODULE_VERSION = "20260313-1606";
+const MODULE_VERSION = "20260313-1718";
 
 let catalogPromise = null;
 
+function buildMergedCatalog(base, extension) {
+  const museumSections = base.museumSections || [];
+  const museumPieces = {
+    ...(base.museumPieces || {}),
+    ...(extension.museumPiecesExtension || {})
+  };
+
+  const sections = museumSections
+    .map((section) => ({
+      id: section.id,
+      title: section.title,
+      subtitle: section.subtitle,
+      items: Object.entries(museumPieces)
+        .filter(([, piece]) => piece.sectionId === section.id && !piece.hiddenFromLobby)
+        .sort(([, a], [, b]) => {
+          if (a.sortOrder !== b.sortOrder) {
+            return a.sortOrder - b.sortOrder;
+          }
+          return (a.viewerTitle || "").localeCompare(b.viewerTitle || "");
+        })
+        .map(([pieceId]) => pieceId)
+    }))
+    .filter((section) => section.items.length > 0);
+
+  return {
+    ...base,
+    museumSections,
+    museumPieces,
+    museumLobby: {
+      ...(base.museumLobby || {}),
+      sections
+    },
+    museumRouteMap: Object.fromEntries(
+      Object.entries(museumPieces).map(([pieceId, piece]) => [normalizePath(piece.path), pieceId])
+    )
+  };
+}
+
 function loadCatalog() {
   if (!catalogPromise) {
-    catalogPromise = import(`./catalog.js?v=${MODULE_VERSION}`);
+    catalogPromise = Promise.all([
+      import(`./catalog.js?v=${MODULE_VERSION}`),
+      import(`./catalog-overlay.js?v=${MODULE_VERSION}`).catch(() => ({}))
+    ]).then(([base, extension]) => buildMergedCatalog(base, extension));
   }
   return catalogPromise;
 }
