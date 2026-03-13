@@ -39,7 +39,6 @@ Long-range sculpture backlog for the ad-arma museum.
 - `369` Statue of Germanicus: `hidden`
 - `342` Augustus of Prima Porta: `live`
 - `395` Donatello Saint George: `hidden`
-- `404` Michelangelo Madonna of the Stairs: `live`
 - `405` Michelangelo Battle of the Centaurs: `live`
 - `406` Michelangelo Bacchus: `live`
 - `407` Michelangelo Pietà: `live`
