@@ -15,8 +15,91 @@ function smkSource({ summary, recordUrl, fullUrl, fallbackUrl, note = "" }) {
 }
 
 const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
+const DONATELLO_SUBTITLE = "Artist attribution: Donatello (c. 1386-1466)";
+const VERROCCHIO_SUBTITLE = "Artist: Andrea del Verrocchio (c. 1435-1488)";
 
 export const museumPiecesExtension = {
+  "donatello-cecilia-gonzaga": {
+    kind: "sketchfab",
+    path: "/donatello/cecilia-gonzaga/",
+    sectionId: "early-renaissance",
+    sortOrder: 11,
+    viewerTitle: "Cecilia Gonzaga (attributed to Donatello, 15th century)",
+    subtitle: DONATELLO_SUBTITLE,
+    lobbyMeta: "Source: Sketchfab / The Spis Museum",
+    source: source(
+      "Sketchfab scan published by The Spis Museum.",
+      [
+        link("Sketchfab model", "https://sketchfab.com/3d-models/ceciliae-gonzagae-sm-7156-9dac3be34f894e94815b7c691e8971f5")
+      ],
+      "The source museum description says the Carrara marble bust is assumed to represent Cecilia Gonzaga and is probably by Donatello."
+    ),
+    defaults: {
+      zoom: 2.2,
+      lightAngle: 20,
+      lightPower: 2.1,
+      exposure: 0.48,
+      rough: 0.2
+    },
+    model: {
+      uid: "9dac3be34f894e94815b7c691e8971f5",
+      transparent: true
+    }
+  },
+  "donatello-our-lady-of-forgiveness": {
+    kind: "sketchfab",
+    path: "/donatello/our-lady-of-forgiveness/",
+    sectionId: "early-renaissance",
+    sortOrder: 12,
+    viewerTitle: "Our Lady of Forgiveness (1457-1459)",
+    subtitle: "Artist: Donatello (c. 1386-1466)",
+    lobbyMeta: "Source: Sketchfab / Siena photogrammetry",
+    source: source(
+      "Sketchfab photogrammetry model made in collaboration with Opera del Duomo, Siena.",
+      [
+        link("Sketchfab model", "https://sketchfab.com/3d-models/our-lady-of-forgiveness-donatello-siena-2a72b9f22da043eab0ff0988ac570ec0")
+      ],
+      "The source description identifies this as Donatello's La Madonna del Perdono, a marble sculpture from the Cathedral in Siena, recorded in August 2022."
+    ),
+    defaults: {
+      zoom: 2.4,
+      lightAngle: 18,
+      lightPower: 2.05,
+      exposure: 0.46,
+      rough: 0.2
+    },
+    model: {
+      uid: "2a72b9f22da043eab0ff0988ac570ec0",
+      transparent: true
+    }
+  },
+  "verrocchio-david": {
+    kind: "sketchfab",
+    path: "/verrocchio/david/",
+    sectionId: "early-renaissance",
+    sortOrder: 13,
+    viewerTitle: "David (Andrea del Verrocchio, 1470s)",
+    subtitle: VERROCCHIO_SUBTITLE,
+    lobbyMeta: "Source: Sketchfab / Artec 3D scan",
+    source: source(
+      "Sketchfab model published as a free downloadable scan by CIMtech Inc.",
+      [
+        link("Sketchfab model", "https://sketchfab.com/3d-models/david-statue-3d-scan-artec-3d-08c5b7a46d23401cacaec1acb6c55211")
+      ],
+      "The source page describes this as Andrea del Verrocchio's David, scanned from a plaster copy."
+    ),
+    defaults: {
+      zoom: 2.1,
+      lightAngle: 22,
+      lightPower: 2.15,
+      exposure: 0.5,
+      rough: 0.2
+    },
+    model: {
+      uid: "08c5b7a46d23401cacaec1acb6c55211",
+      transparent: true
+    }
+  },
   "michelangelo-risen-christ": {
     kind: "stl",
     path: "/michelangelo/risen-christ/",

@@ -39,6 +39,9 @@ Long-range sculpture backlog for the ad-arma museum.
 - `369` Statue of Germanicus: `hidden`
 - `342` Augustus of Prima Porta: `live`
 - `395` Donatello Saint George: `hidden`
+- `Donatello Cecilia Gonzaga`: `live`
+- `Donatello Our Lady of Forgiveness`: `live`
+- `402` Verrocchio David: `live`
 - `405` Michelangelo Battle of the Centaurs: `live`
 - `406` Michelangelo Bacchus: `live`
 - `407` Michelangelo Pietà: `live`
@@ -456,7 +459,7 @@ Long-range sculpture backlog for the ad-arma museum.
 399. Donatello Gattamelata, 1453 CE
 400. Donatello Penitent Magdalene, c. 1455 CE
 401. Luca della Robbia Cantoria figure, c. 1430s
-402. Verrocchio David, c. 1473–1475 CE
+402. Verrocchio David, c. 1473–1475 CE: `live`
 403. Verrocchio Colleoni monument, 1480s
 404. Michelangelo Madonna of the Stairs, c. 1491 CE
 405. Michelangelo Battle of the Centaurs, c. 1492 CE
