@@ -35,7 +35,7 @@ export const museumSections = [
   {
     id: "sub-saharan-africa",
     title: "Sub-Saharan Africa",
-    subtitle: "Devotional, court, and ancestral sculpture traditions"
+    subtitle: "Devotional, court, export, and ancestral art traditions"
   },
   {
     id: "early-renaissance",
@@ -204,6 +204,182 @@ export const museumPieces = {
       mobileViewVector: [0.92, 0.56, 1.85]
     }
   },
+  "sapi-portuguese-hunting-horn": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/sapi-portuguese-hunting-horn/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 4,
+    viewerTitle: "Sapi-Portuguese Hunting Horn (Sierra Leone, late 15th century)",
+    subtitle: "Artist: Temne artist; likely made for export to a European patron",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of African Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Hunting horn model, which the source page attributes to a Temne artist in Sierra Leone and dates to the late fifteenth century.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/hunting-horn%3Aad94884b-fdd7-4fc3-a692-e53b787d78e6"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:ad94884b-fdd7-4fc3-a692-e53b787d78e6/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:ad94884b-fdd7-4fc3-a692-e53b787d78e6/nmafa-2005_6_9-150k-4096-high.glb")
+      ],
+      "Smithsonian marks the 3D package as CC0. The museum notes that the horn was likely made for a European client and links it to the Sapi-Portuguese ivory tradition."
+    ),
+    defaults: {
+      zoom: 2.45,
+      lightAngle: 22,
+      lightPower: 2.0,
+      exposure: 0.5,
+      rough: 0.28
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:ad94884b-fdd7-4fc3-a692-e53b787d78e6/nmafa-2005_6_9-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:ad94884b-fdd7-4fc3-a692-e53b787d78e6/nmafa-2005_6_9-150k-2048-medium.glb"
+    },
+    scene: {
+      autoLevel: true,
+      autoLevelBottomPercentile: 0.01,
+      autoLevelBottomRatio: 0.025,
+      showPedestal: false,
+      targetHeight: 1.46,
+      defaultYaw: -Math.PI * 0.07,
+      defaultViewVector: [1.12, 0.54, 1.88],
+      mobileViewVector: [0.82, 0.42, 1.72]
+    }
+  },
+  "loango-ivory-tusk-female-finial": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/loango-ivory-tusk-female-finial/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 6,
+    viewerTitle: "Loango Carved Ivory Tusk with Female Finial (Congo region, 1861)",
+    subtitle: "Artist: Kongo artist; Loango coast, Congo; female finial head missing",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of African Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Tusk record 74-20-1, a Loango ivory tusk by a Kongo artist with spiral relief scenes and a damaged female finial.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/tusk%3A8af570ba-2c32-455f-befd-4a8b7278c2f4"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/document.json"),
+        link("High GLB A", "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1a-150k-4096-high.glb"),
+        link("High GLB B", "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1b-150k-4096-high.glb"),
+        link("High GLB C", "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1c-150k-4096-high.glb")
+      ],
+      "Smithsonian marks the 3D package as CC0. The source page describes scenes including fishermen, armed men, a monkey, a double-gong player, and a bird."
+    ),
+    defaults: {
+      zoom: 2.5,
+      lightAngle: 18,
+      lightPower: 1.95,
+      exposure: 0.5,
+      rough: 0.28
+    },
+    model: {
+      primaryUrl: [
+        "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1a-150k-4096-high.glb",
+        "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1b-150k-4096-high.glb",
+        "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1c-150k-4096-high.glb"
+      ],
+      fallbackUrl: [
+        "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1a-150k-2048-medium.glb",
+        "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1b-150k-2048-medium.glb",
+        "https://3d-api.si.edu/content/document/3d_package:8af570ba-2c32-455f-befd-4a8b7278c2f4/nmafa-74_20_1c-150k-2048-medium.glb"
+      ]
+    },
+    scene: {
+      autoLevel: true,
+      autoLevelBottomPercentile: 0.01,
+      autoLevelBottomRatio: 0.025,
+      showPedestal: false,
+      targetHeight: 1.38,
+      defaultYaw: Math.PI * 0.03,
+      defaultViewVector: [1.0, 0.5, 1.84],
+      mobileViewVector: [0.78, 0.4, 1.66]
+    }
+  },
+  "loango-ivory-tusk-seated-european-finial": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/loango-ivory-tusk-seated-european-finial/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 7,
+    viewerTitle: "Loango Carved Ivory Tusk with Seated European Finial (Congo region, 1861)",
+    subtitle: "Artist: Kongo artist; Loango coast, Congo; seated European male finial",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of African Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Tusk record 74-20-2, a Loango ivory tusk by a Kongo artist with spiral relief scenes, an inscription ring, and a seated European male finial.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/tusk%3A812d366b-b0cf-4175-8b21-f9c01ab62dc3"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/document.json"),
+        link("High GLB A", "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2a-150k-4096-high.glb"),
+        link("High GLB B", "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2b-150k-4096-high.glb"),
+        link("High GLB C", "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2c-150k-4096-high.glb")
+      ],
+      "Smithsonian marks the 3D package as CC0. The source page identifies the finial as a seated European male and notes the tusk's wood base and inscription ring."
+    ),
+    defaults: {
+      zoom: 2.5,
+      lightAngle: 18,
+      lightPower: 1.95,
+      exposure: 0.5,
+      rough: 0.28
+    },
+    model: {
+      primaryUrl: [
+        "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2a-150k-4096-high.glb",
+        "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2b-150k-4096-high.glb",
+        "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2c-150k-4096-high.glb"
+      ],
+      fallbackUrl: [
+        "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2a-150k-2048-medium.glb",
+        "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2b-150k-2048-medium.glb",
+        "https://3d-api.si.edu/content/document/3d_package:812d366b-b0cf-4175-8b21-f9c01ab62dc3/nmafa-74_20_2c-150k-2048-medium.glb"
+      ]
+    },
+    scene: {
+      autoLevel: true,
+      autoLevelBottomPercentile: 0.01,
+      autoLevelBottomRatio: 0.025,
+      showPedestal: false,
+      targetHeight: 1.38,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.0, 0.5, 1.84],
+      mobileViewVector: [0.78, 0.4, 1.66]
+    }
+  },
+  "loango-ivory-tusk-trade-scenes": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/loango-ivory-tusk-trade-scenes/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 8,
+    viewerTitle: "Loango Carved Ivory Tusk with Trade Scenes (Congo region, late 19th century)",
+    subtitle: "Artist: Kongo artist; Loango coast, Congo",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of African Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Tusk record 68-23-53, a late nineteenth-century Loango ivory tusk with spiral relief scenes of trade, dress, labor, and ritual life.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/tusk%3Ac5952b8f-fa0d-4ab6-9fa7-452dffdfd416"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:c5952b8f-fa0d-4ab6-9fa7-452dffdfd416/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:c5952b8f-fa0d-4ab6-9fa7-452dffdfd416/nmafa-68_23_53-150k-4096-high.glb")
+      ],
+      "Smithsonian lists usage conditions on the source page. The museum describes scenes including a coastal trading house, Africans in western dress, a blacksmith, a snake, a bird, a monkey, and bearers in chains."
+    ),
+    defaults: {
+      zoom: 2.5,
+      lightAngle: 16,
+      lightPower: 1.95,
+      exposure: 0.5,
+      rough: 0.28
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:c5952b8f-fa0d-4ab6-9fa7-452dffdfd416/nmafa-68_23_53-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:c5952b8f-fa0d-4ab6-9fa7-452dffdfd416/nmafa-68_23_53-150k-2048-medium.glb"
+    },
+    scene: {
+      autoLevel: true,
+      autoLevelBottomPercentile: 0.01,
+      autoLevelBottomRatio: 0.025,
+      showPedestal: false,
+      targetHeight: 1.46,
+      defaultYaw: -Math.PI * 0.02,
+      defaultViewVector: [1.04, 0.54, 1.9],
+      mobileViewVector: [0.78, 0.42, 1.72]
+    }
+  },
   "kongo-maternity-figure": {
     kind: "gltf",
     path: "/sub-saharan-africa/kongo-maternity-figure/",
@@ -236,7 +412,7 @@ export const museumPieces = {
       autoLevel: true,
       autoLevelBottomPercentile: 0.01,
       autoLevelBottomRatio: 0.028,
-      verticalOffset: -0.06,
+      verticalOffset: -0.09,
       targetHeight: 1.24,
       defaultYaw: Math.PI * 0.12,
       defaultViewVector: [1.22, 0.62, 1.86],
