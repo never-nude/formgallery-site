@@ -23,6 +23,8 @@ Long-range sculpture backlog for the ad-arma museum.
 - `36` Great Sphinx of Giza: `live`
 - `57` Assyrian lion hunt relief: `live`
 - `Assyrian lion released from cage`: `live`
+- `88` Kongo maternity figure: `live`
+- `214` Goryeo Avalokiteshvara: `live`
 - `310` Charioteer of Delphi: `hidden`
 - `317` Discobolus: `live`
 - `313` Zeus/Poseidon of Artemision: `live`
@@ -138,7 +140,7 @@ Long-range sculpture backlog for the ad-arma museum.
 85. Hawulti obelisk, c. 4th century CE
 86. Lalibela carved cross, c. 13th century CE
 87. Kongo nkisi nkonde, c. 19th century
-88. Kongo maternity figure, c. 19th century
+88. Kongo maternity figure, c. 19th century: `live`
 89. Fang reliquary guardian figure, c. 19th century
 90. Kota reliquary figure, c. 19th century
 91. Dogon seated couple, c. 18th century
@@ -264,7 +266,7 @@ Long-range sculpture backlog for the ad-arma museum.
 211. Korean gilt bronze Maitreya, c. 7th century CE
 212. Unified Silla seated bodhisattva, c. 8th century CE
 213. Seokguram Buddha, c. 8th century CE
-214. Goryeo Avalokiteshvara, c. 13th century CE
+214. Goryeo Avalokiteshvara, c. 13th century CE: `live`
 215. Joseon Buddhist guardian, c. 15th century CE
 216. Baekje incense burner, c. 6th century CE
 217. Khmer Harihara, c. 7th century CE

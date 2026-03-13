@@ -28,6 +28,16 @@ export const museumSections = [
     subtitle: "Ancient sculpture, copies, and canonical casts"
   },
   {
+    id: "asia",
+    title: "Asia",
+    subtitle: "South, East, and Southeast Asian sacred and court sculpture"
+  },
+  {
+    id: "sub-saharan-africa",
+    title: "Sub-Saharan Africa",
+    subtitle: "Devotional, court, and ancestral sculpture traditions"
+  },
+  {
     id: "early-renaissance",
     title: "Early Renaissance",
     subtitle: "Donatello and the turn toward naturalism"
@@ -157,6 +167,76 @@ export const museumPieces = {
       sheenRoughness: 0.92,
       sheenColor: "#efe2cf",
       reflectivity: 0.3
+    }
+  },
+  "goryeo-avalokiteshvara": {
+    kind: "gltf",
+    path: "/asia/goryeo-avalokiteshvara/",
+    sectionId: "asia",
+    sortOrder: 10,
+    viewerTitle: "Goryeo Avalokiteshvara (Korea, c. 13th century CE)",
+    subtitle: "National Museum of Korea original; Smithsonian National Museum of Asian Art 3D source",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Bodhisattva Avalokiteshvara (Gwaneum) model, identified on the source page as a Korean Goryeo-period work from the National Museum of Korea.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/dpo_3d_200035"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/d8c62792-4ebc-11ea-b77f-2e728ce88125/document.json"),
+        link("Combined GLB", "https://3d-api.si.edu/content/document/d8c62792-4ebc-11ea-b77f-2e728ce88125/nmk_buddha_combined_100k-2048_std.glb")
+      ],
+      "Smithsonian lists metadata usage conditions on the source page. The c. 13th-century date here follows your master list and the source page's Goryeo-period identification."
+    ),
+    defaults: {
+      zoom: 2.45,
+      lightAngle: 24,
+      lightPower: 2.05,
+      exposure: 0.58,
+      rough: 0.46
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/d8c62792-4ebc-11ea-b77f-2e728ce88125/nmk_buddha_combined_100k-2048_std.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/d8c62792-4ebc-11ea-b77f-2e728ce88125/nmk_buddha_body_high-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.46,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.45, 0.82, 1.72],
+      mobileViewVector: [0.92, 0.56, 1.85]
+    }
+  },
+  "kongo-maternity-figure": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/kongo-maternity-figure/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 10,
+    viewerTitle: "Kongo Maternity Figure (mid-19th to early 20th century)",
+    subtitle: "Artist: Kongo artist; Mayombe region, Democratic Republic of the Congo",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of African Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Female figure with child model, which the source page identifies as a Kongo work from the Mayombe region and interprets as a phemba image associated with healing and motherhood.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/female-figure-child%3A8335af2d-b54c-40b5-a8e7-89c1c147244a"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-4096-high.glb")
+      ],
+      "Smithsonian lists usage conditions on the source page. The title here maps the source object to the Kongo maternity figure entry in your master list."
+    ),
+    defaults: {
+      zoom: 2.55,
+      lightAngle: 18,
+      lightPower: 2.0,
+      exposure: 0.5,
+      rough: 0.68
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.24,
+      defaultYaw: Math.PI * 0.12,
+      defaultViewVector: [1.22, 0.62, 1.86],
+      mobileViewVector: [0.86, 0.5, 1.72]
     }
   },
   "charioteer-of-delphi": {

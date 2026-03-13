@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260313-1208";
+const MODULE_VERSION = "20260313-1338";
 
 let catalogPromise = null;
 
@@ -49,6 +49,12 @@ export async function initMuseumPiecePage(pieceId) {
     if (piece.kind === "sketchfab") {
       const { initSketchfabMuseumPage } = await import(`./sketchfab-viewer.js?v=${MODULE_VERSION}`);
       await initSketchfabMuseumPage(piece);
+      return;
+    }
+
+    if (piece.kind === "gltf") {
+      const { initGltfMuseumPage } = await import(`./gltf-viewer.js?v=${MODULE_VERSION}`);
+      await initGltfMuseumPage(piece);
       return;
     }
 
