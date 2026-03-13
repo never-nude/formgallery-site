@@ -4,7 +4,7 @@ export const DEFAULT_VIEWER_DEFAULTS = Object.freeze({
   lightAngle: 34,
   lightPower: 2.2,
   exposure: 0.39,
-  rough: 0.58,
+  rough: 0.2,
   canManipulate: true,
   autoRotate: true,
   multiLight: true,
