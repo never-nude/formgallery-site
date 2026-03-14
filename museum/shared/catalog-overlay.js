@@ -121,6 +121,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./risen_christ_source_small.stl"
     },
     scene: {
+      rotateX: -Math.PI * 0.5,
       targetHeight: 1.76,
       defaultYaw: Math.PI * 0.08
     }
@@ -150,6 +151,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./apollo_source_small.stl"
     },
     scene: {
+      rotateX: -Math.PI * 0.5,
       targetHeight: 1.54,
       defaultYaw: -Math.PI * 0.16
     }

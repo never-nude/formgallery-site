@@ -457,9 +457,9 @@ Long-range sculpture backlog for the ad-arma museum.
 399. Donatello Gattamelata, 1453 CE
 400. Donatello Penitent Magdalene, c. 1455 CE
 401. Luca della Robbia Cantoria figure, c. 1430s
-402. Verrocchio David, c. 1473–1475 CE: `live`
+402. Verrocchio David, c. 1473–1475 CE: `source found, route removed`
 403. Verrocchio Colleoni monument, 1480s
-404. Michelangelo Madonna of the Stairs, c. 1491 CE
+404. Michelangelo Madonna of the Stairs, c. 1491 CE: `route removed`
 405. Michelangelo Battle of the Centaurs, c. 1492 CE
 406. Michelangelo Bacchus, 1496–1497 CE
 407. Michelangelo Pietà, 1498–1499 CE
