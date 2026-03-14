@@ -26,12 +26,12 @@ function renderEntry(entry) {
   return `
     <li>
       <a class="piece" href="${entry.href}">
-        <p class="piece-kicker">Collection Entry</p>
+        <p class="piece-kicker">Sculpture</p>
         <h3 class="piece-title">${entry.title}</h3>
         ${entry.meta ? `<p class="piece-meta">${entry.meta}</p>` : ""}
         ${entry.note ? `<p class="piece-note">${entry.note}</p>` : ""}
         <div class="piece-footer">
-          <span class="piece-arrow">View piece</span>
+          <span class="piece-arrow">Open piece</span>
         </div>
       </a>
     </li>
@@ -86,10 +86,12 @@ export function renderMuseumLobby(lobby, pieces) {
 
             <div class="lobby-stats" aria-label="Museum summary">
               <article class="lobby-stat">
+                <p class="lobby-stat-kicker">Collection</p>
                 <p class="lobby-stat-value">${totalPieces}</p>
                 <p class="lobby-stat-label">Live pieces</p>
               </article>
               <article class="lobby-stat">
+                <p class="lobby-stat-kicker">Sections</p>
                 <p class="lobby-stat-value">${lobby.sections.length}</p>
                 <p class="lobby-stat-label">Active galleries</p>
               </article>
