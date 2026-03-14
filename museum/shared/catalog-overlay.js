@@ -155,5 +155,80 @@ export const museumPiecesExtension = {
       targetHeight: 1.54,
       defaultYaw: -Math.PI * 0.16
     }
+  },
+  "barberini-faun": {
+    kind: "stl",
+    path: "/barberini-faun/",
+    sectionId: "antiquity",
+    sortOrder: 29.15,
+    viewerTitle: "Barberini Faun (Roman copy after a Hellenistic original, c. 220 BCE)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS208)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Barberini Faun.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS208",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/df65vd33z_kas208-barberini-faun.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/8w32rb332_KAS208_small.stl",
+      note: "SMK catalogs this as a plaster cast. The dating here follows the usual Roman-copy-after-Hellenistic-original framing for the Barberini Faun type."
+    }),
+    defaults: {
+      zoom: 3.05,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./barberini_faun_source_small.stl",
+      fallbackUrl: "./barberini_faun_source_small.stl"
+    }
+  },
+  "apollo-lykeios": {
+    kind: "stl",
+    path: "/apollo-lykeios/",
+    sectionId: "antiquity",
+    sortOrder: 29.2,
+    viewerTitle: "Apollo Lykeios (copy tradition, 4th century BCE type)",
+    subtitle: "Traditional attribution: Praxiteles; current mesh from SMK's cast record",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS1026)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Apollo Lykeios / Apollon Lykeios.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS1026",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/9593v081h_42-kas2016.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/p5547x33f_KAS1026_small.stl",
+      note: "SMK catalogs this as a plaster cast. The Praxiteles attribution is traditional rather than certain, and the title follows the source record's Apollo Lykeios identification."
+    }),
+    defaults: {
+      zoom: 2.95,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./apollo_lykeios_source_small.stl",
+      fallbackUrl: "./apollo_lykeios_source_small.stl"
+    }
+  },
+  "the-wrestlers": {
+    kind: "stl",
+    path: "/the-wrestlers/",
+    sectionId: "antiquity",
+    sortOrder: 29.25,
+    viewerTitle: "The Wrestlers (Roman copy after a Hellenistic original)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS403)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Uffizi Wrestlers group, titled 'To brydere i kamp' in the source record.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS403",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/4q77fw74p_smk8-kas403-uffizi-wrestlers-1.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/8w32rb35m_KAS403_small.stl",
+      note: "The Form Gallery title uses the common English name. SMK catalogs the object itself as a plaster cast after the Uffizi group."
+    }),
+    defaults: {
+      zoom: 3.25,
+      exposure: 0.44,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./wrestlers_source_small.stl",
+      fallbackUrl: "./wrestlers_source_small.stl"
+    }
   }
 };
