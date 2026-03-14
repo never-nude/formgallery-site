@@ -50,7 +50,7 @@ export const museumSections = [
   {
     id: "bouchardon",
     title: "Bouchardon",
-    subtitle: "Edme Bouchardon (1698-1762)"
+    subtitle: "French classicism from Cupid to the rue de Grenelle allegories"
   },
   {
     id: "rodin",
@@ -1261,6 +1261,78 @@ export const museumPieces = {
       targetHeight: 1.72
     }
   },
+  "bouchardon-spring": {
+    kind: "external",
+    path: "https://www.metmuseum.org/art/collection/search/197729",
+    sectionId: "bouchardon",
+    sortOrder: 20,
+    viewerTitle: "Spring (one of a set of four) (probably mid-18th century)",
+    lobbyTitle: "Spring",
+    lobbyArtistLine: "After a model by Edme Bouchardon",
+    lobbyDate: "probably mid-18th century",
+    lobbyMeta: "Source: The Metropolitan Museum of Art",
+    lobbyLinkLabel: "View Record",
+    subtitle: "After a model by Edme Bouchardon (1698-1762)",
+    source: source(
+      "The Met's marble copy after Bouchardon's Four Seasons fountain relief.",
+      [link("The Met collection record", "https://www.metmuseum.org/art/collection/search/197729")],
+      "The Met notes that the set copies reliefs from Bouchardon's rue de Grenelle fountain, commissioned in 1735 and finished in 1745."
+    )
+  },
+  "bouchardon-summer": {
+    kind: "external",
+    path: "https://www.metmuseum.org/art/collection/search/197730",
+    sectionId: "bouchardon",
+    sortOrder: 30,
+    viewerTitle: "Summer (one of a set of four) (probably mid-18th century)",
+    lobbyTitle: "Summer",
+    lobbyArtistLine: "After a model by Edme Bouchardon",
+    lobbyDate: "probably mid-18th century",
+    lobbyMeta: "Source: The Metropolitan Museum of Art",
+    lobbyLinkLabel: "View Record",
+    subtitle: "After a model by Edme Bouchardon (1698-1762)",
+    source: source(
+      "The Met's marble copy after Bouchardon's Four Seasons fountain relief.",
+      [link("The Met collection record", "https://www.metmuseum.org/art/collection/search/197730")],
+      "The Met notes that the set copies reliefs from Bouchardon's rue de Grenelle fountain, commissioned in 1735 and finished in 1745."
+    )
+  },
+  "bouchardon-autumn": {
+    kind: "external",
+    path: "https://www.metmuseum.org/art/collection/search/197731",
+    sectionId: "bouchardon",
+    sortOrder: 40,
+    viewerTitle: "Autumn (one of a set of four) (probably mid-18th century)",
+    lobbyTitle: "Autumn",
+    lobbyArtistLine: "After a model by Edme Bouchardon",
+    lobbyDate: "probably mid-18th century",
+    lobbyMeta: "Source: The Metropolitan Museum of Art",
+    lobbyLinkLabel: "View Record",
+    subtitle: "After a model by Edme Bouchardon (1698-1762)",
+    source: source(
+      "The Met's marble copy after Bouchardon's Four Seasons fountain relief.",
+      [link("The Met collection record", "https://www.metmuseum.org/art/collection/search/197731")],
+      "The Met notes that the set copies reliefs from Bouchardon's rue de Grenelle fountain, commissioned in 1735 and finished in 1745."
+    )
+  },
+  "bouchardon-winter": {
+    kind: "external",
+    path: "https://www.metmuseum.org/art/collection/search/197732",
+    sectionId: "bouchardon",
+    sortOrder: 50,
+    viewerTitle: "Winter (one of a set of four) (probably mid-18th century)",
+    lobbyTitle: "Winter",
+    lobbyArtistLine: "After a model by Edme Bouchardon",
+    lobbyDate: "probably mid-18th century",
+    lobbyMeta: "Source: The Metropolitan Museum of Art",
+    lobbyLinkLabel: "View Record",
+    subtitle: "After a model by Edme Bouchardon (1698-1762)",
+    source: source(
+      "The Met's marble copy after Bouchardon's Four Seasons fountain relief.",
+      [link("The Met collection record", "https://www.metmuseum.org/art/collection/search/197732")],
+      "The Met notes that the set copies reliefs from Bouchardon's rue de Grenelle fountain, commissioned in 1735 and finished in 1745."
+    )
+  },
   "rodin-the-thinker": {
     kind: "stl",
     path: "/rodin/the-thinker/",
@@ -1318,9 +1390,16 @@ function sectionItems(sectionId) {
 }
 
 export const museumLobby = {
-  pageTitle: "Form Gallery",
-  title: "Form Gallery",
-  subtitle: "Sculpture and 3D works from antiquity through the nineteenth century. Each piece page now carries a shared viewer shell plus source and attribution notes.",
+  pageTitle: "Form Gallery - Museum Lobby",
+  brand: "FORM GALLERY",
+  title: "Museum Lobby",
+  subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse by era, region, maker, or curatorial gallery.",
+  featuredPieceId: "dying-gaul",
+  featuredLabel: "Featured Sculpture",
+  featuredCtaLabel: "Explore the Work",
+  browseTitle: "Browse the Collection",
+  browseSubtitle: "Grouped filters keep the collection quiet and legible while making it easy to move by era, region, maker, or room.",
+  browseResetLabel: "Show all works",
   sections: museumSections
     .map((section) => ({
       id: section.id,
