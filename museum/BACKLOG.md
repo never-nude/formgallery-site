@@ -39,9 +39,7 @@ Long-range sculpture backlog for the ad-arma museum.
 - `369` Statue of Germanicus: `hidden`
 - `342` Augustus of Prima Porta: `live`
 - `395` Donatello Saint George: `hidden`
-- `Donatello Cecilia Gonzaga`: `live`
-- `Donatello Our Lady of Forgiveness`: `live`
-- `402` Verrocchio David: `live`
+- `Battista Lorenzi Portrait of Michelangelo`: `live`
 - `405` Michelangelo Battle of the Centaurs: `live`
 - `406` Michelangelo Bacchus: `live`
 - `407` Michelangelo Pietà: `live`

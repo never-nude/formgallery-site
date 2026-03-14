@@ -16,6 +16,7 @@ function smkSource({ summary, recordUrl, fullUrl, fallbackUrl, note = "" }) {
 
 const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
 const DONATELLO_SUBTITLE = "Artist: Donatello (c. 1386-1466)";
+const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
 
 export const museumPiecesExtension = {
   "donatello-david-bronze": {
@@ -60,6 +61,39 @@ export const museumPiecesExtension = {
       sheenRoughness: 1.0,
       sheenColor: "#000000",
       reflectivity: 0.84
+    }
+  },
+  "lorenzi-portrait-of-michelangelo": {
+    kind: "stl",
+    path: "/lorenzi/portrait-of-michelangelo/",
+    sectionId: "early-renaissance",
+    sortOrder: 82,
+    viewerTitle: "Portrait of Michelangelo (after Battista Lorenzi, 16th-century type)",
+    subtitle: LORENZI_SUBTITLE,
+    lobbyMeta: "Source: SMK Open; plaster cast after Battista Lorenzi",
+    source: smkSource({
+      summary: "Rendered from SMK Open's optimized STL of the museum's plaster cast after Battista Lorenzi's portrait of Michelangelo.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS336",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/1c18dm47p_smk29-kas336-bust-of-michelangelo3.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/fx719s420_KAS336_small.stl",
+      note: "The gallery serves a local mirror of the optimized STL, which already lands almost exactly on the museum's target delivery budget at about 20 MB and 400,000 triangles. SMK catalogs the object itself as a plaster cast made before 1897 after Battista Lorenzi."
+    }),
+    defaults: {
+      zoom: 2.58,
+      lightAngle: 31,
+      lightPower: 2.08,
+      exposure: 0.44,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./portrait_of_michelangelo_source_small.stl",
+      fallbackUrl: "./portrait_of_michelangelo_source_small.stl"
+    },
+    scene: {
+      defaultYaw: -Math.PI * 0.08,
+      targetHeight: 1.12,
+      defaultViewVector: [1.18, 0.42, 1.54],
+      mobileViewVector: [0.86, 0.34, 1.74]
     }
   },
   "michelangelo-risen-christ": {
