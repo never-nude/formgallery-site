@@ -17,8 +17,42 @@ function smkSource({ summary, recordUrl, fullUrl, fallbackUrl, note = "" }) {
 const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
 const DONATELLO_SUBTITLE = "Artist: Donatello (c. 1386-1466)";
 const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
+const BENEDETTO_DA_MAIANO_SUBTITLE = "Artist: Attributed to Benedetto da Maiano (1442-1497)";
 
 export const museumPiecesExtension = {
+  "donatello-saint-george": {
+    kind: "stl",
+    path: "/donatello/saint-george/",
+    sectionId: "early-renaissance",
+    sortOrder: 74,
+    viewerTitle: "Saint George (c. 1415-1417)",
+    subtitle: DONATELLO_SUBTITLE,
+    lobbyMeta: "Source: SMK Open plaster cast (KAS82)",
+    source: smkSource({
+      summary: "Rendered from SMK Open's optimized STL for the museum's plaster cast of Saint George.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS82",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/rn3015822_153-kas82.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/765376019_KAS82_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The c. 1415-1417 date follows the original Donatello sculpture rather than the cast."
+    }),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 28,
+      lightPower: 2.34,
+      exposure: 0.5,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./saint_george_source_small.stl",
+      fallbackUrl: "./saint_george_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.92,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.38, 0.72, 2.18],
+      mobileViewVector: [1.0, 0.56, 1.94]
+    }
+  },
   "donatello-david-bronze": {
     kind: "stl",
     path: "/donatello/david/",
@@ -61,6 +95,39 @@ export const museumPiecesExtension = {
       sheenRoughness: 1.0,
       sheenColor: "#000000",
       reflectivity: 0.84
+    }
+  },
+  "benedetto-da-maiano-john-the-baptist-as-a-boy": {
+    kind: "stl",
+    path: "/donatello/john-the-baptist-as-a-boy/",
+    sectionId: "early-renaissance",
+    sortOrder: 79,
+    viewerTitle: "John the Baptist as a Boy (attributed to Benedetto da Maiano, 1480-1481)",
+    subtitle: BENEDETTO_DA_MAIANO_SUBTITLE,
+    lobbyMeta: "Source: SMK Open plaster cast (KAS465)",
+    source: smkSource({
+      summary: "Rendered from SMK Open's optimized STL for the museum's plaster cast titled John the Baptist as a Boy.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS465",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/s4655n294_144-john-the-baptist-inv-465.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/d791sm78j_KAS465_small.stl",
+      note: "SMK catalogs the object as a plaster cast after a Bargello marble original. The attribution to Benedetto da Maiano and the 1480-1481 date are inferred from the original-object notes attached to the SMK record."
+    }),
+    defaults: {
+      zoom: 2.58,
+      lightAngle: 32,
+      lightPower: 2.14,
+      exposure: 0.46,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./john_the_baptist_as_a_boy_source_small.stl",
+      fallbackUrl: "./john_the_baptist_as_a_boy_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.34,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.08, 0.46, 1.84],
+      mobileViewVector: [0.82, 0.38, 1.68]
     }
   },
   "lorenzi-portrait-of-michelangelo": {

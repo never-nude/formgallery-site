@@ -33,6 +33,7 @@ const ARTIST_ORDER = Object.freeze([
   "Asian traditions",
   "African artists",
   "Donatello",
+  "Benedetto da Maiano",
   "Battista Lorenzi",
   "Michelangelo",
   "Bouchardon",
@@ -227,6 +228,7 @@ function getArtistLabel(piece) {
   if (piece?.sectionId === "michelangelo") return "Michelangelo";
   if (piece?.sectionId === "bouchardon") return "Bouchardon";
   if (piece?.sectionId === "rodin") return "Rodin";
+  if (piece?.sectionId === "early-renaissance" && /maiano/i.test(subtitle)) return "Benedetto da Maiano";
   if (piece?.sectionId === "early-renaissance" && /lorenzi/i.test(subtitle)) return "Battista Lorenzi";
   if (piece?.sectionId === "early-renaissance") return "Donatello";
 

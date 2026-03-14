@@ -1,15 +1,16 @@
 # Donatello Saint George - Museum Viewer
 
-Interactive 3D page for **Donatello's Saint George** in the same ad-arma viewer UI/UX style.
+Interactive 3D page for **Donatello's Saint George** using the Form Gallery local STL viewer.
 
 - Date: c. 1415-1417
 - Artist: Donatello (c. 1386-1466)
-- Source model: Sketchfab
-  - Model URL: https://sketchfab.com/3d-models/saint-george-donatellosan-jorge-b637727d39544f6d998ab996ded86f0c
-  - Model UID: `b637727d39544f6d998ab996ded86f0c`
-- Source mesh metadata used by this page:
-  - 2,000,012 triangles
-  - Source archive size metadata: 100.0 MB
+- Source model: SMK Open plaster-cast scan
+  - Record URL: https://open.smk.dk/en/artwork/image/KAS82
+  - Full STL: https://api.smk.dk/api/v1/download-3d/rn3015822_153-kas82.stl
+  - Optimized STL: https://api.smk.dk/api/v1/download-3d/765376019_KAS82_small.stl
+- Local viewer asset:
+  - `saint_george_source_small.stl`
+  - 20,000,884 bytes
 
 Published path:
 
