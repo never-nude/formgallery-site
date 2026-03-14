@@ -368,7 +368,7 @@ function renderEntry(entry) {
   const isExternal = /^https?:\/\//.test(entry.href);
   const linkLabel = entry.linkLabel || (isExternal ? "View Record" : "View Piece");
   const linkArrow = isExternal ? "&#8599;" : "&rarr;";
-  const linkAttrs = isExternal ? ' target="_blank" rel="noreferrer"' : "";
+  const linkAttrs = "";
 
   return `
     <li class="work-item" id="work-${entry.id}" data-era="${entry.era}" data-region="${entry.region}" data-artist="${entry.artist}" data-gallery="${entry.gallery}">
