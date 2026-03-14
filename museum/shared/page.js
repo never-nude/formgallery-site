@@ -1,13 +1,102 @@
-const MODULE_VERSION = "20260314-2148";
+const MODULE_VERSION = "20260314-2238";
 
 let catalogPromise = null;
 
+const MEDIUM_BY_PIECE = Object.freeze({
+  sphinx: "Limestone",
+  "ashurnasirpal-lion-hunt": "Alabaster relief",
+  "lion-released-from-cage": "Alabaster relief",
+  "goryeo-avalokiteshvara": "Carved wood with applied jewelry",
+  "sapi-portuguese-hunting-horn": "Ivory, metal",
+  "loango-ivory-tusk-female-finial": "Ivory, wood",
+  "loango-ivory-tusk-seated-european-finial": "Ivory, wood",
+  "loango-ivory-tusk-trade-scenes": "Ivory",
+  "kongo-maternity-figure": "Wood, glass, glass beads, brass tacks, pigment",
+  "charioteer-of-delphi": "Bronze",
+  "venus-de-milo": "Marble",
+  discobolus: "Marble copy",
+  "artemision-bronze": "Bronze",
+  "athena-lemnia": "Bronze type (reconstruction)",
+  germanicus: "Marble",
+  "belvedere-torso": "Marble",
+  "apollo-belvedere": "Marble copy",
+  "dying-gaul": "Marble copy",
+  "ludovisi-gaul": "Marble group",
+  "capitoline-venus": "Marble copy",
+  laocoon: "Marble group",
+  "augustus-of-prima-porta": "Marble",
+  "donatello-saint-george": "Marble",
+  "michelangelo-battle-of-the-centaurs": "Marble relief",
+  "michelangelo-bacchus": "Marble",
+  "michelangelo-pieta": "Marble",
+  "michelangelo-david": "Marble",
+  "michelangelo-bruges-madonna": "Marble",
+  "michelangelo-tondo-pitti": "Marble relief",
+  "michelangelo-tondo-taddei": "Marble relief",
+  "michelangelo-moses": "Marble",
+  "michelangelo-dying-slave": "Marble",
+  "michelangelo-rebellious-slave": "Marble",
+  "michelangelo-prisoner": "Marble",
+  "michelangelo-medici-madonna": "Marble",
+  "michelangelo-dawn": "Marble",
+  "michelangelo-dusk": "Marble",
+  "michelangelo-night": "Marble",
+  "michelangelo-day": "Marble",
+  "michelangelo-giuliano-duke-of-nemours": "Marble",
+  "michelangelo-lorenzo-duke-of-urbino": "Marble",
+  "michelangelo-brutus": "Marble",
+  "michelangelo-rondanini-pieta": "Marble",
+  "bouchardon-cupid": "Marble",
+  "rodin-the-thinker": "Bronze",
+  "donatello-david-bronze": "Bronze",
+  "benedetto-da-maiano-john-the-baptist-as-a-boy": "Marble",
+  "rodin-walking-man": "Bronze",
+  "rodin-danaid": "Terracotta",
+  "lorenzi-portrait-of-michelangelo": "Marble bust",
+  "michelangelo-risen-christ": "Marble",
+  "michelangelo-apollo": "Marble",
+  "barberini-faun": "Marble",
+  "apollo-lykeios": "Marble copy",
+  "the-wrestlers": "Marble group"
+});
+
+function inferMediumFromText(piece) {
+  const text = [
+    piece?.viewerTitle || "",
+    piece?.subtitle || "",
+    piece?.lobbyMeta || "",
+    piece?.source?.summary || "",
+    piece?.source?.note || ""
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  if (/\balabaster relief\b/.test(text)) return "Alabaster relief";
+  if (/\bterracotta\b/.test(text)) return "Terracotta";
+  if (/\bivory, wood\b/.test(text)) return "Ivory, wood";
+  if (/\bivory\b/.test(text)) return "Ivory";
+  if (/wood[, ]+glass|glass beads|brass tacks/.test(text)) return "Wood, glass, glass beads, brass tacks, pigment";
+  if (/\bbronze\b/.test(text) && !/plaster/.test(text)) return "Bronze";
+  if (/\blimestone\b/.test(text)) return "Limestone";
+  if (/\bmarble\b/.test(text)) return "Marble";
+  if (/\bplaster cast\b/.test(text)) return "Plaster cast";
+  return "";
+}
+
+function enrichPieceMetadata(pieceId, piece) {
+  if (!piece) return piece;
+  const medium = piece.medium || MEDIUM_BY_PIECE[pieceId] || inferMediumFromText(piece);
+  return medium ? { ...piece, medium } : piece;
+}
+
 function buildMergedCatalog(base, extension) {
   const museumSections = base.museumSections || [];
-  const museumPieces = {
-    ...(base.museumPieces || {}),
-    ...(extension.museumPiecesExtension || {})
-  };
+  const museumPieces = Object.fromEntries(
+    Object.entries({
+      ...(base.museumPieces || {}),
+      ...(extension.museumPiecesExtension || {})
+    }).map(([pieceId, piece]) => [pieceId, enrichPieceMetadata(pieceId, piece)])
+  );
 
   const sections = museumSections
     .map((section) => ({

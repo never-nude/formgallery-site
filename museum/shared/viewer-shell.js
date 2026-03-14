@@ -22,6 +22,10 @@ function titleParagraph(className, value) {
   return value ? `<p class="${className}">${value}</p>` : "";
 }
 
+function labeledParagraph(className, label, value) {
+  return value ? `<p class="${className}"><span class="meta-label">${label}</span> ${value}</p>` : "";
+}
+
 function renderSourceCard(source) {
   if (!source) return "";
 
@@ -62,6 +66,7 @@ export function renderViewerShell(config) {
       <section class="panel">
         <h1 class="title">${config.viewerTitle}</h1>
         ${titleParagraph("sub", config.subtitle)}
+        ${labeledParagraph("sub meta-line", "Medium:", config.medium)}
         <p id="stats" class="sub">${statsLoading}</p>
         ${renderSourceCard(config.source)}
 

@@ -93,6 +93,15 @@ a {
   font-size: 13px;
 }
 
+.meta-line {
+  margin-top: -4px;
+}
+
+.meta-label {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .stage {
   width: 100%;
   padding: 16px 14px 20px;

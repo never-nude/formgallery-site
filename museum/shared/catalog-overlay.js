@@ -20,44 +20,6 @@ const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
 const BENEDETTO_DA_MAIANO_SUBTITLE = "Artist: Attributed to Benedetto da Maiano (1442-1497)";
 
 export const museumPiecesExtension = {
-  "michelangelo-madonna-of-the-stairs": {
-    kind: "stl",
-    path: "/michelangelo/madonna-of-the-stairs/",
-    sectionId: "michelangelo",
-    sortOrder: 8,
-    viewerTitle: "Madonna of the Stairs (c. 1490-1492)",
-    subtitle: MICHELANGELO_SUBTITLE,
-    lobbyMeta: "Source: SMK Open relief scan (KAS2358)",
-    source: source(
-      "Rendered from SMK Open's relief scan of Madonna of the Stairs, mirrored locally from the optimized STL for reliable loading in the Form Gallery viewer.",
-      [
-        link("SMK Open record", "https://open.smk.dk/en/artwork/image/KAS2358"),
-        link("Full OBJ", "https://api.smk.dk/api/v1/download-3d/rf55zd315_smk-madonna-of-the-steps.obj"),
-        link("Optimized STL", "https://api.smk.dk/api/v1/download-3d/m613n3373_KAS2358_small.stl")
-      ],
-      "SMK's record identifies the original as Michelangelo's Madonna della Scala in Casa Buonarroti. The gallery title follows the conventional c. 1490-1492 dating rather than the later alternative date mentioned in the source notes."
-    ),
-    defaults: {
-      zoom: 2.74,
-      lightAngle: 22,
-      lightPower: 2.04,
-      exposure: 0.44,
-      rough: 0.2
-    },
-    model: {
-      primaryUrl: "./madonna_of_the_stairs_source_small.stl",
-      fallbackUrl: "./madonna_of_the_stairs_source_small.stl"
-    },
-    scene: {
-      rotateX: 0,
-      showPedestal: false,
-      targetHeight: 1.02,
-      focusYRatio: 0.5,
-      defaultYaw: -Math.PI * 0.08,
-      defaultViewVector: [1.24, 0.22, 2.16],
-      mobileViewVector: [0.82, 0.16, 1.88]
-    }
-  },
   "donatello-saint-george": {
     kind: "stl",
     path: "/donatello/saint-george/",
@@ -249,12 +211,13 @@ export const museumPiecesExtension = {
       fallbackMs: 60000
     },
     scene: {
+      rotateZ: Math.PI * 0.5,
       showPedestal: false,
-      targetHeight: 0.78,
-      focusYRatio: 0.44,
-      defaultYaw: Math.PI * 0.28,
-      defaultViewVector: [1.08, 0.28, 1.64],
-      mobileViewVector: [0.78, 0.22, 1.46]
+      targetHeight: 0.92,
+      focusYRatio: 0.48,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.18, 0.34, 1.72],
+      mobileViewVector: [0.86, 0.26, 1.54]
     },
     material: {
       color: "#9d6a4a",
