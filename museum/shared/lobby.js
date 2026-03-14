@@ -365,9 +365,8 @@ function renderBrowseGroup(group) {
 }
 
 function renderEntry(entry) {
-  const isExternal = /^https?:\/\//.test(entry.href);
-  const linkLabel = entry.linkLabel || (isExternal ? "View Record" : "View Piece");
-  const linkArrow = isExternal ? "&#8599;" : "&rarr;";
+  const linkLabel = entry.linkLabel || "View Piece";
+  const linkArrow = "&rarr;";
   const linkAttrs = "";
 
   return `
