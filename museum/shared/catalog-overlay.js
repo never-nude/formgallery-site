@@ -19,6 +19,43 @@ const DONATELLO_SUBTITLE = "Artist: Donatello (c. 1386-1466)";
 const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
 
 export const museumPiecesExtension = {
+  "bernini-david": {
+    kind: "gltf",
+    path: "/bernini/david/",
+    sectionId: "bernini",
+    sortOrder: 10,
+    hiddenFromLobby: true,
+    viewerTitle: "David (1623-1624)",
+    subtitle: "Artist: Gian Lorenzo Bernini (1598-1680)",
+    lobbyMeta: "Source: Scan the World / Google Arts & Culture",
+    source: source(
+      "Rendered from the Scan the World Bernini David model served by Google Arts & Culture's 3D viewer.",
+      [
+        link("Google Arts & Culture asset", "https://artsandculture.google.com/asset/david-bernini-scan-the-world/ogH6_tk-ixnayw?hl=en"),
+        link("Google Arts story", "https://artsandculture.google.com/story/the-three-davids-scan-the-world/8AUhFyuCskCEjg"),
+        link("Direct GLB", "https://culturalinstitute-3d-serving.storage.googleapis.com/167368473/2QEMvXUkxg7JoA/1624895236726/gltf/model.glb")
+      ],
+      "The Google Arts page attributes the model to Scan the World and identifies the original sculpture as Bernini's marble David in the Galleria Borghese, Rome. The local mirror keeps the viewer in Form Gallery's own rendering environment instead of sending visitors to an external platform."
+    ),
+    defaults: {
+      zoom: 2.95,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.52,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./bernini_david_source.glb",
+      fallbackUrl: "./bernini_david_source.glb"
+    },
+    scene: {
+      targetHeight: 1.74,
+      showPedestal: false,
+      defaultYaw: -Math.PI * 0.2,
+      defaultViewVector: [1.56, 0.72, 1.92],
+      mobileViewVector: [0.98, 0.5, 2.02]
+    }
+  },
   "donatello-david-bronze": {
     kind: "stl",
     path: "/donatello/david/",
