@@ -20,6 +20,44 @@ const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
 const BENEDETTO_DA_MAIANO_SUBTITLE = "Artist: Attributed to Benedetto da Maiano (1442-1497)";
 
 export const museumPiecesExtension = {
+  "michelangelo-madonna-of-the-stairs": {
+    kind: "stl",
+    path: "/michelangelo/madonna-of-the-stairs/",
+    sectionId: "michelangelo",
+    sortOrder: 8,
+    viewerTitle: "Madonna of the Stairs (c. 1490-1492)",
+    subtitle: MICHELANGELO_SUBTITLE,
+    lobbyMeta: "Source: SMK Open relief scan (KAS2358)",
+    source: source(
+      "Rendered from SMK Open's relief scan of Madonna of the Stairs, mirrored locally from the optimized STL for reliable loading in the Form Gallery viewer.",
+      [
+        link("SMK Open record", "https://open.smk.dk/en/artwork/image/KAS2358"),
+        link("Full OBJ", "https://api.smk.dk/api/v1/download-3d/rf55zd315_smk-madonna-of-the-steps.obj"),
+        link("Optimized STL", "https://api.smk.dk/api/v1/download-3d/m613n3373_KAS2358_small.stl")
+      ],
+      "SMK's record identifies the original as Michelangelo's Madonna della Scala in Casa Buonarroti. The gallery title follows the conventional c. 1490-1492 dating rather than the later alternative date mentioned in the source notes."
+    ),
+    defaults: {
+      zoom: 2.74,
+      lightAngle: 22,
+      lightPower: 2.04,
+      exposure: 0.44,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./madonna_of_the_stairs_source_small.stl",
+      fallbackUrl: "./madonna_of_the_stairs_source_small.stl"
+    },
+    scene: {
+      rotateX: 0,
+      showPedestal: false,
+      targetHeight: 1.02,
+      focusYRatio: 0.5,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.24, 0.22, 2.16],
+      mobileViewVector: [0.82, 0.16, 1.88]
+    }
+  },
   "donatello-saint-george": {
     kind: "stl",
     path: "/donatello/saint-george/",
@@ -128,6 +166,105 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [1.08, 0.46, 1.84],
       mobileViewVector: [0.82, 0.38, 1.68]
+    }
+  },
+  "rodin-walking-man": {
+    kind: "stl",
+    path: "/rodin/the-walking-man/",
+    sectionId: "rodin",
+    sortOrder: 20,
+    viewerTitle: "The Walking Man (conceived 1899-1900)",
+    subtitle: "Artist: Auguste Rodin (1840-1917)",
+    lobbyMeta: "Source: Wikimedia Commons / Thingiverse-derived STL",
+    source: source(
+      "Local STL mirrored from the Wikimedia Commons file for Rodin's The Walking Man.",
+      [
+        link("File page", "https://commons.wikimedia.org/wiki/File:Auguste_Rodin_-_L'Homme_qui_marche_-_3D_model_Thingiverse.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/e/e4/Auguste_Rodin_-_L%27Homme_qui_marche_-_3D_model_Thingiverse.stl"),
+        link("Musee Rodin reference", "https://www.meudon.musee-rodin.fr/en/musee/collections/oeuvres/walking-man-large-model")
+      ],
+      "The Commons file credits Thingiverse and carries a CC BY 4.0 license. The date here follows the Musee Rodin chronology for the large model's conception."
+    ),
+    defaults: {
+      zoom: 3.05,
+      lightAngle: 26,
+      lightPower: 2.28,
+      exposure: 0.46,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./walking_man_source.stl",
+      fallbackUrl: "./walking_man_source.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.78,
+      defaultYaw: -Math.PI * 0.1,
+      defaultViewVector: [1.34, 0.64, 2.02],
+      mobileViewVector: [0.94, 0.48, 1.86]
+    },
+    material: {
+      color: "#85613b",
+      metalness: 0.8,
+      clearcoat: 0.06,
+      clearcoatRoughness: 0.5,
+      sheen: 0.0,
+      sheenRoughness: 1.0,
+      sheenColor: "#000000",
+      reflectivity: 0.8
+    }
+  },
+  "rodin-danaid": {
+    kind: "stl",
+    path: "/rodin/danaid/",
+    sectionId: "rodin",
+    sortOrder: 30,
+    viewerTitle: "Danaid (1889)",
+    subtitle: "Artist: Auguste Rodin (1840-1917)",
+    lobbyMeta: "Source: Wikimedia Commons / Nationalmuseum STL",
+    source: source(
+      "Local STL mirrored from the Wikimedia Commons file for Rodin's Danaid, credited to Nationalmuseum's Sketchfab release.",
+      [
+        link("File page", "https://commons.wikimedia.org/wiki/File:Danaid_NMSk_1854_(Auguste_Rodin)_-_Nationalmuseum_-_76c5c234c6074b13a94bf793c276a509.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/2/22/Danaid_NMSk_1854_%28Auguste_Rodin%29_-_Nationalmuseum_-_76c5c234c6074b13a94bf793c276a509.stl")
+      ],
+      "The source file describes a terracotta Danaid made in 1889 and originally linked to The Gates of Hell. The gallery render keeps that terracotta reading rather than forcing a bronze finish."
+    ),
+    defaults: {
+      zoom: 2.52,
+      lightAngle: 18,
+      lightPower: 2.02,
+      exposure: 0.5,
+      rough: 0.28
+    },
+    model: {
+      primaryUrl: "./danaid_source.stl",
+      fallbackUrl: "./danaid_source.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 0.78,
+      focusYRatio: 0.44,
+      defaultYaw: Math.PI * 0.28,
+      defaultViewVector: [1.08, 0.28, 1.64],
+      mobileViewVector: [0.78, 0.22, 1.46]
+    },
+    material: {
+      color: "#9d6a4a",
+      metalness: 0.04,
+      clearcoat: 0.1,
+      clearcoatRoughness: 0.58,
+      sheen: 0.12,
+      sheenRoughness: 0.9,
+      sheenColor: "#e4b995",
+      reflectivity: 0.16
     }
   },
   "lorenzi-portrait-of-michelangelo": {
