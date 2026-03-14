@@ -324,21 +324,6 @@ function pickFeaturedPiece(lobby, sections) {
   return sections[0]?.items[0] || null;
 }
 
-function renderBrandMark() {
-  return `
-    <svg viewBox="0 0 64 80" aria-hidden="true" focusable="false">
-      <path d="M23 19c0-9 4-15 9-15s9 6 9 15c0 6-2 11-5 15v6" />
-      <path d="M28 28c1 2 3 3 4 3s3-1 4-3" />
-      <path d="M30 22h4" />
-      <path d="M28 41c2 3 7 3 9 0" />
-      <path d="M18 57c4-5 8-7 14-7s10 2 14 7" />
-      <path d="M14 69c5-4 11-6 18-6s13 2 18 6" />
-      <path d="M23 19c-5 4-8 10-8 18 0 9 5 17 17 17s17-8 17-17c0-8-3-14-8-18" />
-      <path d="M32 10v44" />
-    </svg>
-  `;
-}
-
 function heroPreviewHref(href) {
   if (!href || /^https?:\/\//.test(href)) return "";
   return href.includes("?") ? `${href}&embed=hero` : `${href}?embed=hero`;
@@ -523,7 +508,6 @@ export function renderMuseumLobby(lobby, pieces) {
     <div class="app lobby-app">
       <header class="lobby-header">
         <div class="brand-lockup">
-          <span class="brand-mark">${renderBrandMark()}</span>
           <span class="brand-name">${lobby.brand || "FORM GALLERY"}</span>
         </div>
         <div class="lobby-copy-block">

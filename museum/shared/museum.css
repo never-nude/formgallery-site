@@ -991,25 +991,7 @@ canvas {
 .brand-lockup {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   width: fit-content;
-}
-
-.brand-mark {
-  width: 34px;
-  height: 42px;
-  display: inline-flex;
-  color: #7c684c;
-}
-
-.brand-mark svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.55;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .brand-name {
@@ -1423,15 +1405,6 @@ canvas {
   .browse-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
-  }
-
-  .brand-lockup {
-    gap: 10px;
-  }
-
-  .brand-mark {
-    width: 30px;
-    height: 38px;
   }
 
   .lobby-intro {
