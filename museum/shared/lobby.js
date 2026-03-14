@@ -9,7 +9,7 @@ const VIEW_OPTIONS = Object.freeze([
   {
     id: "rooms",
     label: "Curatorial rooms",
-    note: "Keep the collection in its editorial rooms while surfacing a representative rotating preview in each one."
+    note: "Keep the collection arranged in its editorial rooms and move through it as a small museum."
   },
   {
     id: "chronology",
@@ -649,36 +649,6 @@ function entryKickerForView(entry, viewId) {
   return extractMakerLabel(entry.piece);
 }
 
-function renderPreview(entry) {
-  if (!entry?.piece || entry.piece.kind === "sketchfab") {
-    return `
-      <div class="section-preview-shell">
-        <div class="section-preview section-preview-empty">
-          <div class="section-preview-fallback">
-            <p class="section-preview-label">Preview unavailable</p>
-            <p class="section-preview-copy">This group currently opens with a non-native source.</p>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  return `
-    <div class="section-preview-shell">
-      <div class="section-preview" data-piece-id="${escapeHtml(entry.pieceId)}" data-kind="${escapeHtml(entry.piece.kind)}">
-        <div class="section-preview-loading">
-          <p class="section-preview-label">Rotating preview</p>
-          <p class="section-preview-copy">${escapeHtml(entry.title)}</p>
-        </div>
-      </div>
-      <div class="section-preview-meta">
-        <p class="section-preview-label">Featured work</p>
-        <p class="section-preview-title">${escapeHtml(entry.title)}</p>
-      </div>
-    </div>
-  `;
-}
-
 function renderEntry(entry, viewId) {
   return `
     <li>
@@ -700,7 +670,6 @@ function renderEntry(entry, viewId) {
 function renderSection(section, viewId, index) {
   return `
     <section class="lobby-section" id="${escapeHtml(section.anchor)}" data-tone="${index % 4}">
-      ${renderPreview(section.featuredEntry)}
       <header class="section-header">
         <div>
           <p class="section-kicker">${escapeHtml(viewId === "rooms" ? "Gallery" : VIEW_OPTIONS.find((view) => view.id === viewId)?.label || "Collection")}</p>
@@ -720,7 +689,7 @@ function renderSection(section, viewId, index) {
 function renderSelect(activeViewId) {
   return `
     <label class="lobby-view-field" for="collection-view">
-      <span class="lobby-view-label">View collection by</span>
+      <span class="lobby-view-label">Browse collection by</span>
       <span class="lobby-view-select-wrap">
         <select id="collection-view" class="lobby-view-select">
           ${VIEW_OPTIONS.map((option) => `
@@ -735,6 +704,9 @@ function renderSelect(activeViewId) {
 function renderMuseumLobbyApp(lobby, views, activeViewId) {
   const activeView = views[activeViewId] || views.rooms;
   const stats = buildLobbyStats(views, activeView);
+  const introCopy =
+    lobby.intro ||
+    "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse by chronology, region, maker, material, or curatorial room to move through the collection.";
 
   return `
     <div class="app lobby-app" data-collection-view="${escapeHtml(activeViewId)}">
@@ -743,16 +715,10 @@ function renderMuseumLobbyApp(lobby, views, activeViewId) {
           <div class="lobby-hero">
             <div class="lobby-copy">
               <div class="lobby-brand">
-                <span class="lobby-brand-mark" aria-hidden="true">
-                  <img src="/museum/shared/form-gallery-mark.svg" alt="" />
-                </span>
-                <span class="lobby-brand-copy">
-                  <span class="lobby-brand-name">${escapeHtml(lobby.title || "Form Gallery")}</span>
-                  <span class="lobby-brand-context">Museum Lobby</span>
-                </span>
+                <span class="lobby-brand-name">${escapeHtml(lobby.title || "Form Gallery")}</span>
               </div>
               <h1 class="title lobby-title">Museum Lobby</h1>
-              <p class="sub lobby-sub">${escapeHtml(lobby.subtitle || "")}</p>
+              <p class="sub lobby-sub">${escapeHtml(introCopy)}</p>
             </div>
             <div class="lobby-stats">
               ${stats.map((stat) => `
@@ -1408,7 +1374,9 @@ export function renderMuseumLobby(lobby, pieces) {
       });
     }
 
-    previewCleanup = initLobbyPreviews(pieces);
+    if (document.querySelector(".section-preview[data-piece-id]")) {
+      previewCleanup = initLobbyPreviews(pieces);
+    }
   };
 
   render(getInitialViewId());
