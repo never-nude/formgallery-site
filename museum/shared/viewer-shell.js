@@ -53,11 +53,16 @@ export function renderViewerShell(config) {
   const defaults = createViewerDefaults(config.defaults);
   const statsLoading = config.statsLoading || "Loading high-fidelity STL sculpture...";
   const loadingText = config.loadingText || statsLoading;
-  const pageTitle = config.pageTitle || `${config.viewerTitle} - Form Gallery`;
+  const pageTitle = config.pageTitle || `${config.viewerTitle} — Form Gallery`;
   const searchParams = new URLSearchParams(window.location.search);
   const embedMode = config.embedMode || searchParams.get("embed") || searchParams.get("mode") || "";
   const viewerClasses = ["app", "viewer-app"];
   const sourceCard = renderSourceCard(config.source);
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (embedMode === "hero" || prefersReducedMotion) {
+    defaults.autoRotate = false;
+  }
 
   if (embedMode) {
     viewerClasses.push(`viewer-app--${embedMode}`);
@@ -75,6 +80,7 @@ export function renderViewerShell(config) {
           </div>
 
           <div class="viewer-meta">
+            <p class="viewer-section-label">Publication Metadata</p>
             <p id="stats" class="viewer-stats">${statsLoading}</p>
             ${sourceCard ? `<div class="viewer-source">${sourceCard}</div>` : ""}
           </div>
@@ -101,7 +107,7 @@ export function renderViewerShell(config) {
               <button id="frontBtn" class="btn" type="button">Front</button>
               <button id="resetBtn" class="btn" type="button">Reset</button>
               <button id="museumBtn" class="btn" type="button">Back to Atrium</button>
-              <span>${config.controlsHint || "Drag to rotate. Scroll/pinch to zoom. Shift+drag to pan."}</span>
+              <span class="viewer-controls-hint">${config.controlsHint || "Drag to rotate. Scroll or pinch to zoom. Shift-drag to pan."}</span>
             </div>
           </div>
         </details>

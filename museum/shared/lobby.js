@@ -485,8 +485,6 @@ function bindLobbyFilters() {
 }
 
 export function renderMuseumLobby(lobby, pieces) {
-  document.title = lobby.pageTitle || document.title;
-
   const sections = buildSections(lobby, pieces);
   const entries = sections.flatMap((section) => section.items);
   const featuredPiece = pickFeaturedPiece(lobby, sections);
@@ -523,17 +521,21 @@ export function renderMuseumLobby(lobby, pieces) {
   const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
   const brandForm = brandWords[0] || "FORM";
   const brandGallery = brandWords.slice(1).join(" ") || "GALLERY";
-  const titleHtml = lobby.title ? `<span class="page-title-atrium">${lobby.title}</span>` : "";
+  const titleText = lobby.title || "Atrium";
+  const regionCount = browseGroups.find((group) => group.id === "region")?.items.length || 0;
+  const makerCount = browseGroups.find((group) => group.id === "artist")?.items.length || 0;
+  const collectionMeta = `${entries.length} works • ${sections.length} galleries • ${regionCount} regions • ${makerCount} makers`;
 
   document.body.innerHTML = `
     <div class="app lobby-app">
       <header class="museum-header museum-header--simple">
-        <h1 class="page-title page-title--progressive">
+        <p class="page-title page-title--progressive" aria-label="${lobby.brand || "FORM GALLERY"}">
           <span class="page-title-form">${brandForm}</span>
           <span class="page-title-gallery">${brandGallery}</span>
-          ${titleHtml}
-        </h1>
+        </p>
+        <h1 class="page-heading">${titleText}</h1>
         <p class="page-subtitle">${lobby.subtitle || ""}</p>
+        <p class="page-meta">${collectionMeta}</p>
       </header>
 
       <main class="stage">
@@ -551,7 +553,7 @@ export function renderMuseumLobby(lobby, pieces) {
               ` : ""}
               <a class="explore-button" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
             </div>
-            <div class="sculpture-stage" aria-hidden="true">
+            <a class="sculpture-stage sculpture-stage--link" href="${featuredPiece.href}" aria-label="Open ${featuredPiece.title}">
               ${heroFrame ? `
                 <iframe
                   class="hero-frame"
@@ -561,7 +563,7 @@ export function renderMuseumLobby(lobby, pieces) {
                   title="${featuredPiece.title} preview"
                 ></iframe>
               ` : ""}
-            </div>
+            </a>
           </section>
         ` : ""}
 

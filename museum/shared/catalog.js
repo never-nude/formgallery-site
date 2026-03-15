@@ -1333,11 +1333,11 @@ function sectionItems(sectionId) {
 }
 
 export const museumLobby = {
-  pageTitle: "Form Gallery",
+  pageTitle: "Atrium — Form Gallery",
   brand: "FORM GALLERY",
-  title: "",
+  title: "Atrium",
   contextLabel: "Collection Entrance",
-  subtitle: "A place to explore and examine sculpture from antiquity through the twenty-first century, moving across galleries, eras, regions, and makers.",
+  subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse the collection by gallery, era, region, or maker.",
   featuredPieceId: "dying-gaul",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",

@@ -96,19 +96,19 @@ a {
 
 .viewer-header {
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .viewer-object {
   display: grid;
-  gap: 4px;
+  gap: 6px;
 }
 
 .viewer-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 28px;
-  line-height: 1.2;
+  font-size: clamp(30px, 3vw, 34px);
+  line-height: 1.16;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -116,32 +116,41 @@ a {
 
 .viewer-artist {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #6e6a63;
+  font-size: 17px;
+  line-height: 1.58;
+  color: #655d54;
 }
 
 .viewer-medium,
 .viewer-dimensions {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #6e6a63;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #655d54;
 }
 
 .viewer-meta {
   display: grid;
-  gap: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #ddd5ca;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #d7cec2;
+}
+
+.viewer-section-label {
+  margin: 0;
+  color: #776957;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .viewer-stats {
   margin: 0;
-  color: #6e6a63;
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
+  color: #62584c;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
 }
 
 .viewer-source {
@@ -686,12 +695,13 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .control label {
   min-width: 88px;
-  color: var(--text);
+  color: #5f564b;
+  font-weight: 600;
 }
 
 .control input[type="range"] {
@@ -702,7 +712,7 @@ a {
 .control output {
   min-width: 40px;
   text-align: right;
-  color: var(--muted);
+  color: #706354;
   font-variant-numeric: tabular-nums;
 }
 
@@ -711,8 +721,8 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 13px;
+  color: #706354;
   flex-wrap: wrap;
 }
 
@@ -720,47 +730,56 @@ a {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: var(--text);
+  color: #5f564b;
 }
 
 .viewer-controls {
-  margin-top: 14px;
+  margin-top: 18px;
   border-top: 1px solid #d8d2c7;
-  padding-top: 10px;
+  padding-top: 12px;
 }
 
 .viewer-controls summary {
   cursor: pointer;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #7a746b;
+  color: #6f665b;
 }
 
 .viewer-controls-panel {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .viewer-controls label {
   font-size: 13px;
-  color: #6e6a63;
+  color: #5f564b;
 }
 
 .viewer-controls .row {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .viewer-controls .row label {
-  color: #6e6a63;
+  color: #5f564b;
+}
+
+.viewer-controls-hint {
+  color: #72685b;
+  font-size: 13px;
+  line-height: 1.5;
+  flex: 1 1 260px;
 }
 
 .btn {
   border: 1px solid #a18f73;
   border-radius: 6px;
-  background: #ece1cf;
+  background: #f0e5d6;
   color: #2d261f;
-  font-size: 12px;
-  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
   cursor: pointer;
 }
 
@@ -779,9 +798,9 @@ a {
   gap: 12px;
   cursor: pointer;
   list-style: none;
-  padding: 8px 10px;
+  padding: 10px 12px;
   color: #4f4333;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -804,9 +823,10 @@ a {
 .source-links,
 .source-note {
   margin: 0;
-  padding: 0 10px 8px;
-  font-size: 12px;
-  color: var(--muted);
+  padding: 0 12px 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #685d50;
 }
 
 .source-links a {
@@ -837,7 +857,7 @@ canvas {
   display: grid;
   place-items: center;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .piece:focus-visible,
@@ -845,6 +865,18 @@ canvas {
 .lobby-view-select:focus-visible {
   outline: none;
   border-color: #8d714b;
+  box-shadow:
+    0 0 0 2px #f7f1e8,
+    0 0 0 4px #8d714b33;
+}
+
+.btn:focus-visible,
+.browse-reset:focus-visible,
+.explore-button:focus-visible,
+.viewer-controls summary:focus-visible,
+.source-card summary:focus-visible,
+.sculpture-stage--link:focus-visible {
+  outline: none;
   box-shadow:
     0 0 0 2px #f7f1e8,
     0 0 0 4px #8d714b33;
@@ -1088,20 +1120,20 @@ canvas {
 
 .museum-header {
   max-width: 1100px;
-  margin: 48px auto 28px auto;
+  margin: 48px auto 10px auto;
   padding: 0 40px;
 }
 
 .museum-header--simple {
-  margin: 32px auto 22px;
+  margin: 32px auto 12px;
 }
 
 .page-title {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5.4rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
   color: var(--accent-graphite);
 }
 
@@ -1109,33 +1141,48 @@ canvas {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.16em;
+  gap: 0.18em;
   text-transform: uppercase;
 }
 
 .page-title-form {
-  color: rgba(48, 41, 34, 0.4);
+  color: rgba(48, 41, 34, 0.42);
 }
 
 .page-title-gallery {
-  color: rgba(48, 41, 34, 0.66);
+  color: rgba(48, 41, 34, 0.82);
+  font-weight: 600;
 }
 
-.page-title-atrium {
+.page-heading {
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(3.45rem, 7vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
   color: rgba(48, 41, 34, 0.96);
 }
 
 .page-subtitle {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0;
-  font-size: 16px;
-  line-height: 1.55;
-  color: #6a6258;
+  font-size: 17px;
+  line-height: 1.72;
+  color: #62574b;
+}
+
+.page-meta {
+  margin: 16px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7a6d5c;
 }
 
 .lobby-app .stage {
   gap: clamp(56px, 8vw, 88px);
-  padding: clamp(28px, 4vw, 44px) clamp(18px, 4vw, 44px) calc(44px + env(safe-area-inset-bottom));
+  padding: clamp(34px, 5vw, 56px) clamp(18px, 4vw, 44px) calc(52px + env(safe-area-inset-bottom));
 }
 
 .section-head {
@@ -1175,18 +1222,19 @@ canvas {
 
 .featured-work {
   max-width: 1100px;
-  margin: 28px auto 0;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
-  align-items: start;
+  gap: clamp(44px, 6vw, 72px);
+  align-items: center;
   padding: 0 40px;
 }
 
 .featured-copy {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   align-content: start;
+  max-width: 460px;
 }
 
 .featured-label {
@@ -1200,35 +1248,44 @@ canvas {
 .featured-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 42px;
-  line-height: 1.1;
-  margin-bottom: 14px;
+  font-size: clamp(42px, 4.5vw, 56px);
+  line-height: 1.04;
+  margin-bottom: 8px;
   letter-spacing: -0.03em;
   font-weight: 600;
 }
 
 .featured-artist {
-  font-size: 14px;
-  color: #6a6a6a;
-  margin: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #63584c;
+  margin: 0 0 18px;
 }
 
 .explore-button {
   width: fit-content;
-  border: 1px solid #cfc6b7;
-  padding: 10px 18px;
+  border: 1px solid #bfa98a;
+  border-radius: 999px;
+  padding: 11px 18px;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: transparent;
+  background: #f7f0e6;
   cursor: pointer;
-  color: #45392c;
+  color: #433629;
   text-decoration: none;
   font-weight: 600;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .explore-button:hover {
-  background: #e8e0d4;
+  background: #efe3d2;
+  border-color: #a88c67;
+  transform: translateY(-1px);
 }
 
 .sculpture-stage {
@@ -1241,6 +1298,26 @@ canvas {
     #d8cfbf 100%
   );
   border-radius: 6px;
+  border: 1px solid #d5c4af;
+  box-shadow:
+    0 18px 34px #5a452611,
+    inset 0 1px 0 #fffaf1;
+}
+
+.sculpture-stage--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.sculpture-stage--link:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 24px 40px #5a452618,
+    inset 0 1px 0 #fffaf1;
 }
 
 .sculpture-stage::before {
@@ -1531,15 +1608,25 @@ canvas {
   }
 
   .page-title {
-    font-size: 46px;
+    font-size: 24px;
   }
 
   .page-title--progressive {
     gap: 0.12em;
   }
 
+  .page-heading {
+    font-size: 46px;
+  }
+
   .page-subtitle {
     font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .page-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
 
   .sculpture-stage {
@@ -1566,5 +1653,21 @@ canvas {
     order: initial;
     min-height: 100%;
     height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .piece,
+  .lobby-jump,
+  .explore-button,
+  .sculpture-stage--link,
+  .browse-chip,
+  .browse-reset,
+  .btn {
+    transition: none;
   }
 }

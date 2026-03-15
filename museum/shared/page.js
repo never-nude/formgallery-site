@@ -1,6 +1,7 @@
-const MODULE_VERSION = "20260315-1028";
+const MODULE_VERSION = "20260315-1148";
 
 let catalogPromise = null;
+const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse by gallery, era, region, or maker.";
 
 const MEDIUM_BY_PIECE = Object.freeze({
   sphinx: "Limestone",
@@ -214,13 +215,72 @@ function renderBootError(message, error) {
   document.body.innerHTML = `<p style="margin:16px;font-family:IBM Plex Sans, Avenir Next, sans-serif;color:#2f2a22;">${message}</p>`;
 }
 
+function upsertMetaTag(key, value, attribute = "name") {
+  let tag = document.head.querySelector(`meta[${attribute}="${key}"]`);
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attribute, key);
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("content", value);
+}
+
+function setPageMetadata({ title, description }) {
+  if (title) {
+    document.title = title;
+    upsertMetaTag("og:title", title, "property");
+    upsertMetaTag("twitter:title", title);
+  }
+
+  if (description) {
+    upsertMetaTag("description", description);
+    upsertMetaTag("og:description", description, "property");
+    upsertMetaTag("twitter:description", description);
+  }
+}
+
+function simplifyWorkTitle(value = "") {
+  return value.replace(/\s*\([^)]*\)\s*$/, "").trim() || value.trim();
+}
+
+function cleanMetadataText(value = "") {
+  return value.replace(/^Artist:\s*/i, "").replace(/\s+/g, " ").trim();
+}
+
+function buildPiecePageDescription(piece) {
+  const title = cleanMetadataText(piece.viewerTitle || "");
+  const artist = cleanMetadataText(piece.subtitle || "");
+  const medium = cleanMetadataText(piece.medium || "");
+  const segments = [title];
+
+  if (artist) {
+    segments.push(artist);
+  }
+
+  if (medium) {
+    segments.push(medium);
+  }
+
+  segments.push("Viewable in Form Gallery, a digital sculpture collection spanning antiquity through the nineteenth century.");
+  return segments.join(". ").replace(/\.\s*$/, "") + ".";
+}
+
 export async function initMuseumLobbyPage() {
   try {
     const [{ museumLobby, museumPieces }, { renderMuseumLobby }] = await Promise.all([
       loadCatalog(),
       import(`./lobby.js?v=${MODULE_VERSION}`)
     ]);
-    renderMuseumLobby(museumLobby, museumPieces);
+    const lobbyConfig = {
+      ...museumLobby,
+      title: museumLobby.title || "Atrium",
+      pageTitle: "Atrium — Form Gallery"
+    };
+    renderMuseumLobby(lobbyConfig, museumPieces);
+    setPageMetadata({
+      title: lobbyConfig.pageTitle,
+      description: COLLECTION_DESCRIPTION
+    });
   } catch (error) {
     renderBootError("Failed to load the museum lobby.", error);
   }
@@ -235,25 +295,35 @@ export async function initMuseumPiecePage(pieceId) {
   }
 
   try {
-    if (piece.kind === "stl") {
+    const pagePiece = {
+      ...piece,
+      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Form Gallery`
+    };
+
+    setPageMetadata({
+      title: pagePiece.pageTitle,
+      description: buildPiecePageDescription(pagePiece)
+    });
+
+    if (pagePiece.kind === "stl") {
       const { initStlMuseumPage } = await import(`./stl-viewer.js?v=${MODULE_VERSION}`);
-      await initStlMuseumPage(piece);
+      await initStlMuseumPage(pagePiece);
       return;
     }
 
-    if (piece.kind === "sketchfab") {
+    if (pagePiece.kind === "sketchfab") {
       const { initSketchfabMuseumPage } = await import(`./sketchfab-viewer.js?v=${MODULE_VERSION}`);
-      await initSketchfabMuseumPage(piece);
+      await initSketchfabMuseumPage(pagePiece);
       return;
     }
 
-    if (piece.kind === "gltf") {
+    if (pagePiece.kind === "gltf") {
       const { initGltfMuseumPage } = await import(`./gltf-viewer.js?v=${MODULE_VERSION}`);
-      await initGltfMuseumPage(piece);
+      await initGltfMuseumPage(pagePiece);
       return;
     }
 
-    throw new Error(`Unsupported museum piece kind: ${piece.kind}`);
+    throw new Error(`Unsupported museum piece kind: ${pagePiece.kind}`);
   } catch (error) {
     renderBootError(`Failed to initialize ${piece.viewerTitle}.`, error);
   }
