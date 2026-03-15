@@ -3,7 +3,7 @@ export const DEFAULT_VIEWER_DEFAULTS = Object.freeze({
   zoom: 3.3,
   lightAngle: 34,
   lightPower: 2.2,
-  exposure: 0.3,
+  exposure: 0.24,
   rough: 0.2,
   canManipulate: true,
   autoRotate: true,
