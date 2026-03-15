@@ -915,5 +915,146 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.14, 0.38, 1.82],
       mobileViewVector: [0.84, 0.3, 1.62]
     }
+  },
+  "antinoos-farnese": {
+    kind: "stl",
+    path: "/antinoos-farnese/",
+    sectionId: "roman-world",
+    sortOrder: 27.8,
+    viewerTitle: "Antinoos Farnese (Roman statue, c. 125-138 CE)",
+    subtitle: "Artist: Unknown Roman workshop",
+    medium: "Marble",
+    dimensions: "H: 199 cm | W: 76 cm | D: 51.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS229)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Antinoos Farnese, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS229",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/bv73c474q_smk-farnese-antinous-inv-6030-scan-the-world.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/fj236691w_KAS229_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the Antinoos Farnese statue in the Museo Archeologico Nazionale di Napoli and dates it to the Roman imperial period."
+    }),
+    defaults: {
+      zoom: 2.98,
+      lightAngle: 28,
+      lightPower: 2.16,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./antinoos_farnese_source_small.stl",
+      fallbackUrl: "./antinoos_farnese_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.84,
+      defaultYaw: Math.PI * 0.02,
+      defaultViewVector: [1.22, 0.58, 1.92],
+      mobileViewVector: [0.92, 0.44, 1.76]
+    }
+  },
+  "crouching-venus": {
+    kind: "stl",
+    path: "/crouching-venus/",
+    sectionId: "hellenistic-world",
+    sortOrder: 28.35,
+    viewerTitle: "Crouching Venus (Roman copy after a Hellenistic original, 3rd century BCE type)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Marble",
+    dimensions: "H: 87.5 cm | W: 56 cm | D: 42 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS618)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Crouching Venus type, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS618",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/mc87pv84t_smk6-kas618-crouching-venus.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/cj82kc853_KAS618_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the crouching Venus type in the Museo Pio Clementino and traces it to a Hellenistic Greek prototype."
+    }),
+    defaults: {
+      zoom: 2.56,
+      lightAngle: 24,
+      lightPower: 2.1,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./crouching_venus_source_small.stl",
+      fallbackUrl: "./crouching_venus_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.1,
+      focusYRatio: 0.5,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.06, 0.34, 1.62],
+      mobileViewVector: [0.8, 0.28, 1.48]
+    }
+  },
+  "menippos": {
+    kind: "stl",
+    path: "/menippos/",
+    sectionId: "hellenistic-world",
+    sortOrder: 28.95,
+    viewerTitle: "Menippos of Gadara? (Roman copy after a Hellenistic philosopher portrait type)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Marble",
+    dimensions: "H: 185 cm | W: 82.5 cm | D: 63 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS240)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the standing philosopher traditionally identified as Menippos of Gadara, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS240",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/5m60qx27n_smk-109-kas240.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/qv33s222k_KAS240_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record describes the original as a Roman copy after a mid-Hellenistic philosopher portrait, with the Menippos identification treated as traditional rather than certain."
+    }),
+    defaults: {
+      zoom: 2.94,
+      lightAngle: 28,
+      lightPower: 2.12,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./menippos_source_small.stl",
+      fallbackUrl: "./menippos_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.8,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [1.2, 0.58, 1.92],
+      mobileViewVector: [0.92, 0.44, 1.76]
+    }
+  },
+  "old-fisherman": {
+    kind: "stl",
+    path: "/old-fisherman/",
+    sectionId: "hellenistic-world",
+    sortOrder: 29.4,
+    viewerTitle: "Old Fisherman (\"Dying Seneca\" type, Roman copy after a Hellenistic original)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Black marble, alabaster",
+    dimensions: "H: 130 cm | W: 74 cm | D: 86 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2288)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the figure traditionally known as the Old Fisherman or 'Dying Seneca' type, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2288",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/5x21tk78x_smk57-kas2288-dying-seneca-d.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/x920g267z_KAS2288_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the black-marble and alabaster fisherman figure in the Louvre, long mislabeled as 'Dying Seneca' and now understood as a Hellenistic genre figure."
+    }),
+    defaults: {
+      zoom: 2.78,
+      lightAngle: 26,
+      lightPower: 2.1,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./old_fisherman_source_small.stl",
+      fallbackUrl: "./old_fisherman_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.36,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.08, 0.42, 1.74],
+      mobileViewVector: [0.84, 0.34, 1.56]
+    }
   }
 };
