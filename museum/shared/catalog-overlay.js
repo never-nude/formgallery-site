@@ -2325,7 +2325,7 @@ export const museumPiecesExtension = {
       "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, medium, dimensions, and gallery location follow the National Portrait Gallery record."
     ),
     defaults: {
-      zoom: 2.34,
+      zoom: 2.72,
       lightAngle: 24,
       lightPower: 2.04,
       exposure: 0.42,
@@ -2337,12 +2337,10 @@ export const museumPiecesExtension = {
     },
     scene: {
       rotateX: -Math.PI * 0.5,
-      rotateZ: Math.PI * 0.5,
-      targetHeight: 1.18,
-      focusYRatio: 0.62,
-      defaultYaw: Math.PI * 0.02,
-      defaultViewVector: [0.72, 0.54, 1.02],
-      mobileViewVector: [0.56, 0.42, 0.92]
+      targetHeight: 0.92,
+      defaultYaw: Math.PI * 0.1,
+      defaultViewVector: [1.04, 0.56, 1.18],
+      mobileViewVector: [0.82, 0.42, 1.08]
     }
   },
   "helen-adams-keller": {
@@ -2418,12 +2416,13 @@ export const museumPiecesExtension = {
     },
     scene: {
       showPedestal: false,
+      rotateY: Math.PI * 0.5,
       rotateZ: -Math.PI * 0.5,
-      targetHeight: 1.08,
-      focusYRatio: 0.56,
+      targetHeight: 0.96,
+      focusYRatio: 0.5,
       defaultYaw: 0,
-      defaultViewVector: [0.08, 0.22, 2.02],
-      mobileViewVector: [0.06, 0.16, 1.82]
+      defaultViewVector: [0.94, 0.24, 2.18],
+      mobileViewVector: [0.72, 0.2, 1.98]
     }
   }
 };
