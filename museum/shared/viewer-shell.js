@@ -72,6 +72,7 @@ export function renderViewerShell(config) {
             ${titleParagraph("viewer-artist", config.subtitle)}
             ${labeledParagraph("viewer-medium", "Medium:", config.medium)}
             ${labeledParagraph("viewer-dimensions", "Dimensions:", config.dimensions)}
+            ${labeledParagraph("viewer-location", config.locationLabel || "Location:", config.location)}
           </div>
 
           <div class="viewer-meta">
@@ -85,8 +86,9 @@ export function renderViewerShell(config) {
           <summary>Viewer Controls</summary>
 
           <div class="viewer-controls-panel">
+            <input id="spin" type="hidden" value="${defaults.spin.toFixed(2)}" />
+            <output id="spinv" hidden>${defaults.spin.toFixed(2)}</output>
             <div class="grid">
-              <div class="control"><label for="spin">Spin</label><input id="spin" type="range" min="0" max="1.6" step="0.01" value="${defaults.spin.toFixed(2)}" /><output id="spinv">${defaults.spin.toFixed(2)}</output></div>
               <div class="control"><label for="zoom">Zoom</label><input id="zoom" type="range" min="0.55" max="6.4" step="0.01" value="${defaults.zoom.toFixed(2)}" /><output id="zoomv">${defaults.zoom.toFixed(2)}</output></div>
               <div class="control"><label for="lightAngle">Key Angle</label><input id="lightAngle" type="range" min="-180" max="180" step="1" value="${defaults.lightAngle}" /><output id="lightAnglev">${Number(defaults.lightAngle).toFixed(2)}</output></div>
               <div class="control"><label for="lightPower">Light Power</label><input id="lightPower" type="range" min="0.2" max="4.5" step="0.01" value="${defaults.lightPower.toFixed(2)}" /><output id="lightPowerv">${defaults.lightPower.toFixed(2)}</output></div>

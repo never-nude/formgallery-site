@@ -1423,13 +1423,15 @@ export const museumPiecesExtension = {
     subtitle: SMK_CAST_SUBTITLE,
     medium: "Marble",
     dimensions: "H: 149.5 cm | W: 97 cm | D: 41 cm",
+    locationLabel: "Findspot:",
+    location: "Sallust's Gardens, Rome",
     lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2051)",
     source: smkSource({
       summary: "SMK Open source mesh for Dying Niobid, localized into Form Gallery's native STL viewer.",
       recordUrl: "https://open.smk.dk/en/artwork/image/KAS2051",
       fullUrl: "https://api.smk.dk/api/v1/download-3d/w6634853q_smk36-kas2051.stl",
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/w9505475s_KAS2051_small.stl",
-      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the figure as a dying Niobid from the classical myth cycle."
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the figure as a dying Niobid from the classical myth cycle and ties the original to Sallust's Gardens in Rome."
     }),
     defaults: {
       zoom: 2.72,

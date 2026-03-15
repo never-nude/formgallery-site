@@ -285,6 +285,8 @@ export async function initGltfMuseumPage(piece) {
     subtitle: piece.subtitle,
     medium: piece.medium,
     dimensions: piece.dimensions,
+    location: piece.location,
+    locationLabel: piece.locationLabel,
     source: piece.source,
     statsLoading: initialLoadingText,
     loadingText: initialLoadingText,

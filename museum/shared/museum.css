@@ -122,7 +122,8 @@ a {
 }
 
 .viewer-medium,
-.viewer-dimensions {
+.viewer-dimensions,
+.viewer-location {
   margin: 0;
   font-size: 16px;
   line-height: 1.6;

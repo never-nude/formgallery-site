@@ -79,6 +79,8 @@ export async function initSketchfabMuseumPage(piece) {
     subtitle: piece.subtitle,
     medium: piece.medium,
     dimensions: piece.dimensions,
+    location: piece.location,
+    locationLabel: piece.locationLabel,
     source: piece.source,
     statsLoading: piece.view?.primaryLoadingText || "Loading high-fidelity source mesh...",
     loadingText: piece.view?.primaryLoadingText || "Loading high-fidelity source mesh...",
