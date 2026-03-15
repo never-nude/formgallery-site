@@ -1337,7 +1337,7 @@ export const museumLobby = {
   brand: "FORM GALLERY",
   title: "Atrium",
   contextLabel: "Collection Entrance",
-  subtitle: "The entrance hall of Form Gallery. Navigate the collection by gallery, era, region, or maker.",
+  subtitle: "A place to explore and examine sculpture from antiquity to the twenty-first century, moving across galleries, eras, regions, and makers.",
   featuredPieceId: "bouchardon-cupid",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",
