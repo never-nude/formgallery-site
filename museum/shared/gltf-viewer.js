@@ -301,8 +301,8 @@ export async function initGltfMuseumPage(piece) {
   const verticalOffset = sceneConfig.verticalOffset ?? 0;
   const autoLevel = sceneConfig.autoLevel ?? false;
   const targetHeight = sceneConfig.targetHeight ?? DEFAULT_TARGET_HEIGHT;
-  const showPedestal = sceneConfig.showPedestal ?? true;
-  const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.02);
+  const showPedestal = sceneConfig.showPedestal ?? false;
+  const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.004);
   const focusYRatio = sceneConfig.focusYRatio ?? 0.57;
   const stage = ui.stage;
   const stats = ui.stats;

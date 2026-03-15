@@ -136,8 +136,8 @@ export async function initStlMuseumPage(piece) {
   const rotateY = sceneConfig.rotateY ?? 0;
   const rotateZ = sceneConfig.rotateZ ?? 0;
   const targetHeight = sceneConfig.targetHeight ?? DEFAULT_TARGET_HEIGHT;
-  const showPedestal = sceneConfig.showPedestal ?? true;
-  const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.02);
+  const showPedestal = sceneConfig.showPedestal ?? false;
+  const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.004);
   const focusYRatio = sceneConfig.focusYRatio ?? 0.57;
   const materialConfig = { ...DEFAULT_MATERIAL, ...(piece.material || {}) };
   const stage = ui.stage;
