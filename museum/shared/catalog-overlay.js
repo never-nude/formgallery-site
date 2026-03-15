@@ -1056,5 +1056,148 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.08, 0.42, 1.74],
       mobileViewVector: [0.84, 0.34, 1.56]
     }
+  },
+  porcellino: {
+    kind: "stl",
+    path: "/porcellino/",
+    sectionId: "hellenistic-world",
+    sortOrder: 29.9,
+    viewerTitle: "Porcellino / Seated Boar (Roman copy after a Hellenistic original)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Marble",
+    dimensions: "H: 137 cm | W: 154 cm | D: 93 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2157)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the seated boar known as Porcellino, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2157",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/r207tt73g_porcellino.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/1n79h940q_KAS2157_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a Roman copy after a Hellenistic boar type, with the famed bronze fountain version by Pietro Tacca noted separately in the provenance history."
+    }),
+    defaults: {
+      zoom: 2.72,
+      lightAngle: 26,
+      lightPower: 2.08,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./porcellino_source_small.stl",
+      fallbackUrl: "./porcellino_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.22,
+      focusYRatio: 0.48,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.18, 0.34, 1.78],
+      mobileViewVector: [0.92, 0.28, 1.54]
+    }
+  },
+  lion: {
+    kind: "stl",
+    path: "/lion/",
+    sectionId: "greek-classical",
+    sortOrder: 25.9,
+    viewerTitle: "Lion from the Nereid Monument (c. 390 BCE)",
+    subtitle: "Artist: Unknown Lycian sculptor",
+    medium: "Marble",
+    dimensions: "W: 160 cm | D: 51 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS1016)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the lion from the Nereid Monument, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS1016",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/g158bn64c_smk-54-lion.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/qf85nh32s_KAS1016_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a lion from the Nereid Monument at Xanthos, now in the British Museum, and dates it to about 390 BCE."
+    }),
+    defaults: {
+      zoom: 2.74,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./lion_source_small.stl",
+      fallbackUrl: "./lion_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.16,
+      focusYRatio: 0.48,
+      defaultYaw: -Math.PI * 0.14,
+      defaultViewVector: [1.2, 0.32, 1.74],
+      mobileViewVector: [0.94, 0.26, 1.52]
+    }
+  },
+  "hermes-antinoos-from-belvedere": {
+    kind: "stl",
+    path: "/hermes-antinoos-from-belvedere/",
+    sectionId: "greek-classical",
+    sortOrder: 26.8,
+    viewerTitle: "Hermes (Belvedere Antinous type, Roman copy after a classical Greek original)",
+    subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
+    medium: "Marble",
+    dimensions: "H: 233.5 cm | W: 80 cm | D: 66.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS1161)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Belvedere Antinous type, now often identified as Hermes, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS1161",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/js956m23t_smk38-kas1161.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/0v838549t_KAS1161_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record explains the traditional Antinous identification while noting that the figure is now more often read as Hermes; the original is in the Museo Pio Clementino."
+    }),
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 28,
+      lightPower: 2.14,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./hermes_antinoos_from_belvedere_source_small.stl",
+      fallbackUrl: "./hermes_antinoos_from_belvedere_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.9,
+      defaultYaw: Math.PI * 0.03,
+      defaultViewVector: [1.2, 0.58, 1.92],
+      mobileViewVector: [0.92, 0.44, 1.76]
+    }
+  },
+  "portrait-of-antinoos": {
+    kind: "stl",
+    path: "/portrait-of-antinoos/",
+    sectionId: "roman-world",
+    sortOrder: 28.4,
+    viewerTitle: "Portrait of Antinoos (Roman bust, 2nd century CE)",
+    subtitle: "Artist: Unknown Roman workshop",
+    medium: "Marble",
+    dimensions: "H: 119 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS836)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the portrait bust of Antinoos, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS836",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/xw42nc95h_smk48-kas836-portrait-of-antinous-d-no-base.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/wp988q70q_KAS836-no-base_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a Roman portrait of Antinoos from Hadrian's Villa, now in the Museo Pio Clementino."
+    }),
+    defaults: {
+      zoom: 2.42,
+      lightAngle: 24,
+      lightPower: 2.16,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./portrait_of_antinoos_source_small.stl",
+      fallbackUrl: "./portrait_of_antinoos_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.02,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.96, 0.42, 1.52],
+      mobileViewVector: [0.78, 0.34, 1.38]
+    }
   }
 };
