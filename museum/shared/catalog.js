@@ -1337,7 +1337,7 @@ export const museumLobby = {
   brand: "FORM GALLERY",
   title: "Atrium",
   contextLabel: "Collection Entrance",
-  subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse the collection by gallery, era, region, or maker.",
+  subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse the collection by gallery, era, region, or maker.",
   featuredPieceId: "dying-gaul",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",

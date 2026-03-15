@@ -1,7 +1,7 @@
-const MODULE_VERSION = "20260315-1148";
+const MODULE_VERSION = "20260315-1156";
 
 let catalogPromise = null;
-const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse by gallery, era, region, or maker.";
+const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
 
 const MEDIUM_BY_PIECE = Object.freeze({
   sphinx: "Limestone",
@@ -261,7 +261,7 @@ function buildPiecePageDescription(piece) {
     segments.push(medium);
   }
 
-  segments.push("Viewable in Form Gallery, a digital sculpture collection spanning antiquity through the nineteenth century.");
+  segments.push("Viewable in Form Gallery, a digital sculpture collection spanning antiquity through the twenty-first century.");
   return segments.join(". ").replace(/\.\s*$/, "") + ".";
 }
 
