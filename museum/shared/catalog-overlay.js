@@ -2263,5 +2263,163 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.18, 0.68, 1.72],
       mobileViewVector: [0.9, 0.52, 1.54]
     }
+  },
+  "model-of-the-greek-slave": {
+    kind: "gltf",
+    path: "/americas/model-of-the-greek-slave/index.html",
+    sectionId: "americas",
+    sortOrder: 14,
+    viewerTitle: "Model of the Greek Slave (1843)",
+    subtitle: "Artist: Hiram Powers (1805-1873)",
+    medium: "Plaster and metal pins",
+    dimensions: "H: 168.6 cm | W: 54.6 cm | D: 46.6 cm",
+    locationLabel: "On view:",
+    location: "Smithsonian American Art Museum, Luce Foundation Center, 3rd Floor, 18A",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Hiram Powers's Model of the Greek Slave.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/model-greek-slave%3A8edffe56-c358-4c3a-a61f-019f615ccef0"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:8edffe56-c358-4c3a-a61f-019f615ccef0/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:8edffe56-c358-4c3a-a61f-019f615ccef0/greek-slave-plaster-cast-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, medium, dimensions, and installation note follow the Smithsonian American Art Museum record."
+    ),
+    defaults: {
+      zoom: 2.44,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:8edffe56-c358-4c3a-a61f-019f615ccef0/greek-slave-plaster-cast-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:8edffe56-c358-4c3a-a61f-019f615ccef0/greek-slave-plaster-cast-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.7,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.26, 0.74, 1.88],
+      mobileViewVector: [0.96, 0.56, 1.72]
+    }
+  },
+  "houdon-george-washington": {
+    kind: "gltf",
+    path: "/americas/george-washington-houdon/index.html",
+    sectionId: "americas",
+    sortOrder: 16,
+    viewerTitle: "George Washington (c. 1786)",
+    subtitle: "Artist: Jean-Antoine Houdon (1741-1828); sitter: George Washington",
+    medium: "Plaster",
+    dimensions: "H: 55.9 cm | W: 33.7 cm | D: 24.8 cm",
+    locationLabel: "On view:",
+    location: "National Portrait Gallery, South Gallery 240",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Jean-Antoine Houdon's George Washington bust in the National Portrait Gallery.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/george-washington%3Aff28cb3a-ad00-43b3-a928-fa61ab0a288f"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/npg-npg_78_1-HiRes_Unwrapped-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, medium, dimensions, and gallery location follow the National Portrait Gallery record."
+    ),
+    defaults: {
+      zoom: 2.72,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/npg-npg_78_1-HiRes_Unwrapped-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/npg-npg_78_1-HiRes_Unwrapped-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 0.92,
+      defaultYaw: Math.PI * 0.1,
+      defaultViewVector: [1.04, 0.56, 1.18],
+      mobileViewVector: [0.82, 0.42, 1.08]
+    }
+  },
+  "helen-adams-keller": {
+    kind: "gltf",
+    path: "/americas/helen-adams-keller/index.html",
+    sectionId: "americas",
+    sortOrder: 18,
+    viewerTitle: "Helen Adams Keller (1916)",
+    subtitle: "Artist: Onorio Ruotolo (1888-1966); sitter: Helen Adams Keller",
+    medium: "Plaster and paint",
+    dimensions: "H: 27.3 cm | W: 21.9 cm | D: 18.4 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Onorio Ruotolo's Helen Adams Keller bust in the National Portrait Gallery.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/helen-adams-keller%3Ad8c64ccc-4ebc-11ea-b77f-2e728ce88125"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:d8c64ccc-4ebc-11ea-b77f-2e728ce88125/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:d8c64ccc-4ebc-11ea-b77f-2e728ce88125/HK_NPG_75_16_Final_Render_Model_No_Color-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, medium, and dimensions follow the National Portrait Gallery record."
+    ),
+    defaults: {
+      zoom: 2.92,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:d8c64ccc-4ebc-11ea-b77f-2e728ce88125/HK_NPG_75_16_Final_Render_Model_No_Color-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:d8c64ccc-4ebc-11ea-b77f-2e728ce88125/HK_NPG_75_16_Final_Render_Model_No_Color-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 0.78,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.02, 0.52, 1.06],
+      mobileViewVector: [0.82, 0.42, 0.98]
+    }
+  },
+  "theodore-roosevelt-relief": {
+    kind: "gltf",
+    path: "/americas/theodore-roosevelt/index.html",
+    sectionId: "americas",
+    sortOrder: 20,
+    viewerTitle: "Theodore Roosevelt (1906)",
+    subtitle: "Artist: Sally James Farnham (1869-1943); sitter: Theodore Roosevelt",
+    medium: "Bronze relief",
+    dimensions: "H: 52.7 cm | W: 53 cm | D: 6.4 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Sally James Farnham's Theodore Roosevelt relief in the National Portrait Gallery.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/theodore-roosevelt%3A1788235b-d2bc-4287-8fb5-f2965a069fd9"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:1788235b-d2bc-4287-8fb5-f2965a069fd9/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:1788235b-d2bc-4287-8fb5-f2965a069fd9/theodore-roosevelt-bronze-relief-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, medium, and dimensions follow the National Portrait Gallery record."
+    ),
+    defaults: {
+      zoom: 2.38,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:1788235b-d2bc-4287-8fb5-f2965a069fd9/theodore-roosevelt-bronze-relief-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:1788235b-d2bc-4287-8fb5-f2965a069fd9/theodore-roosevelt-bronze-relief-150k-2048-medium.glb"
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 0.96,
+      focusYRatio: 0.5,
+      defaultYaw: 0,
+      defaultViewVector: [0.94, 0.24, 2.18],
+      mobileViewVector: [0.72, 0.2, 1.98]
+    }
   }
 };
