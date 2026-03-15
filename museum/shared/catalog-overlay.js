@@ -2139,6 +2139,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:9868cadc-d331-4b13-9864-a1740df6e47f/key-marco-cat-(color)-150k-2048-medium.glb"
     },
     scene: {
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.76,
       defaultYaw: Math.PI * 0.12,
       defaultViewVector: [1.02, 0.46, 1.24],
