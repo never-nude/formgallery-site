@@ -94,6 +94,64 @@ a {
   font-size: 13px;
 }
 
+.viewer-header {
+  display: grid;
+  gap: 14px;
+}
+
+.viewer-object {
+  display: grid;
+  gap: 4px;
+}
+
+.viewer-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.viewer-artist {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6e6a63;
+}
+
+.viewer-medium,
+.viewer-dimensions {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #6e6a63;
+}
+
+.viewer-meta {
+  display: grid;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd5ca;
+}
+
+.viewer-stats {
+  margin: 0;
+  color: #6e6a63;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.viewer-source {
+  display: grid;
+}
+
+.viewer-source .source-card {
+  margin: 0;
+}
+
 .meta-line {
   margin-top: -4px;
 }
@@ -665,6 +723,37 @@ a {
   color: var(--text);
 }
 
+.viewer-controls {
+  margin-top: 14px;
+  border-top: 1px solid #d8d2c7;
+  padding-top: 10px;
+}
+
+.viewer-controls summary {
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a746b;
+}
+
+.viewer-controls-panel {
+  margin-top: 10px;
+}
+
+.viewer-controls label {
+  font-size: 13px;
+  color: #6e6a63;
+}
+
+.viewer-controls .row {
+  margin-top: 10px;
+}
+
+.viewer-controls .row label {
+  color: #6e6a63;
+}
+
 .btn {
   border: 1px solid #a18f73;
   border-radius: 6px;
@@ -967,6 +1056,13 @@ canvas {
 
 .viewer-app--hero {
   grid-template-rows: 1fr;
+}
+
+.viewer-app--hero .viewer-header,
+.viewer-app--hero .viewer-meta,
+.viewer-app--hero .viewer-source,
+.viewer-app--hero .viewer-controls {
+  display: none;
 }
 
 .viewer-app--hero .panel {

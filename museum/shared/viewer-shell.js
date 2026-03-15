@@ -54,8 +54,10 @@ export function renderViewerShell(config) {
   const statsLoading = config.statsLoading || "Loading high-fidelity STL sculpture...";
   const loadingText = config.loadingText || statsLoading;
   const pageTitle = config.pageTitle || `${config.viewerTitle} - Form Gallery`;
-  const embedMode = config.embedMode || new URLSearchParams(window.location.search).get("embed") || "";
+  const searchParams = new URLSearchParams(window.location.search);
+  const embedMode = config.embedMode || searchParams.get("embed") || searchParams.get("mode") || "";
   const viewerClasses = ["app", "viewer-app"];
+  const sourceCard = renderSourceCard(config.source);
 
   if (embedMode) {
     viewerClasses.push(`viewer-app--${embedMode}`);
@@ -64,32 +66,45 @@ export function renderViewerShell(config) {
   document.body.innerHTML = `
     <div class="${viewerClasses.join(" ")}">
       <section class="panel">
-        <h1 class="title">${config.viewerTitle}</h1>
-        ${titleParagraph("sub", config.subtitle)}
-        ${labeledParagraph("sub meta-line", "Medium:", config.medium)}
-        ${labeledParagraph("sub meta-line", "Dimensions:", config.dimensions)}
-        <p id="stats" class="sub">${statsLoading}</p>
-        ${renderSourceCard(config.source)}
+        <div class="viewer-header">
+          <div class="viewer-object">
+            <h1 class="viewer-title">${config.viewerTitle}</h1>
+            ${titleParagraph("viewer-artist", config.subtitle)}
+            ${labeledParagraph("viewer-medium", "Medium:", config.medium)}
+            ${labeledParagraph("viewer-dimensions", "Dimensions:", config.dimensions)}
+          </div>
 
-        <div class="grid">
-          <div class="control"><label for="spin">Spin</label><input id="spin" type="range" min="0" max="1.6" step="0.01" value="${defaults.spin.toFixed(2)}" /><output id="spinv">${defaults.spin.toFixed(2)}</output></div>
-          <div class="control"><label for="zoom">Zoom</label><input id="zoom" type="range" min="0.55" max="6.4" step="0.01" value="${defaults.zoom.toFixed(2)}" /><output id="zoomv">${defaults.zoom.toFixed(2)}</output></div>
-          <div class="control"><label for="lightAngle">Key Angle</label><input id="lightAngle" type="range" min="-180" max="180" step="1" value="${defaults.lightAngle}" /><output id="lightAnglev">${Number(defaults.lightAngle).toFixed(2)}</output></div>
-          <div class="control"><label for="lightPower">Light Power</label><input id="lightPower" type="range" min="0.2" max="4.5" step="0.01" value="${defaults.lightPower.toFixed(2)}" /><output id="lightPowerv">${defaults.lightPower.toFixed(2)}</output></div>
-          <div class="control"><label for="exposure">Exposure</label><input id="exposure" type="range" min="0" max="2.8" step="0.01" value="${defaults.exposure.toFixed(2)}" /><output id="exposurev">${defaults.exposure.toFixed(2)}</output></div>
-          <div class="control"><label for="rough">Roughness</label><input id="rough" type="range" min="0.2" max="1" step="0.01" value="${defaults.rough.toFixed(2)}" /><output id="roughv">${defaults.rough.toFixed(2)}</output></div>
+          <div class="viewer-meta">
+            <p id="stats" class="viewer-stats">${statsLoading}</p>
+            ${sourceCard ? `<div class="viewer-source">${sourceCard}</div>` : ""}
+          </div>
         </div>
 
-        <div class="row">
-          <label><input id="canManipulate" type="checkbox"${checkedAttr(defaults.canManipulate)} /> Manipulate</label>
-          <label><input id="autoRotate" type="checkbox"${checkedAttr(defaults.autoRotate)} /> Auto Rotate</label>
-          <label><input id="multiLight" type="checkbox"${checkedAttr(defaults.multiLight)} /> Multi-Light</label>
-          <label><input id="wire" type="checkbox"${checkedAttr(defaults.wire)} /> Wireframe</label>
-          <button id="frontBtn" class="btn" type="button">Front</button>
-          <button id="resetBtn" class="btn" type="button">Reset</button>
-          <button id="museumBtn" class="btn" type="button">Gallery</button>
-          <span>${config.controlsHint || "Drag to rotate. Scroll/pinch to zoom. Shift+drag to pan."}</span>
-        </div>
+        <details class="viewer-controls">
+          <summary>Viewer Controls</summary>
+
+          <div class="viewer-controls-panel">
+            <div class="grid">
+              <div class="control"><label for="spin">Spin</label><input id="spin" type="range" min="0" max="1.6" step="0.01" value="${defaults.spin.toFixed(2)}" /><output id="spinv">${defaults.spin.toFixed(2)}</output></div>
+              <div class="control"><label for="zoom">Zoom</label><input id="zoom" type="range" min="0.55" max="6.4" step="0.01" value="${defaults.zoom.toFixed(2)}" /><output id="zoomv">${defaults.zoom.toFixed(2)}</output></div>
+              <div class="control"><label for="lightAngle">Key Angle</label><input id="lightAngle" type="range" min="-180" max="180" step="1" value="${defaults.lightAngle}" /><output id="lightAnglev">${Number(defaults.lightAngle).toFixed(2)}</output></div>
+              <div class="control"><label for="lightPower">Light Power</label><input id="lightPower" type="range" min="0.2" max="4.5" step="0.01" value="${defaults.lightPower.toFixed(2)}" /><output id="lightPowerv">${defaults.lightPower.toFixed(2)}</output></div>
+              <div class="control"><label for="exposure">Exposure</label><input id="exposure" type="range" min="0" max="2.8" step="0.01" value="${defaults.exposure.toFixed(2)}" /><output id="exposurev">${defaults.exposure.toFixed(2)}</output></div>
+              <div class="control"><label for="rough">Roughness</label><input id="rough" type="range" min="0.2" max="1" step="0.01" value="${defaults.rough.toFixed(2)}" /><output id="roughv">${defaults.rough.toFixed(2)}</output></div>
+            </div>
+
+            <div class="row">
+              <label><input id="canManipulate" type="checkbox"${checkedAttr(defaults.canManipulate)} /> Manipulate</label>
+              <label><input id="autoRotate" type="checkbox"${checkedAttr(defaults.autoRotate)} /> Auto Rotate</label>
+              <label><input id="multiLight" type="checkbox"${checkedAttr(defaults.multiLight)} /> Multi-Light</label>
+              <label><input id="wire" type="checkbox"${checkedAttr(defaults.wire)} /> Wireframe</label>
+              <button id="frontBtn" class="btn" type="button">Front</button>
+              <button id="resetBtn" class="btn" type="button">Reset</button>
+              <button id="museumBtn" class="btn" type="button">Back to Atrium</button>
+              <span>${config.controlsHint || "Drag to rotate. Scroll/pinch to zoom. Shift+drag to pan."}</span>
+            </div>
+          </div>
+        </details>
       </section>
 
       <section id="stage">
