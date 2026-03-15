@@ -562,7 +562,7 @@ export const museumPiecesExtension = {
     path: "/herakles-lansdowne/",
     sectionId: "antiquity",
     sortOrder: 28.85,
-    viewerTitle: "Herakles Lansdowne (Roman copy after a Greek original, 4th century BCE type)",
+    viewerTitle: "Herakles Lansdowne (Roman copy after a mid-4th-century BCE Greek original)",
     subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
     medium: "Marble",
     dimensions: "H: 208 cm | W: 88 cm | D: 76 cm",
