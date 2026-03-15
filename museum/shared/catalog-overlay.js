@@ -1598,5 +1598,173 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.16, 0.34, 1.86],
       mobileViewVector: [0.9, 0.28, 1.64]
     }
+  },
+  "kore-chiton-epiblema": {
+    kind: "stl",
+    path: "/kore-chiton-epiblema/",
+    sectionId: "greek-classical",
+    sortOrder: 26.15,
+    viewerTitle: "Kore in Chiton and Epiblema (Archaic Greek kore, c. 530 BCE)",
+    subtitle: "Artist: Unknown Greek sculptor",
+    medium: "Marble",
+    dimensions: "H: 205 cm | W: 51.5 cm | D: 51.5 cm",
+    locationLabel: "Findspot:",
+    location: "Acropolis, Athens (west of the Erechtheion)",
+    lobbyMeta: "Source: Wikimedia Commons / SMK Open STL (KAS1800)",
+    source: source(
+      "Rendered from the Wikimedia Commons STL for SMK's 3D model of the Acropolis kore in chiton and epiblema, loaded directly into Form Gallery's native STL viewer.",
+      [
+        link("SMK record", "https://open.smk.dk/artwork/image/KAS1800"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Ubekendt,_Kore_if%C3%B8rt_chiton_og_kappe_epiblema_,_,_KAS1800,_Statens_Museum_for_Kunst,_3D_model.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/d/d0/Ubekendt%2C_Kore_if%C3%B8rt_chiton_og_kappe_epiblema_%2C_%2C_KAS1800%2C_Statens_Museum_for_Kunst%2C_3D_model.stl")
+      ],
+      "SMK catalogs the object as a plaster cast. The source record identifies the original as an archaic marble kore from the Acropolis, found west of the Erechtheion in 1886 and dated around 530 BCE."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 28,
+      lightPower: 2.12,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Ubekendt%2C_Kore_if%C3%B8rt_chiton_og_kappe_epiblema_%2C_%2C_KAS1800%2C_Statens_Museum_for_Kunst%2C_3D_model.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Ubekendt%2C_Kore_if%C3%B8rt_chiton_og_kappe_epiblema_%2C_%2C_KAS1800%2C_Statens_Museum_for_Kunst%2C_3D_model.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.72,
+      focusYRatio: 0.56,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [1.12, 0.54, 1.84],
+      mobileViewVector: [0.88, 0.42, 1.64]
+    }
+  },
+  "pseudo-seneca": {
+    kind: "stl",
+    path: "/pseudo-seneca/",
+    sectionId: "hellenistic-world",
+    sortOrder: 28.3,
+    viewerTitle: "Pseudo-Seneca / Hesiod? (Roman copy after a Hellenistic portrait type)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Bronze portrait type",
+    dimensions: "H: 47 cm",
+    locationLabel: "Findspot:",
+    location: "Villa dei Papiri, Herculaneum",
+    lobbyMeta: "Source: Wikimedia Commons / SMK Open STL (KAS94)",
+    source: source(
+      "Rendered from the Wikimedia Commons STL for SMK's 3D model of the so-called Pseudo-Seneca portrait, loaded directly into Form Gallery's native STL viewer.",
+      [
+        link("SMK record", "https://open.smk.dk/artwork/image/KAS94"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Ubekendt,_Pseudo-Seneca,_portr%C3%A6t_af_Hesiod_8_%C3%A5rh_fKr_,_,_KAS94,_Statens_Museum_for_Kunst,_3D_model.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ubekendt%2C_Pseudo-Seneca%2C_portr%C3%A6t_af_Hesiod_8_%C3%A5rh_fKr_%2C_%2C_KAS94%2C_Statens_Museum_for_Kunst%2C_3D_model.stl")
+      ],
+      "SMK catalogs the object as a plaster cast. The source record describes the original as a Roman copy of a Hellenistic bronze portrait type, traditionally labeled Pseudo-Seneca and sometimes identified as Hesiod."
+    ),
+    defaults: {
+      zoom: 2.28,
+      lightAngle: 30,
+      lightPower: 2.08,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ubekendt%2C_Pseudo-Seneca%2C_portr%C3%A6t_af_Hesiod_8_%C3%A5rh_fKr_%2C_%2C_KAS94%2C_Statens_Museum_for_Kunst%2C_3D_model.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ubekendt%2C_Pseudo-Seneca%2C_portr%C3%A6t_af_Hesiod_8_%C3%A5rh_fKr_%2C_%2C_KAS94%2C_Statens_Museum_for_Kunst%2C_3D_model.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.04,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.96, 0.36, 1.38],
+      mobileViewVector: [0.76, 0.3, 1.22]
+    }
+  },
+  "julia-titi": {
+    kind: "stl",
+    path: "/julia-titi/",
+    sectionId: "roman-world",
+    sortOrder: 36.9,
+    viewerTitle: "Julia Titi (Roman portrait, late 1st century CE)",
+    subtitle: "Artist: Unknown Roman workshop",
+    medium: "Marble",
+    dimensions: "H: 48.5 cm",
+    lobbyMeta: "Source: Wikimedia Commons / SMK Open STL (KAS866)",
+    source: source(
+      "Rendered from the Wikimedia Commons STL for SMK's 3D model of Julia Titi, loaded directly into Form Gallery's native STL viewer.",
+      [
+        link("SMK record", "https://open.smk.dk/artwork/image/KAS866"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Ubekendt,_Julia_Titi,_,_KAS866,_Statens_Museum_for_Kunst,_3D_model.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/5/5f/Ubekendt%2C_Julia_Titi%2C_%2C_KAS866%2C_Statens_Museum_for_Kunst%2C_3D_model.stl")
+      ],
+      "SMK catalogs the object as a plaster cast. The source record identifies the original as a Roman marble portrait of Julia Titi, typically dated within the Flavian period and sometimes discussed in relation to later restorations."
+    ),
+    defaults: {
+      zoom: 2.34,
+      lightAngle: 28,
+      lightPower: 2.08,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Ubekendt%2C_Julia_Titi%2C_%2C_KAS866%2C_Statens_Museum_for_Kunst%2C_3D_model.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Ubekendt%2C_Julia_Titi%2C_%2C_KAS866%2C_Statens_Museum_for_Kunst%2C_3D_model.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.06,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.94, 0.36, 1.34],
+      mobileViewVector: [0.74, 0.28, 1.18]
+    }
+  },
+  "zeus-ammon": {
+    kind: "stl",
+    path: "/zeus-ammon/",
+    sectionId: "greek-classical",
+    sortOrder: 27.55,
+    viewerTitle: "Zeus Ammon (Roman copy after a classical Greek original)",
+    subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
+    medium: "Marble",
+    dimensions: "H: 54 cm",
+    lobbyMeta: "Source: Wikimedia Commons / SMK Open STL (KAS1110)",
+    source: source(
+      "Rendered from the Wikimedia Commons STL for SMK's 3D model of Zeus Ammon, loaded directly into Form Gallery's native STL viewer.",
+      [
+        link("SMK record", "https://open.smk.dk/artwork/image/KAS1110"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Ubekendt,_Zeus_Ammon,_,_KAS1110,_Statens_Museum_for_Kunst,_3D_model.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/5/5d/Ubekendt%2C_Zeus_Ammon%2C_%2C_KAS1110%2C_Statens_Museum_for_Kunst%2C_3D_model.stl")
+      ],
+      "SMK catalogs the object as a plaster cast. The source record identifies the original as a Roman marble copy after a classical Greek Zeus Ammon type, with an uncertain Italian collection history."
+    ),
+    defaults: {
+      zoom: 2.38,
+      lightAngle: 30,
+      lightPower: 2.08,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Ubekendt%2C_Zeus_Ammon%2C_%2C_KAS1110%2C_Statens_Museum_for_Kunst%2C_3D_model.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Ubekendt%2C_Zeus_Ammon%2C_%2C_KAS1110%2C_Statens_Museum_for_Kunst%2C_3D_model.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.08,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.1,
+      defaultViewVector: [0.98, 0.38, 1.38],
+      mobileViewVector: [0.78, 0.3, 1.22]
+    }
   }
 };
