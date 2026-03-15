@@ -1322,7 +1322,7 @@ export const museumLobby = {
   brand: "FORM GALLERY",
   title: "Museum Lobby",
   subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse by era, region, maker, or curatorial gallery.",
-  featuredPieceId: "dying-gaul",
+  featuredPieceId: "bouchardon-cupid",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",
   browseTitle: "Browse the Collection",
