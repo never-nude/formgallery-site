@@ -1450,5 +1450,153 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.1, 0.42, 1.72],
       mobileViewVector: [0.86, 0.34, 1.5]
     }
+  },
+  hestia: {
+    kind: "stl",
+    path: "/hestia/",
+    sectionId: "greek-classical",
+    sortOrder: 27.4,
+    viewerTitle: "Hestia? (east pediment figure from the Parthenon, 438 BCE)",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 141 cm | W: 112 cm | D: 90 cm",
+    locationLabel: "Original location:",
+    location: "Parthenon east pediment, Acropolis, Athens",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2118)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the seated woman identified as Hestia?, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2118",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/vj23cc54r_smk-kas2118-east-gable-of-the-parthenon.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/hh63t193x_KAS2118_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record places the original on the east pediment of the Parthenon and dates it to 438 BCE; the Hestia identification remains tentative."
+    }),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 28,
+      lightPower: 2.14,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./hestia_source_small.stl",
+      fallbackUrl: "./hestia_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.48,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.18, 0.48, 1.82],
+      mobileViewVector: [0.9, 0.38, 1.6]
+    }
+  },
+  pudicity: {
+    kind: "stl",
+    path: "/pudicity/",
+    sectionId: "hellenistic-world",
+    sortOrder: 29.75,
+    viewerTitle: "Pudicity (Roman copy after a Hellenistic original)",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 206 cm",
+    locationLabel: "Collection history:",
+    location: "Ex Villa Mattei, later Vatican collections",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS199)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Pudicity, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS199",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/ff365989p_smk34-kas199-pudicitia.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/qz20sz34f_KAS199_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record describes the original as a Roman marble copy of a Hellenistic draped female type and notes its Villa Mattei and Vatican history."
+    }),
+    defaults: {
+      zoom: 2.98,
+      lightAngle: 26,
+      lightPower: 2.1,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./pudicity_source_small.stl",
+      fallbackUrl: "./pudicity_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.7,
+      focusYRatio: 0.56,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.18, 0.56, 1.9],
+      mobileViewVector: [0.94, 0.42, 1.7]
+    }
+  },
+  "portrait-of-homer": {
+    kind: "stl",
+    path: "/portrait-of-homer/",
+    sectionId: "hellenistic-world",
+    sortOrder: 28.25,
+    viewerTitle: "Portrait of Homer (Roman copy of a Hellenistic type)",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 33 cm | W: 37 cm",
+    locationLabel: "Collection history:",
+    location: "Ex Farnese Collection, Italy",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS210)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the portrait bust of Homer, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS210",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/g445cj835_smk-kas210-homer.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/ms35tf42j_KAS210_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record describes the original as a Roman copy of a Hellenistic blind-type portrait of Homer and notes Farnese collection provenance."
+    }),
+    defaults: {
+      zoom: 2.26,
+      lightAngle: 28,
+      lightPower: 2.06,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./portrait_of_homer_source_small.stl",
+      fallbackUrl: "./portrait_of_homer_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.04,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.96, 0.38, 1.36],
+      mobileViewVector: [0.76, 0.3, 1.22]
+    }
+  },
+  "lying-lion": {
+    kind: "stl",
+    path: "/lying-lion/",
+    sectionId: "egypt-mesopotamia",
+    sortOrder: 11.5,
+    viewerTitle: "Lying Lion (Egyptian type, 1st century BCE)",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Stone",
+    dimensions: "H: 99 cm | W: 66 cm | D: 211 cm",
+    locationLabel: "Collection history:",
+    location: "Italy, probably Rome",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS1164)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the lying lion, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS1164",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/0d316r65f_smk-kas1164-lion.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/wp988q728_KAS1164_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as Egyptian and dates it to the 1st century BCE, with a probable Roman collection history."
+    }),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 26,
+      lightPower: 2.12,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./lying_lion_source_small.stl",
+      fallbackUrl: "./lying_lion_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.08,
+      focusYRatio: 0.48,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.16, 0.34, 1.86],
+      mobileViewVector: [0.9, 0.28, 1.64]
+    }
   }
 };
