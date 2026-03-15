@@ -2416,7 +2416,7 @@ export const museumPiecesExtension = {
     },
     scene: {
       showPedestal: false,
-      rotateX: -Math.PI * 0.08,
+      rotateX: -Math.PI * 0.12,
       rotateY: Math.PI * 0.5,
       rotateZ: -Math.PI * 0.5,
       targetHeight: 0.96,
