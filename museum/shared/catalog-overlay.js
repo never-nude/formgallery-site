@@ -1766,5 +1766,236 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.98, 0.38, 1.38],
       mobileViewVector: [0.78, 0.3, 1.22]
     }
+  },
+  "gathering-buddhas-and-bodhisattvas": {
+    kind: "gltf",
+    path: "/asia/gathering-buddhas-and-bodhisattvas/",
+    sectionId: "asia",
+    sortOrder: 4,
+    viewerTitle: "Gathering of Buddhas and Bodhisattvas (China, 550-577 CE)",
+    subtitle: "Freer Gallery of Art collection; Northern Qi dynasty, Hebei, China",
+    medium: "Limestone with traces of pigment",
+    dimensions: "H: 120.8 cm | W: 340 cm",
+    locationLabel: "Origin:",
+    location: "southern Xiangtangshan, Cave 2, Hebei province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Gathering of Buddhas and Bodhisattvas model, identified as a Northern Qi relief from southern Xiangtangshan and held by the Freer Gallery of Art.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/gathering-buddhas-and-bodhisattvas%3A476ad7f6-6add-448d-af7f-9f2ca9ba9cb6"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:476ad7f6-6add-448d-af7f-9f2ca9ba9cb6/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:476ad7f6-6add-448d-af7f-9f2ca9ba9cb6/f1921_1-full_res-150k-4096-high.glb")
+      ],
+      "Smithsonian marks both the 3D package and the object metadata as CC0. The title, date, origin, medium, and dimensions follow the National Museum of Asian Art object page."
+    ),
+    defaults: {
+      zoom: 2.36,
+      lightAngle: 24,
+      lightPower: 2.0,
+      exposure: 0.46,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:476ad7f6-6add-448d-af7f-9f2ca9ba9cb6/f1921_1-full_res-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:476ad7f6-6add-448d-af7f-9f2ca9ba9cb6/f1921_1-full_res-150k-2048-medium.glb"
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 0.98,
+      focusYRatio: 0.5,
+      defaultViewVector: [1.02, 0.28, 2.32],
+      mobileViewVector: [0.72, 0.22, 2.08]
+    }
+  },
+  "cosmic-buddha": {
+    kind: "gltf",
+    path: "/asia/cosmic-buddha/",
+    sectionId: "asia",
+    sortOrder: 6,
+    viewerTitle: "Buddha Draped in Robes Portraying the Realms of Desire (China, 550-577 CE)",
+    subtitle: "Freer Gallery of Art collection; Northern Qi dynasty, Henan, China",
+    medium: "Limestone",
+    dimensions: "H: 151.3 cm | W: 62.9 cm | D: 31.3 cm",
+    locationLabel: "Origin:",
+    location: "Anyang, Henan province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: source(
+      "Rendered from Smithsonian 3D's model of Buddha draped in robes portraying the Realms of Desire, also circulated in Smithsonian Commons as the 'Cosmic Buddha' scan.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/buddha-draped-robes-portraying-realms-existence:d8c62be8-4ebc-11ea-b77f-2e728ce88125"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:d8c62be8-4ebc-11ea-b77f-2e728ce88125/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:d8c62be8-4ebc-11ea-b77f-2e728ce88125/cosmic-buddha-laser-scan-150k-4096-high.glb"),
+        link("Wikimedia Commons STL", "https://commons.wikimedia.org/wiki/File:Cosmic-buddha-laser-scan-150k_(Smithsonian_Institution).stl")
+      ],
+      "Smithsonian marks both the 3D package and the object metadata as CC0. The official object page titles the work 'Buddha draped in robes portraying the Realms of Desire'; the Commons STL uses the shorter 'Cosmic Buddha' label."
+    ),
+    defaults: {
+      zoom: 2.52,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.48,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:d8c62be8-4ebc-11ea-b77f-2e728ce88125/cosmic-buddha-laser-scan-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:d8c62be8-4ebc-11ea-b77f-2e728ce88125/cosmic-buddha-laser-scan-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.52,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [1.28, 0.7, 1.82],
+      mobileViewVector: [0.92, 0.52, 1.72]
+    }
+  },
+  ganesha: {
+    kind: "stl",
+    path: "/asia/ganesha/",
+    sectionId: "asia",
+    sortOrder: 20,
+    viewerTitle: "Ganesha (Indonesia, 10th-11th century CE)",
+    subtitle: "Artist: Unknown Javanese sculptor; Sailendra dynasty",
+    medium: "Volcanic stone (andesite)",
+    dimensions: "H: 88.3 cm | W: 52.1 cm | D: 40.5 cm",
+    locationLabel: "Origin:",
+    location: "Indonesia (Java)",
+    lobbyMeta: "Source: Wikimedia Commons / Minneapolis Institute of Art STL",
+    source: source(
+      "Rendered from the CC0 Wikimedia Commons STL mirrored from the Minneapolis Institute of Art's Sketchfab model of a Javanese Ganesha.",
+      [
+        link("Mia collection page", "https://collections.artsmia.org/art/81675/ganesha-indonesia"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Ganesha,_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/3/3f/Ganesha%2C_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Sketchfab source", "https://sketchfab.com/3d-models/ganesha-10th-11th-c-ce-375c670515684977b6ec05be115366ac")
+      ],
+      "The Commons file is CC0 and identifies the source model as the Minneapolis Institute of Art's public Sketchfab release. The date, dynasty, medium, and dimensions follow Mia's collection page."
+    ),
+    defaults: {
+      zoom: 2.58,
+      lightAngle: 26,
+      lightPower: 2.12,
+      exposure: 0.46,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Ganesha%2C_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Ganesha%2C_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.42,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.22, 0.58, 1.82],
+      mobileViewVector: [0.9, 0.48, 1.7]
+    },
+    material: {
+      color: "#8f8169",
+      clearcoat: 0.12,
+      clearcoatRoughness: 0.48,
+      sheen: 0.1,
+      sheenRoughness: 0.92,
+      sheenColor: "#e4d8c5",
+      reflectivity: 0.26
+    }
+  },
+  "uma-maheshvara": {
+    kind: "stl",
+    path: "/asia/uma-maheshvara/",
+    sectionId: "asia",
+    sortOrder: 22,
+    viewerTitle: "Uma-Maheshvara (India, 10th-11th century CE)",
+    subtitle: "Artist: Unknown Indian sculptor; Chandella dynasty",
+    medium: "Buff sandstone",
+    dimensions: "H: 149.9 cm | W: 83.2 cm | D: 34.3 cm",
+    locationLabel: "Origin:",
+    location: "India",
+    lobbyMeta: "Source: Wikimedia Commons / Minneapolis Institute of Art STL",
+    source: source(
+      "Rendered from the CC0 Wikimedia Commons STL mirrored from the Minneapolis Institute of Art's Sketchfab model of the Chandella-period Uma-Maheshvara relief.",
+      [
+        link("Mia collection page", "https://collections.artsmia.org/art/5369/uma-maheshvara-india"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Uma-Maheshvara,_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/e/e4/Uma-Maheshvara%2C_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Sketchfab source", "https://sketchfab.com/3d-models/uma-maheshvara-10th-11th-c-ce-892b7917f41346ceb4cf9bc0bb7d9c33")
+      ],
+      "The Commons file is CC0 and identifies the source model as the Minneapolis Institute of Art's public Sketchfab release. The dynasty, medium, and dimensions follow Mia's collection page."
+    ),
+    defaults: {
+      zoom: 2.44,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.46,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Uma-Maheshvara%2C_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Uma-Maheshvara%2C_10th_-_11th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 1.06,
+      focusYRatio: 0.5,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.02, 0.28, 2.24],
+      mobileViewVector: [0.74, 0.22, 2.04]
+    },
+    material: {
+      color: "#d7c09a",
+      clearcoat: 0.1,
+      clearcoatRoughness: 0.5,
+      sheen: 0.12,
+      sheenRoughness: 0.92,
+      sheenColor: "#efe0c8",
+      reflectivity: 0.24
+    }
+  },
+  "yoruba-tusk": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/yoruba-tusk/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 12,
+    viewerTitle: "Tusk (Nigeria, mid-20th century)",
+    subtitle: "Artist: Yoruba artist",
+    medium: "Ivory, stain",
+    dimensions: "H: 72.1 cm | W: 5.4 cm | D: 8.6 cm",
+    locationLabel: "Geography:",
+    location: "Nigeria",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of African Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Tusk model, cataloged by the National Museum of African Art as a mid-twentieth-century Yoruba work from Nigeria.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/tusk%3A9f619b00-0f0c-453f-96e7-f97454c10454"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:9f619b00-0f0c-453f-96e7-f97454c10454/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:9f619b00-0f0c-453f-96e7-f97454c10454/nmafa-71_17_12-150k-4096-high.glb")
+      ],
+      "Smithsonian lists usage conditions on the source page. The title, maker, geography, medium, and dimensions follow the National Museum of African Art record."
+    ),
+    defaults: {
+      zoom: 2.5,
+      lightAngle: 18,
+      lightPower: 1.98,
+      exposure: 0.48,
+      rough: 0.28
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:9f619b00-0f0c-453f-96e7-f97454c10454/nmafa-71_17_12-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:9f619b00-0f0c-453f-96e7-f97454c10454/nmafa-71_17_12-150k-2048-medium.glb"
+    },
+    scene: {
+      autoLevel: true,
+      autoLevelBottomPercentile: 0.01,
+      autoLevelBottomRatio: 0.025,
+      showPedestal: false,
+      targetHeight: 1.42,
+      defaultYaw: 0,
+      defaultViewVector: [1.04, 0.52, 1.9],
+      mobileViewVector: [0.78, 0.42, 1.72]
+    }
   }
 };
