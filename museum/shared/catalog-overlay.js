@@ -1955,6 +1955,114 @@ export const museumPiecesExtension = {
       reflectivity: 0.24
     }
   },
+  "jue-wine-vessel": {
+    kind: "stl",
+    path: "/asia/jue-wine-vessel/",
+    sectionId: "asia",
+    sortOrder: 10,
+    viewerTitle: "Jue Wine Vessel (China, 16th-15th century BCE)",
+    subtitle: "Artist: Unknown Chinese bronze caster; Erligang culture, early Shang period",
+    medium: "Bronze",
+    dimensions: "H: 14.1 cm | W: 12.1 cm | D: 6.6 cm",
+    locationLabel: "Origin:",
+    location: "China",
+    lobbyMeta: "Source: Wikimedia Commons / Minneapolis Institute of Art STL",
+    source: source(
+      "Rendered from the CC0 Wikimedia Commons STL mirrored from the Minneapolis Institute of Art's Sketchfab model of a Shang-period jue wine vessel.",
+      [
+        link("Mia collection page", "https://collections.artsmia.org/art/5813/jue-wine-vessel-china"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Jue_wine_vessel,_12th%E2%80%9311th_century_BCE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/1/1d/Jue_wine_vessel%2C_12th%E2%80%9311th_century_BCE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Sketchfab source", "https://sketchfab.com/3d-models/jue-wine-vessel-12th11th-century-bce-aaacea984640414e8afedbb9370c3455")
+      ],
+      "The Commons file is CC0 and identifies the source model as the Minneapolis Institute of Art's public Sketchfab release. Mia's collection page dates the object to the 16th-15th century BCE Erligang culture, while the file naming on Commons preserves an older 12th-11th century BCE label from the model trail."
+    ),
+    defaults: {
+      zoom: 2.68,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Jue_wine_vessel%2C_12th%E2%80%9311th_century_BCE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Jue_wine_vessel%2C_12th%E2%80%9311th_century_BCE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 0.78,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.12, 0.48, 1.48],
+      mobileViewVector: [0.84, 0.36, 1.34]
+    },
+    material: {
+      color: "#6f5836",
+      metalness: 0.82,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.46,
+      sheen: 0.0,
+      sheenRoughness: 1.0,
+      sheenColor: "#000000",
+      reflectivity: 0.82
+    }
+  },
+  "garuda-terminal": {
+    kind: "stl",
+    path: "/asia/terminal-in-the-form-of-garuda/",
+    sectionId: "asia",
+    sortOrder: 24,
+    viewerTitle: "Terminal in the Form of Garuda (Cambodia, 12th-13th century)",
+    subtitle: "Artist: Unknown Cambodian metalworker; Bayon style",
+    medium: "Bronze",
+    dimensions: "H: 17.8 cm",
+    locationLabel: "Origin:",
+    location: "Cambodia",
+    lobbyMeta: "Source: Wikimedia Commons / Minneapolis Institute of Art STL",
+    source: source(
+      "Rendered from the CC0 Wikimedia Commons STL mirrored from the Minneapolis Institute of Art's Sketchfab model of a small Cambodian Garuda terminal.",
+      [
+        link("Mia collection page", "https://collections.artsmia.org/art/1780/terminal-in-the-form-of-garuda-cambodia"),
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Terminal_in_the_Form_of_Garuda,_12th-13th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/d/d3/Terminal_in_the_Form_of_Garuda%2C_12th-13th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"),
+        link("Sketchfab source", "https://sketchfab.com/3d-models/terminal-in-the-form-of-garuda-12th-13th-c-ce-db9e1456641a4a31bef13e34da9021d5")
+      ],
+      "The Commons file is CC0 and identifies the source model as the Minneapolis Institute of Art's public Sketchfab release. Mia's collection page lists the object as a bronze Garuda terminal from Cambodia, 12th-13th century, and the Sketchfab description notes that the real object stands about 18 cm tall."
+    ),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 24,
+      lightPower: 2.12,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Terminal_in_the_Form_of_Garuda%2C_12th-13th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl",
+      fallbackUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Terminal_in_the_Form_of_Garuda%2C_12th-13th_C_CE_-_3D_model_by_Minneapolis_Institute_of_Art_-_Sketchfab.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 0.92,
+      defaultYaw: Math.PI * 0.12,
+      defaultViewVector: [1.08, 0.54, 1.46],
+      mobileViewVector: [0.82, 0.42, 1.32]
+    },
+    material: {
+      color: "#7b6240",
+      metalness: 0.84,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.44,
+      sheen: 0.0,
+      sheenRoughness: 1.0,
+      sheenColor: "#000000",
+      reflectivity: 0.84
+    }
+  },
   "yoruba-tusk": {
     kind: "gltf",
     path: "/sub-saharan-africa/yoruba-tusk/",
