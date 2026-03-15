@@ -1337,7 +1337,7 @@ export const museumLobby = {
   brand: "FORM GALLERY",
   title: "",
   contextLabel: "Collection Entrance",
-  subtitle: "A place to explore and examine sculpture from antiquity to the twenty-first century, moving across galleries, eras, regions, and makers.",
+  subtitle: "A place to explore and examine sculpture from antiquity through the twenty-first century, moving across galleries, eras, regions, and makers.",
   featuredPieceId: "dying-gaul",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",
