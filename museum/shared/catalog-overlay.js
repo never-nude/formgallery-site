@@ -527,5 +527,121 @@ export const museumPiecesExtension = {
       sheenColor: "#000000",
       reflectivity: 0.84
     }
+  },
+  "aphrodite-anadyomene": {
+    kind: "stl",
+    path: "/aphrodite-anadyomene/",
+    sectionId: "antiquity",
+    sortOrder: 28.7,
+    viewerTitle: "Aphrodite Anadyomene (Roman copy after a Greek original, 1st century BCE)",
+    subtitle: "Artist: Unknown Roman workshop after a Greek original",
+    medium: "Marble",
+    dimensions: "H: 154 cm | W: 59 cm | D: 41.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS185)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Aphrodite Anadyomene, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS185",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/rn301581s_16-smk-esquiline-aphrodite-inv-1141.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/1z40kz34x_KAS185_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the Esquiline / Anadyomene Aphrodite type from Rome, held in the Palazzo dei Conservatori."
+    }),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 28,
+      lightPower: 2.12,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./aphrodite_anadyomene_source_small.stl",
+      fallbackUrl: "./aphrodite_anadyomene_source_small.stl"
+    }
+  },
+  "herakles-lansdowne": {
+    kind: "stl",
+    path: "/herakles-lansdowne/",
+    sectionId: "antiquity",
+    sortOrder: 28.85,
+    viewerTitle: "Herakles Lansdowne (Roman copy after a Greek original, 4th century BCE type)",
+    subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
+    medium: "Marble",
+    dimensions: "H: 208 cm | W: 88 cm | D: 76 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS224)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Lansdowne Herakles type, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS224",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/mg74qr49g_smk-110-kas224.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/kd17cz49m_KAS224_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record links the original to the Hadrianic Villa findspot at Tivoli and the Getty's Lansdowne Herakles."
+    }),
+    defaults: {
+      zoom: 2.98,
+      lightAngle: 30,
+      lightPower: 2.2,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./herakles_lansdowne_source_small.stl",
+      fallbackUrl: "./herakles_lansdowne_source_small.stl"
+    }
+  },
+  "kneeling-archer": {
+    kind: "stl",
+    path: "/kneeling-archer/",
+    sectionId: "antiquity",
+    sortOrder: 26.8,
+    viewerTitle: "Kneeling Archer (Aphaia temple figure, c. 500-490 BCE)",
+    subtitle: "Artist: Unknown Greek sculptor",
+    medium: "Marble",
+    dimensions: "H: 104 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2125)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Kneeling Archer from the Temple of Aphaia, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2125",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/tt44ps735_smk-kas2125-aphaia-kneeling-archer.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/kh04dv58t_KAS2125.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a west-pediment figure from the Temple of Aphaia on Aegina."
+    }),
+    defaults: {
+      zoom: 2.72,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./kneeling_archer_source_small.stl",
+      fallbackUrl: "./kneeling_archer_source_small.stl"
+    }
+  },
+  "castor-and-pollux": {
+    kind: "stl",
+    path: "/castor-and-pollux/",
+    sectionId: "antiquity",
+    sortOrder: 28.55,
+    viewerTitle: "Castor and Pollux (Roman group, 1st century BCE)",
+    subtitle: "Artist: Unknown Roman workshop",
+    medium: "Marble group",
+    dimensions: "H: 158 cm | W: 101 cm | D: 51 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2362)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Castor and Pollux, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2362",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/cv43p265m_smk54-kas2362-castor-and-pollux-d.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/4j03d4287_KAS2362_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record traces the original group through the Ludovisi and Odescalchi collections to the Prado."
+    }),
+    defaults: {
+      zoom: 3.12,
+      lightAngle: 26,
+      lightPower: 2.14,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./castor_and_pollux_source_small.stl",
+      fallbackUrl: "./castor_and_pollux_source_small.stl"
+    }
   }
 };
