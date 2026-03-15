@@ -996,45 +996,45 @@ canvas {
   padding: 0 40px;
 }
 
-.site-brand {
-  font-family: var(--serif-display);
-  font-size: 22px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-
-.brand-form {
-  opacity: 0.45;
-  margin-right: 6px;
-}
-
-.brand-gallery {
-  opacity: 1;
-  font-weight: 600;
+.museum-header--simple {
+  margin: 44px auto 34px;
 }
 
 .page-title {
-  margin: 0 0 14px;
-  font-family: var(--serif-display);
-  font-size: 72px;
-  line-height: 1.05;
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
   color: var(--accent-graphite);
 }
 
-.page-subtitle {
-  max-width: 640px;
-  margin: 0 0 18px;
-  font-size: 17px;
-  line-height: 1.6;
-  color: #6f6f6f;
+.page-title--progressive {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.16em;
+  text-transform: uppercase;
 }
 
-.collection-meta {
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #8a8a8a;
+.page-title-form {
+  color: rgba(48, 41, 34, 0.4);
+}
+
+.page-title-gallery {
+  color: rgba(48, 41, 34, 0.66);
+}
+
+.page-title-atrium {
+  color: rgba(48, 41, 34, 0.96);
+}
+
+.page-subtitle {
+  max-width: 720px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #6a6258;
 }
 
 .lobby-app .stage {
@@ -1431,7 +1431,11 @@ canvas {
   }
 
   .page-title {
-    font-size: 52px;
+    font-size: 46px;
+  }
+
+  .page-title--progressive {
+    gap: 0.12em;
   }
 
   .page-subtitle {

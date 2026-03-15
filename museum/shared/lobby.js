@@ -347,11 +347,6 @@ function heroPreviewHref(href) {
   return href.includes("?") ? `${href}&embed=hero` : `${href}?embed=hero`;
 }
 
-function formatDisplayWord(word, fallback) {
-  if (!word) return fallback;
-  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-}
-
 function renderBrowseGroup(group) {
   const itemsHtml = group.items
     .map(
@@ -522,24 +517,22 @@ export function renderMuseumLobby(lobby, pieces) {
     }
   ];
 
-  const metadataLine = `${entries.length} works • ${sections.length} galleries • ${new Set(entries.map((entry) => entry.region)).size} regions • ${new Set(entries.map((entry) => entry.artist)).size} makers`;
   const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
   const sectionsHtml = sections.map((section) => renderSection(section)).join("");
   const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
   const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
-  const brandForm = formatDisplayWord(brandWords[0], "Form");
-  const brandGallery = formatDisplayWord(brandWords.slice(1).join(" "), "Gallery");
+  const brandForm = brandWords[0] || "FORM";
+  const brandGallery = brandWords.slice(1).join(" ") || "GALLERY";
 
   document.body.innerHTML = `
     <div class="app lobby-app">
-      <header class="museum-header">
-        <div class="site-brand">
-          <span class="brand-form">${brandForm}</span>
-          <span class="brand-gallery">${brandGallery}</span>
-        </div>
-        <h1 class="page-title">${lobby.title || "Atrium"}</h1>
+      <header class="museum-header museum-header--simple">
+        <h1 class="page-title page-title--progressive">
+          <span class="page-title-form">${brandForm}</span>
+          <span class="page-title-gallery">${brandGallery}</span>
+          <span class="page-title-atrium">${lobby.title || "Atrium"}</span>
+        </h1>
         <p class="page-subtitle">${lobby.subtitle || ""}</p>
-        <div class="collection-meta">${metadataLine}</div>
       </header>
 
       <main class="stage">
