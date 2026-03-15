@@ -211,7 +211,6 @@ export const museumPiecesExtension = {
       fallbackMs: 60000
     },
     scene: {
-      showPedestal: false,
       targetHeight: 0.92,
       focusYRatio: 0.48,
       defaultYaw: Math.PI * 0.08,

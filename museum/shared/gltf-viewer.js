@@ -1,4 +1,5 @@
 import { createViewerDefaults, renderViewerShell } from "./viewer-shell.js";
+import { createPedestalMesh, inferPedestalEnabled, resolveObjectPedestalRadius, resolvePedestalHeight } from "./pedestal.js";
 
 const DEFAULT_PRIMARY_TIMEOUT_MS = 45000;
 const DEFAULT_FALLBACK_TIMEOUT_MS = 30000;
@@ -302,8 +303,8 @@ export async function initGltfMuseumPage(piece) {
   const verticalOffset = sceneConfig.verticalOffset ?? 0;
   const autoLevel = sceneConfig.autoLevel ?? false;
   const targetHeight = sceneConfig.targetHeight ?? DEFAULT_TARGET_HEIGHT;
-  const showPedestal = sceneConfig.showPedestal ?? false;
-  const baseHeight = sceneConfig.baseHeight ?? (showPedestal ? 0.3 : 0.004);
+  const showPedestal = inferPedestalEnabled(piece, sceneConfig);
+  const pedestalHeight = showPedestal ? resolvePedestalHeight(sceneConfig, targetHeight) : 0.004;
   const focusYRatio = sceneConfig.focusYRatio ?? 0.57;
   const stage = ui.stage;
   const stats = ui.stats;
@@ -376,18 +377,6 @@ export async function initGltfMuseumPage(piece) {
     floor.position.y = 0;
     floor.receiveShadow = true;
     scene.add(floor);
-
-    const pedestalHeight = baseHeight;
-    if (showPedestal) {
-      const pedestal = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.46, 0.56, pedestalHeight, 80),
-        new THREE.MeshStandardMaterial({ color: 0xc5b7a4, roughness: 0.82, metalness: 0.02 })
-      );
-      pedestal.position.y = pedestalHeight * 0.5;
-      pedestal.castShadow = true;
-      pedestal.receiveShadow = true;
-      scene.add(pedestal);
-    }
 
     let sculpture = null;
     let focusY = 1.0;
@@ -474,6 +463,9 @@ export async function initGltfMuseumPage(piece) {
 
       sculpture = wrapper;
       const scale = targetHeight / size.y;
+      if (showPedestal) {
+        scene.add(createPedestalMesh(THREE, resolveObjectPedestalRadius(rawGroup, rawBox, scale, THREE, sceneConfig), pedestalHeight, sceneConfig));
+      }
       sculpture.scale.setScalar(scale);
       sculpture.rotation.y = defaultYaw;
       sculpture.position.y = pedestalHeight + verticalOffset;
