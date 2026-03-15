@@ -997,62 +997,38 @@ canvas {
   background: linear-gradient(180deg, #f7f1e9 0%, #f2e8d9 100%);
 }
 
-.brand-lockup {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-}
-
-.brand-name {
-  font-size: 12px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #4d4132;
-}
-
 .lobby-copy-block {
   display: grid;
   gap: 10px;
   max-width: 58rem;
 }
 
-.lobby-context {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0;
-  width: fit-content;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #75624a;
-}
-
-.lobby-context::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: linear-gradient(90deg, #7f6646 0%, #ccb392 100%);
-  opacity: 0.76;
-}
-
-.lobby-title {
+.site-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5.4rem);
+  font-size: 48px;
   line-height: 0.95;
-  font-weight: 600;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
+  color: var(--accent-graphite);
 }
 
-.lobby-intro {
+.title-form {
+  opacity: 0.55;
+  letter-spacing: 0.05em;
+  font-variant: small-caps;
+}
+
+.title-gallery {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.site-subtitle {
   margin: 0;
   font-size: 16px;
-  line-height: 1.7;
-  color: #5e5245;
-  max-width: 50rem;
+  line-height: 1.5;
+  color: #6b6b6b;
+  max-width: 720px;
 }
 
 .lobby-metadata {
@@ -1061,6 +1037,12 @@ canvas {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #746553;
+}
+
+@media (min-width: 900px) {
+  .site-title {
+    font-size: 56px;
+  }
 }
 
 .lobby-app .stage {
@@ -1437,7 +1419,7 @@ canvas {
     grid-template-columns: 1fr;
   }
 
-  .lobby-intro {
+  .site-subtitle {
     font-size: 15px;
   }
 

@@ -347,6 +347,11 @@ function heroPreviewHref(href) {
   return href.includes("?") ? `${href}&embed=hero` : `${href}?embed=hero`;
 }
 
+function formatDisplayWord(word, fallback) {
+  if (!word) return fallback;
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
 function renderBrowseGroup(group) {
   const itemsHtml = group.items
     .map(
@@ -521,17 +526,19 @@ export function renderMuseumLobby(lobby, pieces) {
   const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
   const sectionsHtml = sections.map((section) => renderSection(section)).join("");
   const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
+  const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
+  const brandForm = formatDisplayWord(brandWords[0], "Form");
+  const brandGallery = formatDisplayWord(brandWords.slice(1).join(" "), "Gallery");
 
   document.body.innerHTML = `
     <div class="app lobby-app">
       <header class="lobby-header">
-        <div class="brand-lockup">
-          <span class="brand-name">${lobby.brand || "FORM GALLERY"}</span>
-        </div>
         <div class="lobby-copy-block">
-          ${lobby.contextLabel ? `<p class="lobby-context">${lobby.contextLabel}</p>` : ""}
-          <h1 class="lobby-title">${lobby.title || "Atrium"}</h1>
-          <p class="lobby-intro">${lobby.subtitle || ""}</p>
+          <h1 class="site-title">
+            <span class="title-form">${brandForm}</span>
+            <span class="title-gallery">${brandGallery}</span>
+          </h1>
+          <p class="site-subtitle">${lobby.subtitle || ""}</p>
           <p class="lobby-metadata">${metadataLine}</p>
         </div>
       </header>
