@@ -701,5 +701,76 @@ export const museumPiecesExtension = {
       primaryUrl: "./medici_faun_source_small.stl",
       fallbackUrl: "./medici_faun_source_small.stl"
     }
+  },
+  "head-from-farnese-hercules-type": {
+    kind: "stl",
+    path: "/head-from-farnese-hercules-type/",
+    sectionId: "antiquity",
+    sortOrder: 28.15,
+    viewerTitle: "Head from the Farnese Hercules Type (Roman marble head after a Greek prototype)",
+    subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
+    medium: "Marble",
+    dimensions: "H: 74.7 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS701)",
+    source: source(
+      "SMK Open source mesh for the Farnese Hercules head type, localized into Form Gallery's native STL viewer.",
+      [
+        link("SMK record", "https://open.smk.dk/en/artwork/image/KAS701"),
+        link("Full STL", "https://api.smk.dk/api/v1/download-3d/f4752n479_smk26-kas701-head-from-farnese-hercules.stl"),
+        link("Optimized STL", "https://api.smk.dk/api/v1/download-3d/nk322j800_KAS701_small.stl"),
+        link("British Museum reference", "https://www.britishmuseum.org/collection/object/G_1776-1108-2")
+      ],
+      "SMK catalogs the object itself as a plaster cast after a Roman copy of the Farnese Hercules type. The height listed here follows the British Museum record for the marble head."
+    ),
+    defaults: {
+      zoom: 2.44,
+      lightAngle: 24,
+      lightPower: 2.16,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./farnese_hercules_head_source_small.stl",
+      fallbackUrl: "./farnese_hercules_head_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.08,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.94, 0.42, 1.54],
+      mobileViewVector: [0.7, 0.34, 1.38]
+    }
+  },
+  "borghese-gladiator": {
+    kind: "stl",
+    path: "/borghese-gladiator/",
+    sectionId: "antiquity",
+    sortOrder: 37.5,
+    viewerTitle: "Borghese Gladiator (Roman copy after a Greek original, c. 100 BCE)",
+    subtitle: "Artist: Agasias of Ephesos (traditional inscription attribution)",
+    medium: "Marble",
+    dimensions: "H: 166 cm | W: 131.5 cm | D: 152.5 cm",
+    lobbyMeta: "Source: Wikimedia Commons STL; SMK cast record for context",
+    source: source(
+      "Local STL mirrored from the Wikimedia Commons file for the Borghese Gladiator cast, with SMK Open used for contextual record details and dimensions.",
+      [
+        link("Wikimedia Commons file page", "https://commons.wikimedia.org/wiki/File:Den_borghesiske_F%C3%A6gter,_Agasias_fra_Ephesos_-_KAS499.stl"),
+        link("SMK context record", "https://open.smk.dk/en/artwork/image/KAS499")
+      ],
+      "The Commons file page lists the STL under CC BY-SA 4.0. SMK's linked original record places the marble statue in the Louvre and dates the Roman copy to around 100 BCE."
+    ),
+    defaults: {
+      zoom: 3.18,
+      lightAngle: 28,
+      lightPower: 2.18,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./borghese_gladiator_source_small.stl",
+      fallbackUrl: "./borghese_gladiator_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.62
+    }
   }
 };
