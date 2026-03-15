@@ -437,5 +437,95 @@ export const museumPiecesExtension = {
       primaryUrl: "./wrestlers_source_small.stl",
       fallbackUrl: "./wrestlers_source_small.stl"
     }
+  },
+  "princess-from-amarna": {
+    kind: "stl",
+    path: "/princess-from-amarna/",
+    sectionId: "antiquity",
+    sortOrder: 11,
+    viewerTitle: "Princess from Amarna (Egypt, c. 1365-1349 BCE)",
+    subtitle: "Artist: Unknown Egyptian workshop",
+    medium: "Quartzite",
+    dimensions: "H: 16.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2226)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Princess from Amarna, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2226",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/cj82kc77d_smk-kas2226-princess-of-amarna.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/v979v741f_KAS2226_small.stl",
+      note: "SMK catalogs the object as a plaster cast after an Egyptian Museum original from Tell el-Amarna, associated in the source record with the workshop of Thutmose and dated to the Amarna Period, 18th Dynasty."
+    }),
+    defaults: {
+      zoom: 2.38,
+      lightAngle: 26,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./princess_from_amarna_source_small.stl",
+      fallbackUrl: "./princess_from_amarna_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.16,
+      defaultYaw: 0,
+      defaultViewVector: [1.02, 0.44, 1.56],
+      mobileViewVector: [0.74, 0.34, 1.38]
+    },
+    material: {
+      color: "#d6b992",
+      metalness: 0.02,
+      clearcoat: 0.06,
+      clearcoatRoughness: 0.58,
+      sheen: 0.08,
+      sheenRoughness: 0.9,
+      sheenColor: "#ead2b1",
+      reflectivity: 0.18
+    }
+  },
+  "capitoline-wolf": {
+    kind: "stl",
+    path: "/capitoline-wolf/",
+    sectionId: "antiquity",
+    sortOrder: 27.65,
+    viewerTitle: "Capitoline Wolf (Etruscan type, c. 450 BCE)",
+    subtitle: "Artist: Unknown Italic workshop",
+    medium: "Bronze",
+    dimensions: "H: 94 cm | W: 65 cm | D: 144.5 cm",
+    lobbyMeta: "Source: SMK Open painted plaster cast (KAS837); bronze material pass",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Capitoline Wolf type, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS837",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/g445cj932_smk39-kas837-capitoline-wolf-decimated.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/05741x168_KAS837_small.stl",
+      note: "SMK catalogs the object itself as a painted plaster cast. The source record identifies the original as the Capitoline Wolf type in the Palazzo dei Conservatori, with Etruscan attribution and a c. 450 BCE date."
+    }),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 28,
+      lightPower: 2.2,
+      exposure: 0.44,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./capitoline_wolf_source_small.stl",
+      fallbackUrl: "./capitoline_wolf_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.12,
+      defaultYaw: 0,
+      defaultViewVector: [1.18, 0.46, 1.78],
+      mobileViewVector: [0.84, 0.34, 1.6]
+    },
+    material: {
+      color: "#6e5b3a",
+      metalness: 0.86,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.44,
+      sheen: 0.0,
+      sheenRoughness: 1.0,
+      sheenColor: "#000000",
+      reflectivity: 0.84
+    }
   }
 };
