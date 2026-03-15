@@ -1338,7 +1338,7 @@ export const museumLobby = {
   title: "Atrium",
   contextLabel: "Collection Entrance",
   subtitle: "A place to explore and examine sculpture from antiquity to the twenty-first century, moving across galleries, eras, regions, and makers.",
-  featuredPieceId: "bouchardon-cupid",
+  featuredPieceId: "dying-gaul",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",
   browseTitle: "Browse the Collection",
