@@ -211,7 +211,6 @@ export const museumPiecesExtension = {
       fallbackMs: 60000
     },
     scene: {
-      rotateX: 0,
       showPedestal: false,
       targetHeight: 0.92,
       focusYRatio: 0.48,

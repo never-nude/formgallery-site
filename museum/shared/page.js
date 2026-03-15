@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260314-2334";
+const MODULE_VERSION = "20260314-2350";
 
 let catalogPromise = null;
 
@@ -61,15 +61,15 @@ const MEDIUM_BY_PIECE = Object.freeze({
 });
 
 const DIMENSIONS_BY_PIECE = Object.freeze({
-  sphinx: "H: 20 m | L: 73 m",
+  sphinx: "H: 2000 cm | L: 7300 cm",
   "ashurnasirpal-lion-hunt": "H: 90 cm | W: 224 cm",
   "lion-released-from-cage": "H: 57.5 cm | W: 114 cm",
   "goryeo-avalokiteshvara": "H: 67.65 cm",
-  "sapi-portuguese-hunting-horn": "H x W x D: 64.2 x 16.4 x 9 cm (25 1/4 x 6 7/16 x 3 9/16 in.)",
-  "loango-ivory-tusk-female-finial": "H x W x D: 34.4 x 13.5 x 13.5 cm (13 9/16 x 5 5/16 x 5 5/16 in.)",
-  "loango-ivory-tusk-seated-european-finial": "H x W x D: 32.8 x 13.6 x 13.5 cm (12 15/16 x 5 3/8 x 5 5/16 in.)",
-  "loango-ivory-tusk-trade-scenes": "H x W x D: 73.3 x 6.4 x 6.4 cm (28 7/8 x 2 1/2 x 2 1/2 in.)",
-  "kongo-maternity-figure": "H x W x D: 25.7 x 10.5 x 10.2 cm (10 1/8 x 4 1/8 x 4 in.)",
+  "sapi-portuguese-hunting-horn": "H: 64.2 cm | W: 16.4 cm | D: 9 cm",
+  "loango-ivory-tusk-female-finial": "H: 34.4 cm | W: 13.5 cm | D: 13.5 cm",
+  "loango-ivory-tusk-seated-european-finial": "H: 32.8 cm | W: 13.6 cm | D: 13.5 cm",
+  "loango-ivory-tusk-trade-scenes": "H: 73.3 cm | W: 6.4 cm | D: 6.4 cm",
+  "kongo-maternity-figure": "H: 25.7 cm | W: 10.5 cm | D: 10.2 cm",
   "venus-de-milo": "H: 204 cm",
   discobolus: "H: 170 cm | W: 115 cm | D: 50 cm",
   "artemision-bronze": "H: 201 cm | W: 214 cm | D: 43 cm",
@@ -102,7 +102,7 @@ const DIMENSIONS_BY_PIECE = Object.freeze({
   "michelangelo-giuliano-duke-of-nemours": "H: 182 cm | W: 89 cm | D: 100 cm",
   "michelangelo-lorenzo-duke-of-urbino": "H: 187 cm | W: 76 cm | D: 94 cm",
   "michelangelo-brutus": "H: 105 cm | W: 71 cm | D: 43 cm",
-  "michelangelo-rondanini-pieta": "H: 190 cm | W: 70 cm | L: 86 cm",
+  "michelangelo-rondanini-pieta": "H: 190 cm | W: 70 cm | D: 86 cm",
   "bouchardon-cupid": "H: 173 cm | W: 75 cm | D: 75 cm",
   "rodin-the-thinker": "H: 189 cm | W: 98 cm | D: 140 cm",
   "donatello-david-bronze": "H: 160 cm | W: 68 cm | D: 61 cm",
