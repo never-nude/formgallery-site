@@ -228,6 +228,46 @@ export const museumPiecesExtension = {
       reflectivity: 0.16
     }
   },
+  "rodin-heroic-head-of-pierre-de-wissant": {
+    kind: "stl",
+    path: "/rodin/heroic-head-of-pierre-de-wissant/",
+    sectionId: "rodin",
+    sortOrder: 40,
+    viewerTitle: "Heroic Head of Pierre de Wissant (1886)",
+    subtitle: "Artist: Auguste Rodin (1840-1917)",
+    medium: "Plaster",
+    dimensions: "H: 85.1 cm | W: 61 cm | D: 50.8 cm",
+    lobbyMeta: "Source: Wikimedia Commons / Cleveland Museum of Art STL",
+    source: source(
+      "Local STL mirrored from the Wikimedia Commons file for Rodin's Heroic Head of Pierre de Wissant, cataloged by the Cleveland Museum of Art.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:1917.722_Heroic_Head_of_Pierre_de_Wissant_-_3D_model.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/1/1c/1917.722_Heroic_Head_of_Pierre_de_Wissant_-_3D_model.stl"),
+        link("Cleveland Museum of Art", "https://www.clevelandart.org/art/1917.722")
+      ],
+      "The Commons file identifies the work as Auguste Rodin's Heroic Head of Pierre de Wissant in the Cleveland Museum of Art. The displayed dimensions follow the museum metadata surfaced on the Commons file page."
+    ),
+    defaults: {
+      zoom: 2.44,
+      lightAngle: 30,
+      lightPower: 2.18,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./heroic_head_of_pierre_de_wissant_source.stl",
+      fallbackUrl: "./heroic_head_of_pierre_de_wissant_source.stl"
+    },
+    timeouts: {
+      primaryMs: 60000,
+      fallbackMs: 60000
+    },
+    scene: {
+      targetHeight: 1.08,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [1.18, 0.46, 1.66],
+      mobileViewVector: [0.86, 0.38, 1.54]
+    }
+  },
   "lorenzi-portrait-of-michelangelo": {
     kind: "stl",
     path: "/lorenzi/portrait-of-michelangelo/",
