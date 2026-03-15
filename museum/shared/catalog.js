@@ -16,7 +16,19 @@ function smkSource({ summary, recordUrl, fullUrl, fallbackUrl, note = "" }) {
 
 function normalizePath(pathname) {
   if (!pathname) return "/";
+  if (pathname.endsWith(".html")) return pathname;
   return pathname.endsWith("/") ? pathname : `${pathname}/`;
+}
+
+function routeEntriesForPath(pathname, pieceId) {
+  const normalized = normalizePath(pathname);
+  if (pathname && pathname.endsWith("/index.html")) {
+    return [
+      [normalized, pieceId],
+      [normalizePath(pathname.slice(0, -"index.html".length)), pieceId]
+    ];
+  }
+  return [[normalized, pieceId]];
 }
 
 const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
@@ -51,6 +63,11 @@ export const museumSections = [
     id: "sub-saharan-africa",
     title: "Sub-Saharan Africa",
     subtitle: "Devotional, court, export, and ancestral art traditions"
+  },
+  {
+    id: "americas",
+    title: "Americas",
+    subtitle: "Indigenous, civic, and modern sculpture from North and South America"
   },
   {
     id: "early-renaissance",
@@ -1368,5 +1385,5 @@ export const museumLobby = {
 };
 
 export const museumRouteMap = Object.fromEntries(
-  Object.entries(museumPieces).map(([pieceId, piece]) => [normalizePath(piece.path), pieceId])
+  Object.entries(museumPieces).flatMap(([pieceId, piece]) => routeEntriesForPath(piece.path, pieceId))
 );

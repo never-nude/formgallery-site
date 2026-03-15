@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260315-1918";
+const MODULE_VERSION = "20260315-2024";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
@@ -190,7 +190,7 @@ function buildMergedCatalog(base, extension) {
       sections
     },
     museumRouteMap: Object.fromEntries(
-      Object.entries(museumPieces).map(([pieceId, piece]) => [normalizePath(piece.path), pieceId])
+      Object.entries(museumPieces).flatMap(([pieceId, piece]) => routeEntriesForPath(piece.path, pieceId))
     )
   };
 }
@@ -207,7 +207,19 @@ function loadCatalog() {
 
 function normalizePath(pathname) {
   if (!pathname) return "/";
+  if (pathname.endsWith(".html")) return pathname;
   return pathname.endsWith("/") ? pathname : `${pathname}/`;
+}
+
+function routeEntriesForPath(pathname, pieceId) {
+  const normalized = normalizePath(pathname);
+  if (pathname && pathname.endsWith("/index.html")) {
+    return [
+      [normalized, pieceId],
+      [normalizePath(pathname.slice(0, -"index.html".length)), pieceId]
+    ];
+  }
+  return [[normalized, pieceId]];
 }
 
 function renderBootError(message, error) {

@@ -1957,7 +1957,7 @@ export const museumPiecesExtension = {
   },
   "jue-wine-vessel": {
     kind: "stl",
-    path: "/asia/jue-wine-vessel/",
+    path: "/asia/jue-wine-vessel/index.html",
     sectionId: "asia",
     sortOrder: 10,
     viewerTitle: "Jue Wine Vessel (China, 16th-15th century BCE)",
@@ -2011,7 +2011,7 @@ export const museumPiecesExtension = {
   },
   "garuda-terminal": {
     kind: "stl",
-    path: "/asia/terminal-in-the-form-of-garuda/",
+    path: "/asia/terminal-in-the-form-of-garuda/index.html",
     sectionId: "asia",
     sortOrder: 24,
     viewerTitle: "Terminal in the Form of Garuda (Cambodia, 12th-13th century)",
@@ -2104,6 +2104,163 @@ export const museumPiecesExtension = {
       defaultYaw: 0,
       defaultViewVector: [1.04, 0.52, 1.9],
       mobileViewVector: [0.78, 0.42, 1.72]
+    }
+  },
+  "key-marco-cat": {
+    kind: "gltf",
+    path: "/americas/key-marco-cat/index.html",
+    sectionId: "americas",
+    sortOrder: 4,
+    viewerTitle: "Key Marco Cat (Florida, c. 700-1500 CE)",
+    subtitle: "Artist: Unknown Indigenous woodcarver; possibly Calusa or another Southeastern artist",
+    medium: "Wood",
+    dimensions: "H: 15 cm | W: 4 cm | D: 6.5 cm",
+    locationLabel: "Origin:",
+    location: "Key Marco, Collier County, Florida, United States",
+    lobbyMeta: "Source: Smithsonian 3D / NMNH Anthropology",
+    source: source(
+      "Rendered from Smithsonian 3D's 'Statuette of Mountain Lion or Panther Man God' model, popularly known as the Key Marco Cat.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/statuette-mountain-lion-or-panther-man-god-key-marco-cat%3A9868cadc-d331-4b13-9864-a1740df6e47f"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:9868cadc-d331-4b13-9864-a1740df6e47f/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:9868cadc-d331-4b13-9864-a1740df6e47f/key-marco-cat-(color)-150k-4096-high.glb")
+      ],
+      "Smithsonian's anthropology record lists the object's metadata usage as CC0 and places it at Key Marco in Collier County, Florida. The cultural attribution remains debated; the record notes Calusa and broader Southeastern possibilities."
+    ),
+    defaults: {
+      zoom: 2.78,
+      lightAngle: 20,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:9868cadc-d331-4b13-9864-a1740df6e47f/key-marco-cat-(color)-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:9868cadc-d331-4b13-9864-a1740df6e47f/key-marco-cat-(color)-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 0.76,
+      defaultYaw: Math.PI * 0.12,
+      defaultViewVector: [1.02, 0.46, 1.24],
+      mobileViewVector: [0.76, 0.36, 1.12]
+    }
+  },
+  "dying-tecumseh": {
+    kind: "gltf",
+    path: "/americas/dying-tecumseh/index.html",
+    sectionId: "americas",
+    sortOrder: 8,
+    viewerTitle: "The Dying Tecumseh (modeled c. 1837-1846, carved 1856)",
+    subtitle: "Artist: Ferdinand Pettrich (1798-1872); sitter: Tecumseh",
+    medium: "Marble",
+    dimensions: "H: 93.1 cm | W: 197.2 cm | D: 136.6 cm",
+    locationLabel: "Collection:",
+    location: "Smithsonian American Art Museum",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Ferdinand Pettrich's The Dying Tecumseh from the Smithsonian American Art Museum.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/dying-tecumseh%3Aa572abe8-d60a-4ad5-aa86-6609e85ec4a6"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:a572abe8-d60a-4ad5-aa86-6609e85ec4a6/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:a572abe8-d60a-4ad5-aa86-6609e85ec4a6/The_Dying_Tecumseh-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, medium, and dimensions follow the Smithsonian American Art Museum record."
+    ),
+    defaults: {
+      zoom: 2.28,
+      lightAngle: 22,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:a572abe8-d60a-4ad5-aa86-6609e85ec4a6/The_Dying_Tecumseh-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:a572abe8-d60a-4ad5-aa86-6609e85ec4a6/The_Dying_Tecumseh-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 0.84,
+      focusYRatio: 0.48,
+      defaultYaw: -Math.PI * 0.1,
+      defaultViewVector: [1.08, 0.32, 1.84],
+      mobileViewVector: [0.82, 0.26, 1.62]
+    }
+  },
+  "wounded-scout": {
+    kind: "gltf",
+    path: "/americas/wounded-scout/index.html",
+    sectionId: "americas",
+    sortOrder: 10,
+    viewerTitle: "The Wounded Scout, a Friend in the Swamp (patented 1864)",
+    subtitle: "Artist: John Rogers (1829-1904)",
+    medium: "Plaster",
+    dimensions: "H: 56.3 cm | W: 28.1 cm | D: 21 cm",
+    locationLabel: "Collection:",
+    location: "Smithsonian American Art Museum",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of John Rogers's The Wounded Scout, a Friend in the Swamp.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/wounded-scout-friend-swamp%3Aa09bb967-a8b8-46a2-9322-37b25a452b46"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:a09bb967-a8b8-46a2-9322-37b25a452b46/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:a09bb967-a8b8-46a2-9322-37b25a452b46/The_Wounded_Scout__a_Friend_in_the_Swamp-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, medium, and dimensions follow the Smithsonian American Art Museum record."
+    ),
+    defaults: {
+      zoom: 2.46,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:a09bb967-a8b8-46a2-9322-37b25a452b46/The_Wounded_Scout__a_Friend_in_the_Swamp-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:a09bb967-a8b8-46a2-9322-37b25a452b46/The_Wounded_Scout__a_Friend_in_the_Swamp-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.08, 0.5, 1.42],
+      mobileViewVector: [0.82, 0.38, 1.28]
+    }
+  },
+  "greenough-george-washington": {
+    kind: "gltf",
+    path: "/americas/george-washington/index.html",
+    sectionId: "americas",
+    sortOrder: 12,
+    viewerTitle: "George Washington (1840)",
+    subtitle: "Artist: Horatio Greenough (1805-1852); sitter: George Washington",
+    medium: "Marble",
+    dimensions: "H: 345.4 cm | W: 259.1 cm | D: 209.6 cm",
+    locationLabel: "On view:",
+    location: "Smithsonian National Museum of American History",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Horatio Greenough's George Washington, held by the Smithsonian American Art Museum and installed at the National Museum of American History.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/george-washington%3A789cf90a-4387-4ac1-9e96-c7d6a7b9d26f"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:789cf90a-4387-4ac1-9e96-c7d6a7b9d26f/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:789cf90a-4387-4ac1-9e96-c7d6a7b9d26f/george-washington-greenough-statue-(1840)-150k-4096-high.glb")
+      ],
+      "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, dimensions, and installation note follow the Smithsonian American Art Museum record."
+    ),
+    defaults: {
+      zoom: 2.14,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:789cf90a-4387-4ac1-9e96-c7d6a7b9d26f/george-washington-greenough-statue-(1840)-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:789cf90a-4387-4ac1-9e96-c7d6a7b9d26f/george-washington-greenough-statue-(1840)-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.56,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.18, 0.68, 1.72],
+      mobileViewVector: [0.9, 0.52, 1.54]
     }
   }
 };
