@@ -120,6 +120,7 @@ export async function initStlMuseumPage(piece) {
     viewerTitle: piece.viewerTitle,
     subtitle: piece.subtitle,
     medium: piece.medium,
+    dimensions: piece.dimensions,
     source: piece.source,
     statsLoading: initialLoadingText,
     loadingText: initialLoadingText,

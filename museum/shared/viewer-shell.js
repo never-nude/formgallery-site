@@ -67,6 +67,7 @@ export function renderViewerShell(config) {
         <h1 class="title">${config.viewerTitle}</h1>
         ${titleParagraph("sub", config.subtitle)}
         ${labeledParagraph("sub meta-line", "Medium:", config.medium)}
+        ${labeledParagraph("sub meta-line", "Dimensions:", config.dimensions)}
         <p id="stats" class="sub">${statsLoading}</p>
         ${renderSourceCard(config.source)}
 
