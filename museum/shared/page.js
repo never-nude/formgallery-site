@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260315-1802";
+const MODULE_VERSION = "20260315-1812";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";

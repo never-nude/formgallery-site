@@ -329,8 +329,32 @@ function buildSections(lobby, pieces) {
     .filter((section) => section.items.length > 0);
 }
 
+function startOfUtcWeek(date) {
+  const utcDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  const weekday = utcDate.getUTCDay();
+  const daysFromMonday = (weekday + 6) % 7;
+  utcDate.setUTCDate(utcDate.getUTCDate() - daysFromMonday);
+  utcDate.setUTCHours(0, 0, 0, 0);
+  return utcDate.getTime();
+}
+
+function resolveFeaturedPieceId(lobby) {
+  const rotation = Array.isArray(lobby.featuredPieceIds) ? lobby.featuredPieceIds.filter(Boolean) : [];
+  const fallbackId = lobby.featuredPieceId || rotation[0] || "dying-gaul";
+
+  if (!rotation.length) {
+    return fallbackId;
+  }
+
+  const anchorDate = lobby.featuredRotationStart ? new Date(`${lobby.featuredRotationStart}T00:00:00Z`) : new Date();
+  const anchorWeek = startOfUtcWeek(anchorDate);
+  const currentWeek = startOfUtcWeek(new Date());
+  const elapsedWeeks = Math.max(0, Math.floor((currentWeek - anchorWeek) / (7 * 24 * 60 * 60 * 1000)));
+  return rotation[elapsedWeeks % rotation.length] || fallbackId;
+}
+
 function pickFeaturedPiece(lobby, sections) {
-  const featuredId = lobby.featuredPieceId || "dying-gaul";
+  const featuredId = resolveFeaturedPieceId(lobby);
   for (const section of sections) {
     const directMatch = section.items.find((item) => item.id === featuredId);
     if (directMatch) return directMatch;
