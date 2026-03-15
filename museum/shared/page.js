@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260314-2316";
+const MODULE_VERSION = "20260314-2334";
 
 let catalogPromise = null;
 
@@ -61,6 +61,7 @@ const MEDIUM_BY_PIECE = Object.freeze({
 });
 
 const DIMENSIONS_BY_PIECE = Object.freeze({
+  sphinx: "H: 20 m | L: 73 m",
   "ashurnasirpal-lion-hunt": "H: 90 cm | W: 224 cm",
   "lion-released-from-cage": "H: 57.5 cm | W: 114 cm",
   "goryeo-avalokiteshvara": "H: 67.65 cm",
@@ -69,6 +70,7 @@ const DIMENSIONS_BY_PIECE = Object.freeze({
   "loango-ivory-tusk-seated-european-finial": "H x W x D: 32.8 x 13.6 x 13.5 cm (12 15/16 x 5 3/8 x 5 5/16 in.)",
   "loango-ivory-tusk-trade-scenes": "H x W x D: 73.3 x 6.4 x 6.4 cm (28 7/8 x 2 1/2 x 2 1/2 in.)",
   "kongo-maternity-figure": "H x W x D: 25.7 x 10.5 x 10.2 cm (10 1/8 x 4 1/8 x 4 in.)",
+  "venus-de-milo": "H: 204 cm",
   discobolus: "H: 170 cm | W: 115 cm | D: 50 cm",
   "artemision-bronze": "H: 201 cm | W: 214 cm | D: 43 cm",
   "athena-lemnia": "H: 208 cm | W: 81.5 cm | D: 50 cm",
@@ -79,6 +81,7 @@ const DIMENSIONS_BY_PIECE = Object.freeze({
   "ludovisi-gaul": "H: 229 cm | W: 168 cm | D: 112.5 cm",
   "capitoline-venus": "H: 188.5 cm | W: 62 cm",
   laocoon: "H: 242 cm | W: 162.5 cm | D: 103 cm",
+  "augustus-of-prima-porta": "H: 217 cm",
   "donatello-saint-george": "H: 219 cm | W: 78.5 cm | D: 55 cm",
   "michelangelo-battle-of-the-centaurs": "H: 80 cm | W: 89 cm",
   "michelangelo-bacchus": "H: 208 cm | W: 76.5 cm | D: 59 cm",
@@ -92,6 +95,12 @@ const DIMENSIONS_BY_PIECE = Object.freeze({
   "michelangelo-rebellious-slave": "H: 213 cm | W: 82.5 cm | D: 51.5 cm",
   "michelangelo-prisoner": "H: 256 cm | W: 73 cm | D: 93 cm",
   "michelangelo-medici-madonna": "H: 225 cm | W: 104.5 cm | D: 104 cm",
+  "michelangelo-dawn": "H: 150 cm | W: 240 cm | D: 97 cm",
+  "michelangelo-dusk": "H: 147.5 cm | W: 212 cm | D: 86 cm",
+  "michelangelo-night": "H: 150 cm | W: 206 cm | D: 105 cm",
+  "michelangelo-day": "H: 120 cm | W: 200 cm | D: 75 cm",
+  "michelangelo-giuliano-duke-of-nemours": "H: 182 cm | W: 89 cm | D: 100 cm",
+  "michelangelo-lorenzo-duke-of-urbino": "H: 187 cm | W: 76 cm | D: 94 cm",
   "michelangelo-brutus": "H: 105 cm | W: 71 cm | D: 43 cm",
   "michelangelo-rondanini-pieta": "H: 190 cm | W: 70 cm | L: 86 cm",
   "bouchardon-cupid": "H: 173 cm | W: 75 cm | D: 75 cm",
@@ -99,6 +108,7 @@ const DIMENSIONS_BY_PIECE = Object.freeze({
   "donatello-david-bronze": "H: 160 cm | W: 68 cm | D: 61 cm",
   "benedetto-da-maiano-john-the-baptist-as-a-boy": "H: 144 cm | W: 47 cm | D: 35 cm",
   "rodin-walking-man": "H: 214 cm | W: 70 cm | D: 164 cm",
+  "rodin-danaid": "H: 20.2 cm | W: 36.5 cm | D: 27.5 cm",
   "lorenzi-portrait-of-michelangelo": "H: 43 cm | W: 25 cm | D: 28 cm",
   "michelangelo-risen-christ": "H: 251 cm | W: 74 cm | D: 82.5 cm",
   "michelangelo-apollo": "H: 149 cm | W: 56.5 cm | D: 59 cm",
