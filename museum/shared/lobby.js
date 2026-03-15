@@ -523,6 +523,7 @@ export function renderMuseumLobby(lobby, pieces) {
   const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
   const brandForm = brandWords[0] || "FORM";
   const brandGallery = brandWords.slice(1).join(" ") || "GALLERY";
+  const titleHtml = lobby.title ? `<span class="page-title-atrium">${lobby.title}</span>` : "";
 
   document.body.innerHTML = `
     <div class="app lobby-app">
@@ -530,7 +531,7 @@ export function renderMuseumLobby(lobby, pieces) {
         <h1 class="page-title page-title--progressive">
           <span class="page-title-form">${brandForm}</span>
           <span class="page-title-gallery">${brandGallery}</span>
-          <span class="page-title-atrium">${lobby.title || "Atrium"}</span>
+          ${titleHtml}
         </h1>
         <p class="page-subtitle">${lobby.subtitle || ""}</p>
       </header>
