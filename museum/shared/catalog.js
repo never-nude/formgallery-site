@@ -238,7 +238,7 @@ export const museumPieces = {
       autoLevelBottomRatio: 0.025,
       showPedestal: false,
       targetHeight: 1.46,
-      defaultYaw: -Math.PI * 0.07,
+      defaultYaw: 0,
       defaultViewVector: [1.12, 0.54, 1.88],
       mobileViewVector: [0.82, 0.42, 1.72]
     }
@@ -287,7 +287,7 @@ export const museumPieces = {
       autoLevelBottomRatio: 0.025,
       showPedestal: false,
       targetHeight: 1.38,
-      defaultYaw: Math.PI * 0.03,
+      defaultYaw: 0,
       defaultViewVector: [1.0, 0.5, 1.84],
       mobileViewVector: [0.78, 0.4, 1.66]
     }
@@ -336,7 +336,7 @@ export const museumPieces = {
       autoLevelBottomRatio: 0.025,
       showPedestal: false,
       targetHeight: 1.38,
-      defaultYaw: Math.PI * 0.04,
+      defaultYaw: 0,
       defaultViewVector: [1.0, 0.5, 1.84],
       mobileViewVector: [0.78, 0.4, 1.66]
     }
@@ -375,7 +375,7 @@ export const museumPieces = {
       autoLevelBottomRatio: 0.025,
       showPedestal: false,
       targetHeight: 1.46,
-      defaultYaw: -Math.PI * 0.02,
+      defaultYaw: 0,
       defaultViewVector: [1.04, 0.54, 1.9],
       mobileViewVector: [0.78, 0.42, 1.72]
     }
@@ -414,7 +414,7 @@ export const museumPieces = {
       autoLevelBottomRatio: 0.028,
       verticalOffset: -0.09,
       targetHeight: 1.24,
-      defaultYaw: Math.PI * 0.12,
+      defaultYaw: 0,
       defaultViewVector: [1.22, 0.62, 1.86],
       mobileViewVector: [0.86, 0.5, 1.72]
     }
