@@ -18,6 +18,7 @@ const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
 const DONATELLO_SUBTITLE = "Artist: Donatello (c. 1386-1466)";
 const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
 const BENEDETTO_DA_MAIANO_SUBTITLE = "Artist: Attributed to Benedetto da Maiano (1442-1497)";
+const SMK_CAST_SUBTITLE = "Artist: Unknown sculptor; current mesh from SMK's cast record";
 
 export const museumPiecesExtension = {
   "donatello-saint-george": {
@@ -1306,6 +1307,146 @@ export const museumPiecesExtension = {
       defaultYaw: -Math.PI * 0.1,
       defaultViewVector: [0.96, 0.3, 1.42],
       mobileViewVector: [0.78, 0.24, 1.28]
+    }
+  },
+  penelope: {
+    kind: "stl",
+    path: "/penelope/",
+    sectionId: "greek-classical",
+    sortOrder: 27.35,
+    viewerTitle: "Penelope (Roman copy after a Greek original, c. 460 BCE)",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 124 cm | W: 74.5 cm | D: 46 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS202)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Penelope, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS202",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/b5644x06s_penelope-1.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/dv13zz67n_KAS202_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a Penelope type associated with the Greek classical tradition and dated around 460 BCE."
+    }),
+    defaults: {
+      zoom: 2.46,
+      lightAngle: 26,
+      lightPower: 2.08,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./penelope_source_small.stl",
+      fallbackUrl: "./penelope_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.18,
+      focusYRatio: 0.54,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [1.02, 0.38, 1.54],
+      mobileViewVector: [0.78, 0.3, 1.36]
+    }
+  },
+  thalia: {
+    kind: "stl",
+    path: "/thalia/",
+    sectionId: "hellenistic-world",
+    sortOrder: 30.15,
+    viewerTitle: "Thalia, Muse of Comedy",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 161 cm | W: 80 cm | D: 86.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS35)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Thalia, muse of comedy, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS35",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/v979v730x_smk-103-kas35.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/gt54ks43p_KAS35_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the figure as Thalia, with theater mask and tympanon."
+    }),
+    defaults: {
+      zoom: 2.7,
+      lightAngle: 28,
+      lightPower: 2.12,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./thalia_source_small.stl",
+      fallbackUrl: "./thalia_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.42,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.14, 0.48, 1.72],
+      mobileViewVector: [0.88, 0.38, 1.54]
+    }
+  },
+  "aristippos-of-cyrene": {
+    kind: "stl",
+    path: "/aristippos-of-cyrene/",
+    sectionId: "hellenistic-world",
+    sortOrder: 29.55,
+    viewerTitle: "Aristippos of Cyrene (seated philosopher)",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 128 cm | W: 57 cm | D: 90 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS207)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the seated portrait of Aristippos of Cyrene, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS207",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/df65vd347_smk-kas-43.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/8910k003r_KAS207_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the figure as Aristippos of Cyrene, seated, and labels him as a Greek philosopher."
+    }),
+    defaults: {
+      zoom: 2.58,
+      lightAngle: 28,
+      lightPower: 2.1,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./aristippos_of_cyrene_source_small.stl",
+      fallbackUrl: "./aristippos_of_cyrene_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.24,
+      focusYRatio: 0.54,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.08, 0.42, 1.58],
+      mobileViewVector: [0.84, 0.34, 1.42]
+    }
+  },
+  "dying-niobid": {
+    kind: "stl",
+    path: "/dying-niobid/",
+    sectionId: "greek-classical",
+    sortOrder: 27.45,
+    viewerTitle: "Dying Niobid",
+    subtitle: SMK_CAST_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 149.5 cm | W: 97 cm | D: 41 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2051)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Dying Niobid, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2051",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/w6634853q_smk36-kas2051.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/w9505475s_KAS2051_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the figure as a dying Niobid from the classical myth cycle."
+    }),
+    defaults: {
+      zoom: 2.72,
+      lightAngle: 27,
+      lightPower: 2.12,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./dying_niobid_source_small.stl",
+      fallbackUrl: "./dying_niobid_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.42,
+      focusYRatio: 0.5,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.1, 0.42, 1.72],
+      mobileViewVector: [0.86, 0.34, 1.5]
     }
   }
 };
