@@ -58,11 +58,6 @@ export function renderViewerShell(config) {
   const embedMode = config.embedMode || searchParams.get("embed") || searchParams.get("mode") || "";
   const viewerClasses = ["app", "viewer-app"];
   const sourceCard = renderSourceCard(config.source);
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (embedMode === "hero" || prefersReducedMotion) {
-    defaults.autoRotate = false;
-  }
 
   if (embedMode) {
     viewerClasses.push(`viewer-app--${embedMode}`);
