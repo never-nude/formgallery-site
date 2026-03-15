@@ -262,6 +262,7 @@ export const museumPiecesExtension = {
       fallbackMs: 60000
     },
     scene: {
+      rotateX: 0,
       targetHeight: 1.08,
       defaultYaw: -Math.PI * 0.06,
       defaultViewVector: [1.18, 0.46, 1.66],
