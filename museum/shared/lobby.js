@@ -532,28 +532,32 @@ export function renderMuseumLobby(lobby, pieces) {
 
   document.body.innerHTML = `
     <div class="app lobby-app">
-      <header class="lobby-header">
-        <div class="lobby-copy-block">
-          <h1 class="site-title">
-            <span class="title-form">${brandForm}</span>
-            <span class="title-gallery">${brandGallery}</span>
-          </h1>
-          <p class="site-subtitle">${lobby.subtitle || ""}</p>
-          <p class="lobby-metadata">${metadataLine}</p>
+      <header class="museum-header">
+        <div class="site-brand">
+          <span class="brand-form">${brandForm}</span>
+          <span class="brand-gallery">${brandGallery}</span>
         </div>
+        <h1 class="page-title">${lobby.title || "Atrium"}</h1>
+        <p class="page-subtitle">${lobby.subtitle || ""}</p>
+        <div class="collection-meta">${metadataLine}</div>
       </header>
 
       <main class="stage">
         ${featuredPiece ? `
-          <section class="hero-section" aria-labelledby="featured-work-title">
-            <div class="hero-copy">
-              <p class="section-kicker">${lobby.featuredLabel || "Featured Sculpture"}</p>
-              <h2 class="hero-title" id="featured-work-title">${featuredPiece.title}</h2>
-              ${featuredPiece.attribution ? `<p class="hero-attribution">${featuredPiece.attribution}</p>` : ""}
-              ${featuredPiece.date ? `<p class="hero-date">${featuredPiece.date}</p>` : ""}
-              <a class="hero-link" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
+          <section class="featured-work" aria-labelledby="featured-work-title">
+            <div class="featured-copy">
+              <p class="featured-label">${lobby.featuredLabel || "Featured Sculpture"}</p>
+              <h2 class="featured-title" id="featured-work-title">${featuredPiece.title}</h2>
+              ${(featuredPiece.attribution || featuredPiece.date) ? `
+                <p class="featured-artist">
+                  ${featuredPiece.attribution || ""}
+                  ${featuredPiece.attribution && featuredPiece.date ? " • " : ""}
+                  ${featuredPiece.date || ""}
+                </p>
+              ` : ""}
+              <a class="explore-button" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
             </div>
-            <div class="hero-stage-shell" aria-hidden="true">
+            <div class="sculpture-stage" aria-hidden="true">
               ${heroFrame ? `
                 <iframe
                   class="hero-frame"

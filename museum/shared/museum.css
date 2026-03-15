@@ -18,6 +18,7 @@
   --shadow-deep: #4a351516;
   --font-ui: "IBM Plex Sans", "Avenir Next", sans-serif;
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --serif-display: var(--font-display);
 }
 
 * {
@@ -989,60 +990,51 @@ canvas {
     linear-gradient(180deg, #f8f3ea 0%, #f4eee3 24%, #ebe0cf 100%);
 }
 
-.lobby-header {
-  display: grid;
-  gap: 22px;
-  padding: 28px clamp(18px, 4vw, 44px) 24px;
-  border-bottom: 1px solid #bca98d66;
-  background: linear-gradient(180deg, #f7f1e9 0%, #f2e8d9 100%);
+.museum-header {
+  max-width: 1100px;
+  margin: 80px auto 60px auto;
+  padding: 0 40px;
 }
 
-.lobby-copy-block {
-  display: grid;
-  gap: 10px;
-  max-width: 58rem;
+.site-brand {
+  font-family: var(--serif-display);
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
 }
 
-.site-title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 48px;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  color: var(--accent-graphite);
+.brand-form {
+  opacity: 0.45;
+  margin-right: 6px;
 }
 
-.title-form {
-  opacity: 0.55;
-  letter-spacing: 0.05em;
-  font-variant: small-caps;
-}
-
-.title-gallery {
+.brand-gallery {
   opacity: 1;
   font-weight: 600;
 }
 
-.site-subtitle {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #6b6b6b;
-  max-width: 720px;
+.page-title {
+  margin: 0 0 14px;
+  font-family: var(--serif-display);
+  font-size: 72px;
+  line-height: 1.05;
+  color: var(--accent-graphite);
 }
 
-.lobby-metadata {
-  margin: 0;
+.page-subtitle {
+  max-width: 640px;
+  margin: 0 0 18px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #6f6f6f;
+}
+
+.collection-meta {
   font-size: 12px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #746553;
-}
-
-@media (min-width: 900px) {
-  .site-title {
-    font-size: 56px;
-  }
+  color: #8a8a8a;
 }
 
 .lobby-app .stage {
@@ -1085,64 +1077,77 @@ canvas {
   max-width: 48rem;
 }
 
-.hero-section {
+.featured-work {
+  max-width: 1100px;
+  margin: 80px auto 0;
   display: grid;
-  grid-template-columns: minmax(250px, 0.8fr) minmax(320px, 1.2fr);
-  gap: clamp(24px, 5vw, 56px);
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
   align-items: center;
-  padding: clamp(24px, 4vw, 44px) 0;
-  border-top: 1px solid #bca98d66;
-  border-bottom: 1px solid #bca98d66;
+  padding: 0 40px;
 }
 
-.hero-copy {
+.featured-copy {
   display: grid;
   gap: 10px;
   align-content: center;
 }
 
-.hero-title {
+.featured-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin: 0 0 10px;
+}
+
+.featured-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 0.96;
-  letter-spacing: -0.04em;
+  font-size: 42px;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: -0.03em;
   font-weight: 600;
 }
 
-.hero-attribution,
-.hero-date {
-  margin: 0;
-  color: #645749;
-  font-size: 15px;
-  line-height: 1.65;
+.featured-artist {
+  font-size: 14px;
+  color: #6a6a6a;
+  margin: 0 0 20px;
 }
 
-.hero-link {
+.explore-button {
   width: fit-content;
-  margin-top: 10px;
-  padding: 10px 16px;
-  border: 1px solid var(--card-border);
-  border-radius: 999px;
-  background: #f8f3ec;
-  color: #45392c;
-  text-decoration: none;
+  border: 1px solid #cfc6b7;
+  padding: 10px 18px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-size: 12px;
+  background: transparent;
+  cursor: pointer;
+  color: #45392c;
+  text-decoration: none;
   font-weight: 600;
 }
 
-.hero-stage-shell {
+.explore-button:hover {
+  background: #e8e0d4;
+}
+
+.sculpture-stage {
   position: relative;
   min-height: clamp(360px, 58vh, 700px);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 28%, #ffffff8f 0%, transparent 46%),
-    linear-gradient(180deg, #f7f1e8 0%, #eee2cf 100%);
+  background: radial-gradient(
+    ellipse at center,
+    #e7dfd3 0%,
+    #d8cfbf 100%
+  );
+  border-radius: 6px;
 }
 
-.hero-stage-shell::before {
+.sculpture-stage::before {
   content: "";
   position: absolute;
   inset: auto 12% 15% 12%;
@@ -1151,7 +1156,7 @@ canvas {
   z-index: 1;
 }
 
-.hero-stage-shell::after {
+.sculpture-stage::after {
   content: "";
   position: absolute;
   inset: 8% 14% 18%;
@@ -1392,8 +1397,8 @@ canvas {
 }
 
 @supports (padding: max(0px)) {
-  .lobby-header {
-    padding-top: max(28px, env(safe-area-inset-top));
+  .museum-header {
+    padding-top: max(0px, env(safe-area-inset-top));
   }
 }
 
@@ -1403,11 +1408,12 @@ canvas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .hero-section {
+  .featured-work {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .hero-stage-shell {
+  .sculpture-stage {
     order: -1;
     min-height: clamp(320px, 46svh, 520px);
   }
@@ -1419,11 +1425,20 @@ canvas {
     grid-template-columns: 1fr;
   }
 
-  .site-subtitle {
+  .museum-header,
+  .featured-work {
+    padding: 0 18px;
+  }
+
+  .page-title {
+    font-size: 52px;
+  }
+
+  .page-subtitle {
     font-size: 15px;
   }
 
-  .hero-stage-shell {
+  .sculpture-stage {
     min-height: clamp(280px, 42svh, 420px);
   }
 
