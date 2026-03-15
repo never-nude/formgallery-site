@@ -86,7 +86,7 @@ export function renderViewerShell(config) {
           </div>
         </div>
 
-        <details class="viewer-controls">
+        <details class="viewer-controls" open>
           <summary>Viewer Controls</summary>
 
           <div class="viewer-controls-panel">
