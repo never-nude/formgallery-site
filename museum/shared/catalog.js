@@ -1333,10 +1333,11 @@ function sectionItems(sectionId) {
 }
 
 export const museumLobby = {
-  pageTitle: "Form Gallery - Museum Lobby",
+  pageTitle: "Form Gallery - Atrium",
   brand: "FORM GALLERY",
-  title: "Museum Lobby",
-  subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the nineteenth century. Browse by era, region, maker, or curatorial gallery.",
+  title: "Atrium",
+  contextLabel: "Collection Entrance",
+  subtitle: "Atrium is the entrance hall of Form Gallery: the main page for moving through the collection by gallery, era, region, or maker.",
   featuredPieceId: "bouchardon-cupid",
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",

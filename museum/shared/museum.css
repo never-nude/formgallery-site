@@ -1017,6 +1017,27 @@ canvas {
   max-width: 58rem;
 }
 
+.lobby-context {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  width: fit-content;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #75624a;
+}
+
+.lobby-context::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, #7f6646 0%, #ccb392 100%);
+  opacity: 0.76;
+}
+
 .lobby-title {
   margin: 0;
   font-family: var(--font-display);

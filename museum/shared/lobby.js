@@ -529,7 +529,8 @@ export function renderMuseumLobby(lobby, pieces) {
           <span class="brand-name">${lobby.brand || "FORM GALLERY"}</span>
         </div>
         <div class="lobby-copy-block">
-          <h1 class="lobby-title">${lobby.title || "Museum Lobby"}</h1>
+          ${lobby.contextLabel ? `<p class="lobby-context">${lobby.contextLabel}</p>` : ""}
+          <h1 class="lobby-title">${lobby.title || "Atrium"}</h1>
           <p class="lobby-intro">${lobby.subtitle || ""}</p>
           <p class="lobby-metadata">${metadataLine}</p>
         </div>
