@@ -1199,5 +1199,113 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.96, 0.42, 1.52],
       mobileViewVector: [0.78, 0.34, 1.38]
     }
+  },
+  "strangford-shield": {
+    kind: "stl",
+    path: "/strangford-shield/",
+    sectionId: "greek-classical",
+    sortOrder: 27.15,
+    viewerTitle: "Strangford Shield (Amazonomachy from the Athena Parthenos shield)",
+    subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
+    medium: "Marble relief",
+    dimensions: "H: 39 cm | W: 54 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS767)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Strangford Shield relief, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS767",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/bv73c4750_strangford-skjoldet-repaired-2022.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/5x21tk87w_KAS767-repaired_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the so-called Strangford Shield, a Roman copy of the Amazonomachy shield composition associated with Phidias' Athena Parthenos."
+    }),
+    defaults: {
+      zoom: 2.18,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./strangford_shield_source_small.stl",
+      fallbackUrl: "./strangford_shield_source_small.stl"
+    },
+    scene: {
+      targetHeight: 0.92,
+      focusYRatio: 0.54,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [0.94, 0.24, 1.34],
+      mobileViewVector: [0.78, 0.2, 1.18]
+    }
+  },
+  "dionysos-farnese": {
+    kind: "stl",
+    path: "/dionysos-farnese/",
+    sectionId: "hellenistic-world",
+    sortOrder: 30.35,
+    viewerTitle: "Dionysos Farnese (Roman copy after a Hellenistic original)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Marble",
+    dimensions: "H: 95 cm | W: 68 cm | D: 72 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS99)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the seated Dionysos Farnese torso, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS99",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/n870zw578_smk-47-kas99.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/2b88qh62d_KAS99_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a Roman copy of a Hellenistic Dionysos type in the Museo Archeologico Nazionale di Napoli."
+    }),
+    defaults: {
+      zoom: 2.42,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./dionysos_farnese_source_small.stl",
+      fallbackUrl: "./dionysos_farnese_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.0,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.98, 0.34, 1.46],
+      mobileViewVector: [0.8, 0.26, 1.3]
+    }
+  },
+  "michelangelo-crouching-boy": {
+    kind: "stl",
+    path: "/michelangelo/crouching-boy/",
+    sectionId: "michelangelo",
+    sortOrder: 125,
+    viewerTitle: "Crouching Boy (c. 1526-1533)",
+    subtitle: MICHELANGELO_SUBTITLE,
+    medium: "Marble",
+    dimensions: "H: 61 cm | W: 43.5 cm | D: 45.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS2382)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Michelangelo's Crouching Boy, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS2382",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/q524jt29h_smk-51-kas2382.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/3197xs07d_KAS2382_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as Michelangelo's Crouching Boy in the Hermitage and dates the sculpture to about 1526-1533."
+    }),
+    defaults: {
+      zoom: 2.48,
+      lightAngle: 28,
+      lightPower: 2.14,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./crouching_boy_source_small.stl",
+      fallbackUrl: "./crouching_boy_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.02,
+      focusYRatio: 0.5,
+      defaultYaw: -Math.PI * 0.1,
+      defaultViewVector: [0.96, 0.3, 1.42],
+      mobileViewVector: [0.78, 0.24, 1.28]
+    }
   }
 };
