@@ -2325,7 +2325,7 @@ export const museumPiecesExtension = {
       "The Smithsonian object page marks the work and its 3D package as CC0. Title, date, artist, sitter, medium, dimensions, and gallery location follow the National Portrait Gallery record."
     ),
     defaults: {
-      zoom: 2.72,
+      zoom: 2.34,
       lightAngle: 24,
       lightPower: 2.04,
       exposure: 0.42,
@@ -2336,10 +2336,11 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/npg-npg_78_1-HiRes_Unwrapped-150k-2048-medium.glb"
     },
     scene: {
-      targetHeight: 0.92,
-      defaultYaw: Math.PI * 0.1,
-      defaultViewVector: [1.04, 0.56, 1.18],
-      mobileViewVector: [0.82, 0.42, 1.08]
+      targetHeight: 1.08,
+      focusYRatio: 0.66,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.78, 0.48, 1.0],
+      mobileViewVector: [0.62, 0.36, 0.9]
     }
   },
   "helen-adams-keller": {
@@ -2415,11 +2416,12 @@ export const museumPiecesExtension = {
     },
     scene: {
       showPedestal: false,
+      rotateZ: -Math.PI * 0.25,
       targetHeight: 0.96,
       focusYRatio: 0.5,
       defaultYaw: 0,
-      defaultViewVector: [0.94, 0.24, 2.18],
-      mobileViewVector: [0.72, 0.2, 1.98]
+      defaultViewVector: [0.22, 0.16, 2.18],
+      mobileViewVector: [0.16, 0.12, 1.96]
     }
   }
 };
