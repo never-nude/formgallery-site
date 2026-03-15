@@ -772,5 +772,148 @@ export const museumPiecesExtension = {
     scene: {
       targetHeight: 1.62
     }
+  },
+  "doryphoros": {
+    kind: "stl",
+    path: "/doryphoros/",
+    sectionId: "greek-classical",
+    sortOrder: 27.1,
+    viewerTitle: "Doryphoros / Spear-Bearer (Roman copy after Polykleitos, c. 450 BCE original)",
+    subtitle: "Artist: Unknown Roman workshop after Polykleitos",
+    medium: "Marble",
+    dimensions: "H: 213 cm | W: 75.5 cm | D: 77 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS11)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Doryphoros / Spear-Bearer type, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS11",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/q237hx73t_smk-doryphoros.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/th83m405d_KAS11_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the Doryphoros type found at Pompeii and now in the Museo Archeologico Nazionale di Napoli, following a Greek classical prototype associated with Polykleitos."
+    }),
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 28,
+      lightPower: 2.16,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./doryphoros_source_small.stl",
+      fallbackUrl: "./doryphoros_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.86,
+      defaultYaw: 0,
+      defaultViewVector: [1.28, 0.62, 1.92],
+      mobileViewVector: [0.94, 0.48, 1.78]
+    }
+  },
+  "doryphoros-torso": {
+    kind: "stl",
+    path: "/doryphoros-torso/",
+    sectionId: "greek-classical",
+    sortOrder: 27.2,
+    viewerTitle: "Doryphoros Torso / Pourtales Torso (Roman fragment after Polykleitos)",
+    subtitle: "Artist: Unknown Roman workshop after Polykleitos",
+    medium: "Marble",
+    dimensions: "H: 146 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS1242)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Pourtales Torso, a Doryphoros-related fragment localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS1242",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/qn59q832b_185-smk-kas1242.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/3b591f10n_KAS1242_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the Pourtales Torso, a Roman marble fragment of the Doryphoros type formerly associated with the Palatine and now in the Staatliche Museen."
+    }),
+    defaults: {
+      zoom: 2.4,
+      lightAngle: 26,
+      lightPower: 2.14,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./doryphoros_torso_source_small.stl",
+      fallbackUrl: "./doryphoros_torso_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.24,
+      focusYRatio: 0.55,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.96, 0.4, 1.56],
+      mobileViewVector: [0.72, 0.32, 1.38]
+    }
+  },
+  "diadoumenos-bust": {
+    kind: "stl",
+    path: "/diadoumenos-bust/",
+    sectionId: "greek-classical",
+    sortOrder: 27.3,
+    viewerTitle: "Diadoumenos Bust (Roman copy after Polykleitos, c. 420 BCE original)",
+    subtitle: "Artist: Unknown Roman workshop after Polykleitos",
+    medium: "Marble",
+    dimensions: "H: 61 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS432)",
+    source: smkSource({
+      summary: "SMK Open source mesh for a Diadoumenos bust, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS432",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/zk51vn418_smk19-kas432-diadoumenos-bust-d.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/fx719s41q_KAS432_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as a Roman marble bust after the Diadoumenos type, with the Greek classical prototype associated with Polykleitos."
+    }),
+    defaults: {
+      zoom: 2.2,
+      lightAngle: 24,
+      lightPower: 2.12,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./diadoumenos_bust_source_small.stl",
+      fallbackUrl: "./diadoumenos_bust_source_small.stl"
+    },
+    scene: {
+      targetHeight: 0.98,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.82, 0.34, 1.28],
+      mobileViewVector: [0.64, 0.28, 1.16]
+    }
+  },
+  "kneeling-youth": {
+    kind: "stl",
+    path: "/kneeling-youth/",
+    sectionId: "hellenistic-world",
+    sortOrder: 28.5,
+    viewerTitle: "Kneeling Youth / Ilioneus (Roman copy after a Hellenistic original, c. 300 BCE)",
+    subtitle: "Artist: Unknown Roman workshop after a Greek original",
+    medium: "Marble",
+    dimensions: "H: 120 cm | W: 79.5 cm | D: 57 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS248)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the kneeling youth traditionally identified as Ilioneus, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS248",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/mp48sj40r_smk7-kas248-kneeling-youth.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/rr172264n_KAS248_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record describes the original as a Roman marble copy of a Greek figure identified as Ilioneus or a Niobid, now in the Staatliche Antikensammlungen und Glyptothek."
+    }),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 26,
+      lightPower: 2.12,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./kneeling_youth_source_small.stl",
+      fallbackUrl: "./kneeling_youth_source_small.stl"
+    },
+    scene: {
+      targetHeight: 1.18,
+      focusYRatio: 0.52,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.14, 0.38, 1.82],
+      mobileViewVector: [0.84, 0.3, 1.62]
+    }
   }
 };
