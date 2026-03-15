@@ -2336,11 +2336,13 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/npg-npg_78_1-HiRes_Unwrapped-150k-2048-medium.glb"
     },
     scene: {
-      targetHeight: 1.08,
-      focusYRatio: 0.66,
-      defaultYaw: Math.PI * 0.06,
-      defaultViewVector: [0.78, 0.48, 1.0],
-      mobileViewVector: [0.62, 0.36, 0.9]
+      rotateX: -Math.PI * 0.5,
+      rotateZ: Math.PI * 0.5,
+      targetHeight: 1.18,
+      focusYRatio: 0.62,
+      defaultYaw: Math.PI * 0.02,
+      defaultViewVector: [0.72, 0.54, 1.02],
+      mobileViewVector: [0.56, 0.42, 0.92]
     }
   },
   "helen-adams-keller": {
@@ -2416,12 +2418,12 @@ export const museumPiecesExtension = {
     },
     scene: {
       showPedestal: false,
-      rotateZ: -Math.PI * 0.25,
-      targetHeight: 0.96,
-      focusYRatio: 0.5,
+      rotateZ: -Math.PI * 0.5,
+      targetHeight: 1.08,
+      focusYRatio: 0.56,
       defaultYaw: 0,
-      defaultViewVector: [0.22, 0.16, 2.18],
-      mobileViewVector: [0.16, 0.12, 1.96]
+      defaultViewVector: [0.08, 0.22, 2.02],
+      mobileViewVector: [0.06, 0.16, 1.82]
     }
   }
 };
