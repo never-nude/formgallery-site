@@ -643,5 +643,63 @@ export const museumPiecesExtension = {
       primaryUrl: "./castor_and_pollux_source_small.stl",
       fallbackUrl: "./castor_and_pollux_source_small.stl"
     }
+  },
+  "athena-pallas-giustiniani": {
+    kind: "stl",
+    path: "/athena-pallas-giustiniani/",
+    sectionId: "antiquity",
+    sortOrder: 27.9,
+    viewerTitle: "Athena Pallas Giustiniani (Roman copy after a Greek original, early 4th century BCE type)",
+    subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
+    medium: "Marble",
+    dimensions: "H: 219 cm | W: 93 cm | D: 65 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS255)",
+    source: smkSource({
+      summary: "SMK Open source mesh for Athena Pallas Giustiniani, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS255",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/g732df32k_smk52-kas255-athena-pallas-giustiniani.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/pz50h152p_KAS255_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the Athena Pallas Giustiniani type in the Vatican's Museo Chiaramonti and dates the Greek prototype to the early 4th century BCE."
+    }),
+    defaults: {
+      zoom: 2.92,
+      lightAngle: 28,
+      lightPower: 2.16,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./athena_pallas_giustiniani_source_small.stl",
+      fallbackUrl: "./athena_pallas_giustiniani_source_small.stl"
+    }
+  },
+  "medici-faun": {
+    kind: "stl",
+    path: "/medici-faun/",
+    sectionId: "antiquity",
+    sortOrder: 29.1,
+    viewerTitle: "Medici Faun (Roman copy after a Hellenistic original, c. 200 BCE)",
+    subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
+    medium: "Marble",
+    dimensions: "H: 141.5 cm | W: 81 cm | D: 54.5 cm",
+    lobbyMeta: "Source: SMK Open plaster-cast scan (KAS460)",
+    source: smkSource({
+      summary: "SMK Open source mesh for the Medici Faun, localized into Form Gallery's native STL viewer.",
+      recordUrl: "https://open.smk.dk/en/artwork/image/KAS460",
+      fullUrl: "https://api.smk.dk/api/v1/download-3d/kk91fr31m_09-smk-dancing-satyr-inv-460.stl",
+      fallbackUrl: "https://api.smk.dk/api/v1/download-3d/44558j590_KAS460_small.stl",
+      note: "SMK catalogs the object itself as a plaster cast. The source record identifies the original as the Medici Faun / dancing satyr type in the Uffizi and dates the Greek prototype to around 200 BCE."
+    }),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 28,
+      lightPower: 2.12,
+      exposure: 0.43,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./medici_faun_source_small.stl",
+      fallbackUrl: "./medici_faun_source_small.stl"
+    }
   }
 };
