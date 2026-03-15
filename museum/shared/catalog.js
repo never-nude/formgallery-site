@@ -23,9 +23,24 @@ const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
 
 export const museumSections = [
   {
-    id: "antiquity",
-    title: "Antiquity",
-    subtitle: "Ancient sculpture, copies, and canonical casts"
+    id: "egypt-mesopotamia",
+    title: "Egypt & Mesopotamia",
+    subtitle: "Monumental and court sculpture from the Nile and Assyrian worlds"
+  },
+  {
+    id: "greek-classical",
+    title: "Greek Archaic & Classical",
+    subtitle: "Canonical bronzes, marbles, and temple figures from archaic and classical Greece"
+  },
+  {
+    id: "hellenistic-world",
+    title: "Hellenistic World",
+    subtitle: "Dynamic Hellenistic forms and celebrated Roman copies after Greek originals"
+  },
+  {
+    id: "roman-world",
+    title: "Roman World",
+    subtitle: "Imperial portraiture, Italic survivals, and Roman marbles"
   },
   {
     id: "asia",
@@ -63,7 +78,7 @@ export const museumPieces = {
   "sphinx": {
     kind: "stl",
     path: "/sphinx/",
-    sectionId: "antiquity",
+    sectionId: "egypt-mesopotamia",
     sortOrder: 10,
     viewerTitle: "Great Sphinx of Giza (c. 2558-2532 BCE)",
     subtitle: "Artist: Unknown Egyptian workshop (lifespan unknown)",
@@ -84,7 +99,7 @@ export const museumPieces = {
   "ashurnasirpal-lion-hunt": {
     kind: "stl",
     path: "/assyrian/ashurnasirpal-lion-hunt/",
-    sectionId: "antiquity",
+    sectionId: "egypt-mesopotamia",
     sortOrder: 12,
     viewerTitle: "Ashurnasirpal II on Lion Hunt (Assyrian palace relief, c. 883-859 BCE)",
     subtitle: "Northwest Palace, Nimrud; British Museum original",
@@ -128,7 +143,7 @@ export const museumPieces = {
   "lion-released-from-cage": {
     kind: "stl",
     path: "/assyrian/lion-released-from-cage/",
-    sectionId: "antiquity",
+    sectionId: "egypt-mesopotamia",
     sortOrder: 12.5,
     viewerTitle: "Lion Released from Cage (Assyrian palace relief, c. 668-631 BCE)",
     subtitle: "North Palace, Nineveh; British Museum original",
@@ -422,7 +437,7 @@ export const museumPieces = {
   "charioteer-of-delphi": {
     kind: "sketchfab",
     path: "/charioteer-of-delphi/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 20,
     hiddenFromLobby: true,
     viewerTitle: "Charioteer of Delphi (c. 478-474 BCE)",
@@ -445,7 +460,7 @@ export const museumPieces = {
   "venus-de-milo": {
     kind: "stl",
     path: "/venus-de-milo/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 25,
     viewerTitle: "Venus de Milo (late 2nd century BCE)",
     subtitle: "Traditional attribution: Alexandros of Antioch (debated)",
@@ -471,7 +486,7 @@ export const museumPieces = {
   "discobolus": {
     kind: "stl",
     path: "/discobolus/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 27,
     viewerTitle: "Discobolus (Roman copy after Myron, c. 460-450 BCE)",
     subtitle: "Artist: Unknown Roman workshop after Myron of Eleutherae",
@@ -497,7 +512,7 @@ export const museumPieces = {
   "artemision-bronze": {
     kind: "stl",
     path: "/artemision-bronze/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 27.5,
     viewerTitle: "Zeus/Poseidon of Artemision (c. 460 BCE)",
     subtitle: "Artist: Unknown Ancient Greek bronze sculptor",
@@ -541,7 +556,7 @@ export const museumPieces = {
   "athena-lemnia": {
     kind: "stl",
     path: "/athena-lemnia/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 27.75,
     viewerTitle: "Athena Lemnia (copy tradition, c. 450 BCE type)",
     subtitle: "Traditional attribution: Pheidias; current mesh from SMK's Furtwangler reconstruction",
@@ -583,7 +598,7 @@ export const museumPieces = {
   "germanicus": {
     kind: "stl",
     path: "/germanicus/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 52,
     hiddenFromLobby: true,
     viewerTitle: "Statue of Germanicus (Roman period, c. 30 BCE)",
@@ -612,7 +627,7 @@ export const museumPieces = {
   "belvedere-torso": {
     kind: "stl",
     path: "/belvedere-torso/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 28,
     viewerTitle: "Belvedere Torso (1st century BCE)",
     subtitle: "Artist: Unknown Hellenistic sculptor",
@@ -638,7 +653,7 @@ export const museumPieces = {
   "apollo-belvedere": {
     kind: "stl",
     path: "/apollo-belvedere/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 29,
     viewerTitle: "Apollo Belvedere (Roman copy after a Greek original, c. 330 BCE)",
     subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
@@ -664,7 +679,7 @@ export const museumPieces = {
   "dying-gaul": {
     kind: "stl",
     path: "/dying-gaul/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 30,
     viewerTitle: "Dying Gaul (Roman copy after a Hellenistic original, c. 230-220 BCE)",
     subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
@@ -689,7 +704,7 @@ export const museumPieces = {
   "ludovisi-gaul": {
     kind: "stl",
     path: "/ludovisi-gaul/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 35,
     viewerTitle: "Ludovisi Gaul (Roman copy after a Hellenistic original, c. 225 BCE)",
     subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
@@ -718,7 +733,7 @@ export const museumPieces = {
   "capitoline-venus": {
     kind: "stl",
     path: "/capitoline-venus/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 36,
     viewerTitle: "Capitoline Venus (Roman copy after a Hellenistic original, c. 2nd century BCE)",
     subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
@@ -744,7 +759,7 @@ export const museumPieces = {
   "laocoon": {
     kind: "stl",
     path: "/laocoon/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 40,
     viewerTitle: "Laocoon and His Sons (c. 40-20 BCE)",
     subtitle: "Traditional attribution: Hagesandros, Polydoros, and Athanodoros of Rhodes",
@@ -768,7 +783,7 @@ export const museumPieces = {
   "augustus-of-prima-porta": {
     kind: "stl",
     path: "/augustus-of-prima-porta/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 50,
     viewerTitle: "Augustus of Prima Porta (early 1st century CE)",
     subtitle: "Artist: Unknown Roman workshop (lifespan unknown)",

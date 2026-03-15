@@ -366,7 +366,7 @@ export const museumPiecesExtension = {
   "barberini-faun": {
     kind: "stl",
     path: "/barberini-faun/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 29.15,
     viewerTitle: "Barberini Faun (Roman copy after a Hellenistic original, c. 220 BCE)",
     subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
@@ -391,7 +391,7 @@ export const museumPiecesExtension = {
   "apollo-lykeios": {
     kind: "stl",
     path: "/apollo-lykeios/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 29.2,
     viewerTitle: "Apollo Lykeios (copy tradition, 4th century BCE type)",
     subtitle: "Traditional attribution: Praxiteles; current mesh from SMK's cast record",
@@ -416,7 +416,7 @@ export const museumPiecesExtension = {
   "the-wrestlers": {
     kind: "stl",
     path: "/the-wrestlers/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 29.25,
     viewerTitle: "The Wrestlers (Roman copy after a Hellenistic original)",
     subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
@@ -441,7 +441,7 @@ export const museumPiecesExtension = {
   "princess-from-amarna": {
     kind: "stl",
     path: "/princess-from-amarna/",
-    sectionId: "antiquity",
+    sectionId: "egypt-mesopotamia",
     sortOrder: 11,
     viewerTitle: "Princess from Amarna (Egypt, c. 1365-1349 BCE)",
     subtitle: "Artist: Unknown Egyptian workshop",
@@ -486,7 +486,7 @@ export const museumPiecesExtension = {
   "capitoline-wolf": {
     kind: "stl",
     path: "/capitoline-wolf/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 27.65,
     viewerTitle: "Capitoline Wolf (Etruscan type, c. 450 BCE)",
     subtitle: "Artist: Unknown Italic workshop",
@@ -531,7 +531,7 @@ export const museumPiecesExtension = {
   "aphrodite-anadyomene": {
     kind: "stl",
     path: "/aphrodite-anadyomene/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 28.7,
     viewerTitle: "Aphrodite Anadyomene (Roman copy after a Greek original, 1st century BCE)",
     subtitle: "Artist: Unknown Roman workshop after a Greek original",
@@ -560,7 +560,7 @@ export const museumPiecesExtension = {
   "herakles-lansdowne": {
     kind: "stl",
     path: "/herakles-lansdowne/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 28.85,
     viewerTitle: "Herakles Lansdowne (Roman copy after a mid-4th-century BCE Greek original)",
     subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
@@ -589,7 +589,7 @@ export const museumPiecesExtension = {
   "kneeling-archer": {
     kind: "stl",
     path: "/kneeling-archer/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 26.8,
     viewerTitle: "Kneeling Archer (Aphaia temple figure, c. 500-490 BCE)",
     subtitle: "Artist: Unknown Greek sculptor",
@@ -618,7 +618,7 @@ export const museumPiecesExtension = {
   "castor-and-pollux": {
     kind: "stl",
     path: "/castor-and-pollux/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 28.55,
     viewerTitle: "Castor and Pollux (Roman group, 1st century BCE)",
     subtitle: "Artist: Unknown Roman workshop",
@@ -647,7 +647,7 @@ export const museumPiecesExtension = {
   "athena-pallas-giustiniani": {
     kind: "stl",
     path: "/athena-pallas-giustiniani/",
-    sectionId: "antiquity",
+    sectionId: "greek-classical",
     sortOrder: 27.9,
     viewerTitle: "Athena Pallas Giustiniani (Roman copy after a Greek original, early 4th century BCE type)",
     subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
@@ -676,7 +676,7 @@ export const museumPiecesExtension = {
   "medici-faun": {
     kind: "stl",
     path: "/medici-faun/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 29.1,
     viewerTitle: "Medici Faun (Roman copy after a Hellenistic original, c. 200 BCE)",
     subtitle: "Artist: Unknown Roman workshop after a Hellenistic original",
@@ -705,7 +705,7 @@ export const museumPiecesExtension = {
   "head-from-farnese-hercules-type": {
     kind: "stl",
     path: "/head-from-farnese-hercules-type/",
-    sectionId: "antiquity",
+    sectionId: "roman-world",
     sortOrder: 28.15,
     viewerTitle: "Head from the Farnese Hercules Type (Roman marble head after a Greek prototype)",
     subtitle: "Artist: Unknown Roman workshop after a classical Greek original",
@@ -743,7 +743,7 @@ export const museumPiecesExtension = {
   "borghese-gladiator": {
     kind: "stl",
     path: "/borghese-gladiator/",
-    sectionId: "antiquity",
+    sectionId: "hellenistic-world",
     sortOrder: 37.5,
     viewerTitle: "Borghese Gladiator (Roman copy after a Greek original, c. 100 BCE)",
     subtitle: "Artist: Agasias of Ephesos (traditional inscription attribution)",

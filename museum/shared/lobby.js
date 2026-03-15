@@ -1,5 +1,15 @@
+const ANCIENT_ROOM_IDS = Object.freeze([
+  "egypt-mesopotamia",
+  "greek-classical",
+  "hellenistic-world",
+  "roman-world"
+]);
+
 const ROOM_REGION_LABELS = Object.freeze({
-  antiquity: "Egypt, Mesopotamia, Greece, and Rome",
+  "egypt-mesopotamia": "Egypt & Mesopotamia",
+  "greek-classical": "Archaic & Classical Greece",
+  "hellenistic-world": "Hellenistic Mediterranean",
+  "roman-world": "Rome & the Roman world",
   asia: "Asia",
   "sub-saharan-africa": "Sub-Saharan Africa",
   "early-renaissance": "Italy",
@@ -197,6 +207,12 @@ function getRegionLabel(piece) {
   if (piece?.sectionId === "sub-saharan-africa") return "Sub-Saharan Africa";
   if (piece?.sectionId === "early-renaissance" || piece?.sectionId === "michelangelo") return "Italy";
   if (piece?.sectionId === "bouchardon" || piece?.sectionId === "rodin") return "France";
+  if (piece?.sectionId === "greek-classical" || piece?.sectionId === "hellenistic-world") return "Greek world";
+  if (piece?.sectionId === "roman-world") return "Roman world";
+  if (piece?.sectionId === "egypt-mesopotamia") {
+    if (/assyrian|nimrud|nineveh|mesopotamia/.test(text)) return "Mesopotamia";
+    return "Egypt & the Nile";
+  }
 
   if (/egypt|giza|sphinx/.test(text)) return "Egypt & the Nile";
   if (/assyrian|nimrud|nineveh|mesopotamia/.test(text)) return "Mesopotamia";
@@ -222,7 +238,7 @@ function getEraLabel(piece) {
 function getArtistLabel(piece) {
   const subtitle = cleanArtistLine(piece?.subtitle || "").split(";")[0].trim();
 
-  if (piece?.sectionId === "antiquity") return "Ancient workshops";
+  if (ANCIENT_ROOM_IDS.includes(piece?.sectionId)) return "Ancient workshops";
   if (piece?.sectionId === "asia") return "Asian traditions";
   if (piece?.sectionId === "sub-saharan-africa") return "African artists";
   if (piece?.sectionId === "michelangelo") return "Michelangelo";
