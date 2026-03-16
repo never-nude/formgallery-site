@@ -3054,6 +3054,8 @@ export const museumPiecesExtension = {
     },
     scene: {
       showPedestal: false,
+      receiveFloorShadow: false,
+      pruneNodeNames: ["Cubo", "Disco_1"],
       targetHeight: 0.92,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.98, 0.5, 1.18],

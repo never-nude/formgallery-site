@@ -377,7 +377,7 @@ export async function initGltfMuseumPage(piece) {
     );
     floor.rotation.x = -Math.PI * 0.5;
     floor.position.y = 0;
-    floor.receiveShadow = true;
+    floor.receiveShadow = sceneConfig.receiveFloorShadow ?? true;
     scene.add(floor);
 
     let sculpture = null;
@@ -424,6 +424,23 @@ export async function initGltfMuseumPage(piece) {
         const root = gltf.scene || gltf.scenes?.[0];
         if (root) {
           rawGroup.add(root);
+        }
+      }
+
+      const pruneNodeNames = (sceneConfig.pruneNodeNames || []).map((name) => String(name).toLowerCase());
+      if (pruneNodeNames.length) {
+        const nodesToRemove = [];
+        rawGroup.traverse((child) => {
+          const name = child?.name?.toLowerCase?.() || "";
+          if (!name) return;
+          if (pruneNodeNames.some((needle) => name.includes(needle))) {
+            nodesToRemove.push(child);
+          }
+        });
+        for (const child of nodesToRemove) {
+          if (child.parent) {
+            child.parent.remove(child);
+          }
         }
       }
 
