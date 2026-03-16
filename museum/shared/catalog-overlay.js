@@ -1934,6 +1934,7 @@ export const museumPiecesExtension = {
       rough: 0.22
     },
     scene: {
+      rotateX: Math.PI * 0.5,
       targetHeight: 0.9,
       defaultYaw: -Math.PI * 0.08,
       defaultViewVector: [0.98, 0.48, 1.18],
@@ -2024,6 +2025,7 @@ export const museumPiecesExtension = {
       rough: 0.22
     },
     scene: {
+      rotateZ: -Math.PI * 0.5,
       targetHeight: 0.94,
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [1.0, 0.48, 1.18],
@@ -2069,6 +2071,7 @@ export const museumPiecesExtension = {
       rough: 0.22
     },
     scene: {
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.78,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.94, 0.4, 1.06],
@@ -3078,6 +3081,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
+      rotateZ: -Math.PI * 0.5,
       targetHeight: 0.72,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.92, 0.46, 1.0],
@@ -3152,6 +3156,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
+      rotateX: -Math.PI * 0.5,
       targetHeight: 1.86,
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [1.16, 0.74, 1.62],
@@ -3296,48 +3301,11 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
+      rotateZ: Math.PI * 0.5,
       targetHeight: 0.86,
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [0.92, 0.46, 1.02],
       mobileViewVector: [0.74, 0.34, 0.92]
-    }
-  },
-  "andrew-jackson-zinc": {
-    kind: "gltf",
-    path: "/americas/andrew-jackson-zinc/index.html",
-    sectionId: "americas",
-    sortOrder: 48,
-    viewerTitle: "Andrew Jackson (1855)",
-    subtitle: "Cast after Clark Mills (1810-1883); studio: Cornelius & Baker; sitter: Andrew Jackson",
-    medium: "Cast zinc, lead-tin solder, imitation bronze paint (?)",
-    dimensions: "H: 67.3 cm | W: 55.9 cm | D: 26.7 cm",
-    locationLabel: "Collection:",
-    location: "National Portrait Gallery, Smithsonian Institution",
-    lobbyMeta: "Source: Smithsonian 3D / NPG",
-    source: smithsonianSource({
-      summary: "Rendered from Smithsonian 3D's zinc Andrew Jackson portrait in the National Portrait Gallery.",
-      recordUrl: "https://3d.si.edu/object/3d/andrew-jackson%3A80a9e13c-8e58-4b74-8482-63fd5ee197d8",
-      packageId: "80a9e13c-8e58-4b74-8482-63fd5ee197d8",
-      highFile: "andrew-jackson-zinc-sculpture-150k-4096-high.glb",
-      mediumFile: "andrew-jackson-zinc-sculpture-150k-2048-medium.glb",
-      note: "Smithsonian marks the object and package CC0."
-    }),
-    model: {
-      primaryUrl: smithsonianAsset("80a9e13c-8e58-4b74-8482-63fd5ee197d8", "andrew-jackson-zinc-sculpture-150k-4096-high.glb"),
-      fallbackUrl: smithsonianAsset("80a9e13c-8e58-4b74-8482-63fd5ee197d8", "andrew-jackson-zinc-sculpture-150k-2048-medium.glb")
-    },
-    defaults: {
-      zoom: 2.84,
-      lightAngle: 24,
-      lightPower: 2.02,
-      exposure: 0.42,
-      rough: 0.24
-    },
-    scene: {
-      targetHeight: 1.02,
-      defaultYaw: -Math.PI * 0.06,
-      defaultViewVector: [1.02, 0.54, 1.16],
-      mobileViewVector: [0.8, 0.42, 1.04]
     }
   },
   "franklin-d-roosevelt": {
@@ -3372,6 +3340,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
+      rotateZ: Math.PI * 0.5,
       targetHeight: 0.98,
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [0.98, 0.5, 1.1],
@@ -3410,6 +3379,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
+      rotateZ: -Math.PI * 0.5,
       targetHeight: 1.02,
       defaultYaw: -Math.PI * 0.05,
       defaultViewVector: [0.98, 0.5, 1.12],
@@ -3523,6 +3493,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
+      rotateZ: Math.PI,
       targetHeight: 0.72,
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [0.88, 0.42, 0.98],
