@@ -2897,7 +2897,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./bust_of_marcus_aurelius_source.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 1.04,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [1.0, 0.56, 1.18],
@@ -2936,7 +2936,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./bearded_hercules_head_source.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.72,
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [0.9, 0.44, 0.98],
@@ -2975,7 +2975,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./head_of_maxence_source.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.8,
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [0.92, 0.46, 1.02],
@@ -3014,7 +3014,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./adolescent_torso_source.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.96,
       defaultYaw: Math.PI * 0.05,
       defaultViewVector: [0.98, 0.52, 1.08],
