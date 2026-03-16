@@ -2336,7 +2336,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:ff28cb3a-ad00-43b3-a928-fa61ab0a288f/npg-npg_78_1-HiRes_Unwrapped-150k-2048-medium.glb"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateY: -Math.PI * 0.25,
       targetHeight: 0.92,
       defaultYaw: Math.PI * 0.1,
       defaultViewVector: [1.04, 0.56, 1.18],
