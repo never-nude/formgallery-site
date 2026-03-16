@@ -85,6 +85,11 @@ export const museumSections = [
     subtitle: "Edme Bouchardon (1698-1762)"
   },
   {
+    id: "nineteenth-century",
+    title: "Nineteenth Century",
+    subtitle: "Neoclassical and academic sculpture across the long nineteenth century"
+  },
+  {
     id: "rodin",
     title: "Rodin",
     subtitle: "Auguste Rodin (1840-1917)"

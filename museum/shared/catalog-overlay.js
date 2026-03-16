@@ -2586,5 +2586,116 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.08, 0.3, 2.02],
       mobileViewVector: [0.82, 0.22, 1.78]
     }
+  },
+  "juno-ludovisi": {
+    kind: "stl",
+    path: "/juno-ludovisi/index.html",
+    sectionId: "roman-world",
+    sortOrder: 92,
+    viewerTitle: "Juno Ludovisi (Roman bust after a Hellenistic type)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Marble",
+    locationLabel: "Original:",
+    location: "National Roman Museum, Palazzo Altemps, Rome",
+    lobbyMeta: "Source: Scan the World / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Scan the World Juno Ludovisi file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Scan_the_World_-_Juno_Ludovisi.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/4/4e/Scan_the_World_-_Juno_Ludovisi.stl")
+      ],
+      "The Commons file is part of the Scan the World archive. The title follows the traditional identification of the Ludovisi Juno / Hera bust, though the exact subject remains debated in scholarship."
+    ),
+    defaults: {
+      zoom: 2.68,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./juno_ludovisi_source.stl",
+      fallbackUrl: "./juno_ludovisi_source.stl"
+    },
+    scene: {
+      targetHeight: 1.14,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [1.02, 0.46, 1.32],
+      mobileViewVector: [0.8, 0.38, 1.18]
+    }
+  },
+  "pandora-james-pradier": {
+    kind: "stl",
+    path: "/pandora-james-pradier/index.html",
+    sectionId: "nineteenth-century",
+    sortOrder: 10,
+    viewerTitle: "Pandora",
+    subtitle: "Artist: James Pradier (1790-1852)",
+    medium: "Marble",
+    locationLabel: "Collection:",
+    location: "Musee d'Art et d'Histoire de Geneve",
+    lobbyMeta: "Source: Wikimedia Commons / MAHG scan",
+    source: source(
+      "Local STL mirrored from the Wikimedia Commons scan of James Pradier's Pandora from the Musee d'Art et d'Histoire de Geneve.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Pandora-James_Pradier-MAHG_Inv_1991-0006-High_poly.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/2/22/Pandora-James_Pradier-MAHG_Inv_1991-0006-High_poly.stl")
+      ],
+      "The Commons file credits a high-poly scan by Rama from the Geneva museum's collection."
+    ),
+    defaults: {
+      zoom: 2.54,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./pandora_source.stl",
+      fallbackUrl: "./pandora_source.stl"
+    },
+    scene: {
+      targetHeight: 1.74,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.18, 0.68, 1.82],
+      mobileViewVector: [0.9, 0.5, 1.64]
+    }
+  },
+  "diana-of-villa-bartholoni": {
+    kind: "stl",
+    path: "/diana-of-villa-bartholoni/index.html",
+    sectionId: "nineteenth-century",
+    sortOrder: 12,
+    viewerTitle: "Diana of Villa Bartholoni",
+    subtitle: "Artist: James Pradier (1790-1852)",
+    medium: "Marble",
+    locationLabel: "Collection:",
+    location: "Musee d'Art et d'Histoire de Geneve",
+    lobbyMeta: "Source: Wikimedia Commons / MAHG scan",
+    source: source(
+      "Local STL mirrored from the Wikimedia Commons scan of James Pradier's Diana of Villa Bartholoni from the Musee d'Art et d'Histoire de Geneve.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Diana_of_Villa_Bartholoni-High_poly-001.stl"),
+        link("Direct STL", "https://upload.wikimedia.org/wikipedia/commons/d/da/Diana_of_Villa_Bartholoni-High_poly-001.stl")
+      ],
+      "The Commons file credits a high-poly scan by Rama from the Geneva museum's collection."
+    ),
+    defaults: {
+      zoom: 2.52,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./diana_of_villa_bartholoni_source.stl",
+      fallbackUrl: "./diana_of_villa_bartholoni_source.stl"
+    },
+    scene: {
+      targetHeight: 1.76,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.2, 0.7, 1.86],
+      mobileViewVector: [0.92, 0.52, 1.68]
+    }
   }
 };
