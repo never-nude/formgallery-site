@@ -3053,8 +3053,11 @@ export const museumPiecesExtension = {
       fallbackUrl: "./scene.gltf"
     },
     scene: {
-      showPedestal: false,
-      receiveFloorShadow: false,
+      showPedestal: true,
+      receiveFloorShadow: true,
+      pedestalMargin: 1.16,
+      pedestalMinRadius: 0.42,
+      baseHeight: 0.14,
       pruneNodeNames: ["Cubo", "Disco_1"],
       targetHeight: 0.92,
       defaultYaw: Math.PI * 0.08,
