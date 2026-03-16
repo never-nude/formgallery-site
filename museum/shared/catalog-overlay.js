@@ -2426,5 +2426,163 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.94, 0.24, 2.18],
       mobileViewVector: [0.72, 0.2, 1.98]
     }
+  },
+  "cast-of-san-lorenzo-head": {
+    kind: "gltf",
+    path: "/americas/cast-of-san-lorenzo-head/index.html",
+    sectionId: "americas",
+    sortOrder: 22,
+    viewerTitle: "Cast of San Lorenzo Head No. 1 (Olmec, c. 500 BCE)",
+    subtitle: "Artist: Olmec sculptor; current scan of a Smithsonian cast after a basalt original",
+    medium: "Natural-size cast after a basalt original",
+    dimensions: "H: 300 cm | W: 230 cm | D: 137 cm",
+    locationLabel: "Place:",
+    location: "Veracruz, Mexico, North America",
+    lobbyMeta: "Source: Smithsonian 3D / NMNH Anthropology",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Cast of San Lorenzo Head No. 1, an Olmec colossal-head cast in the National Museum of Natural History's anthropology collection.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/cast-san-lorenzo-head-no-1:aa4a35c7-0e59-4285-83d5-9e81aa423265"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:aa4a35c7-0e59-4285-83d5-9e81aa423265/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:aa4a35c7-0e59-4285-83d5-9e81aa423265/olmec_head-master-tris-150k-4096-high.glb")
+      ],
+      "The Smithsonian anthropology record identifies the object as a natural-size cast of an Olmec colossal stone head from Veracruz, Mexico, and notes that the original is basalt."
+    ),
+    defaults: {
+      zoom: 2.34,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:aa4a35c7-0e59-4285-83d5-9e81aa423265/olmec_head-master-tris-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:aa4a35c7-0e59-4285-83d5-9e81aa423265/olmec_head-master-tris-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.28,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [1.08, 0.58, 1.46],
+      mobileViewVector: [0.84, 0.42, 1.32]
+    }
+  },
+  "virgen-de-monserrate": {
+    kind: "gltf",
+    path: "/americas/virgen-de-monserrate/index.html",
+    sectionId: "americas",
+    sortOrder: 24,
+    viewerTitle: "Virgen de Monserrate (late 18th or early 19th century)",
+    subtitle: "Artist: Unknown Puerto Rican santo maker",
+    medium: "Wood and paint",
+    dimensions: "H: 33 cm | W: 22.5 cm | D: 24.5 cm",
+    locationLabel: "Place made:",
+    location: "Jayuya, Puerto Rico",
+    lobbyMeta: "Source: Smithsonian 3D / NMAH",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Virgen de Monserrate, a carved santo associated with the Miracle of Hormigueros.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/virgen-de-monserrate:1492fab4-3f36-46da-9a7b-2ed02537b996"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:1492fab4-3f36-46da-9a7b-2ed02537b996/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:1492fab4-3f36-46da-9a7b-2ed02537b996/nmah-1997_0097_0721-virgen_de_monserrate-150k-4096-high.glb")
+      ],
+      "The Smithsonian page marks the record CC0 and dates the figure to the late eighteenth or early nineteenth century. Place made, medium, and measurements follow the National Museum of American History record."
+    ),
+    defaults: {
+      zoom: 2.76,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:1492fab4-3f36-46da-9a7b-2ed02537b996/nmah-1997_0097_0721-virgen_de_monserrate-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:1492fab4-3f36-46da-9a7b-2ed02537b996/nmah-1997_0097_0721-virgen_de_monserrate-150k-2048-medium.glb"
+    },
+    scene: {
+      targetHeight: 1.02,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.02, 0.58, 1.16],
+      mobileViewVector: [0.8, 0.44, 1.04]
+    }
+  },
+  "pisac-intihuatana": {
+    kind: "gltf",
+    path: "/americas/pisac-intihuatana/index.html",
+    sectionId: "americas",
+    sortOrder: 26,
+    viewerTitle: "Pisac Intihuatana (Inka, 15th century)",
+    subtitle: "Artist: Inka stonemasons",
+    medium: "Stone",
+    locationLabel: "Place:",
+    location: "Pisac, Cusco Region, Peru",
+    lobbyMeta: "Source: Smithsonian 3D / NMAI",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of the Intihuatana sector at Pisac, a sacred Inka stone complex in the Sacred Valley.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/pisac-intihuatana:46fd85b8-3d84-4cf3-b5d8-9673ac778bb9"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:46fd85b8-3d84-4cf3-b5d8-9673ac778bb9/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:46fd85b8-3d84-4cf3-b5d8-9673ac778bb9/pisac-intihuatana-150k-4096-high.glb")
+      ],
+      "The National Museum of the American Indian source page describes Intihuatana as a district at Pisac dedicated to the cult of the sun. The source page does not publish object dimensions, so Form Gallery omits them here rather than inferring scale from the site scan."
+    ),
+    defaults: {
+      zoom: 2.26,
+      lightAngle: 22,
+      lightPower: 2.0,
+      exposure: 0.42,
+      rough: 0.26
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:46fd85b8-3d84-4cf3-b5d8-9673ac778bb9/pisac-intihuatana-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:46fd85b8-3d84-4cf3-b5d8-9673ac778bb9/pisac-intihuatana-150k-2048-medium.glb"
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 1.18,
+      focusYRatio: 0.46,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.08, 0.3, 2.08],
+      mobileViewVector: [0.82, 0.22, 1.84]
+    }
+  },
+  "hatunrumiyoc": {
+    kind: "gltf",
+    path: "/americas/hatunrumiyoc/index.html",
+    sectionId: "americas",
+    sortOrder: 28,
+    viewerTitle: "Hatunrumiyoc (Inka wall, 15th century)",
+    subtitle: "Artist: Inka stonemasons",
+    medium: "Stone",
+    locationLabel: "Place:",
+    location: "Cusco, Peru",
+    lobbyMeta: "Source: Smithsonian 3D / NMAI",
+    source: source(
+      "Rendered from Smithsonian 3D's scan of Hatunrumiyoc, the Cusco wall segment known for its famous twelve-angled stone.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/hatunrumiyoc:c49dbdb8-d4c8-49d7-be17-820c87edeb68"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:c49dbdb8-d4c8-49d7-be17-820c87edeb68/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:c49dbdb8-d4c8-49d7-be17-820c87edeb68/hatunrumiyoc-150k-4096-high.glb")
+      ],
+      "The National Museum of the American Indian source page identifies Hatunrumiyoc as part of the palace of Inka Roca in Cusco. The source page does not publish object dimensions, so Form Gallery omits them here rather than inferring scale from the site scan."
+    ),
+    defaults: {
+      zoom: 2.24,
+      lightAngle: 22,
+      lightPower: 2.0,
+      exposure: 0.42,
+      rough: 0.26
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:c49dbdb8-d4c8-49d7-be17-820c87edeb68/hatunrumiyoc-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:c49dbdb8-d4c8-49d7-be17-820c87edeb68/hatunrumiyoc-150k-2048-medium.glb"
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 1.12,
+      focusYRatio: 0.46,
+      defaultYaw: -Math.PI * 0.05,
+      defaultViewVector: [1.08, 0.3, 2.02],
+      mobileViewVector: [0.82, 0.22, 1.78]
+    }
   }
 };
