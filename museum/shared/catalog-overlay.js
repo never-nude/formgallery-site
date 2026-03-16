@@ -3020,5 +3020,44 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.98, 0.52, 1.08],
       mobileViewVector: [0.78, 0.4, 0.98]
     }
+  },
+  "bronze-horse-head-herculaneum": {
+    kind: "gltf",
+    path: "/bronze-horse-head-herculaneum/index.html",
+    sectionId: "roman-world",
+    sortOrder: 108,
+    viewerTitle: "Bronze Horse Head from Herculaneum",
+    subtitle: "Artist: Unknown Roman bronze worker",
+    medium: "Bronze",
+    locationLabel: "Collection:",
+    location: "National Archaeological Museum of Naples",
+    lobbyMeta: "Source: Archeologia e Calcolatori / ATON",
+    source: source(
+      "Rendered from the Archeologia e Calcolatori / ATON GLTF package for the bronze horse head from Herculaneum.",
+      [
+        link("Archeologia e Calcolatori record", "https://www.archcalc.cnr.it/resources/3dmodels/33"),
+        link("ATON scene", "https://aton.archcalc.cnr.it/s/aec/34.2-paf2?uip=minimal"),
+        link("Direct GLTF", "https://aton.archcalc.cnr.it/collections/aec/models/Pafumi_et_al_2/scene.gltf")
+      ],
+      "The Archeologia e Calcolatori record identifies the object as a bronze horse head from Herculaneum, now in the National Archaeological Museum of Naples, inv. n. 115391."
+    ),
+    defaults: {
+      zoom: 2.38,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./scene.gltf",
+      fallbackUrl: "./scene.gltf"
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 0.92,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.98, 0.5, 1.18],
+      mobileViewVector: [0.78, 0.4, 1.02]
+    }
   }
 };
