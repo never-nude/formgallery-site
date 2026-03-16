@@ -35,7 +35,7 @@ export function createSceneApp(mount) {
   renderer.setSize(mount.clientWidth, mount.clientHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.04;
+  renderer.toneMappingExposure = 0.98;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   mount.appendChild(renderer.domElement);
@@ -50,7 +50,7 @@ export function createSceneApp(mount) {
   controls.target.copy(PRESETS.front.target);
   controls.update();
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 1.32);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.02);
   scene.add(ambientLight);
 
   const keyLight = new THREE.DirectionalLight(0xffffff, 1.9);
@@ -66,11 +66,15 @@ export function createSceneApp(mount) {
   keyLight.shadow.bias = -0.0001;
   scene.add(keyLight);
 
+  const fillLight = new THREE.DirectionalLight(0xbfd0df, 0.6);
+  fillLight.position.set(-7, 5, -6);
+  scene.add(fillLight);
+
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 60),
     new THREE.MeshStandardMaterial({
-      color: 0xc2bcaf,
-      roughness: 0.98,
+      color: 0xc9c2b5,
+      roughness: 1,
       metalness: 0.02,
     }),
   );

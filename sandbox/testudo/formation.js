@@ -188,19 +188,23 @@ function buildSoldier(baseScene, role, index, row, column) {
   root.add(baseScene);
   baseScene.scale.setScalar(SOLDIER_SCALE);
 
-  const bodyTone = new THREE.Color(0xb9ac98).offsetHSL(
+  const bodyTone = new THREE.Color(0xb39f88).offsetHSL(
     seededCentered(index * 3.4) * 0.015,
-    seededCentered(index * 4.1) * 0.025,
-    seededCentered(index * 5.3) * 0.025,
+    seededCentered(index * 4.1) * 0.03,
+    seededCentered(index * 5.3) * 0.02,
   );
 
   baseScene.traverse((object) => {
+    if (object.name === "vanguard_visor") {
+      object.visible = false;
+      return;
+    }
     if (!object.isSkinnedMesh) {
       return;
     }
     const material = new THREE.MeshStandardMaterial({
       color: bodyTone,
-      roughness: 0.96,
+      roughness: 0.9,
       metalness: 0.02,
     });
     material.skinning = true;
@@ -238,16 +242,16 @@ function createUniform(index) {
 
   const tunicMaterial = registerMaterial(
     new THREE.MeshStandardMaterial({
-      color: new THREE.Color(0x8b2a1d).offsetHSL(0, 0, seededCentered(index * 11.2) * 0.06),
-      roughness: 0.93,
+      color: new THREE.Color(0x7e2418).offsetHSL(0, 0, seededCentered(index * 11.2) * 0.05),
+      roughness: 0.88,
       metalness: 0.02,
     }),
     "soldiers",
   );
   const leatherMaterial = registerMaterial(
     new THREE.MeshStandardMaterial({
-      color: 0x5e4030,
-      roughness: 0.96,
+      color: 0x603e28,
+      roughness: 0.9,
       metalness: 0.02,
     }),
     "soldiers",
@@ -261,15 +265,17 @@ function createUniform(index) {
     "soldiers",
   );
 
-  const chest = new THREE.Mesh(new THREE.CylinderGeometry(0.165, 0.2, 0.46, 10, 1, true), tunicMaterial);
-  chest.position.y = 0.84;
+  const chest = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.205, 0.5, 18, 1, true), tunicMaterial);
+  chest.position.y = 0.83;
   chest.castShadow = true;
   chest.receiveShadow = true;
   group.add(chest);
   meshes.push(chest);
 
-  const armor = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.27, 0.11), bronzeMaterial);
-  armor.position.set(0, 0.91, 0.03);
+  const armor = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.19, 0.24, 16, 1, true), bronzeMaterial);
+  armor.rotation.z = Math.PI * 0.5;
+  armor.scale.set(0.62, 0.62, 0.85);
+  armor.position.set(0, 0.9, 0.05);
   armor.castShadow = true;
   armor.receiveShadow = true;
   group.add(armor);
@@ -283,15 +289,36 @@ function createUniform(index) {
   group.add(belt);
   meshes.push(belt);
 
+  for (const side of [-1, 1]) {
+    const shoulderGuard = new THREE.Mesh(new THREE.CapsuleGeometry(0.045, 0.09, 4, 8), bronzeMaterial);
+    shoulderGuard.position.set(side * 0.18, 0.97, 0.03);
+    shoulderGuard.rotation.z = side * Math.PI * 0.38;
+    shoulderGuard.rotation.x = Math.PI * 0.5;
+    shoulderGuard.castShadow = true;
+    shoulderGuard.receiveShadow = true;
+    group.add(shoulderGuard);
+    meshes.push(shoulderGuard);
+  }
+
   for (let panel = 0; panel < 5; panel += 1) {
-    const skirt = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.18, 0.018), leatherMaterial);
+    const skirt = new THREE.Mesh(new THREE.BoxGeometry(0.065, 0.2, 0.018), leatherMaterial);
     const normalized = panel / 4 - 0.5;
-    skirt.position.set(normalized * 0.15, 0.55, 0.13 - Math.abs(normalized) * 0.05);
-    skirt.rotation.x = -0.08;
+    skirt.position.set(normalized * 0.145, 0.54, 0.13 - Math.abs(normalized) * 0.05);
+    skirt.rotation.x = -0.1;
     skirt.castShadow = true;
     skirt.receiveShadow = true;
     group.add(skirt);
     meshes.push(skirt);
+  }
+
+  for (const side of [-1, 1]) {
+    const greave = new THREE.Mesh(new THREE.CapsuleGeometry(0.04, 0.24, 4, 8), bronzeMaterial);
+    greave.position.set(side * 0.07, 0.18, 0.03);
+    greave.rotation.z = Math.PI * 0.5;
+    greave.castShadow = true;
+    greave.receiveShadow = true;
+    group.add(greave);
+    meshes.push(greave);
   }
 
   return { group, meshes };
@@ -336,55 +363,66 @@ function createSockets(role, index, row, column) {
 }
 
 function poseSoldier(baseScene, root, role, index) {
-  const torso1 = baseScene.getObjectByName("torso_joint_1");
-  const torso2 = baseScene.getObjectByName("torso_joint_2");
-  const torso3 = baseScene.getObjectByName("torso_joint_3");
-  const neck1 = baseScene.getObjectByName("neck_joint_1");
-  const legL1 = baseScene.getObjectByName("leg_joint_L_1");
-  const legR1 = baseScene.getObjectByName("leg_joint_R_1");
-  const legL2 = baseScene.getObjectByName("leg_joint_L_2");
-  const legR2 = baseScene.getObjectByName("leg_joint_R_2");
-  const armL1 = baseScene.getObjectByName("arm_joint_L_1");
-  const armR1 = baseScene.getObjectByName("arm_joint_R_1");
+  const torso1 = getBone(baseScene, ["torso_joint_1", "Skeleton_torso_joint_1", "mixamorig:Spine"]);
+  const torso2 = getBone(baseScene, ["torso_joint_2", "Skeleton_torso_joint_2", "mixamorig:Spine1"]);
+  const torso3 = getBone(baseScene, ["torso_joint_3", "mixamorig:Spine2"]);
+  const neck1 = getBone(baseScene, ["neck_joint_1", "Skeleton_neck_joint_1", "mixamorig:Neck"]);
+  const legL1 = getBone(baseScene, ["leg_joint_L_1", "mixamorig:LeftUpLeg"]);
+  const legR1 = getBone(baseScene, ["leg_joint_R_1", "mixamorig:RightUpLeg"]);
+  const legL2 = getBone(baseScene, ["leg_joint_L_2", "mixamorig:LeftLeg"]);
+  const legR2 = getBone(baseScene, ["leg_joint_R_2", "mixamorig:RightLeg"]);
+  const armL1 = getBone(baseScene, ["arm_joint_L_1", "Skeleton_arm_joint_L__4_", "mixamorig:LeftArm"]);
+  const armR1 = getBone(baseScene, ["arm_joint_R_1", "Skeleton_arm_joint_R", "mixamorig:RightArm"]);
+  const armL2 = getBone(baseScene, ["arm_joint_L_2", "Skeleton_arm_joint_L__3_", "mixamorig:LeftForeArm"]);
+  const armR2 = getBone(baseScene, ["arm_joint_R_2", "Skeleton_arm_joint_R__2_", "mixamorig:RightForeArm"]);
 
   const jitter = seededCentered(index * 12.3);
+  const isMixamo = Boolean(getBone(baseScene, ["mixamorig:Spine"]));
+
+  if (isMixamo) {
+    addRotation(armL1, 0.08, 0, -1.08);
+    addRotation(armR1, 0.08, 0, 1.08);
+    addRotation(armL2, 0.22, 0, 0.08);
+    addRotation(armR2, 0.22, 0, -0.08);
+  }
 
   if (role === "front") {
     root.position.y = 0.02;
-    torso1.rotation.x += 0.18 + jitter * 0.04;
-    torso2.rotation.x += 0.08;
-    armL1.rotation.z += 0.12;
-    armR1.rotation.z -= 0.12;
+    addRotation(torso1, 0.18 + jitter * 0.04, 0, 0);
+    addRotation(torso2, 0.08, 0, 0);
+    addRotation(armL1, 0, 0, isMixamo ? 0.24 : 0.12);
+    addRotation(armR1, 0, 0, isMixamo ? -0.24 : -0.12);
   } else if (role === "roof") {
     const crouch = seeded01(index * 7.9) > 0.36;
     root.position.y = crouch ? -0.12 : -0.05;
-    torso1.rotation.x += 0.46;
-    torso2.rotation.x += 0.18;
-    torso3.rotation.x += 0.06;
-    neck1.rotation.x -= 0.18;
+    addRotation(torso1, 0.46, 0, 0);
+    addRotation(torso2, 0.18, 0, 0);
+    addRotation(torso3, 0.06, 0, 0);
+    addRotation(neck1, -0.18, 0, 0);
     if (crouch) {
-      legL1.rotation.x -= 0.34;
-      legR1.rotation.x -= 0.34;
-      legL2.rotation.x += 0.58;
-      legR2.rotation.x += 0.58;
+      addRotation(legL1, -0.34, 0, 0);
+      addRotation(legR1, -0.34, 0, 0);
+      addRotation(legL2, 0.58, 0, 0);
+      addRotation(legR2, 0.58, 0, 0);
     }
-    armL1.rotation.z += 0.24;
-    armR1.rotation.z -= 0.24;
+    addRotation(armL1, isMixamo ? 0.16 : 0, 0, isMixamo ? 0.38 : 0.24);
+    addRotation(armR1, isMixamo ? 0.16 : 0, 0, isMixamo ? -0.38 : -0.24);
   } else if (role === "side-left" || role === "side-right") {
     const sideSign = role === "side-left" ? -1 : 1;
     root.position.y = -0.03;
-    torso1.rotation.x += 0.24;
-    torso1.rotation.z += sideSign * 0.07;
-    torso2.rotation.z += sideSign * 0.08;
-    legL1.rotation.x -= 0.1;
-    legR1.rotation.x -= 0.1;
+    addRotation(torso1, 0.24, 0, sideSign * 0.07);
+    addRotation(torso2, 0, 0, sideSign * 0.08);
+    addRotation(legL1, -0.1, 0, 0);
+    addRotation(legR1, -0.1, 0, 0);
+    addRotation(armL1, 0.04, 0, isMixamo ? 0.12 : 0);
+    addRotation(armR1, 0.04, 0, isMixamo ? -0.12 : 0);
   } else if (role === "rear") {
     root.position.y = -0.04;
-    torso1.rotation.x += 0.22;
-    torso2.rotation.x += 0.1;
-    neck1.rotation.x -= 0.08;
-    legL1.rotation.x -= 0.12;
-    legR1.rotation.x -= 0.12;
+    addRotation(torso1, 0.22, 0, 0);
+    addRotation(torso2, 0.1, 0, 0);
+    addRotation(neck1, -0.08, 0, 0);
+    addRotation(legL1, -0.12, 0, 0);
+    addRotation(legR1, -0.12, 0, 0);
   }
 }
 
@@ -457,6 +495,25 @@ function registerMaterial(material, bucket) {
   materialRegistry.all.push(material);
   materialRegistry[bucket].push(material);
   return material;
+}
+
+function getBone(root, aliases) {
+  for (const alias of aliases) {
+    const bone = root.getObjectByName(alias);
+    if (bone) {
+      return bone;
+    }
+  }
+  return null;
+}
+
+function addRotation(bone, x = 0, y = 0, z = 0) {
+  if (!bone) {
+    return;
+  }
+  bone.rotation.x += x;
+  bone.rotation.y += y;
+  bone.rotation.z += z;
 }
 
 function seeded01(seed) {
