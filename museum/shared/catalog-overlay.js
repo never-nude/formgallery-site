@@ -3260,5 +3260,49 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.94, 0.48, 1.04],
       mobileViewVector: [0.76, 0.38, 0.94]
     }
+  },
+  haliphat: {
+    kind: "gltf",
+    path: "/palmyra/haliphat/index.html",
+    sectionId: "roman-world",
+    sortOrder: 115,
+    viewerTitle: "Funerary Relief Bust of Haliphat (Palmyra, 231 CE)",
+    subtitle: "Freer Gallery of Art collection; Aramaic inscription identifies Haliphat and dates the bust to 231 CE",
+    medium: "Limestone",
+    dimensions: "H: 60.1 cm | W: 55.3 cm | D: 23 cm",
+    locationLabel: "Origin:",
+    location: "Palmyra, Homs, Syria",
+    current_location: "Freer Gallery of Art, Smithsonian Institution",
+    findspot_or_origin: "Palmyra, Homs, Syria",
+    license: "Usage conditions apply",
+    mesh_format: "GLB",
+    tags: ["Palmyra", "Syria", "Roman world", "funerary bust", "limestone"],
+    lobbyMeta: "Source: Smithsonian 3D / Freer Gallery of Art",
+    source: source(
+      "Rendered from Smithsonian 3D's funerary relief bust of Haliphat, a Palmyrene limestone bust in the Freer Gallery of Art collection.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/funerary-relief-bust%3A7bc195a7-385f-43be-93c8-79a6bb46ff4b"),
+        link("Media metadata", "https://ids.si.edu/ids/media_view?id=3d_package%3A7bc195a7-385f-43be-93c8-79a6bb46ff4b&format=text"),
+        link("Original GLB", "https://3d-api.si.edu/content/document/3d_package:7bc195a7-385f-43be-93c8-79a6bb46ff4b/resources/funerary-relief-bust-of-haliphat-150k-4096.glb")
+      ],
+      "Smithsonian lists usage conditions apply. Origin, inscription date, medium, and dimensions follow the Smithsonian record."
+    ),
+    defaults: {
+      zoom: 2.92,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./haliphat_source.glb",
+      fallbackUrl: "./haliphat_source.glb"
+    },
+    scene: {
+      targetHeight: 1.04,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.96, 0.52, 1.1],
+      mobileViewVector: [0.78, 0.4, 0.98]
+    }
   }
 };
