@@ -5,48 +5,38 @@ const ANCIENT_ROOM_IDS = Object.freeze([
   "roman-world"
 ]);
 
-const ROOM_REGION_LABELS = Object.freeze({
-  "egypt-mesopotamia": "Egypt & Mesopotamia",
-  "greek-classical": "Archaic & Classical Greece",
-  "hellenistic-world": "Hellenistic Mediterranean",
-  "roman-world": "Rome & the Roman world",
-  asia: "Asia",
-  "sub-saharan-africa": "Sub-Saharan Africa",
-  "early-renaissance": "Italy",
-  michelangelo: "Italy",
-  bouchardon: "France",
-  rodin: "France"
-});
-
 const ERA_ORDER = Object.freeze([
-  "Antiquity",
-  "Sacred and Court Traditions",
-  "Early Renaissance",
+  "Ancient Origins",
+  "Greek Foundations",
+  "Hellenistic World",
+  "Roman World",
+  "Parallel Traditions",
+  "Rebirth of Antiquity",
   "High Renaissance",
-  "Enlightenment",
-  "Nineteenth Century"
+  "Enlightenment Sculpture",
+  "Nineteenth Century",
+  "Modern Sculpture"
 ]);
 
 const REGION_ORDER = Object.freeze([
-  "Egypt & the Nile",
-  "Mesopotamia",
+  "Egypt & Mesopotamia",
   "Greek world",
   "Roman world",
   "Asia",
   "Sub-Saharan Africa",
+  "Americas",
   "Italy",
   "France"
 ]);
 
 const ARTIST_ORDER = Object.freeze([
-  "Ancient workshops",
-  "Asian traditions",
-  "African artists",
+  "Unknown / workshop",
   "Donatello",
   "Benedetto da Maiano",
   "Battista Lorenzi",
   "Michelangelo",
   "Bouchardon",
+  "James Pradier",
   "Rodin"
 ]);
 
@@ -201,54 +191,56 @@ function formatWorkCount(count, active) {
 }
 
 function getRegionLabel(piece) {
+  if (piece?.region) return piece.region;
   const text = `${piece?.viewerTitle || ""} ${piece?.subtitle || ""} ${piece?.lobbyMeta || ""}`.toLowerCase();
 
   if (piece?.sectionId === "asia") return "Asia";
   if (piece?.sectionId === "sub-saharan-africa") return "Sub-Saharan Africa";
+  if (piece?.sectionId === "americas") return "Americas";
   if (piece?.sectionId === "early-renaissance" || piece?.sectionId === "michelangelo") return "Italy";
   if (piece?.sectionId === "bouchardon" || piece?.sectionId === "rodin") return "France";
   if (piece?.sectionId === "greek-classical" || piece?.sectionId === "hellenistic-world") return "Greek world";
   if (piece?.sectionId === "roman-world") return "Roman world";
   if (piece?.sectionId === "egypt-mesopotamia") {
-    if (/assyrian|nimrud|nineveh|mesopotamia/.test(text)) return "Mesopotamia";
-    return "Egypt & the Nile";
+    return "Egypt & Mesopotamia";
   }
 
-  if (/egypt|giza|sphinx/.test(text)) return "Egypt & the Nile";
-  if (/assyrian|nimrud|nineveh|mesopotamia/.test(text)) return "Mesopotamia";
+  if (/egypt|giza|sphinx|assyrian|nimrud|nineveh|mesopotamia/.test(text)) return "Egypt & Mesopotamia";
   if (/roman|prima porta|germanicus|capitoline|belvedere torso|ludovisi/.test(text)) return "Roman world";
   if (/delphi|artemision|athena|discobolus|milo|laocoon|gaul|greek|hellenistic|apollo belvedere/.test(text)) {
     return "Greek world";
   }
 
-  return "Roman world";
+  return "";
 }
 
 function getEraLabel(piece) {
+  if (piece?.period) return piece.period;
   const year = parseApproxYear(piece);
   if (year == null) return "Date uncertain";
   if (year <= 500) return "Antiquity";
   if (year < 1400) return "Sacred and Court Traditions";
   if (year < 1500) return "Early Renaissance";
   if (year < 1600) return "High Renaissance";
-  if (year < 1800) return "Enlightenment";
-  return "Nineteenth Century";
+  if (year < 1800) return "Enlightenment Sculpture";
+  if (year < 1900) return "Nineteenth Century";
+  return "Modern Sculpture";
 }
 
 function getArtistLabel(piece) {
-  const subtitle = cleanArtistLine(piece?.subtitle || "").split(";")[0].trim();
+  const maker = String(piece?.maker || "").trim();
 
-  if (ANCIENT_ROOM_IDS.includes(piece?.sectionId)) return "Ancient workshops";
-  if (piece?.sectionId === "asia") return "Asian traditions";
-  if (piece?.sectionId === "sub-saharan-africa") return "African artists";
-  if (piece?.sectionId === "michelangelo") return "Michelangelo";
-  if (piece?.sectionId === "bouchardon") return "Bouchardon";
-  if (piece?.sectionId === "rodin") return "Rodin";
-  if (piece?.sectionId === "early-renaissance" && /maiano/i.test(subtitle)) return "Benedetto da Maiano";
-  if (piece?.sectionId === "early-renaissance" && /lorenzi/i.test(subtitle)) return "Battista Lorenzi";
-  if (piece?.sectionId === "early-renaissance") return "Donatello";
+  if (!maker) return "Unknown / workshop";
+  if (/michelangelo/i.test(maker)) return "Michelangelo";
+  if (/bouchardon/i.test(maker)) return "Bouchardon";
+  if (/rodin/i.test(maker)) return "Rodin";
+  if (/donatello/i.test(maker)) return "Donatello";
+  if (/maiano/i.test(maker)) return "Benedetto da Maiano";
+  if (/lorenzi/i.test(maker)) return "Battista Lorenzi";
+  if (/pradier/i.test(maker)) return "James Pradier";
+  if (/unknown|workshop|stonemasons|sculptor|artist|caster|worker|maker/i.test(maker)) return "Unknown / workshop";
 
-  return subtitle || "Unknown / workshop";
+  return maker;
 }
 
 function buildBrowseItems(field, order, items) {
@@ -258,13 +250,24 @@ function buildBrowseItems(field, order, items) {
     counts.set(item[field], (counts.get(item[field]) || 0) + 1);
   }
 
-  return order
-    .filter((label) => counts.has(label))
-    .map((label) => ({
-      label,
-      value: label,
-      count: counts.get(label)
-    }));
+  const seen = new Set();
+  const orderedLabels = [];
+
+  for (const label of order) {
+    if (!counts.has(label)) continue;
+    seen.add(label);
+    orderedLabels.push(label);
+  }
+
+  const extras = [...counts.keys()]
+    .filter((label) => !seen.has(label))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+  return [...orderedLabels, ...extras].map((label) => ({
+    label,
+    value: label,
+    count: counts.get(label)
+  }));
 }
 
 function sortEntries(entries) {
@@ -320,13 +323,48 @@ function buildSections(lobby, pieces) {
         id: section.id,
         title: section.title,
         subtitle: section.subtitle,
-        region: ROOM_REGION_LABELS[section.id] || "",
+        region: section.regionLabel || "",
+        spineId: section.spineId || "",
+        spineTitle: section.spineTitle || "",
         dateRange: formatYearRange(items),
         workCount: items.length,
         items
       };
     })
     .filter((section) => section.items.length > 0);
+}
+
+function buildSectionGroups(lobby, sections) {
+  const sectionsById = new Map(sections.map((section) => [section.id, section]));
+  const rawGroups = Array.isArray(lobby.sectionGroups) ? lobby.sectionGroups : [];
+
+  if (!rawGroups.length) {
+    return [{
+      id: "all-galleries",
+      title: "Galleries",
+      showHeading: false,
+      workCount: sections.reduce((sum, section) => sum + section.workCount, 0),
+      sections
+    }];
+  }
+
+  return rawGroups
+    .map((group) => {
+      const groupedSections = (group.sectionIds || [])
+        .map((sectionId) => sectionsById.get(sectionId))
+        .filter(Boolean);
+      if (!groupedSections.length) return null;
+      const showHeading = groupedSections.length > 1 || groupedSections[0].title !== group.title;
+      return {
+        id: group.id,
+        title: group.title,
+        showHeading,
+        workCount: groupedSections.reduce((sum, section) => sum + section.workCount, 0),
+        galleryCount: groupedSections.length,
+        sections: groupedSections
+      };
+    })
+    .filter(Boolean);
 }
 
 function startOfUtcWeek(date) {
@@ -415,7 +453,7 @@ function renderSection(section) {
       <div class="gallery-head">
         ${section.region ? `<p class="gallery-region">${section.region}</p>` : ""}
         <h3 class="gallery-title">${section.title}</h3>
-        <p class="gallery-description">${section.subtitle}</p>
+        ${section.subtitle ? `<p class="gallery-description">${section.subtitle}</p>` : ""}
         <div class="gallery-meta">
           ${section.dateRange ? `<span>${section.dateRange}</span>` : ""}
           <span class="gallery-work-count" data-work-count>${formatWorkCount(section.workCount)}</span>
@@ -423,6 +461,24 @@ function renderSection(section) {
       </div>
       <ul class="work-list">${itemsHtml}</ul>
     </article>
+  `;
+}
+
+function renderSectionGroup(group) {
+  const sectionsHtml = group.sections.map((section) => renderSection(section)).join("");
+  const galleryLabel = group.galleryCount === 1 ? "gallery" : "galleries";
+
+  return `
+    <section class="chronology-group" id="sequence-${group.id}">
+      ${group.showHeading ? `
+        <div class="chronology-head">
+          <p class="chronology-kicker">Chronology</p>
+          <h3 class="chronology-title">${group.title}</h3>
+          <p class="chronology-meta">${group.workCount} works • ${group.galleryCount} ${galleryLabel}</p>
+        </div>
+      ` : ""}
+      <div class="gallery-grid">${sectionsHtml}</div>
+    </section>
   `;
 }
 
@@ -440,6 +496,7 @@ function bindLobbyFilters() {
   const browseButtons = Array.from(document.querySelectorAll(".browse-chip"));
   const resetButton = document.querySelector("[data-filter-reset]");
   const galleryCards = Array.from(document.querySelectorAll(".gallery-card"));
+  const chronologyGroups = Array.from(document.querySelectorAll(".chronology-group"));
   const status = document.getElementById("browseStatus");
 
   let activeGroup = "";
@@ -484,6 +541,11 @@ function bindLobbyFilters() {
           : card.dataset.workCountLabel || "";
       }
     }
+
+    for (const groupNode of chronologyGroups) {
+      const visibleCards = Array.from(groupNode.querySelectorAll(".gallery-card")).filter((card) => !card.hidden);
+      groupNode.hidden = visibleCards.length === 0;
+    }
   }
 
   for (const button of browseButtons) {
@@ -510,6 +572,7 @@ function bindLobbyFilters() {
 
 export function renderMuseumLobby(lobby, pieces) {
   const sections = buildSections(lobby, pieces);
+  const sectionGroups = buildSectionGroups(lobby, sections);
   const entries = sections.flatMap((section) => section.items);
   const featuredPiece = pickFeaturedPiece(lobby, sections);
   const browseGroups = [
@@ -525,7 +588,7 @@ export function renderMuseumLobby(lobby, pieces) {
     },
     {
       id: "artist",
-      title: "By Artist",
+      title: "By Maker",
       items: buildBrowseItems("artist", ARTIST_ORDER, entries)
     },
     {
@@ -540,7 +603,7 @@ export function renderMuseumLobby(lobby, pieces) {
   ];
 
   const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
-  const sectionsHtml = sections.map((section) => renderSection(section)).join("");
+  const sectionsHtml = sectionGroups.map((group) => renderSectionGroup(group)).join("");
   const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
   const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
   const brandForm = brandWords[0] || "FORM";
@@ -607,11 +670,11 @@ export function renderMuseumLobby(lobby, pieces) {
         <section class="rooms-section" id="rooms" aria-labelledby="rooms-title">
           <div class="section-head">
             <div>
-              <p class="section-kicker">Curatorial Rooms</p>
-              <h2 class="section-title" id="rooms-title">Galleries</h2>
+              <p class="section-kicker">Chronology</p>
+              <h2 class="section-title" id="rooms-title">Collection Sequence</h2>
             </div>
           </div>
-          <div class="gallery-grid">${sectionsHtml}</div>
+          ${sectionsHtml}
         </section>
       </main>
     </div>

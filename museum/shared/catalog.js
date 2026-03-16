@@ -37,62 +37,151 @@ export const museumSections = [
   {
     id: "egypt-mesopotamia",
     title: "Egypt & Mesopotamia",
-    subtitle: "Monumental and court sculpture from the Nile and Assyrian worlds"
+    subtitle: "",
+    spineId: "ancient-origins",
+    spineTitle: "Ancient Origins",
+    regionLabel: "Egypt & Mesopotamia"
   },
   {
     id: "greek-classical",
     title: "Greek Archaic & Classical",
-    subtitle: "Canonical bronzes, marbles, and temple figures from archaic and classical Greece"
+    subtitle: "",
+    spineId: "greek-foundations",
+    spineTitle: "Greek Foundations",
+    regionLabel: "Greek world"
   },
   {
     id: "hellenistic-world",
     title: "Hellenistic World",
-    subtitle: "Dynamic Hellenistic forms and celebrated Roman copies after Greek originals"
+    subtitle: "",
+    spineId: "hellenistic-world",
+    spineTitle: "Hellenistic World",
+    regionLabel: "Greek world"
   },
   {
     id: "roman-world",
     title: "Roman World",
-    subtitle: "Imperial portraiture, Italic survivals, and Roman marbles"
+    subtitle: "",
+    spineId: "roman-world",
+    spineTitle: "Roman World",
+    regionLabel: "Roman world"
   },
   {
     id: "asia",
     title: "Asia",
-    subtitle: "South, East, and Southeast Asian sacred and court sculpture"
+    subtitle: "",
+    spineId: "parallel-traditions",
+    spineTitle: "Parallel Traditions",
+    regionLabel: "Asia"
   },
   {
     id: "sub-saharan-africa",
     title: "Sub-Saharan Africa",
-    subtitle: "Devotional, court, export, and ancestral art traditions"
+    subtitle: "",
+    spineId: "parallel-traditions",
+    spineTitle: "Parallel Traditions",
+    regionLabel: "Sub-Saharan Africa"
   },
   {
     id: "americas",
     title: "Americas",
-    subtitle: "Indigenous, civic, and modern sculpture from North and South America"
+    subtitle: "",
+    spineId: "parallel-traditions",
+    spineTitle: "Parallel Traditions",
+    regionLabel: "Americas"
   },
   {
     id: "early-renaissance",
     title: "Early Renaissance",
-    subtitle: "Donatello and the turn toward naturalism"
+    subtitle: "",
+    spineId: "rebirth-of-antiquity",
+    spineTitle: "Rebirth of Antiquity",
+    regionLabel: "Italy"
   },
   {
     id: "michelangelo",
     title: "Michelangelo",
-    subtitle: "Michelangelo Buonarroti (1475-1564)"
+    subtitle: "",
+    spineId: "high-renaissance",
+    spineTitle: "High Renaissance",
+    regionLabel: "Italy"
   },
   {
     id: "bouchardon",
     title: "Bouchardon",
-    subtitle: "Edme Bouchardon (1698-1762)"
+    subtitle: "",
+    spineId: "enlightenment-sculpture",
+    spineTitle: "Enlightenment Sculpture",
+    regionLabel: "France"
   },
   {
     id: "nineteenth-century",
     title: "Nineteenth Century",
-    subtitle: "Neoclassical and academic sculpture across the long nineteenth century"
+    subtitle: "",
+    spineId: "nineteenth-century",
+    spineTitle: "Nineteenth Century",
+    regionLabel: ""
   },
   {
     id: "rodin",
     title: "Rodin",
-    subtitle: "Auguste Rodin (1840-1917)"
+    subtitle: "",
+    spineId: "modern-sculpture",
+    spineTitle: "Modern Sculpture",
+    regionLabel: "France"
+  }
+];
+
+export const museumChronology = [
+  {
+    id: "ancient-origins",
+    title: "Ancient Origins",
+    sectionIds: ["egypt-mesopotamia"]
+  },
+  {
+    id: "greek-foundations",
+    title: "Greek Foundations",
+    sectionIds: ["greek-classical"]
+  },
+  {
+    id: "hellenistic-world",
+    title: "Hellenistic World",
+    sectionIds: ["hellenistic-world"]
+  },
+  {
+    id: "roman-world",
+    title: "Roman World",
+    sectionIds: ["roman-world"]
+  },
+  {
+    id: "parallel-traditions",
+    title: "Parallel Traditions",
+    sectionIds: ["asia", "sub-saharan-africa", "americas"]
+  },
+  {
+    id: "rebirth-of-antiquity",
+    title: "Rebirth of Antiquity",
+    sectionIds: ["early-renaissance"]
+  },
+  {
+    id: "high-renaissance",
+    title: "High Renaissance",
+    sectionIds: ["michelangelo"]
+  },
+  {
+    id: "enlightenment-sculpture",
+    title: "Enlightenment Sculpture",
+    sectionIds: ["bouchardon"]
+  },
+  {
+    id: "nineteenth-century",
+    title: "Nineteenth Century",
+    sectionIds: ["nineteenth-century"]
+  },
+  {
+    id: "modern-sculpture",
+    title: "Modern Sculpture",
+    sectionIds: ["rodin"]
   }
 ];
 
@@ -1377,7 +1466,7 @@ export const museumLobby = {
   featuredLabel: "Featured Sculpture",
   featuredCtaLabel: "Explore the Work",
   browseTitle: "Browse the Collection",
-  browseSubtitle: "Grouped filters keep the collection quiet and legible while making it easy to move by era, region, maker, or room.",
+  browseSubtitle: "Filter by period, region, maker, or gallery.",
   browseResetLabel: "Show all works",
   sections: museumSections
     .map((section) => ({
@@ -1386,7 +1475,13 @@ export const museumLobby = {
       subtitle: section.subtitle,
       items: sectionItems(section.id)
     }))
-    .filter((section) => section.items.length > 0)
+    .filter((section) => section.items.length > 0),
+  sectionGroups: museumChronology
+    .map((group) => ({
+      id: group.id,
+      title: group.title,
+      sectionIds: group.sectionIds
+    }))
 };
 
 export const museumRouteMap = Object.fromEntries(

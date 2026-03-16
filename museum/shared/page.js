@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260316-1252";
+const MODULE_VERSION = "20260316-1318";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
@@ -118,6 +118,192 @@ const DIMENSIONS_BY_PIECE = Object.freeze({
   "the-wrestlers": "H: 95.5 cm | W: 117 cm | D: 70 cm"
 });
 
+function simplifyCatalogTitle(value = "") {
+  return value.replace(/\s*\([^)]*\)\s*$/, "").trim() || value.trim();
+}
+
+function parseMakerFields(subtitle = "") {
+  const trimmed = String(subtitle || "").trim();
+  if (!trimmed) {
+    return {
+      maker: "",
+      maker_lifespan: "",
+      workshop_or_attribution: ""
+    };
+  }
+
+  const hasMakerPrefix =
+    /^Artist:\s*/i.test(trimmed) ||
+    /^Traditional attribution:\s*/i.test(trimmed) ||
+    /^Attributed to\s*/i.test(trimmed);
+
+  if (!hasMakerPrefix) {
+    return {
+      maker: "",
+      maker_lifespan: "",
+      workshop_or_attribution: ""
+    };
+  }
+
+  const cleaned = trimmed
+    .replace(/^Artist:\s*/i, "")
+    .replace(/^Traditional attribution:\s*/i, "")
+    .replace(/^Attributed to\s*/i, "")
+    .trim();
+  const primary = cleaned.split(";")[0].trim();
+  const workshop_or_attribution = /attributed|attribution|workshop|unknown|after\b/i.test(cleaned) ? cleaned : "";
+  const lifespanMatch = primary.match(/^(.*?)(?:\s*\(([^)]*\d[^)]*)\))$/);
+  const maker = (lifespanMatch ? lifespanMatch[1] : primary)
+    .replace(/^(Attributed to|Traditional attribution:)\s*/i, "")
+    .trim();
+  const maker_lifespan = lifespanMatch ? lifespanMatch[2].trim() : "";
+
+  return {
+    maker,
+    maker_lifespan,
+    workshop_or_attribution
+  };
+}
+
+function parseYearBoundsFromText(text = "") {
+  const value = String(text || "");
+
+  let match = value.match(/(\d{1,4})\s*[-–]\s*(\d{1,4})\s*(BCE|CE)/i);
+  if (match) {
+    const start = Number.parseInt(match[1], 10);
+    const end = Number.parseInt(match[2], 10);
+    const isBce = match[3].toUpperCase() === "BCE";
+    return {
+      start_year: isBce ? -start : start,
+      end_year: isBce ? -end : end
+    };
+  }
+
+  match = value.match(/(?:c\.\s*)?(\d{1,4})\s*(BCE|CE)/i);
+  if (match) {
+    const year = Number.parseInt(match[1], 10);
+    const isBce = match[2].toUpperCase() === "BCE";
+    return {
+      start_year: isBce ? -year : year,
+      end_year: isBce ? -year : year
+    };
+  }
+
+  match = value.match(/\b(1[0-9]{3}|20[0-9]{2})\s*[-–]\s*(1[0-9]{3}|20[0-9]{2})\b/);
+  if (match) {
+    return {
+      start_year: Number.parseInt(match[1], 10),
+      end_year: Number.parseInt(match[2], 10)
+    };
+  }
+
+  match = value.match(/\b(1[0-9]{3}|20[0-9]{2})\b/);
+  if (match) {
+    const year = Number.parseInt(match[1], 10);
+    return {
+      start_year: year,
+      end_year: year
+    };
+  }
+
+  return {
+    start_year: null,
+    end_year: null
+  };
+}
+
+function normalizeLocationFields(piece) {
+  const value = piece.location || "";
+  const label = String(piece.locationLabel || "").trim().toLowerCase();
+
+  if (!value) {
+    return {
+      current_location: "",
+      findspot_or_origin: ""
+    };
+  }
+
+  if (label.startsWith("collection") || label.startsWith("current location")) {
+    return {
+      current_location: value,
+      findspot_or_origin: ""
+    };
+  }
+
+  if (
+    label.startsWith("findspot") ||
+    label.startsWith("origin") ||
+    label.startsWith("place") ||
+    label.startsWith("place made")
+  ) {
+    return {
+      current_location: "",
+      findspot_or_origin: value
+    };
+  }
+
+  return {
+    current_location: "",
+    findspot_or_origin: ""
+  };
+}
+
+function inferLicense(piece) {
+  const text = [
+    piece.license || "",
+    piece.source?.summary || "",
+    piece.source?.note || "",
+    piece.lobbyMeta || ""
+  ].join(" ");
+
+  const patterns = [
+    "CC BY-NC-SA 4.0",
+    "CC BY-NC-SA",
+    "CC BY-NC 4.0",
+    "CC BY-NC",
+    "CC BY-SA 4.0",
+    "CC BY-SA",
+    "CC BY-ND 4.0",
+    "CC BY-ND",
+    "CC BY 4.0",
+    "CC BY",
+    "CC0"
+  ];
+
+  for (const pattern of patterns) {
+    if (new RegExp(pattern.replace(/\s+/g, "\\s+"), "i").test(text)) {
+      return pattern;
+    }
+  }
+
+  return "";
+}
+
+function inferMeshFormat(piece) {
+  if (piece.mesh_format) return piece.mesh_format;
+  if (piece.kind === "sketchfab") return "Sketchfab";
+  const primary = String(piece.model?.primaryUrl || "").toLowerCase();
+  if (primary.endsWith(".glb")) return "GLB";
+  if (primary.endsWith(".gltf")) return "GLTF";
+  if (primary.endsWith(".stl") || piece.kind === "stl") return "STL";
+  if (piece.kind === "gltf") return "GLTF";
+  return "";
+}
+
+function uniqueTags(values) {
+  const result = [];
+  const seen = new Set();
+  for (const value of values) {
+    const normalized = String(value || "").trim();
+    if (!normalized) continue;
+    const key = normalized.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(normalized);
+  }
+  return result;
+}
+
 function inferMediumFromText(piece) {
   const text = [
     piece?.viewerTitle || "",
@@ -141,27 +327,71 @@ function inferMediumFromText(piece) {
   return "";
 }
 
-function enrichPieceMetadata(pieceId, piece) {
+function enrichPieceMetadata(pieceId, piece, sectionMeta = {}) {
   if (!piece) return piece;
   const medium = piece.medium || MEDIUM_BY_PIECE[pieceId] || inferMediumFromText(piece);
   const dimensions = piece.dimensions || DIMENSIONS_BY_PIECE[pieceId] || "";
+  const makerFields = parseMakerFields(piece.subtitle || "");
+  const yearFields = parseYearBoundsFromText(piece.viewerTitle || "");
+  const locationFields = normalizeLocationFields(piece);
+  const title = piece.title || simplifyCatalogTitle(piece.lobbyTitle || piece.viewerTitle || "");
+  const maker = piece.maker || makerFields.maker;
+  const maker_lifespan = piece.maker_lifespan || makerFields.maker_lifespan;
+  const workshop_or_attribution = piece.workshop_or_attribution || makerFields.workshop_or_attribution;
+  const region = piece.region || sectionMeta.regionLabel || "";
+  const period = piece.period || sectionMeta.spineTitle || sectionMeta.title || "";
+  const gallery = piece.gallery || sectionMeta.title || "";
+  const current_location = piece.current_location || locationFields.current_location;
+  const findspot_or_origin = piece.findspot_or_origin || locationFields.findspot_or_origin;
+  const scan_source = piece.scan_source || piece.lobbyMeta || "";
+  const license = piece.license || inferLicense(piece);
+  const mesh_format = inferMeshFormat(piece);
   const enriched = { ...piece };
+
+  enriched.title = title;
+  enriched.maker = maker;
+  enriched.maker_lifespan = maker_lifespan;
+  enriched.workshop_or_attribution = workshop_or_attribution;
+  enriched.culture = piece.culture || "";
+  enriched.region = region;
+  enriched.period = period;
+  enriched.start_year = piece.start_year ?? yearFields.start_year;
+  enriched.end_year = piece.end_year ?? yearFields.end_year;
+  enriched.current_location = current_location;
+  enriched.findspot_or_origin = findspot_or_origin;
+  enriched.scan_source = scan_source;
+  enriched.license = license;
+  enriched.mesh_format = mesh_format;
+  enriched.gallery = gallery;
+
   if (medium) {
     enriched.medium = medium;
   }
   if (dimensions) {
     enriched.dimensions = dimensions;
   }
+  enriched.tags = Array.isArray(piece.tags) && piece.tags.length
+    ? piece.tags
+    : uniqueTags([
+        gallery,
+        period,
+        region,
+        maker,
+        enriched.medium,
+        mesh_format
+      ]);
   return enriched;
 }
 
 function buildMergedCatalog(base, extension) {
+  const museumChronology = base.museumChronology || [];
   const museumSections = base.museumSections || [];
+  const sectionMetaById = new Map(museumSections.map((section) => [section.id, section]));
   const museumPieces = Object.fromEntries(
     Object.entries({
       ...(base.museumPieces || {}),
       ...(extension.museumPiecesExtension || {})
-    }).map(([pieceId, piece]) => [pieceId, enrichPieceMetadata(pieceId, piece)])
+    }).map(([pieceId, piece]) => [pieceId, enrichPieceMetadata(pieceId, piece, sectionMetaById.get(piece.sectionId))])
   );
 
   const sections = museumSections
@@ -169,6 +399,9 @@ function buildMergedCatalog(base, extension) {
       id: section.id,
       title: section.title,
       subtitle: section.subtitle,
+      regionLabel: section.regionLabel || "",
+      spineId: section.spineId || "",
+      spineTitle: section.spineTitle || "",
       items: Object.entries(museumPieces)
         .filter(([, piece]) => piece.sectionId === section.id && !piece.hiddenFromLobby)
         .sort(([, a], [, b]) => {
@@ -180,14 +413,25 @@ function buildMergedCatalog(base, extension) {
         .map(([pieceId]) => pieceId)
     }))
     .filter((section) => section.items.length > 0);
+  const sectionsById = new Map(sections.map((section) => [section.id, section]));
+  const sectionGroups = museumChronology
+    .map((group) => ({
+      id: group.id,
+      title: group.title,
+      sectionIds: group.sectionIds || [],
+      sections: (group.sectionIds || []).map((sectionId) => sectionsById.get(sectionId)).filter(Boolean)
+    }))
+    .filter((group) => group.sections.length > 0);
 
   return {
     ...base,
+    museumChronology,
     museumSections,
     museumPieces,
     museumLobby: {
       ...(base.museumLobby || {}),
-      sections
+      sections,
+      sectionGroups
     },
     museumRouteMap: Object.fromEntries(
       Object.entries(museumPieces).flatMap(([pieceId, piece]) => routeEntriesForPath(piece.path, pieceId))
