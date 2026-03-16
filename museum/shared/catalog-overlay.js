@@ -2698,6 +2698,32 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.92, 0.52, 1.68]
     }
   },
+  "terpsichore-lyran": {
+    kind: "sketchfab",
+    path: "/terpsichore-lyran/index.html",
+    sectionId: "nineteenth-century",
+    sortOrder: 8,
+    viewerTitle: "Terpsichore Lyran (Muse of Lyric Poetry) (1816)",
+    subtitle: "Artist: Antonio Canova (1757-1822)",
+    medium: "Marble",
+    dimensions: "H: 177.5 cm | W: 78.1 cm | D: 61 cm",
+    locationLabel: "On view:",
+    location: "The Cleveland Museum of Art, 200 Rotunda",
+    lobbyMeta: "Source: Sketchfab / Cleveland Museum of Art",
+    source: source(
+      "Sketchfab model published by the Cleveland Museum of Art and matched to the museum's open-access record for Terpsichore Lyran.",
+      [
+        link("Cleveland Museum of Art", "https://clevelandart.org/art/1968.212"),
+        link("Sketchfab model", "https://sketchfab.com/3d-models/1968212-terpsichore-lyran-6827af1276ab407ebbfa1e7d0a4b9a19")
+      ],
+      "The Cleveland Museum of Art's open-access record lists the work as Antonio Canova's Terpsichore Lyran (1816), marble, with overall dimensions 177.5 x 78.1 x 61 cm. The linked Sketchfab model is published under CC0 Public Domain."
+    ),
+    model: {
+      uid: "6827af1276ab407ebbfa1e7d0a4b9a19",
+      triangles: 114472,
+      sourceBytes: 11807266
+    }
+  },
   ganymede: {
     kind: "stl",
     path: "/ganymede/index.html",
