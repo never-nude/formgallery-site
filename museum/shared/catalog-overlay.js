@@ -2730,6 +2730,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./ganymede_source.stl"
     },
     scene: {
+      rotateX: 0,
       targetHeight: 1.28,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [1.06, 0.58, 1.42],
