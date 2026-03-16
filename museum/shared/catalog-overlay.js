@@ -2697,5 +2697,171 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.2, 0.7, 1.86],
       mobileViewVector: [0.92, 0.52, 1.68]
     }
+  },
+  ganymede: {
+    kind: "stl",
+    path: "/ganymede/index.html",
+    sectionId: "hellenistic-world",
+    sortOrder: 90,
+    viewerTitle: "Ganymede (Magna Graecia, 3rd-2nd century BCE)",
+    subtitle: "Artist: Unknown Greek sculptor",
+    medium: "Terracotta",
+    dimensions: "H: 29 cm | W: 9.6 cm | D: 7.2 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Scan the World / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond / Scan the World Ganymede file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Scan-the-World-msr-2002_3_1-Ganymede.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Scan-the-World-msr-2002_3_1-Ganymede.stl")
+      ],
+      "The Commons metadata identifies the statuette as a terracotta Ganymede from Magna Graecia, dated to the third or second century BCE, in the Musee Saint-Raymond collection."
+    ),
+    defaults: {
+      zoom: 2.78,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./ganymede_source.stl",
+      fallbackUrl: "./ganymede_source.stl"
+    },
+    scene: {
+      targetHeight: 1.28,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.06, 0.58, 1.42],
+      mobileViewVector: [0.82, 0.46, 1.24]
+    }
+  },
+  "young-bacchus-bronze": {
+    kind: "stl",
+    path: "/young-bacchus-bronze/index.html",
+    sectionId: "roman-world",
+    sortOrder: 94,
+    viewerTitle: "Young Bacchus (southern Gaul or Italy, 2nd-3rd century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Bronze",
+    dimensions: "H: 7.6 cm | W: 3 cm | D: 2 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond bronze Young Bacchus file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Msr-young-bacchus-bronze-10.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Msr-young-bacchus-bronze-10.stl")
+      ],
+      "The Commons metadata identifies the object as a bronze figurine of Young Bacchus from southern Gaul or Italy, dated to the second or third century CE."
+    ),
+    defaults: {
+      zoom: 3.18,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./young_bacchus_bronze_source.stl",
+      fallbackUrl: "./young_bacchus_bronze_source.stl"
+    },
+    scene: {
+      targetHeight: 0.88,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [0.94, 0.46, 1.02],
+      mobileViewVector: [0.74, 0.36, 0.92]
+    },
+    material: {
+      color: "#8f673f",
+      metalness: 0.3,
+      roughness: 0.46,
+      clearcoat: 0.14,
+      clearcoatRoughness: 0.38
+    }
+  },
+  vulcan: {
+    kind: "stl",
+    path: "/vulcan/index.html",
+    sectionId: "roman-world",
+    sortOrder: 96,
+    viewerTitle: "Vulcan (1st-2nd century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Bronze",
+    dimensions: "H: 7.5 cm | W: 5.8 cm | D: 3.2 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond Vulcan bronze file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Saint-raymond-vulcain-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Saint-raymond-vulcain-5.stl")
+      ],
+      "The Commons metadata identifies the object as a bronze Vulcan dated to the first or second century CE in the Musee Saint-Raymond collection."
+    ),
+    defaults: {
+      zoom: 3.06,
+      lightAngle: 24,
+      lightPower: 2.08,
+      exposure: 0.42,
+      rough: 0.2
+    },
+    model: {
+      primaryUrl: "./vulcan_source.stl",
+      fallbackUrl: "./vulcan_source.stl"
+    },
+    scene: {
+      targetHeight: 0.9,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.96, 0.48, 1.04],
+      mobileViewVector: [0.76, 0.36, 0.94]
+    },
+    material: {
+      color: "#8b653f",
+      metalness: 0.32,
+      roughness: 0.48,
+      clearcoat: 0.14,
+      clearcoatRoughness: 0.4
+    }
+  },
+  attis: {
+    kind: "stl",
+    path: "/attis/index.html",
+    sectionId: "roman-world",
+    sortOrder: 98,
+    viewerTitle: "Attis (3rd century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Terracotta",
+    dimensions: "H: 20 cm | W: 17 cm | D: 5.4 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond Attis terracotta file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Saint-raymond-attis-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Saint-raymond-attis-5.stl")
+      ],
+      "The Commons metadata identifies the object as a terracotta Attis dated to the third century CE in the Musee Saint-Raymond collection."
+    ),
+    defaults: {
+      zoom: 2.78,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./attis_source.stl",
+      fallbackUrl: "./attis_source.stl"
+    },
+    scene: {
+      targetHeight: 1.12,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.02, 0.54, 1.28],
+      mobileViewVector: [0.8, 0.42, 1.14]
+    }
   }
 };
