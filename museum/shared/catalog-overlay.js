@@ -14,6 +14,26 @@ function smkSource({ summary, recordUrl, fullUrl, fallbackUrl, note = "" }) {
   return source(summary, links, note);
 }
 
+function smithsonianDocument(packageId) {
+  return `https://3d-api.si.edu/content/document/3d_package:${packageId}/document.json`;
+}
+
+function smithsonianAsset(packageId, filename) {
+  return `https://3d-api.si.edu/content/document/3d_package:${packageId}/${filename}`;
+}
+
+function smithsonianSource({ summary, recordUrl, packageId, highFile = "", mediumFile = "", note = "" }) {
+  const links = [];
+  if (recordUrl) links.push(link("Smithsonian 3D record", recordUrl));
+  if (packageId) links.push(link("Voyager document", smithsonianDocument(packageId)));
+  if (highFile) {
+    links.push(link("High GLB", smithsonianAsset(packageId, highFile)));
+  } else if (mediumFile) {
+    links.push(link("GLB", smithsonianAsset(packageId, mediumFile)));
+  }
+  return source(summary, links, note);
+}
+
 const MICHELANGELO_SUBTITLE = "Artist: Michelangelo Buonarroti (1475-1564)";
 const DONATELLO_SUBTITLE = "Artist: Donatello (c. 1386-1466)";
 const LORENZI_SUBTITLE = "Artist: Battista Lorenzi (1527-1594)";
@@ -1847,6 +1867,297 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.72, 0.22, 2.1]
     }
   },
+  "inscribed-turtle-plastron": {
+    kind: "gltf",
+    path: "/asia/inscribed-turtle-plastron/index.html",
+    sectionId: "asia",
+    sortOrder: 1,
+    viewerTitle: "Inscribed Turtle Plastron (late Shang dynasty)",
+    subtitle: "Institute of History and Philology collection; reign of Wu Ding, Anyang, China",
+    medium: "Turtle plastron with pigment",
+    locationLabel: "Findspot:",
+    location: "Pit No. 127 Hsiao-t'un, Yin-xu Site",
+    lobbyMeta: "Source: Smithsonian 3D / Institute of History and Philology",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's inscribed turtle plastron model from the Anyang collection.",
+      recordUrl: "https://3d.si.edu/object/3d/inscribed-turtle-plastron%3A58be9e1e-9966-4f22-8eb8-b62a0205c697",
+      packageId: "58be9e1e-9966-4f22-8eb8-b62a0205c697",
+      mediumFile: "R041287-70k-2048-medium.glb",
+      note: "Smithsonian identifies the oracle bone as a late Shang divination record and lists usage conditions apply."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("58be9e1e-9966-4f22-8eb8-b62a0205c697", "R041287-70k-2048-medium.glb"),
+      fallbackUrl: smithsonianAsset("58be9e1e-9966-4f22-8eb8-b62a0205c697", "R041287-70k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 3.04,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.72,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.9, 0.44, 1.02],
+      mobileViewVector: [0.72, 0.34, 0.94]
+    }
+  },
+  "ritual-wine-cup-gu": {
+    kind: "gltf",
+    path: "/asia/ritual-wine-cup-gu/index.html",
+    sectionId: "asia",
+    sortOrder: 2,
+    viewerTitle: "Ritual Wine Cup (Gu) with Masks, Dragons, and Snakes (China, c. 1150-1100 BCE)",
+    subtitle: "Artist: Unknown Chinese bronze caster; Anyang, probably Henan province, China",
+    medium: "Bronze",
+    dimensions: "H: 32.7 cm | Diam: 19.4 cm",
+    locationLabel: "Origin:",
+    location: "Anyang, probably Henan province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's ritual wine cup (gu) from the Anyang collection.",
+      recordUrl: "https://3d.si.edu/object/3d/ritual-wine-cup-gu-masks-taotie-dragons-and-snakes%3A77942e15-a113-4e4a-a83e-d881844bdf2e",
+      packageId: "77942e15-a113-4e4a-a83e-d881844bdf2e",
+      mediumFile: "fsg-F1951_18-mg01-140k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("77942e15-a113-4e4a-a83e-d881844bdf2e", "fsg-F1951_18-mg01-140k-2048-medium.glb"),
+      fallbackUrl: smithsonianAsset("77942e15-a113-4e4a-a83e-d881844bdf2e", "fsg-F1951_18-mg01-140k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    scene: {
+      targetHeight: 0.9,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [0.98, 0.48, 1.18],
+      mobileViewVector: [0.76, 0.36, 1.06]
+    },
+    material: {
+      color: "#735533",
+      metalness: 0.82,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.46,
+      reflectivity: 0.82
+    }
+  },
+  "ritual-wine-container-fangyi": {
+    kind: "gltf",
+    path: "/asia/ritual-wine-container-fangyi/index.html",
+    sectionId: "asia",
+    sortOrder: 3,
+    viewerTitle: "Ritual Wine Container (Fangyi) with Masks, Serpents, and Birds (China, c. 1100 BCE)",
+    subtitle: "Artist: Unknown Chinese bronze caster; Luoyang, probably Henan province, China",
+    medium: "Bronze",
+    dimensions: "H: 35.3 cm | W: 24.8 cm | D: 23.3 cm",
+    locationLabel: "Origin:",
+    location: "Luoyang, probably Henan province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's ritual wine container (fangyi) from the Anyang collection.",
+      recordUrl: "https://3d.si.edu/object/3d/ritual-wine-container-fangyi-maskstaotie-serpents-and-birds%3Ad8c62f94-4ebc-11ea-b77f-2e728ce88125",
+      packageId: "d8c62f94-4ebc-11ea-b77f-2e728ce88125",
+      highFile: "f1930_54-part_01-smartscan-fixed-textured-150k-4096-high.glb",
+      mediumFile: "f1930_54-part_01-smartscan-fixed-textured-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d8c62f94-4ebc-11ea-b77f-2e728ce88125", "f1930_54-part_01-smartscan-fixed-textured-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("d8c62f94-4ebc-11ea-b77f-2e728ce88125", "f1930_54-part_01-smartscan-fixed-textured-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    scene: {
+      targetHeight: 0.96,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.98, 0.48, 1.2],
+      mobileViewVector: [0.76, 0.36, 1.08]
+    },
+    material: {
+      color: "#715331",
+      metalness: 0.82,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.46,
+      reflectivity: 0.82
+    }
+  },
+  "ritual-wine-ewer-gong": {
+    kind: "gltf",
+    path: "/asia/ritual-wine-ewer-gong/index.html",
+    sectionId: "asia",
+    sortOrder: 4,
+    viewerTitle: "Ritual Wine Ewer (Gong) with Masks, Dragons, and Animals (China, c. 1100-1050 BCE)",
+    subtitle: "Artist: Unknown Chinese bronze caster",
+    medium: "Bronze",
+    dimensions: "H: 32.2 cm | W: 32.2 cm | D: 15.7 cm",
+    locationLabel: "Origin:",
+    location: "China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's ritual wine ewer (gong) from the National Museum of Asian Art collection.",
+      recordUrl: "https://3d.si.edu/object/3d/ritual-wine-ewer-gong-masks-taotie-dragons-and-real-animals%3Ad8c646aa-4ebc-11ea-b77f-2e728ce88125",
+      packageId: "d8c646aa-4ebc-11ea-b77f-2e728ce88125",
+      highFile: "f1961_33-part_01-laser-ortery_texture-150k-4096-high.glb",
+      mediumFile: "f1961_33-part_01-laser-ortery_texture-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d8c646aa-4ebc-11ea-b77f-2e728ce88125", "f1961_33-part_01-laser-ortery_texture-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("d8c646aa-4ebc-11ea-b77f-2e728ce88125", "f1961_33-part_01-laser-ortery_texture-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    scene: {
+      targetHeight: 0.94,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.0, 0.48, 1.18],
+      mobileViewVector: [0.78, 0.36, 1.08]
+    },
+    material: {
+      color: "#745430",
+      metalness: 0.82,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.46,
+      reflectivity: 0.82
+    }
+  },
+  "spouted-vessel-he": {
+    kind: "gltf",
+    path: "/asia/spouted-vessel-he/index.html",
+    sectionId: "asia",
+    sortOrder: 5,
+    viewerTitle: "Spouted Vessel (He) in the Form of an Elephant (China, c. 1100 BCE)",
+    subtitle: "Artist: Unknown Chinese bronze caster; Anyang, probably Henan province, China",
+    medium: "Bronze",
+    dimensions: "H: 17.2 cm | W: 10.7 cm | D: 21.4 cm",
+    locationLabel: "Origin:",
+    location: "Anyang, probably Henan province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's elephant-form spouted vessel (he) from the Anyang collection.",
+      recordUrl: "https://3d.si.edu/object/3d/spouted-vessel-he-form-elephant-masks-taotie-dragons-and-snakes%3Ad8c63598-4ebc-11ea-b77f-2e728ce88125",
+      packageId: "d8c63598-4ebc-11ea-b77f-2e728ce88125",
+      highFile: "elephant_zun-36_6_a_b-base-150k-4096-high.glb",
+      mediumFile: "elephant_zun-36_6_a_b-base-150k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d8c63598-4ebc-11ea-b77f-2e728ce88125", "elephant_zun-36_6_a_b-base-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("d8c63598-4ebc-11ea-b77f-2e728ce88125", "elephant_zun-36_6_a_b-base-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.98,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    scene: {
+      targetHeight: 0.78,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.94, 0.4, 1.06],
+      mobileViewVector: [0.74, 0.32, 0.96]
+    },
+    material: {
+      color: "#7a5932",
+      metalness: 0.82,
+      clearcoat: 0.08,
+      clearcoatRoughness: 0.46,
+      reflectivity: 0.82
+    }
+  },
+  "kneeling-winged-monster": {
+    kind: "gltf",
+    path: "/asia/kneeling-winged-monster/index.html",
+    sectionId: "asia",
+    sortOrder: 8,
+    viewerTitle: "Kneeling Winged Monster (China, 550-577 CE)",
+    subtitle: "Freer Gallery of Art collection; Northern Xiangtangshan, Hebei province, China",
+    medium: "Limestone freestanding sculpture",
+    dimensions: "H: 88.4 cm | W: 47.3 cm | D: 28.5 cm",
+    locationLabel: "Origin:",
+    location: "Northern Xiangtangshan, Middle Cave, Hebei province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's kneeling winged monster from Northern Xiangtangshan.",
+      recordUrl: "https://3d.si.edu/object/3d/kneeling-winged-monster%3A0dc68216-3651-44c7-99cf-18e5d4d1eb9f",
+      packageId: "0dc68216-3651-44c7-99cf-18e5d4d1eb9f",
+      highFile: "kneeling-winged-monster-150k-4096-high.glb",
+      mediumFile: "kneeling-winged-monster-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("0dc68216-3651-44c7-99cf-18e5d4d1eb9f", "kneeling-winged-monster-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("0dc68216-3651-44c7-99cf-18e5d4d1eb9f", "kneeling-winged-monster-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.56,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.16,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.04, 0.58, 1.34],
+      mobileViewVector: [0.82, 0.44, 1.18]
+    }
+  },
+  "gwaneum-crown": {
+    kind: "gltf",
+    path: "/asia/gwaneum-crown/index.html",
+    sectionId: "asia",
+    sortOrder: 18,
+    viewerTitle: "Bodhisattva Avalokiteshvara (Gwaneum) - Crown",
+    subtitle: "National Museum of Asian Art collection; Korea, Goryeo period",
+    medium: "Gilt wood, gilt copper, and iron",
+    dimensions: "H: 21 cm",
+    locationLabel: "Origin:",
+    location: "Korea, Goryeo period",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's crown component of the Gwaneum model from the National Museum of Asian Art.",
+      recordUrl: "https://3d.si.edu/object/3d/bodhisattva-avalokiteshvara-gwaneum-crown%3A08137edb-b267-4e74-b78a-bebb9562ffd0",
+      packageId: "08137edb-b267-4e74-b78a-bebb9562ffd0",
+      highFile: "bodhisattva-avalokiteshvara-(gwaneum),-duk-953---crown-only-150k-4096-high.glb",
+      mediumFile: "bodhisattva-avalokiteshvara-(gwaneum),-duk-953---crown-only-150k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("08137edb-b267-4e74-b78a-bebb9562ffd0", "bodhisattva-avalokiteshvara-(gwaneum),-duk-953---crown-only-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("08137edb-b267-4e74-b78a-bebb9562ffd0", "bodhisattva-avalokiteshvara-(gwaneum),-duk-953---crown-only-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 3.12,
+      lightAngle: 24,
+      lightPower: 2.06,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    scene: {
+      targetHeight: 0.64,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.86, 0.38, 0.94],
+      mobileViewVector: [0.68, 0.28, 0.86]
+    }
+  },
   "cosmic-buddha": {
     kind: "gltf",
     path: "/asia/cosmic-buddha/",
@@ -2625,6 +2936,597 @@ export const museumPiecesExtension = {
       defaultYaw: -Math.PI * 0.05,
       defaultViewVector: [1.08, 0.3, 2.02],
       mobileViewVector: [0.82, 0.22, 1.78]
+    }
+  },
+  "girl-skating": {
+    kind: "gltf",
+    path: "/americas/girl-skating/index.html",
+    sectionId: "americas",
+    sortOrder: 30,
+    viewerTitle: "Girl Skating (modeled 1906)",
+    subtitle: "Artist: Abastenia St. Leger Eberle (1878-1942)",
+    medium: "Bronze",
+    dimensions: "H: 32.8 cm | W: 29.2 cm | D: 17.2 cm",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Girl Skating model from the Smithsonian American Art Museum.",
+      recordUrl: "https://3d.si.edu/object/3d/girl-skating%3Ae8d1f790-28a8-492d-84f5-cf2817f8cdcf",
+      packageId: "e8d1f790-28a8-492d-84f5-cf2817f8cdcf",
+      highFile: "saam_2011_29-girl_skating-polish-150k-4096-high.glb",
+      mediumFile: "saam_2011_29-girl_skating-polish-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("e8d1f790-28a8-492d-84f5-cf2817f8cdcf", "saam_2011_29-girl_skating-polish-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("e8d1f790-28a8-492d-84f5-cf2817f8cdcf", "saam_2011_29-girl_skating-polish-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.92,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [0.98, 0.5, 1.12],
+      mobileViewVector: [0.78, 0.38, 1.0]
+    }
+  },
+  gamin: {
+    kind: "gltf",
+    path: "/americas/gamin/index.html",
+    sectionId: "americas",
+    sortOrder: 32,
+    viewerTitle: "Gamin (c. 1929)",
+    subtitle: "Artist: Augusta Savage (1892-1962)",
+    medium: "Painted plaster",
+    dimensions: "H: 22.9 cm | W: 14.7 cm | D: 11.2 cm",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Gamin model by Augusta Savage.",
+      recordUrl: "https://3d.si.edu/object/3d/gamin%3A51c3ae66-8411-4145-b9ab-9096918289f6",
+      packageId: "51c3ae66-8411-4145-b9ab-9096918289f6",
+      highFile: "Gamin-150k-4096-high.glb",
+      mediumFile: "Gamin-150k-2048-medium.glb",
+      note: "Smithsonian lists metadata usage as not determined."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("51c3ae66-8411-4145-b9ab-9096918289f6", "Gamin-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("51c3ae66-8411-4145-b9ab-9096918289f6", "Gamin-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.94,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.78,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.92, 0.48, 1.02],
+      mobileViewVector: [0.74, 0.36, 0.92]
+    }
+  },
+  "pioneer-woman": {
+    kind: "gltf",
+    path: "/americas/pioneer-woman/index.html",
+    sectionId: "americas",
+    sortOrder: 34,
+    viewerTitle: "Pioneer Woman (modeled 1927, cast 1968)",
+    subtitle: "Artist: Bryant Baker (1881-1970)",
+    medium: "Bronze",
+    dimensions: "H: 81.3 cm | W: 38.1 cm | D: 41.1 cm",
+    lobbyMeta: "Source: Smithsonian 3D",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Pioneer Woman model by Bryant Baker.",
+      recordUrl: "https://3d.si.edu/object/3d/pioneer-woman%3A57fe1873-98a1-4853-87bc-203ff92deef6",
+      packageId: "57fe1873-98a1-4853-87bc-203ff92deef6",
+      highFile: "Pioneer_Woman-150k-4096-high.glb",
+      mediumFile: "Pioneer_Woman-150k-2048-medium.glb",
+      note: "Smithsonian lists metadata usage as not determined."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("57fe1873-98a1-4853-87bc-203ff92deef6", "Pioneer_Woman-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("57fe1873-98a1-4853-87bc-203ff92deef6", "Pioneer_Woman-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.72,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.08,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [1.0, 0.56, 1.18],
+      mobileViewVector: [0.8, 0.42, 1.06]
+    }
+  },
+  "rutherford-b-hayes": {
+    kind: "gltf",
+    path: "/americas/rutherford-b-hayes/index.html",
+    sectionId: "americas",
+    sortOrder: 36,
+    viewerTitle: "Rutherford B. Hayes (1876)",
+    subtitle: "Artist: Olin Levi Warner (1844-1896); sitter: Rutherford B. Hayes",
+    medium: "Plaster",
+    dimensions: "H: 27.3 cm | W: 24.8 cm | D: 12.7 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Rutherford B. Hayes bust in the National Portrait Gallery.",
+      recordUrl: "https://3d.si.edu/object/3d/rutherford-b-hayes%3A1f3700e8-6d01-4488-8ab9-ea14031ef641",
+      packageId: "1f3700e8-6d01-4488-8ab9-ea14031ef641",
+      highFile: "rutherford-b-150k-4096-high.glb",
+      mediumFile: "rutherford-b-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("1f3700e8-6d01-4488-8ab9-ea14031ef641", "rutherford-b-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("1f3700e8-6d01-4488-8ab9-ea14031ef641", "rutherford-b-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.72,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.92, 0.46, 1.0],
+      mobileViewVector: [0.74, 0.34, 0.9]
+    }
+  },
+  "anne-sullivan-macy": {
+    kind: "gltf",
+    path: "/americas/anne-sullivan-macy/index.html",
+    sectionId: "americas",
+    sortOrder: 38,
+    viewerTitle: "Anne Sullivan Macy (1916)",
+    subtitle: "Artist: Onorio Ruotolo (1888-1966); sitter: Anne Sullivan Macy",
+    medium: "Plaster and paint",
+    dimensions: "H: 27.3 cm | W: 21.9 cm | D: 21.3 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Anne Sullivan Macy portrait bust in the National Portrait Gallery.",
+      recordUrl: "https://3d.si.edu/object/3d/anne-sullivan-macy%3Ad8c63804-4ebc-11ea-b77f-2e728ce88125",
+      packageId: "d8c63804-4ebc-11ea-b77f-2e728ce88125",
+      highFile: "npg_75_15_as_render_model_no_color-150k-4096-high.glb",
+      mediumFile: "npg_75_15_as_render_model_no_color-150k-2048-medium.glb",
+      note: "Smithsonian lists metadata usage as not determined."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d8c63804-4ebc-11ea-b77f-2e728ce88125", "npg_75_15_as_render_model_no_color-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("d8c63804-4ebc-11ea-b77f-2e728ce88125", "npg_75_15_as_render_model_no_color-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.94,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.78,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.92, 0.46, 1.0],
+      mobileViewVector: [0.74, 0.34, 0.9]
+    }
+  },
+  "mary-mcleod-bethune": {
+    kind: "gltf",
+    path: "/americas/mary-mcleod-bethune/index.html",
+    sectionId: "americas",
+    sortOrder: 40,
+    viewerTitle: "Statue of Mary McLeod Bethune (2020)",
+    subtitle: "Artist: Nilda Maria Comas (born 1953); sitter: Mary McLeod Bethune",
+    medium: "Plaster with acrylic paint and metal",
+    dimensions: "H: 243.8 cm | W: 102.9 cm | D: 92.7 cm",
+    lobbyMeta: "Source: Smithsonian 3D / NMAAHC",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's maquette-scale model for Nilda Maria Comas's statue of Mary McLeod Bethune.",
+      recordUrl: "https://3d.si.edu/object/3d/statue-mary-mcleod-bethune%3A500d2c6f-cc9f-4d46-ab45-e735406ca784",
+      packageId: "500d2c6f-cc9f-4d46-ab45-e735406ca784",
+      highFile: "nmaahc-sc_0092-150k-4096-high.glb",
+      mediumFile: "nmaahc-sc_0092-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("500d2c6f-cc9f-4d46-ab45-e735406ca784", "nmaahc-sc_0092-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("500d2c6f-cc9f-4d46-ab45-e735406ca784", "nmaahc-sc_0092-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.3,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.86,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.16, 0.74, 1.62],
+      mobileViewVector: [0.9, 0.56, 1.42]
+    }
+  },
+  "untitled-woman-and-child": {
+    kind: "gltf",
+    path: "/americas/untitled-woman-and-child/index.html",
+    sectionId: "americas",
+    sortOrder: 42,
+    viewerTitle: "Untitled (Woman and Child) (c. 1950)",
+    subtitle: "Artist: Selma Burke (1900-1995)",
+    medium: "Painted red oak",
+    dimensions: "H: 119.6 cm | W: 32.3 cm | D: 29.8 cm",
+    lobbyMeta: "Source: Smithsonian 3D",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Untitled (Woman and Child) model by Selma Burke.",
+      recordUrl: "https://3d.si.edu/object/3d/untitled-woman-and-child%3Ad8768395-1664-4695-aba8-8b4b80580722",
+      packageId: "d8768395-1664-4695-aba8-8b4b80580722",
+      highFile: "Untitled_-Woman_and_Child-150k-4096-high.glb",
+      mediumFile: "Untitled_-Woman_and_Child-150k-2048-medium.glb",
+      note: "Smithsonian lists metadata usage as not determined."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d8768395-1664-4695-aba8-8b4b80580722", "Untitled_-Woman_and_Child-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("d8768395-1664-4695-aba8-8b4b80580722", "Untitled_-Woman_and_Child-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.46,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.62,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.12, 0.68, 1.54],
+      mobileViewVector: [0.88, 0.5, 1.38]
+    }
+  },
+  "tree-of-life": {
+    kind: "gltf",
+    path: "/americas/tree-of-life/index.html",
+    sectionId: "americas",
+    sortOrder: 43,
+    viewerTitle: "Tree of Life",
+    subtitle: "Smithsonian Latino Center record",
+    lobbyMeta: "Source: Smithsonian 3D / Smithsonian Latino Center",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Tree of Life model in the Smithsonian Latino Center collection set.",
+      recordUrl: "https://3d.si.edu/object/3d/tree-life%3Ae2e5f282-51e9-459e-9810-c341c21f06ca",
+      packageId: "e2e5f282-51e9-459e-9810-c341c21f06ca",
+      highFile: "tree_of_life-150k-4096-high.glb",
+      mediumFile: "tree_of_life-150k-2048-medium.glb",
+      note: "The public 3D record exposes title and data-source information but limited object metadata; Form Gallery leaves unsupported fields blank rather than inferring them."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("e2e5f282-51e9-459e-9810-c341c21f06ca", "tree_of_life-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("e2e5f282-51e9-459e-9810-c341c21f06ca", "tree_of_life-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.52,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.36,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.06, 0.58, 1.38],
+      mobileViewVector: [0.84, 0.44, 1.22]
+    }
+  },
+  "mask-sargent-johnson": {
+    kind: "gltf",
+    path: "/americas/mask-sargent-johnson/index.html",
+    sectionId: "americas",
+    sortOrder: 44,
+    viewerTitle: "Mask (1935)",
+    subtitle: "Artist: Sargent Johnson (1887-1967)",
+    medium: "Copper with gilding on walnut base",
+    dimensions: "H: 40 cm | W: 34 cm | D: 15.6 cm",
+    lobbyMeta: "Source: Smithsonian 3D",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Mask model by Sargent Johnson.",
+      recordUrl: "https://3d.si.edu/object/3d/mask%3Ae8365c4b-de4a-4581-a927-3e2bbef5bfb2",
+      packageId: "e8365c4b-de4a-4581-a927-3e2bbef5bfb2",
+      highFile: "Mask-150k-4096-high.glb",
+      mediumFile: "Mask-150k-2048-medium.glb",
+      note: "Smithsonian lists metadata usage as not determined."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("e8365c4b-de4a-4581-a927-3e2bbef5bfb2", "Mask-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("e8365c4b-de4a-4581-a927-3e2bbef5bfb2", "Mask-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.84,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.92, 0.46, 1.0],
+      mobileViewVector: [0.74, 0.34, 0.9]
+    }
+  },
+  "james-garfield": {
+    kind: "gltf",
+    path: "/americas/james-garfield/index.html",
+    sectionId: "americas",
+    sortOrder: 46,
+    viewerTitle: "James Garfield (c. 1883-1887)",
+    subtitle: "Attribution: John Quincy Adams Ward (1830-1910); sitter: James Garfield",
+    medium: "Bronze on an integral bronze base",
+    dimensions: "H: 47.6 cm | W: 14.6 cm | D: 14 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's James Garfield portrait in the National Portrait Gallery.",
+      recordUrl: "https://3d.si.edu/object/3d/james-garfield%3Ad2887438-0f09-4e72-887d-0966ff177149",
+      packageId: "d2887438-0f09-4e72-887d-0966ff177149",
+      highFile: "james-garfield-bronze-sculpture-150k-4096-high.glb",
+      mediumFile: "james-garfield-bronze-sculpture-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d2887438-0f09-4e72-887d-0966ff177149", "james-garfield-bronze-sculpture-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("d2887438-0f09-4e72-887d-0966ff177149", "james-garfield-bronze-sculpture-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.94,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.86,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.92, 0.46, 1.02],
+      mobileViewVector: [0.74, 0.34, 0.92]
+    }
+  },
+  "andrew-jackson-zinc": {
+    kind: "gltf",
+    path: "/americas/andrew-jackson-zinc/index.html",
+    sectionId: "americas",
+    sortOrder: 48,
+    viewerTitle: "Andrew Jackson (1855)",
+    subtitle: "Cast after Clark Mills (1810-1883); studio: Cornelius & Baker; sitter: Andrew Jackson",
+    medium: "Cast zinc, lead-tin solder, imitation bronze paint (?)",
+    dimensions: "H: 67.3 cm | W: 55.9 cm | D: 26.7 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's zinc Andrew Jackson portrait in the National Portrait Gallery.",
+      recordUrl: "https://3d.si.edu/object/3d/andrew-jackson%3A80a9e13c-8e58-4b74-8482-63fd5ee197d8",
+      packageId: "80a9e13c-8e58-4b74-8482-63fd5ee197d8",
+      highFile: "andrew-jackson-zinc-sculpture-150k-4096-high.glb",
+      mediumFile: "andrew-jackson-zinc-sculpture-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("80a9e13c-8e58-4b74-8482-63fd5ee197d8", "andrew-jackson-zinc-sculpture-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("80a9e13c-8e58-4b74-8482-63fd5ee197d8", "andrew-jackson-zinc-sculpture-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.02,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [1.02, 0.54, 1.16],
+      mobileViewVector: [0.8, 0.42, 1.04]
+    }
+  },
+  "franklin-d-roosevelt": {
+    kind: "gltf",
+    path: "/americas/franklin-d-roosevelt/index.html",
+    sectionId: "americas",
+    sortOrder: 50,
+    viewerTitle: "Franklin D. Roosevelt",
+    subtitle: "Artist: Reuben Nakian (1897-1986); sitter: Franklin D. Roosevelt",
+    medium: "Bronze with integral base",
+    dimensions: "H: 64.8 cm | W: 30.5 cm | D: 33 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Franklin D. Roosevelt portrait in the National Portrait Gallery.",
+      recordUrl: "https://3d.si.edu/object/3d/franklin-d-roosevelt%3A3a124974-015b-4d9f-813d-3fc563bf60d4",
+      packageId: "3a124974-015b-4d9f-813d-3fc563bf60d4",
+      highFile: "franklin-d-150k-4096-high.glb",
+      mediumFile: "franklin-d-150k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("3a124974-015b-4d9f-813d-3fc563bf60d4", "franklin-d-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("3a124974-015b-4d9f-813d-3fc563bf60d4", "franklin-d-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.98,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.98, 0.5, 1.1],
+      mobileViewVector: [0.78, 0.38, 1.0]
+    }
+  },
+  "jimmy-carter": {
+    kind: "gltf",
+    path: "/americas/jimmy-carter/index.html",
+    sectionId: "americas",
+    sortOrder: 52,
+    viewerTitle: "Jimmy Carter (1980)",
+    subtitle: "Artists: Joan Hall (born 1939) and Neil Estern (born 1926); sitter: Jimmy Carter",
+    medium: "Plaster, mixed media, and pine shadow box",
+    dimensions: "H: 50.8 cm | W: 38.1 cm | D: 24.1 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Jimmy Carter portrait object in the National Portrait Gallery.",
+      recordUrl: "https://3d.si.edu/object/3d/jimmy-carter%3A8e441f83-1e4b-4d14-8ad4-0ae7c1c83d77",
+      packageId: "8e441f83-1e4b-4d14-8ad4-0ae7c1c83d77",
+      highFile: "jimmy-carter-mixed-media-shadow-box-150k-4096-high.glb",
+      mediumFile: "jimmy-carter-mixed-media-shadow-box-150k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("8e441f83-1e4b-4d14-8ad4-0ae7c1c83d77", "jimmy-carter-mixed-media-shadow-box-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("8e441f83-1e4b-4d14-8ad4-0ae7c1c83d77", "jimmy-carter-mixed-media-shadow-box-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.68,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.02,
+      defaultYaw: -Math.PI * 0.05,
+      defaultViewVector: [0.98, 0.5, 1.12],
+      mobileViewVector: [0.78, 0.38, 1.0]
+    }
+  },
+  "abraham-lincoln-life-mask": {
+    kind: "gltf",
+    path: "/americas/abraham-lincoln-life-mask/index.html",
+    sectionId: "americas",
+    sortOrder: 54,
+    viewerTitle: "Abraham Lincoln Life Mask (1860; cast 1917)",
+    subtitle: "Cast after Leonard Wells Volk (1828-1895); sitter: Abraham Lincoln",
+    medium: "Plaster",
+    dimensions: "H: 14.6 cm | W: 21.6 cm | D: 23.5 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Abraham Lincoln life mask cast after Leonard Wells Volk.",
+      recordUrl: "https://3d.si.edu/object/3d/abraham-lincoln%3A2b4a081a-9ea1-4b0c-b1c3-6f5389da3244",
+      packageId: "2b4a081a-9ea1-4b0c-b1c3-6f5389da3244",
+      highFile: "p0-Part-100k-4096.glb",
+      mediumFile: "p0-Part-100k-2048.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("2b4a081a-9ea1-4b0c-b1c3-6f5389da3244", "p0-Part-100k-4096.glb"),
+      fallbackUrl: smithsonianAsset("2b4a081a-9ea1-4b0c-b1c3-6f5389da3244", "p0-Part-100k-2048.glb")
+    },
+    defaults: {
+      zoom: 3.04,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.68,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [0.88, 0.42, 0.96],
+      mobileViewVector: [0.7, 0.32, 0.86]
+    }
+  },
+  "abraham-lincoln-hands": {
+    kind: "gltf",
+    path: "/americas/abraham-lincoln-hands/index.html",
+    sectionId: "americas",
+    sortOrder: 56,
+    viewerTitle: "Abraham Lincoln Hands (1860; cast c. 1917)",
+    subtitle: "Cast after Leonard Wells Volk (1828-1895); sitter: Abraham Lincoln",
+    medium: "Plaster",
+    dimensions: "Proper left: 7.6 cm x 11.1 cm x 17.8 cm | Proper right: 8.9 cm x 12.7 cm x 15.2 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's cast of Abraham Lincoln's hands after Leonard Wells Volk.",
+      recordUrl: "https://3d.si.edu/object/3d/abraham-lincoln%3Ad8c642d6-4ebc-11ea-b77f-2e728ce88125",
+      packageId: "d8c642d6-4ebc-11ea-b77f-2e728ce88125",
+      mediumFile: "npg_71_6_combined-hires_unwrapped-100k-2048_std_draco.glb",
+      note: "The combined Smithsonian GLB is Draco-compressed; Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("d8c642d6-4ebc-11ea-b77f-2e728ce88125", "npg_71_6_combined-hires_unwrapped-100k-2048_std_draco.glb"),
+      fallbackUrl: smithsonianAsset("d8c642d6-4ebc-11ea-b77f-2e728ce88125", "npg_71_6_combined-hires_unwrapped-100k-2048_std_draco.glb")
+    },
+    defaults: {
+      zoom: 3.08,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.64,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.88, 0.38, 0.98],
+      mobileViewVector: [0.7, 0.3, 0.88]
+    }
+  },
+  "abraham-lincoln-face-cast": {
+    kind: "gltf",
+    path: "/americas/abraham-lincoln-face-cast/index.html",
+    sectionId: "americas",
+    sortOrder: 58,
+    viewerTitle: "Abraham Lincoln Face Cast (1865; cast c. 1917)",
+    subtitle: "Cast after Clark Mills (1810-1883); sitter: Abraham Lincoln",
+    medium: "Plaster",
+    dimensions: "H: 17.1 cm | W: 20.3 cm | D: 29.8 cm",
+    locationLabel: "Collection:",
+    location: "National Portrait Gallery, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NPG",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's cast of Abraham Lincoln's face after Clark Mills.",
+      recordUrl: "https://3d.si.edu/object/3d/abraham-lincoln%3Ac02c239d-5ebf-4a7a-a368-e2288bbf4b31",
+      packageId: "c02c239d-5ebf-4a7a-a368-e2288bbf4b31",
+      highFile: "abraham-lincoln-mills-life-mask-150k-4096-high.glb",
+      mediumFile: "abraham-lincoln-mills-life-mask-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("c02c239d-5ebf-4a7a-a368-e2288bbf4b31", "abraham-lincoln-mills-life-mask-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("c02c239d-5ebf-4a7a-a368-e2288bbf4b31", "abraham-lincoln-mills-life-mask-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 3.02,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.72,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [0.88, 0.42, 0.98],
+      mobileViewVector: [0.7, 0.32, 0.88]
     }
   },
   "juno-ludovisi": {
