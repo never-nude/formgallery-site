@@ -2864,5 +2864,161 @@ export const museumPiecesExtension = {
       defaultViewVector: [1.02, 0.54, 1.28],
       mobileViewVector: [0.8, 0.42, 1.14]
     }
+  },
+  "bust-of-marcus-aurelius": {
+    kind: "stl",
+    path: "/bust-of-marcus-aurelius/index.html",
+    sectionId: "roman-world",
+    sortOrder: 100,
+    viewerTitle: "Bust of Marcus Aurelius Antoninus (c. 200 CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Marble",
+    dimensions: "H: 78.5 cm | W: 56.5 cm | D: 32.5 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond bust of Marcus Aurelius Antoninus file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Msr-bust-of-marcus-aurelius-cesar.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Msr-bust-of-marcus-aurelius-cesar.stl")
+      ],
+      "The linked Commons metadata identifies the sculpture as Musee Saint-Raymond inventory Ra 61 a, a marble bust of Marcus Aurelius Antoninus dated around 200 CE."
+    ),
+    defaults: {
+      zoom: 2.76,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./bust_of_marcus_aurelius_source.stl",
+      fallbackUrl: "./bust_of_marcus_aurelius_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 1.04,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.0, 0.56, 1.18],
+      mobileViewVector: [0.8, 0.42, 1.04]
+    }
+  },
+  "bearded-hercules-head": {
+    kind: "stl",
+    path: "/bearded-hercules-head/index.html",
+    sectionId: "roman-world",
+    sortOrder: 102,
+    viewerTitle: "Bearded Hercules Head (3rd century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Saint-Beat marble",
+    dimensions: "H: 29.5 cm | W: 23.5 cm | D: 22 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond bearded Hercules head file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Msr-bearded-hercules-head-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Msr-bearded-hercules-head-5.stl")
+      ],
+      "The linked Commons metadata identifies the object as Musee Saint-Raymond inventory Ra 28 k, a head of Hercules carved in Saint-Beat marble and dated to the third century CE."
+    ),
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./bearded_hercules_head_source.stl",
+      fallbackUrl: "./bearded_hercules_head_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.72,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.9, 0.44, 0.98],
+      mobileViewVector: [0.72, 0.34, 0.9]
+    }
+  },
+  "head-of-maxence": {
+    kind: "stl",
+    path: "/head-of-maxence/index.html",
+    sectionId: "roman-world",
+    sortOrder: 104,
+    viewerTitle: "Head of Maxence (?) (c. 293 CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Saint-Beat marble",
+    dimensions: "H: 33 cm | W: 22 cm | D: 23 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond young Maxence head file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Msr-young-maxence-head-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Msr-young-maxence-head-5.stl")
+      ],
+      "The linked Commons metadata identifies the object as Musee Saint-Raymond inventory Ra 93 ter, a head of Maxence(?) in Saint-Beat marble dated to 293 CE."
+    ),
+    defaults: {
+      zoom: 2.92,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./head_of_maxence_source.stl",
+      fallbackUrl: "./head_of_maxence_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.8,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [0.92, 0.46, 1.02],
+      mobileViewVector: [0.74, 0.36, 0.92]
+    }
+  },
+  "adolescent-torso": {
+    kind: "stl",
+    path: "/adolescent-torso/index.html",
+    sectionId: "roman-world",
+    sortOrder: 106,
+    viewerTitle: "Adolescent Torso",
+    subtitle: "Artist: Unknown sculptor",
+    medium: "Marble",
+    dimensions: "H: 58 cm | D: 21.5 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse (reserves)",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond adolescent torso file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Msr-adolescent-torso-repaired-repaired.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Msr-adolescent-torso-repaired-repaired.stl")
+      ],
+      "The linked Commons metadata identifies the object as Musee Saint-Raymond inventory Ra 47 a, a marble torso currently held in the museum reserves. The source metadata publishes height and depth but does not provide a width measurement."
+    ),
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./adolescent_torso_source.stl",
+      fallbackUrl: "./adolescent_torso_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.96,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [0.98, 0.52, 1.08],
+      mobileViewVector: [0.78, 0.4, 0.98]
+    }
   }
 };
