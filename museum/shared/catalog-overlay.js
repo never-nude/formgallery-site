@@ -1807,6 +1807,46 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.72, 0.22, 2.08]
     }
   },
+  "western-paradise-buddha-amitabha": {
+    kind: "gltf",
+    path: "/asia/western-paradise-buddha-amitabha/",
+    sectionId: "asia",
+    sortOrder: 5,
+    viewerTitle: "Western Paradise of the Buddha Amitabha (China, 550-577 CE)",
+    subtitle: "Freer Gallery of Art collection; Northern Qi dynasty, Hebei, China",
+    medium: "Limestone with traces of pigment",
+    dimensions: "H: 159.3 cm | W: 334.5 cm",
+    locationLabel: "Origin:",
+    location: "southern Xiangtangshan, Cave 2, Hebei province, China",
+    lobbyMeta: "Source: Smithsonian 3D / National Museum of Asian Art",
+    source: source(
+      "Rendered from Smithsonian 3D's Western Paradise of the Buddha Amitabha model, identified as a Northern Qi relief from southern Xiangtangshan and held by the Freer Gallery of Art.",
+      [
+        link("Smithsonian 3D record", "https://3d.si.edu/object/3d/western-paradise-buddha-amitabha%3A727b4bb6-ce87-40de-b07d-d492c1404221"),
+        link("Voyager document", "https://3d-api.si.edu/content/document/3d_package:727b4bb6-ce87-40de-b07d-d492c1404221/document.json"),
+        link("High GLB", "https://3d-api.si.edu/content/document/3d_package:727b4bb6-ce87-40de-b07d-d492c1404221/f1921_2-high_res-150k-4096-high.glb")
+      ],
+      "Smithsonian marks both the 3D package and the object metadata as CC0. The title, date, origin, medium, and dimensions follow the National Museum of Asian Art object page."
+    ),
+    defaults: {
+      zoom: 2.34,
+      lightAngle: 24,
+      lightPower: 2.0,
+      exposure: 0.46,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "https://3d-api.si.edu/content/document/3d_package:727b4bb6-ce87-40de-b07d-d492c1404221/f1921_2-high_res-150k-4096-high.glb",
+      fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:727b4bb6-ce87-40de-b07d-d492c1404221/f1921_2-high_res-150k-2048-medium.glb"
+    },
+    scene: {
+      showPedestal: false,
+      targetHeight: 0.98,
+      focusYRatio: 0.5,
+      defaultViewVector: [1.02, 0.28, 2.34],
+      mobileViewVector: [0.72, 0.22, 2.1]
+    }
+  },
   "cosmic-buddha": {
     kind: "gltf",
     path: "/asia/cosmic-buddha/",
