@@ -2897,7 +2897,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./bust_of_marcus_aurelius_source.stl"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 1.04,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [1.0, 0.56, 1.18],
@@ -2936,7 +2936,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./bearded_hercules_head_source.stl"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 0.72,
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [0.9, 0.44, 0.98],
@@ -2975,7 +2975,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./head_of_maxence_source.stl"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 0.8,
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [0.92, 0.46, 1.02],
@@ -3014,7 +3014,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./adolescent_torso_source.stl"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 0.96,
       defaultYaw: Math.PI * 0.05,
       defaultViewVector: [0.98, 0.52, 1.08],
@@ -3063,6 +3063,162 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.98, 0.5, 1.18],
       mobileViewVector: [0.78, 0.4, 1.02]
+    }
+  },
+  "diana-ra-34-h": {
+    kind: "stl",
+    path: "/diana-ra-34-h/index.html",
+    sectionId: "roman-world",
+    sortOrder: 110,
+    viewerTitle: "Diana (?) (3rd century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Marble",
+    dimensions: "H: 49 cm | W: 37 cm | D: 27 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond Diana(?) file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Saint-raymond-diane-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Saint-raymond-diane-5.stl")
+      ],
+      "The linked Commons metadata identifies the sculpture as Musee Saint-Raymond inventory Ra 34 h, a marble figure traditionally identified as Diana(?), dated to the third century CE."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./diana_ra_34_h_source.stl",
+      fallbackUrl: "./diana_ra_34_h_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.96,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.98, 0.52, 1.08],
+      mobileViewVector: [0.78, 0.4, 0.98]
+    }
+  },
+  "cybele-ra-34-i": {
+    kind: "stl",
+    path: "/cybele-ra-34-i/index.html",
+    sectionId: "roman-world",
+    sortOrder: 112,
+    viewerTitle: "Cybele (3rd century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Marble",
+    dimensions: "H: 52 cm | W: 40 cm | D: 40 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond Cybele file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Saint-raymond-cybele-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Saint-raymond-cybele-5.stl")
+      ],
+      "The linked Commons metadata identifies the sculpture as Musee Saint-Raymond inventory Ra 34 i, a marble figure of Cybele dated to the third century CE."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./cybele_ra_34_i_source.stl",
+      fallbackUrl: "./cybele_ra_34_i_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.98,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.0, 0.54, 1.12],
+      mobileViewVector: [0.8, 0.42, 1.0]
+    }
+  },
+  "cleopatra-v-tryphaena": {
+    kind: "stl",
+    path: "/cleopatra-v-tryphaena/index.html",
+    sectionId: "roman-world",
+    sortOrder: 114,
+    viewerTitle: "Portrait of Cleopatra V Tryphaena (1st century BCE)",
+    subtitle: "Artist: Unknown sculptor",
+    medium: "Marble",
+    dimensions: "H: 35 cm | W: 25 cm | D: 26 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond portrait of Cleopatra V Tryphaena file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:25-msr-cleopatre-v-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:25-msr-cleopatre-v-5.stl")
+      ],
+      "The linked Commons metadata identifies the object as Musee Saint-Raymond inventory Ra 80, a marble portrait traditionally identified as Cleopatra V Tryphaena and dated to the first century BCE."
+    ),
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./cleopatra_v_tryphaena_source.stl",
+      fallbackUrl: "./cleopatra_v_tryphaena_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.78,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.92, 0.46, 1.02],
+      mobileViewVector: [0.74, 0.36, 0.92]
+    }
+  },
+  "galeria-valeria-eutropia": {
+    kind: "stl",
+    path: "/galeria-valeria-eutropia/index.html",
+    sectionId: "roman-world",
+    sortOrder: 116,
+    viewerTitle: "Galeria Valeria Eutropia (3rd-4th century CE)",
+    subtitle: "Artist: Unknown Roman sculptor",
+    medium: "Marble",
+    dimensions: "H: 36 cm | W: 27 cm | D: 17 cm",
+    locationLabel: "Collection:",
+    location: "Musee Saint-Raymond, Toulouse",
+    lobbyMeta: "Source: Musee Saint-Raymond / Wikimedia Commons STL",
+    source: source(
+      "Local STL mirrored from the Musee Saint-Raymond Galeria Valeria Eutropia file on Wikimedia Commons.",
+      [
+        link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:35-msr-galeria-valeria-eutropia-5.stl"),
+        link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:35-msr-galeria-valeria-eutropia-5.stl")
+      ],
+      "The linked Commons metadata identifies the object as Musee Saint-Raymond inventory Ra 38(2), a marble bust traditionally identified as Galeria Valeria Eutropia and dated between the third and fourth century CE."
+    ),
+    defaults: {
+      zoom: 2.98,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./galeria_valeria_eutropia_source.stl",
+      fallbackUrl: "./galeria_valeria_eutropia_source.stl"
+    },
+    scene: {
+      rotateX: 0,
+      targetHeight: 0.82,
+      defaultYaw: -Math.PI * 0.06,
+      defaultViewVector: [0.94, 0.48, 1.04],
+      mobileViewVector: [0.76, 0.38, 0.94]
     }
   }
 };
