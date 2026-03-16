@@ -3070,7 +3070,7 @@ export const museumPiecesExtension = {
     path: "/diana-ra-34-h/index.html",
     sectionId: "roman-world",
     sortOrder: 110,
-    viewerTitle: "Diana (?) (3rd century CE)",
+    viewerTitle: "Diana (traditional identification, 3rd century CE)",
     subtitle: "Artist: Unknown Roman sculptor",
     medium: "Marble",
     dimensions: "H: 49 cm | W: 37 cm | D: 27 cm",
@@ -3083,7 +3083,7 @@ export const museumPiecesExtension = {
         link("Wikimedia Commons file", "https://commons.wikimedia.org/wiki/File:Saint-raymond-diane-5.stl"),
         link("Direct STL", "https://commons.wikimedia.org/wiki/Special:Redirect/file/File:Saint-raymond-diane-5.stl")
       ],
-      "The linked Commons metadata identifies the sculpture as Musee Saint-Raymond inventory Ra 34 h, a marble figure traditionally identified as Diana(?), dated to the third century CE."
+      "The linked Commons metadata identifies the sculpture as Musee Saint-Raymond inventory Ra 34 h, a marble figure traditionally identified as Diana, with the identification marked as tentative in the source record, dated to the third century CE."
     ),
     defaults: {
       zoom: 2.86,
@@ -3175,7 +3175,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./cleopatra_v_tryphaena_source.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.78,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.92, 0.46, 1.02],
@@ -3214,7 +3214,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./galeria_valeria_eutropia_source.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 0.82,
       defaultYaw: -Math.PI * 0.06,
       defaultViewVector: [0.94, 0.48, 1.04],
