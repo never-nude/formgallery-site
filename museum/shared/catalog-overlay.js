@@ -2308,6 +2308,7 @@ export const museumPiecesExtension = {
     path: "/americas/george-washington-houdon/index.html",
     sectionId: "americas",
     sortOrder: 16,
+    hiddenFromLobby: true,
     viewerTitle: "George Washington (c. 1786)",
     subtitle: "Artist: Jean-Antoine Houdon (1741-1828); sitter: George Washington",
     medium: "Plaster",
