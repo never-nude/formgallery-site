@@ -329,7 +329,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./risen_christ_source_small.stl"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 1.76,
       defaultYaw: Math.PI * 0.08
     }
@@ -359,7 +359,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./apollo_source_small.stl"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 1.54,
       defaultYaw: -Math.PI * 0.16
     }
@@ -2139,7 +2139,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:9868cadc-d331-4b13-9864-a1740df6e47f/key-marco-cat-(color)-150k-2048-medium.glb"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 0.76,
       defaultYaw: Math.PI * 0.12,
       defaultViewVector: [1.02, 0.46, 1.24],
@@ -2499,7 +2499,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:1492fab4-3f36-46da-9a7b-2ed02537b996/nmah-1997_0097_0721-virgen_de_monserrate-150k-2048-medium.glb"
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 1.02,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [1.02, 0.58, 1.16],
