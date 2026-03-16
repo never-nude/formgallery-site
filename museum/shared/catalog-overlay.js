@@ -2499,6 +2499,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "https://3d-api.si.edu/content/document/3d_package:1492fab4-3f36-46da-9a7b-2ed02537b996/nmah-1997_0097_0721-virgen_de_monserrate-150k-2048-medium.glb"
     },
     scene: {
+      rotateZ: -Math.PI * 0.5,
       targetHeight: 1.02,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [1.02, 0.58, 1.16],
@@ -2538,6 +2539,7 @@ export const museumPiecesExtension = {
     },
     scene: {
       showPedestal: false,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 1.18,
       focusYRatio: 0.46,
       defaultYaw: Math.PI * 0.04,
