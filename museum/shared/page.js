@@ -1,4 +1,4 @@
-const MODULE_VERSION = "20260316-1456";
+const MODULE_VERSION = "20260316-1504";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
@@ -461,6 +461,12 @@ function routeEntriesForPath(pathname, pieceId) {
     return [
       [normalized, pieceId],
       [normalizePath(pathname.slice(0, -"index.html".length)), pieceId]
+    ];
+  }
+  if (pathname && pathname.endsWith("/")) {
+    return [
+      [normalized, pieceId],
+      [`${pathname}index.html`, pieceId]
     ];
   }
   return [[normalized, pieceId]];

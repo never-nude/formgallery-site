@@ -28,6 +28,12 @@ function routeEntriesForPath(pathname, pieceId) {
       [normalizePath(pathname.slice(0, -"index.html".length)), pieceId]
     ];
   }
+  if (pathname && pathname.endsWith("/")) {
+    return [
+      [normalized, pieceId],
+      [`${pathname}index.html`, pieceId]
+    ];
+  }
   return [[normalized, pieceId]];
 }
 
