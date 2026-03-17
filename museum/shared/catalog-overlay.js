@@ -2460,6 +2460,84 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.42, 1.72]
     }
   },
+  "toussaint-louverture-et-la-vieille-esclave": {
+    kind: "gltf",
+    path: "/americas/toussaint-louverture-et-la-vieille-esclave/index.html",
+    sectionId: "americas",
+    sortOrder: 17,
+    viewerTitle: "Toussaint Louverture et la vieille esclave (1989)",
+    subtitle: "Artist: Ousmane Sow (1935-2016), Senegal",
+    medium: "Mixed media (iron, earth, jute, straw)",
+    dimensions: "H: 220 cm | W: 100 cm | D: 110 cm",
+    locationLabel: "Subject / Geography / Collection:",
+    location: "Haiti (Toussaint Louverture); Senegal; National Museum of African Art, Smithsonian Institution",
+    current_location: "National Museum of African Art, Smithsonian Institution",
+    findspot_or_origin: "Senegal",
+    lobbyMeta: "Source: Smithsonian 3D / NMAfA",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Toussaint Louverture et la vieille esclave model by Ousmane Sow.",
+      recordUrl: "https://3d.si.edu/object/3d/toussaint-louverture-et-la-vieille-esclave:76dca86f-2700-49e2-b9fc-1be193e725ce",
+      packageId: "76dca86f-2700-49e2-b9fc-1be193e725ce",
+      highFile: "nmafa-200981-master_model-20230121-150k-4096-high.glb",
+      mediumFile: "nmafa-200981-master_model-20230121-150k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply. The source page identifies the maker as Ousmane Sow, gives geography as Senegal, places the work in the National Museum of African Art collection, and describes Toussaint Louverture as the military leader of the Haitian Revolution."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("76dca86f-2700-49e2-b9fc-1be193e725ce", "nmafa-200981-master_model-20230121-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("76dca86f-2700-49e2-b9fc-1be193e725ce", "nmafa-200981-master_model-20230121-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.38,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.66,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.14, 0.68, 1.72],
+      mobileViewVector: [0.88, 0.52, 1.54]
+    }
+  },
+  "19th-century-kid-queen-victoria": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/19th-century-kid-queen-victoria/index.html",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 16,
+    viewerTitle: "19th Century Kid (Queen Victoria) (1999)",
+    subtitle: "Artist: Yinka Shonibare (born 1962), London, United Kingdom",
+    medium: "Cloth, synthetic fiber, dyes, wood, metal, leather",
+    dimensions: "H: 158 cm | W: 80 cm | D: 85 cm",
+    locationLabel: "Geography / Collection:",
+    location: "Nigeria; National Museum of African Art, Smithsonian Institution",
+    lobbyMeta: "Source: Smithsonian 3D / NMAfA",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's 19th Century Kid (Queen Victoria) model by Yinka Shonibare.",
+      recordUrl: "https://3d.si.edu/object/3d/19th-century-kid-queen-victoria:e3aa9c93-9e33-4b6f-bdcf-721df5144db6",
+      packageId: "e3aa9c93-9e33-4b6f-bdcf-721df5144db6",
+      highFile: "nmafa-200061-19th_century_kid-150k-4096-high.glb",
+      mediumFile: "nmafa-200061-19th_century_kid-150k-2048-medium.glb",
+      note: "Smithsonian lists usage conditions apply. The source page dates the work to 1999, gives geography as Nigeria, and places it in the National Museum of African Art collection."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("e3aa9c93-9e33-4b6f-bdcf-721df5144db6", "nmafa-200061-19th_century_kid-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("e3aa9c93-9e33-4b6f-bdcf-721df5144db6", "nmafa-200061-19th_century_kid-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.42,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.48,
+      defaultYaw: -Math.PI * 0.04,
+      defaultViewVector: [1.08, 0.62, 1.58],
+      mobileViewVector: [0.84, 0.46, 1.4]
+    }
+  },
   "key-marco-cat": {
     kind: "gltf",
     path: "/americas/key-marco-cat/index.html",
@@ -2655,6 +2733,44 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [1.26, 0.74, 1.88],
       mobileViewVector: [0.96, 0.56, 1.72]
+    }
+  },
+  "life-cast-left-forearm-and-hand": {
+    kind: "gltf",
+    path: "/americas/life-cast-left-forearm-and-hand/index.html",
+    sectionId: "americas",
+    sortOrder: 15,
+    viewerTitle: "Life Cast of Left Forearm and Hand (fragment, study for \"Greek Slave\") (ca. 1843)",
+    subtitle: "Artist: Studio of Hiram Powers (founded Florence, Italy, 1837-1873)",
+    medium: "Plaster",
+    dimensions: "H: 8.7 cm | W: 31.5 cm | D: 8.3 cm",
+    locationLabel: "On view:",
+    location: "Smithsonian American Art Museum, Luce Foundation Center, 3rd Floor, 17B",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's fragmentary Life Cast of Left Forearm and Hand study for Hiram Powers's Greek Slave.",
+      recordUrl: "https://3d.si.edu/object/3d/life-cast-left-forearm-and-hand-fragment-study-greek-slave%3A7f2659ba-2953-47a5-9358-921da9b0ce16",
+      packageId: "7f2659ba-2953-47a5-9358-921da9b0ce16",
+      highFile: "life-cast-of-left-forearm-and-hand-150k-4096-high.glb",
+      mediumFile: "life-cast-of-left-forearm-and-hand-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0. The source page identifies the fragment as a ca. 1843 plaster study connected to Greek Slave and places it on view in the Luce Foundation Center."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("7f2659ba-2953-47a5-9358-921da9b0ce16", "life-cast-of-left-forearm-and-hand-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("7f2659ba-2953-47a5-9358-921da9b0ce16", "life-cast-of-left-forearm-and-hand-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 3.04,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.46,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [1.12, 0.34, 1.5],
+      mobileViewVector: [0.84, 0.26, 1.34]
     }
   },
   "houdon-george-washington": {
