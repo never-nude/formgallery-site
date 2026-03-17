@@ -1934,7 +1934,7 @@ export const museumPiecesExtension = {
       rough: 0.22
     },
     scene: {
-      rotateX: Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 0.9,
       defaultYaw: -Math.PI * 0.08,
       defaultViewVector: [0.98, 0.48, 1.18],
@@ -2071,7 +2071,7 @@ export const museumPiecesExtension = {
       rough: 0.22
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 0.78,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.94, 0.4, 1.06],
@@ -3156,7 +3156,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateX: -Math.PI * 0.5,
+      rotateX: 0,
       targetHeight: 1.86,
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [1.16, 0.74, 1.62],
