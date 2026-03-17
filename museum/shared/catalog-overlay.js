@@ -2025,7 +2025,7 @@ export const museumPiecesExtension = {
       rough: 0.22
     },
     scene: {
-      rotateZ: -Math.PI * 0.5,
+      rotateZ: -Math.PI,
       targetHeight: 0.94,
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [1.0, 0.48, 1.18],
@@ -3081,7 +3081,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateZ: -Math.PI * 0.5,
+      rotateZ: Math.PI * 0.5,
       targetHeight: 0.72,
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.92, 0.46, 1.0],
@@ -3156,7 +3156,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateX: 0,
+      rotateZ: Math.PI * 0.5,
       targetHeight: 1.86,
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [1.16, 0.74, 1.62],
@@ -3301,7 +3301,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateZ: Math.PI * 0.5,
+      rotateZ: Math.PI * 0.42,
       targetHeight: 0.86,
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [0.92, 0.46, 1.02],
@@ -3340,7 +3340,8 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateZ: Math.PI * 0.5,
+      rotateX: Math.PI * 0.08,
+      rotateZ: Math.PI * 0.46,
       targetHeight: 0.98,
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [0.98, 0.5, 1.1],
@@ -3379,7 +3380,7 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateZ: -Math.PI * 0.5,
+      rotateZ: Math.PI * 0.5,
       targetHeight: 1.02,
       defaultYaw: -Math.PI * 0.05,
       defaultViewVector: [0.98, 0.5, 1.12],
@@ -3493,11 +3494,87 @@ export const museumPiecesExtension = {
       rough: 0.24
     },
     scene: {
-      rotateZ: Math.PI,
+      rotateZ: 0,
       targetHeight: 0.72,
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [0.88, 0.42, 0.98],
       mobileViewVector: [0.7, 0.32, 0.88]
+    }
+  },
+  "old-arrow-maker": {
+    kind: "gltf",
+    path: "/americas/old-arrow-maker/index.html",
+    sectionId: "americas",
+    sortOrder: 60,
+    viewerTitle: "Old Arrow Maker (modeled 1866)",
+    subtitle: "Artist: Edmonia Lewis (1844-1907)",
+    medium: "Marble",
+    dimensions: "H: 54.5 cm | W: 34.5 cm | D: 34 cm",
+    locationLabel: "Collection:",
+    location: "Smithsonian American Art Museum",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Old Arrow Maker model by Edmonia Lewis.",
+      recordUrl: "https://3d.si.edu/object/3d/old-arrow-maker%3A99ca3d6f-6d54-45a5-9b95-f8c245a662c2",
+      packageId: "99ca3d6f-6d54-45a5-9b95-f8c245a662c2",
+      highFile: "Old_Arrow_Maker-150k-4096-high.glb",
+      mediumFile: "Old_Arrow_Maker-150k-2048-medium.glb",
+      note: "Smithsonian marks the object and package CC0."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("99ca3d6f-6d54-45a5-9b95-f8c245a662c2", "Old_Arrow_Maker-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("99ca3d6f-6d54-45a5-9b95-f8c245a662c2", "Old_Arrow_Maker-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.8,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 1.04,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.02, 0.52, 1.16],
+      mobileViewVector: [0.8, 0.4, 1.04]
+    }
+  },
+  "solomon-islander-climbing-palm-tree": {
+    kind: "gltf",
+    path: "/americas/solomon-islander-climbing-palm-tree/index.html",
+    sectionId: "americas",
+    sortOrder: 62,
+    viewerTitle: "Solomon Islander Climbing a Palm Tree (1934)",
+    subtitle: "Artist: Malvina Hoffman (1885-1966); founder: Cellini Bronze Works",
+    medium: "Bronze",
+    dimensions: "H: 45.4 cm | W: 32.4 cm | D: 17.1 cm",
+    locationLabel: "Collection:",
+    location: "Smithsonian American Art Museum, Luce Foundation Center, 4th Floor",
+    lobbyMeta: "Source: Smithsonian 3D / SAAM",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Solomon Islander Climbing a Palm Tree model by Malvina Hoffman.",
+      recordUrl: "https://3d.si.edu/object/3d/solomon-islander-climbing-palm-tree%3A156572a0-6755-4318-a419-76d63f5d5876",
+      packageId: "156572a0-6755-4318-a419-76d63f5d5876",
+      highFile: "saam_2018_18_02-solomon_islander-polish-150k-4096-high.glb",
+      mediumFile: "saam_2018_18_02-solomon_islander-polish-150k-2048-medium.glb",
+      note: "Smithsonian lists metadata usage as not determined."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("156572a0-6755-4318-a419-76d63f5d5876", "saam_2018_18_02-solomon_islander-polish-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("156572a0-6755-4318-a419-76d63f5d5876", "saam_2018_18_02-solomon_islander-polish-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.96,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.98, 0.48, 1.06],
+      mobileViewVector: [0.78, 0.36, 0.94]
     }
   },
   "juno-ludovisi": {
