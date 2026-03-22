@@ -1913,6 +1913,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.76, 0.36, 0.9]
     }
   },
+  "ewer-khurasan-herat": {
+    kind: "gltf",
+    path: "/asia/ewer-khurasan-herat/",
+    sectionId: "asia",
+    sortOrder: 21,
+    viewerTitle: "Ewer (Iran or Afghanistan, Khurasan or Herat, ca. 1180-1210)",
+    subtitle: "The Metropolitan Museum of Art, Department of Islamic Art",
+    medium: "Brass; raised, repoussé, inlaid with silver and a black compound",
+    dimensions: "H. 15 3/4 in. (40 cm) | Diam. 7 1/2 in. (19.1 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 453, The Metropolitan Museum of Art",
+    region: "Asia",
+    period: "ca. 1180-1210",
+    current_location: "Gallery 453, The Metropolitan Museum of Art",
+    findspot_or_origin: "Iran or Afghanistan, Khurasan or Herat",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Iran", "Afghanistan", "Khurasan", "Herat", "Islamic Art", "Brass", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Islamic Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Ewer.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/450513"),
+        link("Original GLB", "https://api.vntana.com/assets/products/88f8ea6e-b1f2-4be7-8db3-b533be205e7a/organizations/The-Metropolitan-Museum-of-Art/clients/masters/3bc0deee-43d4-48e4-83e3-e4a8f071151a.glb")
+      ],
+      "The title, date, country, region, medium, dimensions, department, and gallery number follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./ewer_khurasan_herat.glb",
+      fallbackUrl: "./ewer_khurasan_herat.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      focusYRatio: 0.54,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [0.98, 0.46, 1.08],
+      mobileViewVector: [0.78, 0.34, 0.96]
+    }
+  },
   "marble-capital-sphinx": {
     kind: "gltf",
     path: "/marble-capital-sphinx/",
@@ -3978,6 +4024,50 @@ export const museumPiecesExtension = {
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [1.2, 0.7, 1.86],
       mobileViewVector: [0.92, 0.52, 1.68]
+    }
+  },
+  "perseus-with-head-of-medusa": {
+    kind: "gltf",
+    path: "/perseus-with-head-of-medusa/",
+    sectionId: "nineteenth-century",
+    sortOrder: 8,
+    viewerTitle: "Perseus with the Head of Medusa (Antonio Canova, 1804-6)",
+    subtitle: "The Metropolitan Museum of Art, Department of European Sculpture and Decorative Arts",
+    medium: "Marble",
+    dimensions: "Overall (confirmed): H. 95 1/2 x W. 75 1/2 x D. 40 1/2 in. (242.6 x 191.8 x 102.9 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 548, The Metropolitan Museum of Art",
+    period: "1804-6",
+    current_location: "Gallery 548, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Antonio Canova", "Marble", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of European Sculpture and Decorative Arts",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Perseus with the Head of Medusa.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/204758"),
+        link("Original GLB", "https://api.vntana.com/assets/products/3fcfb334-f595-4ace-a2dd-264834acfeb7/organizations/The-Metropolitan-Museum-of-Art/clients/masters/0ebe6e27-4a55-4bd7-a8d5-2f3f3107f6bd.glb")
+      ],
+      "The title, artist, date, medium, dimensions, department, and gallery number follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./perseus_with_the_head_of_medusa.glb",
+      fallbackUrl: "./perseus_with_the_head_of_medusa.glb"
+    },
+    scene: {
+      targetHeight: 1.72,
+      focusYRatio: 0.58,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [1.08, 0.62, 1.22],
+      mobileViewVector: [0.86, 0.44, 1.02]
     }
   },
   ganymede: {
