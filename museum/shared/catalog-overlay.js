@@ -2050,6 +2050,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.34, 1.08]
     }
   },
+  "mourning-victory-melvin-memorial": {
+    kind: "gltf",
+    path: "/mourning-victory-melvin-memorial/",
+    sectionId: "modern-sculpture",
+    sortOrder: 2,
+    viewerTitle: "Mourning Victory from the Melvin Memorial (1906-8, carved 1912-15)",
+    subtitle: "Artist: Daniel Chester French (1850-1931); The Metropolitan Museum of Art, The American Wing",
+    medium: "Marble",
+    dimensions: "120 1/2 x 57 1/4 x 28 3/4 in. (306.1 x 145.4 x 73 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 700, The Metropolitan Museum of Art",
+    culture: "American",
+    region: "Americas",
+    period: "1906-15",
+    current_location: "Gallery 700, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["American", "Marble", "Daniel Chester French", "The Met", "Modern Sculpture"],
+    lobbyMeta: "Source: The Met 3D / The American Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Mourning Victory from the Melvin Memorial.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/10912"),
+        link("Original GLB", "https://api.vntana.com/assets/products/35f5d75d-7032-4a77-aceb-ac479c78133d/organizations/The-Metropolitan-Museum-of-Art/clients/masters/cc930f9f-5073-4864-8105-8d6b8a4a7c65.glb")
+      ],
+      "The title, date, artist, medium, dimensions, collection, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.72,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./mourning_victory_from_the_melvin_memorial.glb",
+      fallbackUrl: "./mourning_victory_from_the_melvin_memorial.glb"
+    },
+    scene: {
+      targetHeight: 1.54,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.04, 0.64, 1.16],
+      mobileViewVector: [0.84, 0.48, 1.04]
+    }
+  },
   "inscribed-turtle-plastron": {
     kind: "gltf",
     path: "/asia/inscribed-turtle-plastron/index.html",
@@ -2721,6 +2767,53 @@ export const museumPiecesExtension = {
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [1.08, 0.62, 1.58],
       mobileViewVector: [0.84, 0.46, 1.4]
+    }
+  },
+  "gelede-helmet-mask": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/gelede-helmet-mask/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 17,
+    viewerTitle: "Gelede helmet mask (mid-20th century)",
+    subtitle: "Artist: Yoruba artist; The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
+    medium: "Wood",
+    dimensions: "H. 22 1/2 x W. 15 1/4 x D. 18 in. (57.2 x 38.7 x 45.7 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 343, The Metropolitan Museum of Art",
+    culture: "Yoruba",
+    region: "Sub-Saharan Africa",
+    period: "mid-20th century",
+    current_location: "Gallery 343, The Metropolitan Museum of Art",
+    findspot_or_origin: "Ketu region, southwestern Nigeria or Republic of Benin",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Yoruba", "Nigeria", "Benin", "Wood", "The Met", "Mask"],
+    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Gelede helmet mask.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/316460"),
+        link("Original GLB", "https://api.vntana.com/assets/products/27075695-738d-492d-9509-8f1f387f6558/organizations/The-Metropolitan-Museum-of-Art/clients/masters/7ee8cc2e-15c0-42c6-b48a-8ab60b44950b.glb")
+      ],
+      "The title, date, artist attribution, culture, medium, dimensions, geography, collection, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.74,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./gelede_helmet_mask.glb",
+      fallbackUrl: "./gelede_helmet_mask.glb"
+    },
+    scene: {
+      targetHeight: 0.96,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [0.98, 0.48, 1.04],
+      mobileViewVector: [0.78, 0.36, 0.92]
     }
   },
   "key-marco-cat": {

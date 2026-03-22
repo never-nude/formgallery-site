@@ -129,6 +129,14 @@ export const museumSections = [
     regionLabel: ""
   },
   {
+    id: "modern-sculpture",
+    title: "Modern Sculpture",
+    subtitle: "",
+    spineId: "modern-sculpture",
+    spineTitle: "Modern Sculpture",
+    regionLabel: ""
+  },
+  {
     id: "rodin",
     title: "Rodin",
     subtitle: "",
@@ -187,7 +195,7 @@ export const museumChronology = [
   {
     id: "modern-sculpture",
     title: "Modern Sculpture",
-    sectionIds: ["rodin"]
+    sectionIds: ["modern-sculpture", "rodin"]
   }
 ];
 
