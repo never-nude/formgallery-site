@@ -1913,6 +1913,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.76, 0.36, 0.9]
     }
   },
+  "cycladic-marble-female-figure": {
+    kind: "gltf",
+    path: "/cycladic-marble-female-figure/",
+    sectionId: "greek-classical",
+    sortOrder: 24.8,
+    viewerTitle: "Marble Female Figure (Cycladic, Early Cycladic II)",
+    subtitle: "The Metropolitan Museum of Art",
+    medium: "Marble",
+    dimensions: "H: 86.5 cm | W: 21 cm | D: 6.2 cm",
+    locationLabel: "On view:",
+    location: "Gallery 151, The Metropolitan Museum of Art",
+    culture: "Cycladic",
+    region: "Greek world",
+    period: "Early Cycladic II",
+    current_location: "Gallery 151, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Cycladic", "Marble", "Greek world", "The Met"],
+    lobbyMeta: "Source: The Met 3D",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Marble Female Figure.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/854724"),
+        link("Original GLB", "https://api.vntana.com/assets/products/76da0393-e35d-4fb0-ada4-5c8841764fd0/organizations/The-Metropolitan-Museum-of-Art/clients/masters/8ff97eac-8d7a-44b7-9062-2d42c43314f9.glb")
+      ],
+      "The title, culture, period, medium, dimensions, and gallery location follow The Met collection record. The object page marks the figure as on view in Gallery 151."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./marble_female_figure.glb",
+      fallbackUrl: "./marble_female_figure.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.02,
+      defaultViewVector: [0.98, 0.44, 1.02],
+      mobileViewVector: [0.78, 0.34, 0.92]
+    }
+  },
   "ewer-khurasan-herat": {
     kind: "gltf",
     path: "/asia/ewer-khurasan-herat/",
@@ -2003,6 +2049,52 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [0.98, 0.46, 1.08],
       mobileViewVector: [0.78, 0.36, 0.96]
+    }
+  },
+  "aphrodite-holding-winged-eros": {
+    kind: "gltf",
+    path: "/aphrodite-holding-winged-eros/",
+    sectionId: "greek-classical",
+    sortOrder: 26.2,
+    viewerTitle: "Limestone Statue of Aphrodite Holding Winged Eros (Cypriot, late 4th century BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Limestone",
+    dimensions: "H: 126.4 cm | W: 66 cm | D: 25.4 cm",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Cypriot",
+    region: "Greek world",
+    period: "Classical",
+    current_location: "The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Cypriot", "Aphrodite", "Eros", "Limestone", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Limestone Statue of Aphrodite Holding Winged Eros.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/242017"),
+        link("Original GLB", "https://api.vntana.com/assets/products/026577c4-3d0f-4aa1-bd6a-e952b252f495/organizations/The-Metropolitan-Museum-of-Art/clients/masters/eace2a12-a38f-41ad-b959-b51a75f1fd25.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and department follow The Met collection record. The object page marks the sculpture as not on view."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./aphrodite_holding_winged_eros.glb",
+      fallbackUrl: "./aphrodite_holding_winged_eros.glb"
+    },
+    scene: {
+      targetHeight: 0.92,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.98, 0.44, 1.06],
+      mobileViewVector: [0.8, 0.34, 0.94]
     }
   },
   "tomb-effigy-ermengol-ix": {
