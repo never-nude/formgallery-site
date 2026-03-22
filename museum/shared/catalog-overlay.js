@@ -1959,6 +1959,51 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.36, 0.96]
     }
   },
+  "tomb-effigy-ermengol-ix": {
+    kind: "gltf",
+    path: "/tomb-effigy-ermengol-ix/",
+    sectionId: "early-renaissance",
+    sortOrder: 73.5,
+    viewerTitle: "Tomb Effigy of a Boy, Probably Ermengol IX, Count of Urgell (Catalan, first half 14th century)",
+    subtitle: "The Metropolitan Museum of Art, The Cloisters",
+    medium: "Limestone, traces of paint",
+    dimensions: "15 3/8 x 33 7/8 x 15 1/4 in. (39 x 86 x 38.7 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 009, The Cloisters, The Metropolitan Museum of Art",
+    culture: "Catalan",
+    period: "first half 14th century",
+    current_location: "Gallery 009, The Cloisters, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Catalan", "Tomb effigy", "Limestone", "The Cloisters", "The Met"],
+    lobbyMeta: "Source: The Met 3D / The Cloisters",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Tomb Effigy of a Boy, Probably Ermengol IX, Count of Urgell.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/471965"),
+        link("Original GLB", "https://api.vntana.com/assets/products/b87af5fb-bcb7-435c-a642-bb80c25e8024/organizations/The-Metropolitan-Museum-of-Art/clients/masters/43a61c35-5381-4979-a41f-b3ff8396bf37.glb")
+      ],
+      "The title, date, culture, medium, dimensions, collection, and gallery number follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./tomb_effigy_ermengol_ix.glb",
+      fallbackUrl: "./tomb_effigy_ermengol_ix.glb"
+    },
+    scene: {
+      targetHeight: 0.82,
+      focusYRatio: 0.5,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.96, 0.4, 1.28],
+      mobileViewVector: [0.78, 0.34, 1.08]
+    }
+  },
   "inscribed-turtle-plastron": {
     kind: "gltf",
     path: "/asia/inscribed-turtle-plastron/index.html",
