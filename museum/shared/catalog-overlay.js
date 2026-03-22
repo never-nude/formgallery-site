@@ -1867,6 +1867,98 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.72, 0.22, 2.1]
     }
   },
+  "standing-buddha-radiate-combined-halo": {
+    kind: "gltf",
+    path: "/asia/standing-buddha-radiate-combined-halo/",
+    sectionId: "asia",
+    sortOrder: 7,
+    viewerTitle: "Standing Buddha with Radiate Combined Halo (Pakistan, ca. late 6th century)",
+    subtitle: "The Metropolitan Museum of Art, Department of Asian Art",
+    medium: "Brass",
+    dimensions: "H: 33.7 cm",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Pakistan (ancient region of Gandhara)",
+    region: "Asia",
+    period: "late 6th century",
+    current_location: "The Metropolitan Museum of Art",
+    findspot_or_origin: "Pakistan (ancient region of Gandhara)",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Pakistan", "Gandhara", "Buddha", "Brass", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Asian Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Standing Buddha with Radiate Combined Halo.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/39165"),
+        link("Original GLB", "https://api.vntana.com/assets/products/afbd8863-9cae-4cd9-815f-26c0d14c4b3e/organizations/The-Metropolitan-Museum-of-Art/clients/masters/9f778d31-c859-440d-bd8a-6b88ce9544ce.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and department follow The Met collection record. The object page marks the sculpture as not on view."
+    ),
+    defaults: {
+      zoom: 2.92,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./standing_buddha_with_radiate_combined_halo.glb",
+      fallbackUrl: "./standing_buddha_with_radiate_combined_halo.glb"
+    },
+    scene: {
+      targetHeight: 0.88,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.94, 0.5, 1.02],
+      mobileViewVector: [0.76, 0.36, 0.9]
+    }
+  },
+  "marble-capital-sphinx": {
+    kind: "gltf",
+    path: "/marble-capital-sphinx/",
+    sectionId: "greek-classical",
+    sortOrder: 26.1,
+    viewerTitle: "Marble Capital and Finial in the Form of a Sphinx (Greek, Attic, ca. 530 BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Marble, Parian",
+    dimensions: "H. with akroterion 56 1/8 in. (142.6 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 154, The Metropolitan Museum of Art",
+    culture: "Greek, Attic",
+    region: "Greek world",
+    period: "Archaic",
+    current_location: "Gallery 154, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Greek", "Attic", "Archaic", "Sphinx", "Marble", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Marble Capital and Finial in the Form of a Sphinx.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/248501"),
+        link("Original GLB", "https://api.vntana.com/assets/products/76ae4b6a-2503-42f9-86cc-fe2d4ec2050a/organizations/The-Metropolitan-Museum-of-Art/clients/masters/156af359-9cef-40c7-903b-d35120b029a0.glb")
+      ],
+      "The title, date, culture, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./marble_capital_and_finial_sphinx.glb",
+      fallbackUrl: "./marble_capital_and_finial_sphinx.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.98, 0.46, 1.08],
+      mobileViewVector: [0.78, 0.36, 0.96]
+    }
+  },
   "inscribed-turtle-plastron": {
     kind: "gltf",
     path: "/asia/inscribed-turtle-plastron/index.html",
@@ -3204,6 +3296,43 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.08,
       defaultViewVector: [0.92, 0.46, 1.0],
       mobileViewVector: [0.74, 0.34, 0.9]
+    }
+  },
+  "eugene-jacques-bullard": {
+    kind: "gltf",
+    path: "/americas/eugene-jacques-bullard/index.html",
+    sectionId: "americas",
+    sortOrder: 37,
+    viewerTitle: "Eugene Jacques Bullard (1990)",
+    subtitle: "Artist: Eddie Dixon",
+    dimensions: "H: 54.6 cm | W: 19 cm | D: 24.8 cm",
+    locationLabel: "Location:",
+    location: "National Air and Space Museum in Washington, DC",
+    lobbyMeta: "Source: Smithsonian 3D / NASM",
+    source: smithsonianSource({
+      summary: "Rendered from Smithsonian 3D's Eugene Jacques Bullard portrait bust in the National Air and Space Museum.",
+      recordUrl: "https://3d.si.edu/object/3d/eugene-jacques-bullard%3A385124dc-6ca4-4ab3-a314-a46f1c57ea5d",
+      packageId: "385124dc-6ca4-4ab3-a314-a46f1c57ea5d",
+      highFile: "nasm-A19920064000-bullard_bust-master_model-20221130-150k-4096-high.glb",
+      mediumFile: "nasm-A19920064000-bullard_bust-master_model-20221130-150k-2048-medium.glb",
+      note: "Smithsonian lists the object location as the National Air and Space Museum in Washington, DC."
+    }),
+    model: {
+      primaryUrl: smithsonianAsset("385124dc-6ca4-4ab3-a314-a46f1c57ea5d", "nasm-A19920064000-bullard_bust-master_model-20221130-150k-4096-high.glb"),
+      fallbackUrl: smithsonianAsset("385124dc-6ca4-4ab3-a314-a46f1c57ea5d", "nasm-A19920064000-bullard_bust-master_model-20221130-150k-2048-medium.glb")
+    },
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    scene: {
+      targetHeight: 0.82,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.94, 0.48, 1.04],
+      mobileViewVector: [0.76, 0.34, 0.92]
     }
   },
   "anne-sullivan-macy": {
