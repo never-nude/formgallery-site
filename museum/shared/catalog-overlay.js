@@ -1913,6 +1913,53 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.76, 0.36, 0.9]
     }
   },
+  "horus-protecting-nectanebo-ii": {
+    kind: "gltf",
+    path: "/horus-protecting-nectanebo-ii/",
+    sectionId: "egypt-mesopotamia",
+    sortOrder: 12,
+    viewerTitle: "Statue of Horus as a Falcon Protecting King Nectanebo II (Egyptian, 360-343 BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Egyptian Art",
+    medium: "Metagraywacke",
+    dimensions: "H: 72 cm | W: 20 cm | D: 46.5 cm | Weight: 55.3 kg",
+    locationLabel: "On view:",
+    location: "Gallery 128, The Metropolitan Museum of Art",
+    culture: "Egyptian",
+    region: "Egypt & the Nile",
+    period: "Late Period",
+    current_location: "Gallery 128, The Metropolitan Museum of Art",
+    findspot_or_origin: "Heliopolis (Iunu; On), Tomb of a Mnevis bull, Memphite Region",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Egyptian", "Late Period", "Horus", "Nectanebo II", "Metagraywacke", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Egyptian Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Statue of Horus as a Falcon Protecting King Nectanebo II.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/544887"),
+        link("Original GLB", "https://api.vntana.com/assets/products/3ea0b2f6-d8a9-46de-ab95-2b720ad8bac4/organizations/The-Metropolitan-Museum-of-Art/clients/masters/87d551e4-51ad-4419-904d-05397c0c581e.glb")
+      ],
+      "The title, date, culture, medium, dimensions, gallery location, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./horus_protecting_nectanebo_ii.glb",
+      fallbackUrl: "./horus_protecting_nectanebo_ii.glb"
+    },
+    scene: {
+      targetHeight: 0.92,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.0, 0.48, 1.06],
+      mobileViewVector: [0.8, 0.36, 0.94]
+    }
+  },
   "cycladic-marble-female-figure": {
     kind: "gltf",
     path: "/cycladic-marble-female-figure/",
@@ -1959,6 +2006,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.34, 0.92]
     }
   },
+  "eros-flying": {
+    kind: "gltf",
+    path: "/eros-flying/",
+    sectionId: "hellenistic-world",
+    sortOrder: 91,
+    viewerTitle: "Terracotta Statuette of Eros Flying (Greek, South Italian, Tarentine, 3rd century BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Terracotta",
+    dimensions: "H. 2 7/8 in. (7.3 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 171, The Metropolitan Museum of Art",
+    culture: "Greek, South Italian, Tarentine",
+    region: "Greek world",
+    period: "Hellenistic",
+    current_location: "Gallery 171, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Greek", "South Italian", "Tarentine", "Hellenistic", "Eros", "Terracotta", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Terracotta Statuette of Eros Flying.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/248612"),
+        link("Original GLB", "https://api.vntana.com/assets/products/d070ce07-8fe5-427b-b0b7-be932992b6a0/organizations/The-Metropolitan-Museum-of-Art/clients/masters/105e0c26-f4ed-4324-9499-a7b2df5d17b3.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./eros_flying.glb",
+      fallbackUrl: "./eros_flying.glb"
+    },
+    scene: {
+      targetHeight: 0.74,
+      focusYRatio: 0.54,
+      defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [1.02, 0.5, 1.06],
+      mobileViewVector: [0.82, 0.38, 0.94]
+    }
+  },
   "ewer-khurasan-herat": {
     kind: "gltf",
     path: "/asia/ewer-khurasan-herat/",
@@ -2001,6 +2094,52 @@ export const museumPiecesExtension = {
       targetHeight: 0.94,
       focusYRatio: 0.54,
       defaultYaw: -Math.PI * 0.08,
+      defaultViewVector: [0.98, 0.46, 1.08],
+      mobileViewVector: [0.78, 0.34, 0.96]
+    }
+  },
+  "bronze-figure-boy-eastern-dress": {
+    kind: "gltf",
+    path: "/bronze-figure-boy-eastern-dress/",
+    sectionId: "roman-world",
+    sortOrder: 118,
+    viewerTitle: "Bronze Figure of a Boy in Eastern Dress (Greek, Ptolemaic or Roman, mid-late 1st century BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Bronze",
+    dimensions: "H. 25 1/8 in. | W. 11 7/8 x 12 3/4 in. | Weight: 29.5 lb.",
+    locationLabel: "On view:",
+    location: "Gallery 164, The Metropolitan Museum of Art",
+    culture: "Greek, Ptolemaic or Roman",
+    region: "Roman world",
+    period: "Late Hellenistic or Early Imperial",
+    current_location: "Gallery 164, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Greek", "Ptolemaic", "Roman", "Bronze", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Bronze Figure of a Boy in Eastern Dress.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/254613"),
+        link("Original GLB", "https://api.vntana.com/assets/products/d8e73b97-67e5-41d7-b9d1-5788719d4b4f/organizations/The-Metropolitan-Museum-of-Art/clients/masters/93986daf-78a9-4499-aa7b-838443a4db3c.glb")
+      ],
+      "The title, date, culture, period, medium, dimensions, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./bronze_figure_boy_eastern_dress.glb",
+      fallbackUrl: "./bronze_figure_boy_eastern_dress.glb"
+    },
+    scene: {
+      targetHeight: 0.9,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
       defaultViewVector: [0.98, 0.46, 1.08],
       mobileViewVector: [0.78, 0.34, 0.96]
     }
