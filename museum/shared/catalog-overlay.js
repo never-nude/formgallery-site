@@ -1918,7 +1918,7 @@ export const museumPiecesExtension = {
     path: "/cycladic-marble-female-figure/",
     sectionId: "greek-classical",
     sortOrder: 24.8,
-    viewerTitle: "Marble Female Figure (Cycladic, Early Cycladic II)",
+    viewerTitle: "Marble Female Figure (Cycladic, Early Cycladic II, ca. 2700-2400/2300 BCE)",
     subtitle: "The Metropolitan Museum of Art",
     medium: "Marble",
     dimensions: "H: 86.5 cm | W: 21 cm | D: 6.2 cm",
@@ -1938,7 +1938,7 @@ export const museumPiecesExtension = {
         link("Met object page", "https://www.metmuseum.org/art/collection/search/854724"),
         link("Original GLB", "https://api.vntana.com/assets/products/76da0393-e35d-4fb0-ada4-5c8841764fd0/organizations/The-Metropolitan-Museum-of-Art/clients/masters/8ff97eac-8d7a-44b7-9062-2d42c43314f9.glb")
       ],
-      "The title, culture, period, medium, dimensions, and gallery location follow The Met collection record. The object page marks the figure as on view in Gallery 151."
+      "The title, culture, period, approximate date, medium, dimensions, and gallery location follow The Met collection record. The object page marks the figure as on view in Gallery 151."
     ),
     defaults: {
       zoom: 2.9,
