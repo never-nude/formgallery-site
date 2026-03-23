@@ -2237,6 +2237,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.34, 0.96]
     }
   },
+  "marble-sarcophagus-lions-antelope": {
+    kind: "gltf",
+    path: "/marble-sarcophagus-lions-antelope/",
+    sectionId: "roman-world",
+    sortOrder: 118.1,
+    viewerTitle: "Marble Sarcophagus with Lions Felling Antelope (Roman, 3rd century CE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Marble",
+    dimensions: "H. 44 in. | W. 84 in. | D. 40 in. (111.8 x 213.4 x 101.6 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 169, The Metropolitan Museum of Art",
+    culture: "Roman",
+    region: "Roman world",
+    period: "3rd century",
+    current_location: "Gallery 169, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Roman", "Marble", "Sarcophagus", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Marble Sarcophagus with Lions Felling Antelope.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/854888"),
+        link("Original GLB", "https://api.vntana.com/assets/products/8c51d760-f49f-4bb3-ba93-42c2db6eb799/organizations/The-Metropolitan-Museum-of-Art/clients/masters/355f5d97-d15f-45e0-bf3a-eba8b8e21d42.glb")
+      ],
+      "The title, date, culture, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./marble_sarcophagus_with_lions_felling_antelope.glb",
+      fallbackUrl: "./marble_sarcophagus_with_lions_felling_antelope.glb"
+    },
+    scene: {
+      targetHeight: 0.86,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.08, 0.42, 1.32],
+      mobileViewVector: [0.84, 0.34, 1.12]
+    }
+  },
   "marble-capital-sphinx": {
     kind: "gltf",
     path: "/marble-capital-sphinx/",
