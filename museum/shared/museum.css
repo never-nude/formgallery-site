@@ -1348,10 +1348,117 @@ canvas {
   background: transparent;
 }
 
+.new-additions-section,
 .browse-section,
 .rooms-section {
   display: grid;
   gap: 18px;
+}
+
+.new-additions-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 28vw);
+  gap: 20px;
+  align-items: start;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding-bottom: 6px;
+}
+
+.new-addition-item {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.new-addition-card {
+  display: grid;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 16px 18px;
+  border: 1px solid #d7c8b4;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #faf6ef 0%, #f3ebdf 100%);
+  box-shadow:
+    inset 0 1px 0 #fffaf4,
+    0 8px 20px #5a45220a;
+  text-decoration: none;
+  color: inherit;
+}
+
+.new-addition-card:hover,
+.new-addition-card:focus-visible {
+  color: var(--link);
+  border-color: #b7a489;
+  outline: none;
+}
+
+.new-addition-stage {
+  position: relative;
+  display: block;
+  min-height: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #f8f1e3 0%, #ece1cf 100%);
+  box-shadow:
+    inset 0 1px 0 #fff9f1,
+    0 10px 24px #5a45220f;
+}
+
+.new-addition-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  border: 0;
+  background: transparent;
+}
+
+.new-addition-meta {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.new-addition-gallery {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #766856;
+}
+
+.new-addition-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.new-addition-creator,
+.new-addition-date {
+  margin: 0;
+  color: #5d5143;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .new-additions-grid {
+    grid-auto-columns: minmax(220px, 78vw);
+  }
+
+  .new-addition-stage,
+  .new-addition-frame {
+    min-height: 300px;
+  }
 }
 
 .rooms-section {

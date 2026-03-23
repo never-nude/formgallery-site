@@ -367,6 +367,18 @@ function buildSectionGroups(lobby, sections) {
     .filter(Boolean);
 }
 
+function buildRecentAdditions(pieces, sections, count = 5) {
+  const visibleEntries = new Map(
+    sections.flatMap((section) => section.items.map((item) => [item.id, item]))
+  );
+
+  return Object.entries(pieces)
+    .filter(([pieceId, piece]) => piece && !piece.hiddenFromLobby && visibleEntries.has(pieceId))
+    .slice(-count)
+    .reverse()
+    .map(([pieceId]) => visibleEntries.get(pieceId));
+}
+
 function startOfUtcWeek(date) {
   const utcDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
   const weekday = utcDate.getUTCDay();
@@ -574,6 +586,7 @@ export function renderMuseumLobby(lobby, pieces) {
   const sections = buildSections(lobby, pieces);
   const sectionGroups = buildSectionGroups(lobby, sections);
   const entries = sections.flatMap((section) => section.items);
+  const recentAdditions = buildRecentAdditions(pieces, sections);
   const featuredPiece = pickFeaturedPiece(lobby, sections);
   const browseGroups = [
     {
@@ -604,6 +617,33 @@ export function renderMuseumLobby(lobby, pieces) {
 
   const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
   const sectionsHtml = sectionGroups.map((group) => renderSectionGroup(group)).join("");
+  const recentAdditionsHtml = recentAdditions.map((entry) => {
+    const previewFrame = heroPreviewHref(entry.href);
+    return `
+      <li class="new-addition-item">
+        <a class="new-addition-card" href="${entry.href}" aria-label="Open ${entry.title}">
+          <span class="new-addition-stage">
+            ${previewFrame ? `
+              <iframe
+                class="new-addition-frame"
+                src="${previewFrame}"
+                tabindex="-1"
+                loading="lazy"
+                title="${entry.title} preview"
+              ></iframe>
+            ` : ""}
+          </span>
+          <span class="new-addition-meta">
+            <span class="new-addition-gallery">${entry.gallery}</span>
+            <span class="new-addition-title">${entry.title}</span>
+            ${entry.creator ? `<span class="new-addition-creator">${entry.creator}</span>` : ""}
+            ${entry.date ? `<span class="new-addition-date">${entry.date}</span>` : ""}
+            <span class="piece-link">${entry.linkLabel || "View Piece"} <span aria-hidden="true">&rarr;</span></span>
+          </span>
+        </a>
+      </li>
+    `;
+  }).join("");
   const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
   const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
   const brandForm = brandWords[0] || "FORM";
@@ -651,6 +691,20 @@ export function renderMuseumLobby(lobby, pieces) {
                 ></iframe>
               ` : ""}
             </a>
+          </section>
+        ` : ""}
+
+        ${recentAdditions.length ? `
+          <section class="new-additions-section" aria-labelledby="new-additions-title">
+            <div class="section-head">
+              <div>
+                <p class="section-kicker">Recent Works</p>
+                <h2 class="section-title" id="new-additions-title">New Additions</h2>
+              </div>
+            </div>
+            <ul class="new-additions-grid" aria-label="Recent additions gallery walk">
+              ${recentAdditionsHtml}
+            </ul>
           </section>
         ` : ""}
 
