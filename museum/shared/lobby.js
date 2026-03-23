@@ -379,11 +379,8 @@ function buildRecentAdditions(pieces, sections, count = 5) {
     .map(([pieceId]) => visibleEntries.get(pieceId));
 }
 
-function startOfUtcWeek(date) {
+function startOfUtcDay(date) {
   const utcDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
-  const weekday = utcDate.getUTCDay();
-  const daysFromMonday = (weekday + 6) % 7;
-  utcDate.setUTCDate(utcDate.getUTCDate() - daysFromMonday);
   utcDate.setUTCHours(0, 0, 0, 0);
   return utcDate.getTime();
 }
@@ -397,10 +394,10 @@ function resolveFeaturedPieceId(lobby) {
   }
 
   const anchorDate = lobby.featuredRotationStart ? new Date(`${lobby.featuredRotationStart}T00:00:00Z`) : new Date();
-  const anchorWeek = startOfUtcWeek(anchorDate);
-  const currentWeek = startOfUtcWeek(new Date());
-  const elapsedWeeks = Math.max(0, Math.floor((currentWeek - anchorWeek) / (7 * 24 * 60 * 60 * 1000)));
-  return rotation[elapsedWeeks % rotation.length] || fallbackId;
+  const anchorDay = startOfUtcDay(anchorDate);
+  const currentDay = startOfUtcDay(new Date());
+  const elapsedDays = Math.max(0, Math.floor((currentDay - anchorDay) / (24 * 60 * 60 * 1000)));
+  return rotation[elapsedDays % rotation.length] || fallbackId;
 }
 
 function pickFeaturedPiece(lobby, sections) {
