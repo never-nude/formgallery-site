@@ -5148,6 +5148,146 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.76, 0.38, 0.94]
     }
   },
+  "figure-of-an-elephant-possibly-a-chessman": {
+    kind: "gltf",
+    path: "/asia/figure-of-an-elephant-possibly-a-chessman/",
+    sectionId: "asia",
+    sortOrder: 22,
+    viewerTitle: "Figure of an elephant, possibly a chessman (Sasanian, ca. 6th-7th century CE)",
+    subtitle: "The Metropolitan Museum of Art",
+    medium: "Dolomite (Ferroan-Dolomite)",
+    dimensions: "2 15/16 x 1 9/16 x 3 5/8 in. (7.5 x 3.9 x 9.2 cm)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Sasanian",
+    region: "Asia",
+    period: "Sasanian",
+    current_location: "The Metropolitan Museum of Art",
+    findspot_or_origin: "Iran or Mesopotamia",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Sasanian", "Iran", "Mesopotamia", "Dolomite", "The Met", "Elephant"],
+    lobbyMeta: "Source: The Met 3D",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Figure of an elephant, possibly a chessman.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/324052"),
+        link("Original GLB", "https://api.vntana.com/assets/products/519e217f-8d2e-4808-8a41-06d0538e0e9e/organizations/The-Metropolitan-Museum-of-Art/clients/masters/4b9f090d-1839-4fd9-b590-04462b1a16ca.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./figure_of_an_elephant_possibly_a_chessman.glb",
+      fallbackUrl: "./figure_of_an_elephant_possibly_a_chessman.glb"
+    },
+    scene: {
+      targetHeight: 0.62,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.88, 0.34, 0.86],
+      mobileViewVector: [0.72, 0.3, 0.74]
+    }
+  },
+  "cypriot-limestone-priest": {
+    kind: "gltf",
+    path: "/cypriot-limestone-priest/",
+    sectionId: "greek-classical",
+    sortOrder: 26.25,
+    viewerTitle: "Limestone priest (Cypriot, Archaic, end of the 6th century BCE)",
+    subtitle: "The Metropolitan Museum of Art",
+    medium: "Limestone",
+    dimensions: "85 1/2 x 27 x 15 in., 1044 lb. (217.2 x 68.6 x 38.1 cm, 473.6 kg)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Cypriot",
+    region: "Greek world",
+    period: "Archaic",
+    current_location: "The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Cypriot", "Archaic", "Limestone", "The Met", "Priest"],
+    lobbyMeta: "Source: The Met 3D",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Limestone priest.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/242019"),
+        link("Original GLB", "https://api.vntana.com/assets/products/4dc3978f-e140-4e52-bb42-34f664cf6ce7/organizations/The-Metropolitan-Museum-of-Art/clients/masters/6b4229aa-f192-4e8b-9263-2d8586b9ddac.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and collection follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.22
+    },
+    model: {
+      primaryUrl: "./limestone_priest.glb",
+      fallbackUrl: "./limestone_priest.glb"
+    },
+    scene: {
+      targetHeight: 1.42,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.0, 0.56, 1.16],
+      mobileViewVector: [0.82, 0.42, 1.02]
+    }
+  },
+  "seated-figure-middle-niger": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/seated-figure-middle-niger/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 18,
+    viewerTitle: "Seated figure (Middle Niger civilization, 13th century)",
+    subtitle: "Artist: Middle Niger artist; The Metropolitan Museum of Art",
+    medium: "Terracotta",
+    dimensions: "H. 10 x W. 9 3/4 x D. 11 3/4 in. (25.4 x 24.8 x 29.8 cm)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Middle Niger civilization",
+    region: "Sub-Saharan Africa",
+    period: "13th century",
+    current_location: "The Metropolitan Museum of Art",
+    findspot_or_origin: "Mali",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Middle Niger civilization", "Mali", "Terracotta", "The Met", "Figure"],
+    lobbyMeta: "Source: The Met 3D",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Seated figure.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/314362"),
+        link("Original GLB", "https://api.vntana.com/assets/products/2bcfc4bb-da49-4228-9e09-92a4e45a2a68/organizations/The-Metropolitan-Museum-of-Art/clients/masters/dc86eefd-cce7-4f8e-b18b-3c795030a5a5.glb")
+      ],
+      "The title, date, artist attribution, culture, medium, dimensions, and origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./seated_figure_middle_niger.glb",
+      fallbackUrl: "./seated_figure_middle_niger.glb"
+    },
+    scene: {
+      targetHeight: 0.72,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [0.88, 0.36, 0.86],
+      mobileViewVector: [0.74, 0.3, 0.76]
+    }
+  },
   haliphat: {
     kind: "gltf",
     path: "/palmyra/haliphat/index.html",
