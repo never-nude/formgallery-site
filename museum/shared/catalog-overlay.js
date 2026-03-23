@@ -2420,6 +2420,53 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.34, 1.08]
     }
   },
+  spandrel: {
+    kind: "gltf",
+    path: "/spandrel/",
+    sectionId: "early-renaissance",
+    sortOrder: 73,
+    viewerTitle: "Spandrel (Catalan, ca. 1130-40)",
+    subtitle: "The Metropolitan Museum of Art, The Cloisters",
+    medium: "Marble",
+    dimensions: "17 7/8 x 14 1/4 x 7 1/4 in. (45.4 x 36.2 x 18.4 cm)",
+    locationLabel: "Collection:",
+    location: "The Cloisters, The Metropolitan Museum of Art",
+    culture: "Catalan",
+    region: "Europe",
+    period: "ca. 1130-40",
+    current_location: "The Cloisters, The Metropolitan Museum of Art",
+    findspot_or_origin: "Present-day France",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Catalan", "Marble", "Architectural sculpture", "The Cloisters", "The Met"],
+    lobbyMeta: "Source: The Met 3D / The Cloisters",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Spandrel.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/470623"),
+        link("Original GLB", "https://api.vntana.com/assets/products/27070bd1-28b8-4db5-bb4d-b9783f60c789/organizations/The-Metropolitan-Museum-of-Art/clients/masters/4e54cf5a-594d-4a48-b9ed-62dfdbd275aa.glb")
+      ],
+      "The title, date, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 3.02,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./spandrel.glb",
+      fallbackUrl: "./spandrel.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.92, 0.42, 1.04],
+      mobileViewVector: [0.74, 0.34, 0.92]
+    }
+  },
   "mourning-victory-melvin-memorial": {
     kind: "gltf",
     path: "/mourning-victory-melvin-memorial/",
@@ -4424,6 +4471,53 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.36, 0.94]
     }
   },
+  "ancestor-figure-sawos": {
+    kind: "gltf",
+    path: "/ancestor-figure-sawos/",
+    sectionId: "americas",
+    sortOrder: 64,
+    viewerTitle: "Ancestor Figure (Sawos people, 19th century or earlier)",
+    subtitle: "The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
+    medium: "Wood, paint, fiber, ferrous metal",
+    dimensions: "H. 72 x W. 12 3/4 x D. 9 7/8 in. (182.9 x 32.4 x 25.1 cm)",
+    locationLabel: "Collection:",
+    location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    culture: "Sawos people",
+    region: "Oceania",
+    period: "19th century or earlier",
+    current_location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    findspot_or_origin: "Papua New Guinea",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Sawos people", "Papua New Guinea", "Wood", "The Met", "Ancestor figure"],
+    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Ancestor Figure.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/313780"),
+        link("Original GLB", "https://api.vntana.com/assets/products/9e2482d7-098c-4312-a645-76da6cf0f578/organizations/The-Metropolitan-Museum-of-Art/clients/masters/d301b8d2-2b9c-4bfb-a2b6-dfb9c3ab3163.glb")
+      ],
+      "The title, date, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.86,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./ancestor_figure_sawos.glb",
+      fallbackUrl: "./ancestor_figure_sawos.glb"
+    },
+    scene: {
+      targetHeight: 1.22,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.05,
+      defaultViewVector: [0.98, 0.56, 1.08],
+      mobileViewVector: [0.8, 0.42, 0.96]
+    }
+  },
   "juno-ludovisi": {
     kind: "stl",
     path: "/juno-ludovisi/index.html",
@@ -5286,6 +5380,53 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.05,
       defaultViewVector: [0.88, 0.36, 0.86],
       mobileViewVector: [0.74, 0.3, 0.76]
+    }
+  },
+  "nkisi-power-figure": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/nkisi-power-figure/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 19,
+    viewerTitle: "Nkisi (power figure) (Kongo peoples, 19th-first half of 20th century)",
+    subtitle: "Artist: Kongo artist and nganga (ritual specialist); The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
+    medium: "Wood, pigment, resin, iron, brass, tin, cloth, plant fiber cord, beads, cowrie shells, bone or ivory, arrows, leather, seeds, animal horn",
+    dimensions: "H. 23 1/8 x D. 10 1/4 x W. 10 in. (58.8 x 26 x 25.4 cm)",
+    locationLabel: "Collection:",
+    location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    culture: "Kongo peoples",
+    region: "Sub-Saharan Africa",
+    period: "19th-first half of 20th century",
+    current_location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    findspot_or_origin: "Democratic Republic of the Congo",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Kongo peoples", "Democratic Republic of the Congo", "Wood", "Power figure", "The Met"],
+    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Nkisi (power figure).",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/312342"),
+        link("Original GLB", "https://api.vntana.com/assets/products/c011dd9b-9a46-486c-bbe5-89178949c489/organizations/The-Metropolitan-Museum-of-Art/clients/masters/2138972c-82b7-4811-8b01-143640629837.glb")
+      ],
+      "The title, date, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./nkisi_power_figure.glb",
+      fallbackUrl: "./nkisi_power_figure.glb"
+    },
+    scene: {
+      targetHeight: 1.02,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.96, 0.46, 1.0],
+      mobileViewVector: [0.78, 0.36, 0.88]
     }
   },
   haliphat: {
