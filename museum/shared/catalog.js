@@ -1466,7 +1466,7 @@ export const museumLobby = {
   featuredPieceId: "dying-gaul",
   featuredPieceIds: [
     "dying-gaul",
-    "bouchardon-cupid",
+    "dying-tecumseh",
     "venus-de-milo",
     "discobolus",
     "apollo-belvedere",

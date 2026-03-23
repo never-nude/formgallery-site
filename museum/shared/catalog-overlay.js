@@ -2145,6 +2145,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.34, 0.96]
     }
   },
+  "bowl-arabic-inscription": {
+    kind: "gltf",
+    path: "/asia/bowl-arabic-inscription/",
+    sectionId: "asia",
+    sortOrder: 22,
+    viewerTitle: "Bowl with Arabic Inscription (Nishapur, Iran, 10th century)",
+    subtitle: "The Metropolitan Museum of Art, Department of Islamic Art",
+    medium: "Earthenware; white slip with black-slip decoration under transparent glaze",
+    dimensions: "H: 17.8 cm | Diam: 45.7 cm",
+    locationLabel: "On view:",
+    location: "Gallery 453, The Metropolitan Museum of Art",
+    region: "Asia",
+    period: "10th century",
+    current_location: "Gallery 453, The Metropolitan Museum of Art",
+    findspot_or_origin: "Nishapur, Iran",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Iran", "Nishapur", "Islamic Art", "Earthenware", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Islamic Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Bowl with Arabic Inscription.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/451802"),
+        link("Original GLB", "https://api.vntana.com/assets/products/193bf47c-57fb-4fda-b20f-0d9d350e1dd1/organizations/The-Metropolitan-Museum-of-Art/clients/masters/dce4eedc-2c3f-4ed0-8edf-bd36f768a6ab.glb")
+      ],
+      "The title, date, medium, dimensions, origin, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.96,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./bowl_with_arabic_inscription.glb",
+      fallbackUrl: "./bowl_with_arabic_inscription.glb"
+    },
+    scene: {
+      targetHeight: 0.78,
+      focusYRatio: 0.5,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.88, 0.34, 0.84],
+      mobileViewVector: [0.74, 0.28, 0.74]
+    }
+  },
   "bronze-figure-boy-eastern-dress": {
     kind: "gltf",
     path: "/bronze-figure-boy-eastern-dress/",
@@ -2418,6 +2464,52 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [1.04, 0.64, 1.16],
       mobileViewVector: [0.84, 0.48, 1.04]
+    }
+  },
+  "outside-row-standing-horse": {
+    kind: "gltf",
+    path: "/outside-row-standing-horse/",
+    sectionId: "modern-sculpture",
+    sortOrder: 3,
+    viewerTitle: "Outside Row Standing Horse (Carousel Figure) (American, ca. 1917)",
+    subtitle: "Artist: Daniel Muller (1872-1952); The Metropolitan Museum of Art, The American Wing",
+    medium: "Basswood, paint, glass, steel",
+    dimensions: "H: 157.5 cm | W: 30.5 cm | D: 167.6 cm",
+    locationLabel: "On view:",
+    location: "Gallery 774, The Metropolitan Museum of Art",
+    culture: "American",
+    region: "Americas",
+    period: "ca. 1917",
+    current_location: "Gallery 774, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["American", "Carousel", "Basswood", "Daniel Muller", "The Met", "Modern Sculpture"],
+    lobbyMeta: "Source: The Met 3D / The American Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Outside Row Standing Horse (Carousel Figure).",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/830041"),
+        link("Original GLB", "https://api.vntana.com/assets/products/9c7970a1-bb46-420a-b6db-7564241e9612/organizations/The-Metropolitan-Museum-of-Art/clients/masters/c94111db-28a8-4555-b748-a7ccf46782d2.glb")
+      ],
+      "The title, date, artist, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./outside_row_standing_horse.glb",
+      fallbackUrl: "./outside_row_standing_horse.glb"
+    },
+    scene: {
+      targetHeight: 1.08,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [1.0, 0.46, 1.08],
+      mobileViewVector: [0.8, 0.34, 0.96]
     }
   },
   "inscribed-turtle-plastron": {
@@ -4441,6 +4533,52 @@ export const museumPiecesExtension = {
       defaultYaw: -Math.PI * 0.04,
       defaultViewVector: [1.2, 0.7, 1.86],
       mobileViewVector: [0.92, 0.52, 1.68]
+    }
+  },
+  "ugolino-and-his-sons": {
+    kind: "gltf",
+    path: "/ugolino-and-his-sons/",
+    sectionId: "nineteenth-century",
+    sortOrder: 9,
+    viewerTitle: "Ugolino and His Sons (Jean-Baptiste Carpeaux, 1865-67)",
+    subtitle: "The Metropolitan Museum of Art, Department of European Sculpture and Decorative Arts",
+    medium: "Saint-Beat marble",
+    dimensions: "H: 197.5 cm | W: 149.9 cm | D: 110.5 cm",
+    locationLabel: "On view:",
+    location: "Gallery 548, The Metropolitan Museum of Art",
+    culture: "French",
+    region: "France",
+    period: "1865-67",
+    current_location: "Gallery 548, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Jean-Baptiste Carpeaux", "French", "Marble", "The Met", "Nineteenth Century"],
+    lobbyMeta: "Source: The Met 3D / Department of European Sculpture and Decorative Arts",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Ugolino and His Sons.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/204812"),
+        link("Original GLB", "https://api.vntana.com/assets/products/93b7d97c-9333-4927-8dd1-293c8bf56eca/organizations/The-Metropolitan-Museum-of-Art/clients/masters/8acc969e-ec05-4f33-a906-442ba08a3533.glb")
+      ],
+      "The title, artist, date, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./ugolino_and_his_sons.glb",
+      fallbackUrl: "./ugolino_and_his_sons.glb"
+    },
+    scene: {
+      targetHeight: 1.12,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.0, 0.5, 1.08],
+      mobileViewVector: [0.8, 0.4, 0.96]
     }
   },
   "perseus-with-head-of-medusa": {
