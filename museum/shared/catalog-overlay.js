@@ -1960,6 +1960,53 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.8, 0.36, 0.94]
     }
   },
+  "statue-of-ur-ningirsu": {
+    kind: "gltf",
+    path: "/statue-of-ur-ningirsu/",
+    sectionId: "egypt-mesopotamia",
+    sortOrder: 12.1,
+    viewerTitle: "Statue of Ur-Ningirsu, son of Gudea (Neo-Sumerian, ca. 2080 BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Ancient West Asian Art",
+    medium: "Chlorite",
+    dimensions: "H. 55 cm (21 5/8 in.)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Neo-Sumerian",
+    region: "Mesopotamia",
+    period: "Neo-Sumerian",
+    current_location: "The Metropolitan Museum of Art",
+    findspot_or_origin: "Mesopotamia",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Neo-Sumerian", "Mesopotamia", "Chlorite", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Ancient West Asian Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Statue of Ur-Ningirsu, son of Gudea.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/329069"),
+        link("Original GLB", "https://api.vntana.com/assets/products/9822c27d-4ce1-4f69-9b90-ac816aca60e7/organizations/The-Metropolitan-Museum-of-Art/clients/masters/5024ce70-4138-4918-9076-f2d3ebaf5ad3.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and department follow The Met collection record. The object page lists the work in the collection and notes that it was lent by the Musee du Louvre."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./statue_of_ur_ningirsu.glb",
+      fallbackUrl: "./statue_of_ur_ningirsu.glb"
+    },
+    scene: {
+      targetHeight: 0.9,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.98, 0.46, 1.06],
+      mobileViewVector: [0.78, 0.36, 0.94]
+    }
+  },
   "cycladic-marble-female-figure": {
     kind: "gltf",
     path: "/cycladic-marble-female-figure/",
@@ -2188,6 +2235,52 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [0.98, 0.46, 1.08],
       mobileViewVector: [0.78, 0.36, 0.96]
+    }
+  },
+  "silver-bowl-isis-medallion": {
+    kind: "gltf",
+    path: "/silver-bowl-isis-medallion/",
+    sectionId: "greek-classical",
+    sortOrder: 26.05,
+    viewerTitle: "Silver Bowl with Medallion of Isis (Cypriot, Archaic, ca. 675-625 BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Silver",
+    dimensions: "H. 1 3/8 in. (3.5 cm) | Diam. 6 in. (15.3 cm)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Cypriot",
+    region: "Greek world",
+    period: "Archaic",
+    current_location: "The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Cypriot", "Archaic", "Silver", "Isis", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Silver Bowl with Medallion of Isis.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/243824"),
+        link("Original GLB", "https://api.vntana.com/assets/products/3f88eee5-d29f-4cec-89a8-ab04014fc59c/organizations/The-Metropolitan-Museum-of-Art/clients/masters/776d8451-2eb2-42c4-aa20-b9efe38394fe.glb")
+      ],
+      "The title, date, culture, medium, dimensions, and department follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.94,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./silver_bowl_with_medallion_of_isis.glb",
+      fallbackUrl: "./silver_bowl_with_medallion_of_isis.glb"
+    },
+    scene: {
+      targetHeight: 0.72,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.08,
+      defaultViewVector: [0.86, 0.34, 0.82],
+      mobileViewVector: [0.74, 0.3, 0.74]
     }
   },
   "aphrodite-holding-winged-eros": {
