@@ -5518,5 +5518,146 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.96, 0.52, 1.1],
       mobileViewVector: [0.78, 0.4, 0.98]
     }
+  },
+  "zoomorphic-headrest": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/zoomorphic-headrest/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 20,
+    viewerTitle: "Zoomorphic headrest (Nguni peoples, mid-late 19th century)",
+    subtitle: "Artist: Unobadula (active mid-late 19th century, KwaZulu-Natal, South Africa); The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
+    medium: "Wood",
+    dimensions: "H. 4 1/2 x W. 10 5/8 x D. 5 1/4 x L. 10 5/8 in. (11.4 x 27 x 13.3 x 27 cm)",
+    locationLabel: "Displayed / held:",
+    location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    culture: "Nguni peoples",
+    region: "Sub-Saharan Africa",
+    period: "Mid-late 19th century",
+    current_location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    findspot_or_origin: "KwaZulu-Natal, South Africa",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Nguni peoples", "South Africa", "Wood", "Headrest", "The Met"],
+    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Zoomorphic headrest.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/787722"),
+        link("Original GLB", "https://api.vntana.com/assets/products/344278e9-c47d-491e-99de-0165c79e8e5f/organizations/The-Metropolitan-Museum-of-Art/clients/masters/a427389e-6cd5-4f00-a89c-b42e90623a3a.glb")
+      ],
+      "The title, date, artist attribution, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./zoomorphic_headrest.glb",
+      fallbackUrl: "./zoomorphic_headrest.glb"
+    },
+    scene: {
+      targetHeight: 0.62,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.9, 0.34, 0.86],
+      mobileViewVector: [0.74, 0.28, 0.76]
+    }
+  },
+  "house-model-nayarit": {
+    kind: "gltf",
+    path: "/americas/house-model-nayarit/",
+    sectionId: "americas",
+    sortOrder: 64,
+    viewerTitle: "House model (Nayarit, 200 BCE-300 CE)",
+    subtitle: "Artist: Nayarit artist(s); The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
+    medium: "Ceramic, slip",
+    dimensions: "H. 11 15/16 x W. 8 5/8 x D. 6 1/8 in. (30.3 x 21.9 x 15.5 cm)",
+    locationLabel: "Displayed / held:",
+    location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    culture: "Nayarit",
+    region: "Americas",
+    period: "200 BCE-300 CE",
+    current_location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    findspot_or_origin: "West Mexico",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Nayarit", "West Mexico", "Ceramic", "House model", "The Met"],
+    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of House model.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/312581"),
+        link("Original GLB", "https://api.vntana.com/assets/products/c8f3cfa5-8f7f-473b-9f13-418005d90d86/organizations/The-Metropolitan-Museum-of-Art/clients/masters/f75b3b2c-06b7-4c11-aa9c-6ec74c29fc4d.glb")
+      ],
+      "The title, date, artist attribution, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./house_model.glb",
+      fallbackUrl: "./house_model.glb"
+    },
+    scene: {
+      targetHeight: 0.86,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.94, 0.44, 0.96],
+      mobileViewVector: [0.78, 0.34, 0.86]
+    }
+  },
+  "male-pombia-figure": {
+    kind: "gltf",
+    path: "/sub-saharan-africa/male-pombia-figure/",
+    sectionId: "sub-saharan-africa",
+    sortOrder: 21,
+    viewerTitle: "Male pombia (child of Poro) figure (Senufo peoples, 19th-mid-20th century)",
+    subtitle: "Artist: Tyebara-Senufo artist; The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
+    medium: "Wood",
+    dimensions: "H. 42 1/2 x W. 8 13/16 x D. 10 1/2 in. (108 x 22.4 x 26.7 cm)",
+    locationLabel: "Displayed / held:",
+    location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    culture: "Senufo peoples, Tyebara group",
+    region: "Sub-Saharan Africa",
+    period: "19th-mid-20th century",
+    current_location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
+    findspot_or_origin: "Cote d'Ivoire",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Senufo peoples", "Tyebara group", "Cote d'Ivoire", "Wood", "The Met", "Figure"],
+    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Male pombia (child of Poro) figure.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/310758"),
+        link("Original GLB", "https://api.vntana.com/assets/products/34182e49-a89a-4a03-8ac5-57ef7483de8e/organizations/The-Metropolitan-Museum-of-Art/clients/masters/2599f344-d81c-4b69-822f-eb5c1e3ccd51.glb")
+      ],
+      "The title, date, artist attribution, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.04,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./male_pombia_figure.glb",
+      fallbackUrl: "./male_pombia_figure.glb"
+    },
+    scene: {
+      targetHeight: 1.18,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.98, 0.48, 1.02],
+      mobileViewVector: [0.8, 0.38, 0.9]
+    }
   }
 };
