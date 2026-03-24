@@ -5559,6 +5559,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./zoomorphic_headrest.glb"
     },
     scene: {
+      rotateZ: Math.PI * 0.18,
       targetHeight: 0.62,
       focusYRatio: 0.52,
       defaultYaw: Math.PI * 0.06,
