@@ -5519,54 +5519,6 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.4, 0.98]
     }
   },
-  "zoomorphic-headrest": {
-    kind: "gltf",
-    path: "/sub-saharan-africa/zoomorphic-headrest/",
-    sectionId: "sub-saharan-africa",
-    sortOrder: 20,
-    viewerTitle: "Zoomorphic headrest (Nguni peoples, mid-late 19th century)",
-    subtitle: "Artist: Unobadula (active mid-late 19th century, KwaZulu-Natal, South Africa); The Metropolitan Museum of Art, The Michael C. Rockefeller Wing",
-    medium: "Wood",
-    dimensions: "H. 4 1/2 x W. 10 5/8 x D. 5 1/4 x L. 10 5/8 in. (11.4 x 27 x 13.3 x 27 cm)",
-    locationLabel: "Displayed / held:",
-    location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
-    culture: "Nguni peoples",
-    region: "Sub-Saharan Africa",
-    period: "Mid-late 19th century",
-    current_location: "The Michael C. Rockefeller Wing, The Metropolitan Museum of Art",
-    findspot_or_origin: "KwaZulu-Natal, South Africa",
-    scan_source: "The Met 3D / VNTANA",
-    mesh_format: "GLB",
-    tags: ["Nguni peoples", "South Africa", "Wood", "Headrest", "The Met"],
-    lobbyMeta: "Source: The Met 3D / The Michael C. Rockefeller Wing",
-    source: source(
-      "Rendered from The Metropolitan Museum of Art's 3D model of Zoomorphic headrest.",
-      [
-        link("Met object page", "https://www.metmuseum.org/art/collection/search/787722"),
-        link("Original GLB", "https://api.vntana.com/assets/products/344278e9-c47d-491e-99de-0165c79e8e5f/organizations/The-Metropolitan-Museum-of-Art/clients/masters/a427389e-6cd5-4f00-a89c-b42e90623a3a.glb")
-      ],
-      "The title, date, artist attribution, culture, medium, dimensions, collection, and place of origin follow The Met collection record."
-    ),
-    defaults: {
-      zoom: 2.9,
-      lightAngle: 24,
-      lightPower: 2.04,
-      exposure: 0.42,
-      rough: 0.24
-    },
-    model: {
-      primaryUrl: "./zoomorphic_headrest.glb",
-      fallbackUrl: "./zoomorphic_headrest.glb"
-    },
-    scene: {
-      rotateZ: Math.PI * 0.18,
-      targetHeight: 0.62,
-      focusYRatio: 0.52,
-      defaultYaw: Math.PI * 0.06,
-      defaultViewVector: [0.9, 0.34, 0.86],
-      mobileViewVector: [0.74, 0.28, 0.76]
-    }
-  },
   "house-model-nayarit": {
     kind: "gltf",
     path: "/americas/house-model-nayarit/",
