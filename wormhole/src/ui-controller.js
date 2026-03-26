@@ -1,4 +1,5 @@
 const PHASE_ORDER = ["approach", "entry", "transit", "exit"];
+const PANEL_REVEAL_MS = 3600;
 
 function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
@@ -13,6 +14,7 @@ export function createUI({ initialMode = "transit", initialValues, onControlsCha
   const pulseButton = document.querySelector("#pulseButton");
   const progressFill = document.querySelector("#progressFill");
   const phaseItems = Array.from(document.querySelectorAll("[data-phase-item]"));
+  let panelRevealUntil = 0;
 
   const controls = {
     speed: {
@@ -89,9 +91,12 @@ export function createUI({ initialMode = "transit", initialValues, onControlsCha
 
   function update(runtime) {
     const transitProgress = runtime.transitProgress ?? runtime.progress ?? 0;
+    const inTransitRun = runtime.viewMode === "transit" && (runtime.phase !== "approach" || transitProgress > 0.03);
+    const prefersPanel = !inTransitRun || performance.now() < panelRevealUntil;
+
     root.dataset.mode = runtime.viewMode;
     root.dataset.phase = runtime.phase;
-    root.dataset.focus = runtime.viewMode === "transit" && runtime.phase !== "approach" ? "scene" : "panel";
+    root.dataset.focus = prefersPanel ? "panel" : "scene";
     phaseBadge.textContent = capitalize(runtime.phase);
     updateModeButtons(runtime.viewMode);
     updatePhaseTrack(runtime.phase);
@@ -114,9 +119,22 @@ export function createUI({ initialMode = "transit", initialValues, onControlsCha
     onControlsChange(values);
   }
 
+  function revealPanel(duration = PANEL_REVEAL_MS) {
+    panelRevealUntil = performance.now() + duration;
+  }
+
   Object.values(controls).forEach((control) => {
     control.input.addEventListener("input", handleControlInput);
   });
+
+  root.addEventListener("pointerenter", () => revealPanel(1800));
+  root.addEventListener("pointermove", (event) => {
+    if (event.pointerType !== "touch" && performance.now() > panelRevealUntil - 900) {
+      revealPanel(1800);
+    }
+  });
+  root.addEventListener("pointerdown", () => revealPanel());
+  root.addEventListener("focusin", () => revealPanel());
 
   inspectButton.addEventListener("click", () => onModeChange("inspect"));
   transitButton.addEventListener("click", () => onModeChange("transit"));
