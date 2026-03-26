@@ -502,8 +502,10 @@ button:focus-visible {
 
 .hud[data-mode="transit"] .controls-panel,
 .hud[data-mode="transit"] .telemetry-panel {
-  opacity: 0.64;
-  transform: translateX(-0.08rem);
+  opacity: 0.52;
+  transform: translateX(-0.14rem) scale(0.985);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.22);
 }
 
 .hud[data-mode="transit"] .controls-panel:hover,
@@ -511,7 +513,43 @@ button:focus-visible {
 .hud[data-mode="transit"] .telemetry-panel:hover,
 .hud[data-mode="transit"] .telemetry-panel:focus-within {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) scale(1);
+}
+
+.hud[data-mode="transit"][data-phase="entry"] .controls-panel,
+.hud[data-mode="transit"][data-phase="entry"] .telemetry-panel,
+.hud[data-mode="transit"][data-phase="transit"] .controls-panel,
+.hud[data-mode="transit"][data-phase="transit"] .telemetry-panel {
+  opacity: 0.34;
+  transform: translateX(-0.22rem) scale(0.97);
+}
+
+.hud[data-mode="transit"] .overview {
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    background 220ms ease;
+}
+
+.hud[data-mode="transit"][data-phase="entry"] .overview,
+.hud[data-mode="transit"][data-phase="transit"] .overview {
+  opacity: 0.74;
+}
+
+.hud[data-mode="transit"][data-focus="scene"] .hint,
+.hud[data-mode="transit"][data-focus="scene"] .section-head p {
+  opacity: 0.34;
+}
+
+.hud[data-mode="transit"][data-phase="transit"] .hint {
+  opacity: 0.22;
+}
+
+.hud[data-mode="transit"][data-phase="transit"] .telemetry-grid div,
+.hud[data-mode="transit"][data-phase="entry"] .telemetry-grid div {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0.008)),
+    rgba(255, 255, 255, 0.008);
 }
 
 .hud[data-phase="transit"] .overview,

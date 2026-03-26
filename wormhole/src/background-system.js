@@ -92,7 +92,8 @@ function orientGroup(group, point, tangent) {
 export function createBackgroundSystem(scene) {
   const particleTexture = createParticleTexture();
   const entryHaloTexture = createHaloTexture("rgba(130, 235, 255, 0.55)", "rgba(130, 235, 255, 0.14)");
-  const exitHaloTexture = createHaloTexture("rgba(255, 205, 120, 0.62)", "rgba(130, 235, 255, 0.16)");
+  const exitHaloTexture = createHaloTexture("rgba(255, 205, 120, 0.68)", "rgba(130, 235, 255, 0.16)");
+  const exitCoreTexture = createHaloTexture("rgba(255, 244, 220, 0.78)", "rgba(255, 168, 102, 0.05)");
 
   const root = new THREE.Group();
   scene.add(root);
@@ -113,14 +114,24 @@ export function createBackgroundSystem(scene) {
   entryGroup.add(entryStars);
 
   const exitStars = createStarField({
-    count: 3600,
+    count: 4200,
     hueRange: [0.08, 0.18],
     lightnessRange: [0.66, 0.95],
-    radius: 240,
-    size: 1.22,
+    radius: 220,
+    size: 1.18,
     texture: particleTexture,
   });
   exitGroup.add(exitStars);
+
+  const exitFarStars = createStarField({
+    count: 2400,
+    hueRange: [0.1, 0.24],
+    lightnessRange: [0.7, 0.97],
+    radius: 260,
+    size: 1.42,
+    texture: particleTexture,
+  });
+  exitGroup.add(exitFarStars);
 
   const entryHalo = new THREE.Sprite(
     new THREE.SpriteMaterial({
@@ -145,8 +156,21 @@ export function createBackgroundSystem(scene) {
       transparent: true,
     }),
   );
-  exitHalo.scale.setScalar(170);
+  exitHalo.scale.setScalar(178);
   exitGroup.add(exitHalo);
+
+  const exitCore = new THREE.Sprite(
+    new THREE.SpriteMaterial({
+      blending: THREE.AdditiveBlending,
+      color: 0xfff0cf,
+      depthWrite: false,
+      map: exitCoreTexture,
+      opacity: 0.1,
+      transparent: true,
+    }),
+  );
+  exitCore.scale.setScalar(74);
+  exitGroup.add(exitCore);
 
   const destinationArc = new THREE.Mesh(
     new THREE.TorusGeometry(84, 0.65, 8, 180),
@@ -161,38 +185,94 @@ export function createBackgroundSystem(scene) {
   destinationArc.rotation.x = Math.PI * 0.5;
   exitGroup.add(destinationArc);
 
-  function setAnchors({ start, end }) {
-    orientGroup(entryGroup, start.point.clone().addScaledVector(start.tangent, -156), start.tangent);
-    orientGroup(exitGroup, end.point.clone().addScaledVector(end.tangent, 210), end.tangent);
+  const destinationRing = new THREE.Mesh(
+    new THREE.RingGeometry(44, 64, 120),
+    new THREE.MeshBasicMaterial({
+      blending: THREE.AdditiveBlending,
+      color: 0xffc884,
+      depthWrite: false,
+      opacity: 0.08,
+      side: THREE.DoubleSide,
+      transparent: true,
+    }),
+  );
+  exitGroup.add(destinationRing);
+
+  let anchors = null;
+
+  function setAnchors(nextAnchors) {
+    anchors = {
+      end: {
+        ...nextAnchors.end,
+        point: nextAnchors.end.point.clone(),
+        tangent: nextAnchors.end.tangent.clone(),
+      },
+      start: {
+        ...nextAnchors.start,
+        point: nextAnchors.start.point.clone(),
+        tangent: nextAnchors.start.tangent.clone(),
+      },
+    };
+
+    orientGroup(entryGroup, anchors.start.point.clone().addScaledVector(anchors.start.tangent, -144), anchors.start.tangent);
+    orientGroup(exitGroup, anchors.end.point.clone().addScaledVector(anchors.end.tangent, 132), anchors.end.tangent);
   }
 
   function update(time, runtime) {
-    entryStars.rotation.z += 0.0009 + runtime.velocityIndex * 0.0001;
-    exitStars.rotation.z -= 0.0012;
-    exitStars.rotation.y += 0.0008;
+    if (anchors) {
+      const entryDistance = THREE.MathUtils.lerp(
+        -128,
+        -154,
+        THREE.MathUtils.smoothstep(runtime.transitProgress, 0, 0.22),
+      );
+      const exitDistance = THREE.MathUtils.lerp(
+        152,
+        92,
+        THREE.MathUtils.smoothstep(runtime.transitProgress, 0.34, 1.0),
+      );
+      orientGroup(entryGroup, anchors.start.point.clone().addScaledVector(anchors.start.tangent, entryDistance), anchors.start.tangent);
+      orientGroup(exitGroup, anchors.end.point.clone().addScaledVector(anchors.end.tangent, exitDistance), anchors.end.tangent);
+    }
 
-    const approachStretch = runtime.phase === "approach" ? 1 + runtime.phaseProgress * 0.48 : 1.04;
+    entryStars.rotation.z = runtime.transitFlow * 0.18;
+    exitStars.rotation.z = -runtime.transitFlow * 0.24;
+    exitStars.rotation.y = runtime.transitProgress * 0.16;
+    exitFarStars.rotation.z = runtime.transitProgress * 0.08;
+
+    const approachStretch =
+      runtime.phase === "approach"
+        ? 1 + runtime.phaseProgress * 0.96
+        : 1.18 + runtime.transitProgress * 0.24;
     entryGroup.scale.set(1, 1, approachStretch);
-    entryStars.material.opacity =
-      runtime.viewMode === "inspect" ? 0.14 : 0.32 + runtime.phaseIntensity * 0.1;
-    entryStars.material.size = 0.9 + runtime.velocityIndex * 0.08;
+    entryStars.material.opacity = runtime.viewMode === "inspect" ? 0.16 : 0.28 + runtime.phaseIntensity * 0.14;
+    entryStars.material.size = 0.92 + runtime.velocityIndex * 0.16 + runtime.transitProgress * 0.08;
     entryHalo.material.opacity =
-      runtime.viewMode === "inspect" ? 0.02 : 0.03 + runtime.phaseIntensity * 0.04;
+      runtime.viewMode === "inspect" ? 0.03 : 0.05 + runtime.phaseIntensity * 0.06 + runtime.entryFlash * 0.1;
 
-    const exitOpacity = 0.08 + runtime.exitReveal * 0.94;
+    const exitOpacity = 0.08 + runtime.exitReveal * 1.02;
     exitStars.material.opacity = exitOpacity;
-    exitStars.material.size = 1.1 + runtime.exitReveal * 0.26;
-    exitGroup.scale.setScalar(0.9 + runtime.exitReveal * 0.16);
-    exitGroup.scale.z = 1.0 + runtime.exitReveal * 0.3;
+    exitStars.material.size = 1.08 + runtime.exitReveal * 0.42 + runtime.bloom * 0.08;
+    exitFarStars.material.opacity = 0.04 + runtime.exitReveal * 0.66;
+    exitFarStars.material.size = 1.22 + runtime.exitReveal * 0.38;
+
+    exitGroup.scale.setScalar(0.88 + runtime.exitReveal * 0.28);
+    exitGroup.scale.z = 1.02 + runtime.exitReveal * 0.5;
     exitHalo.material.opacity =
       runtime.viewMode === "inspect"
-        ? 0.03
-        : 0.05 + runtime.exitReveal * 0.28 + runtime.pulse * 0.04;
-    exitHalo.scale.setScalar(170 + runtime.exitReveal * 36);
+        ? 0.04
+        : 0.06 + runtime.exitReveal * 0.34 + runtime.pulse * 0.04 + runtime.bloom * 0.04;
+    exitHalo.scale.setScalar(178 + runtime.exitReveal * 54 + runtime.bloom * 16);
+    exitCore.material.opacity =
+      runtime.viewMode === "inspect" ? 0.06 : 0.08 + runtime.exitReveal * 0.6 + runtime.bloom * 0.08;
+    exitCore.scale.setScalar(74 + runtime.exitReveal * 46 + runtime.bloom * 14);
 
-    destinationArc.rotation.z += 0.0015 + time * 0.0;
-    destinationArc.rotation.y = 0.4 + Math.sin(time * 0.14) * 0.12;
-    destinationArc.material.opacity = 0.05 + runtime.exitReveal * 0.16;
+    destinationArc.rotation.z = runtime.transitProgress * 2.1;
+    destinationArc.rotation.y = 0.36 + runtime.exitReveal * 0.18 + Math.sin(runtime.transitProgress * Math.PI * 4.0) * 0.04;
+    destinationArc.material.opacity = 0.04 + runtime.exitReveal * 0.24;
+
+    destinationRing.rotation.z = -runtime.transitProgress * 1.7;
+    destinationRing.material.opacity = 0.03 + runtime.exitReveal * 0.26 + runtime.bloom * 0.05;
+    destinationRing.scale.setScalar(1 + runtime.exitReveal * 0.12);
   }
 
   return {

@@ -88,8 +88,10 @@ export function createUI({ initialMode = "transit", initialValues, onControlsCha
   }
 
   function update(runtime) {
+    const transitProgress = runtime.transitProgress ?? runtime.progress ?? 0;
     root.dataset.mode = runtime.viewMode;
     root.dataset.phase = runtime.phase;
+    root.dataset.focus = runtime.viewMode === "transit" && runtime.phase !== "approach" ? "scene" : "panel";
     phaseBadge.textContent = capitalize(runtime.phase);
     updateModeButtons(runtime.viewMode);
     updatePhaseTrack(runtime.phase);
@@ -102,8 +104,8 @@ export function createUI({ initialMode = "transit", initialValues, onControlsCha
     telemetry.bloom.textContent = `${runtime.bloomGain.toFixed(2)}x`;
     telemetry.exit.textContent = `${runtime.exitLock.toFixed(0)}%`;
     telemetry.duration.textContent = `${runtime.transitTime.toFixed(1)} s`;
-    telemetry.progress.textContent = `${(runtime.progress * 100).toFixed(0)}%`;
-    progressFill.style.transform = `scaleX(${Math.max(0, Math.min(1, runtime.progress))})`;
+    telemetry.progress.textContent = `${(transitProgress * 100).toFixed(0)}%`;
+    progressFill.style.transform = `scaleX(${Math.max(0, Math.min(1, transitProgress))})`;
   }
 
   function handleControlInput() {

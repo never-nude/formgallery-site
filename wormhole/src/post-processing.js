@@ -69,24 +69,39 @@ export function createPostProcessing(renderer, scene, camera) {
 
   function update(runtime) {
     let bloomStrength =
-      0.14 +
-      runtime.bloom * 0.22 +
-      runtime.phaseIntensity * 0.14 +
-      runtime.entryFlash * 0.12 +
-      runtime.pulse * 0.14;
+      0.08 +
+      runtime.glow * 0.1 +
+      runtime.bloom * 0.16 +
+      runtime.transitProgress * 0.08 +
+      runtime.phaseIntensity * 0.18 +
+      runtime.entryFlash * 0.28 +
+      runtime.exitReveal * runtime.bloom * 0.26 +
+      runtime.transitVelocity * 0.7 +
+      runtime.pulse * 0.16;
+
     if (runtime.viewMode === "inspect") {
-      bloomStrength *= 0.42;
+      bloomStrength *= 0.34;
     }
-    bloomPass.threshold = 0.3;
-    bloomPass.radius = THREE.MathUtils.lerp(0.46, 0.82, runtime.exitReveal + runtime.entryFlash * 0.2);
+
+    bloomPass.threshold = runtime.viewMode === "inspect" ? 0.36 : 0.28 - runtime.entryFlash * 0.08;
+    bloomPass.radius = THREE.MathUtils.lerp(
+      0.44,
+      0.94,
+      runtime.exitReveal * 0.84 + runtime.entryFlash * 0.28 + runtime.transitProgress * 0.08,
+    );
     bloomPass.strength = bloomStrength;
 
     lensPass.uniforms.uAberration.value =
       runtime.viewMode === "inspect"
         ? 0.0
-        : 0.006 + runtime.phaseIntensity * 0.04 + runtime.pulse * 0.035;
-    lensPass.uniforms.uWarp.value = runtime.lensWarp;
-    lensPass.uniforms.uVignette.value = 0.2 + runtime.phaseIntensity * 0.16 + runtime.entryFlash * 0.08;
+        : 0.004 +
+          runtime.distortion * 0.018 +
+          runtime.phaseIntensity * 0.012 +
+          runtime.transitProgress * 0.006 +
+          runtime.pulse * 0.026;
+    lensPass.uniforms.uWarp.value = runtime.lensWarp * (0.92 + runtime.distortion * 0.28);
+    lensPass.uniforms.uVignette.value =
+      0.18 + runtime.phaseIntensity * 0.12 + runtime.entryFlash * 0.12 - runtime.exitReveal * 0.04;
 
     return bloomStrength;
   }
