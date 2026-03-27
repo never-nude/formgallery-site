@@ -83,7 +83,7 @@ export const museumSections = [
   {
     id: "sub-saharan-africa",
     title: "Sub-Saharan Africa",
-    subtitle: "",
+    subtitle: "Devotional, court, and ancestral sculpture traditions",
     spineId: "parallel-traditions",
     spineTitle: "Parallel Traditions",
     regionLabel: "Sub-Saharan Africa"
@@ -989,8 +989,8 @@ export const museumPieces = {
       fullUrl: "https://api.smk.dk/api/v1/download-3d/r207tt71x_142-inv-83-bacchus.stl"
     }),
     model: {
-      primaryUrl: "./bacchus_source.stl",
-      fallbackUrl: "./bacchus_source.stl"
+      primaryUrl: ""https://github.com/never-nude/formgallery-site/releases/download/models-v1/bacchus_source.stl"",
+      fallbackUrl: ""https://github.com/never-nude/formgallery-site/releases/download/models-v1/bacchus_source.stl""
     }
   },
   "michelangelo-pieta": {
