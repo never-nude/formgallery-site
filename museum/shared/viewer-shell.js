@@ -64,19 +64,21 @@ export function renderViewerShell(config) {
   }
 
   document.body.innerHTML = `
-    <div class="${viewerClasses.join(" ")}">
+    <a class="skip-link" href="#stage">Skip to 3D viewer</a>
+    <main class="${viewerClasses.join(" ")}">
       <section class="panel">
         <div class="viewer-header">
           <div class="viewer-object">
-            <h1 class="viewer-title">${config.viewerTitle}</h1>
+            <p class="viewer-kicker">Form Gallery</p>
+            <h1 class="viewer-title" id="viewerTitle">${config.viewerTitle}</h1>
             ${titleParagraph("viewer-artist", config.subtitle)}
             ${labeledParagraph("viewer-medium", "Medium:", config.medium)}
             ${labeledParagraph("viewer-dimensions", "Dimensions:", config.dimensions)}
             ${labeledParagraph("viewer-location", config.locationLabel || "Location:", config.location)}
           </div>
 
-          <div class="viewer-meta">
-            <p class="viewer-section-label">Publication Metadata</p>
+          <div class="viewer-meta" aria-labelledby="viewerMetadataLabel">
+            <p class="viewer-section-label" id="viewerMetadataLabel">Publication Metadata</p>
             <p id="stats" class="viewer-stats">${statsLoading}</p>
             ${sourceCard ? `<div class="viewer-source">${sourceCard}</div>` : ""}
           </div>
@@ -96,24 +98,36 @@ export function renderViewerShell(config) {
               <div class="control"><label for="rough">Roughness</label><input id="rough" type="range" min="0.2" max="1" step="0.01" value="${defaults.rough.toFixed(2)}" /><output id="roughv">${defaults.rough.toFixed(2)}</output></div>
             </div>
 
-            <div class="row">
-              <label><input id="canManipulate" type="checkbox"${checkedAttr(defaults.canManipulate)} /> Manipulate</label>
-              <label><input id="autoRotate" type="checkbox"${checkedAttr(defaults.autoRotate)} /> Auto Rotate</label>
-              <label><input id="multiLight" type="checkbox"${checkedAttr(defaults.multiLight)} /> Multi-Light</label>
-              <label><input id="wire" type="checkbox"${checkedAttr(defaults.wire)} /> Wireframe</label>
-              <button id="frontBtn" class="btn" type="button">Front</button>
-              <button id="resetBtn" class="btn" type="button">Reset</button>
-              <button id="museumBtn" class="btn" type="button">Back to Atrium</button>
-              <span class="viewer-controls-hint">${config.controlsHint || "Drag to rotate. Scroll or pinch to zoom. Shift-drag to pan."}</span>
+            <div class="viewer-controls-toolbar">
+              <div class="viewer-toggle-row">
+                <label><input id="canManipulate" type="checkbox"${checkedAttr(defaults.canManipulate)} /> Manipulate</label>
+                <label><input id="autoRotate" type="checkbox"${checkedAttr(defaults.autoRotate)} /> Auto Rotate</label>
+                <label><input id="multiLight" type="checkbox"${checkedAttr(defaults.multiLight)} /> Multi-Light</label>
+                <label><input id="wire" type="checkbox"${checkedAttr(defaults.wire)} /> Wireframe</label>
+              </div>
+
+              <div class="viewer-action-row">
+                <button id="frontBtn" class="btn" type="button">Front</button>
+                <button id="resetBtn" class="btn" type="button">Reset</button>
+                <button id="museumBtn" class="btn" type="button">Back to Atrium</button>
+              </div>
             </div>
+
+            <p class="viewer-controls-hint">${config.controlsHint || "Drag to rotate. Scroll or pinch to zoom. Shift-drag to pan."}</p>
           </div>
         </details>
       </section>
 
-      <section id="stage">
-        <div class="loading" id="loading">${loadingText}</div>
+      <section class="viewer-stage-shell" aria-label="3D sculpture viewer">
+        <div id="stage" tabindex="-1" aria-busy="true">
+          <div class="loading" id="loading" role="status" aria-live="polite" data-state="loading">
+            <span class="loading-eyebrow">Preparing Viewer</span>
+            <strong class="loading-title" data-loading-title>Building the gallery stage</strong>
+            <span class="loading-message" data-loading-message>${loadingText}</span>
+          </div>
+        </div>
       </section>
-    </div>
+    </main>
   `;
 
   document.title = pageTitle;
@@ -125,6 +139,8 @@ export function createViewerUi(defaults) {
   const stage = document.getElementById("stage");
   const stats = document.getElementById("stats");
   const loading = document.getElementById("loading");
+  const loadingTitle = document.querySelector("[data-loading-title]");
+  const loadingMessage = document.querySelector("[data-loading-message]");
 
   function n(id) {
     return Number(document.getElementById(id).value);
@@ -144,6 +160,32 @@ export function createViewerUi(defaults) {
       document.getElementById(id).checked = defaults[id];
     }
     refreshReadouts();
+  }
+
+  function setLoadingState(message, options = {}) {
+    if (!loading) return;
+    const state = options.state || "loading";
+    loading.dataset.state = state;
+    if (loadingTitle) {
+      loadingTitle.textContent =
+        options.title ||
+        (state === "error" ? "Unable to load this sculpture" : "Building the gallery stage");
+    }
+    if (loadingMessage) {
+      loadingMessage.textContent = message;
+    } else {
+      loading.textContent = message;
+    }
+    if (stage) {
+      stage.setAttribute("aria-busy", state === "ready" ? "false" : "true");
+    }
+  }
+
+  function clearLoading() {
+    if (stage) {
+      stage.setAttribute("aria-busy", "false");
+    }
+    loading?.remove();
   }
 
   function bindControls(handlers = {}) {
@@ -183,6 +225,8 @@ export function createViewerUi(defaults) {
     loading,
     defaults,
     n,
+    setLoadingState,
+    clearLoading,
     refreshReadouts,
     setDefaults,
     bindControls

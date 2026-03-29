@@ -310,7 +310,6 @@ export async function initGltfMuseumPage(piece) {
   const focusYRatio = sceneConfig.focusYRatio ?? 0.57;
   const stage = ui.stage;
   const stats = ui.stats;
-  const loading = ui.loading;
 
   try {
     const { THREE, OrbitControls, GLTFLoader, DRACOLoader, RoomEnvironment } = await getThreeModules();
@@ -319,9 +318,7 @@ export async function initGltfMuseumPage(piece) {
 
     const setLoadingState = (message) => {
       stats.textContent = message;
-      if (loading) {
-        loading.textContent = message;
-      }
+      ui.setLoadingState(message);
     };
 
     setLoadingState(initialLoadingText);
@@ -497,12 +494,15 @@ export async function initGltfMuseumPage(piece) {
       const fidelityLabel = hasDistinctFallback && sameUrlSet(modelUrlsInUse, fallbackUrls) ? " (fallback)" : "";
       stats.textContent = `${triCount.toLocaleString()} triangles | ${sizeLabel}${fidelityLabel}`;
 
-      loading.remove();
+      ui.clearLoading();
       stage.appendChild(renderer.domElement);
       dracoLoader.dispose();
     } catch (error) {
       stats.textContent = "Failed to load source model.";
-      loading.textContent = `Model load error: ${error.message}`;
+      ui.setLoadingState(`Model load error: ${error.message}`, {
+        state: "error",
+        title: "Unable to load this source model"
+      });
       return;
     }
 
@@ -641,8 +641,9 @@ export async function initGltfMuseumPage(piece) {
     if (stats) {
       stats.textContent = "Failed to load 3D engine modules.";
     }
-    if (loading) {
-      loading.textContent = `Module load error: ${error.message}`;
-    }
+    ui.setLoadingState(`Module load error: ${error.message}`, {
+      state: "error",
+      title: "Viewer startup failed"
+    });
   }
 }

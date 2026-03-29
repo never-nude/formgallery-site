@@ -146,7 +146,6 @@ export async function initStlMuseumPage(piece) {
   const materialConfig = { ...DEFAULT_MATERIAL, ...(piece.material || {}) };
   const stage = ui.stage;
   const stats = ui.stats;
-  const loading = ui.loading;
 
   try {
     const { THREE, OrbitControls, STLLoader, RoomEnvironment, mergeVertices } = await getThreeModules();
@@ -155,9 +154,7 @@ export async function initStlMuseumPage(piece) {
 
     const setLoadingState = (message) => {
       stats.textContent = message;
-      if (loading) {
-        loading.textContent = message;
-      }
+      ui.setLoadingState(message);
     };
 
     setLoadingState(initialLoadingText);
@@ -292,11 +289,14 @@ export async function initStlMuseumPage(piece) {
       const fidelityLabel = hasDistinctFallback && modelUrlInUse === fallbackUrl ? " (fallback)" : "";
       stats.textContent = `${Math.round(triCount).toLocaleString()} triangles | ${sizeLabel}${fidelityLabel}`;
 
-      loading.remove();
+      ui.clearLoading();
       stage.appendChild(renderer.domElement);
     } catch (error) {
       stats.textContent = "Failed to load STL mesh.";
-      loading.textContent = `Mesh load error: ${error.message}`;
+      ui.setLoadingState(`Mesh load error: ${error.message}`, {
+        state: "error",
+        title: "Unable to load this STL"
+      });
       return;
     }
 
@@ -429,8 +429,9 @@ export async function initStlMuseumPage(piece) {
     if (stats) {
       stats.textContent = "Failed to load 3D engine modules.";
     }
-    if (loading) {
-      loading.textContent = `Module load error: ${error.message}`;
-    }
+    ui.setLoadingState(`Module load error: ${error.message}`, {
+      state: "error",
+      title: "Viewer startup failed"
+    });
   }
 }

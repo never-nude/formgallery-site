@@ -1,6 +1,6 @@
 import { LOCATION_OVERRIDES_BY_PIECE } from "./location-overrides.js";
 
-const MODULE_VERSION = "20260329-2140";
+const MODULE_VERSION = "20260329-2248";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
@@ -479,7 +479,17 @@ function routeEntriesForPath(pathname, pieceId) {
 
 function renderBootError(message, error) {
   console.error(error);
-  document.body.innerHTML = `<p style="margin:16px;font-family:IBM Plex Sans, Avenir Next, sans-serif;color:#2f2a22;">${message}</p>`;
+  document.body.innerHTML = `
+    <a class="skip-link" href="#system-state">Skip to message</a>
+    <main class="system-state" id="system-state">
+      <section class="system-state-card" role="alert">
+        <p class="system-state-kicker">Form Gallery</p>
+        <h1 class="system-state-title">${escapeHtml(message)}</h1>
+        <p class="system-state-copy">The page shell loaded, but this view could not be prepared. Refresh the page or return to the atrium and try again.</p>
+        <a class="explore-button" href="/museum/">Return to Atrium</a>
+      </section>
+    </main>
+  `;
 }
 
 function upsertMetaTag(key, value, attribute = "name") {
@@ -508,6 +518,15 @@ function setPageMetadata({ title, description }) {
 
 function simplifyWorkTitle(value = "") {
   return value.replace(/\s*\([^)]*\)\s*$/, "").trim() || value.trim();
+}
+
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 }
 
 function cleanMetadataText(value = "") {

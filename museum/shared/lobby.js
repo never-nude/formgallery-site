@@ -422,7 +422,7 @@ function renderBrowseGroup(group) {
   const itemsHtml = group.items
     .map(
       (item) => `
-        <button class="browse-chip" type="button" data-filter-group="${group.id}" data-filter-value="${item.value}" aria-pressed="false">
+        <button class="browse-chip" type="button" data-filter-group="${group.id}" data-filter-value="${item.value}" aria-controls="rooms" aria-pressed="false">
           <span>${item.label}</span>
           <span class="browse-count">${item.count}</span>
         </button>
@@ -651,6 +651,7 @@ export function renderMuseumLobby(lobby, pieces) {
   const collectionMeta = `${entries.length} works • ${sections.length} galleries • ${regionCount} regions • ${makerCount} makers`;
 
   document.body.innerHTML = `
+    <a class="skip-link" href="#main-content">Skip to collection content</a>
     <div class="app lobby-app">
       <header class="museum-header museum-header--simple">
         <p class="page-title page-title--progressive" aria-label="${lobby.brand || "FORM GALLERY"}">
@@ -662,7 +663,7 @@ export function renderMuseumLobby(lobby, pieces) {
         <p class="page-meta">${collectionMeta}</p>
       </header>
 
-      <main class="stage">
+      <main class="stage" id="main-content">
         ${featuredPiece ? `
           <section class="featured-work" aria-labelledby="featured-work-title">
             <div class="featured-copy">
@@ -711,7 +712,7 @@ export function renderMuseumLobby(lobby, pieces) {
               <p class="section-kicker">Collection Guide</p>
               <h2 class="section-title" id="browse-title">${lobby.browseTitle || "Browse the Collection"}</h2>
             </div>
-            <button class="browse-reset" type="button" data-filter-reset hidden>${lobby.browseResetLabel || "Show all works"}</button>
+            <button class="browse-reset" type="button" data-filter-reset aria-controls="rooms" hidden>${lobby.browseResetLabel || "Show all works"}</button>
           </div>
           <p class="section-sub">${lobby.browseSubtitle || ""}</p>
           <p class="browse-status" id="browseStatus" aria-live="polite">Viewing the full collection</p>
