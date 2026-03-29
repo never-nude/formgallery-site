@@ -984,13 +984,13 @@ export const museumPieces = {
     subtitle: MICHELANGELO_SUBTITLE,
     lobbyMeta: "Source: SMK Open",
     source: smkSource({
-      summary: "Viewer uses an SMK Open Bacchus STL mirrored locally in this route.",
+      summary: "Viewer uses an optimized local Bacchus STL for reliable loading, while preserving the full SMK Open source mesh in the route.",
       recordUrl: "https://open.smk.dk/en/artwork/image/KAS83",
       fullUrl: "https://api.smk.dk/api/v1/download-3d/r207tt71x_142-inv-83-bacchus.stl"
     }),
     model: {
-      primaryUrl: "./bacchus_source.stl",
-      fallbackUrl: "./bacchus_source.stl"
+      primaryUrl: "./bacchus_source_small.stl",
+      fallbackUrl: "./bacchus_source_small.stl"
     }
   },
   "michelangelo-pieta": {

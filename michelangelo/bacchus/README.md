@@ -2,11 +2,12 @@
 
 High-fidelity browser viewer for Michelangelo's *Bacchus*.
 
-This viewer uses the source STL directly with museum-style lighting and mobile-friendly controls.
+This viewer uses an optimized STL for the public route, while keeping the full source STL in the folder for provenance and future processing.
 
 ## Files
 
-- `bacchus_source.stl`: Source sculpture mesh.
+- `bacchus_source.stl`: Full source sculpture mesh.
+- `bacchus_source_small.stl`: Optimized viewer mesh for the live route.
 - `index.html`: Interactive Three.js viewer.
 
 ## Source
