@@ -2007,6 +2007,52 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.78, 0.36, 0.94]
     }
   },
+  "final-neolithic-marble-female-figure": {
+    kind: "gltf",
+    path: "/final-neolithic-marble-female-figure/",
+    sectionId: "greek-classical",
+    sortOrder: 24.75,
+    viewerTitle: "Marble Female Figure (Cycladic, Final Neolithic, 4500-4000 BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Marble",
+    dimensions: "H. 8 7/16 in. (21.4 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 150, The Metropolitan Museum of Art",
+    culture: "Cycladic",
+    region: "Greek world",
+    period: "Final Neolithic",
+    current_location: "Gallery 150, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Cycladic", "Final Neolithic", "Marble", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Marble Female Figure.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/255417"),
+        link("Original GLB", "https://api.vntana.com/assets/products/4f395dd2-918a-4d08-8537-ebd0ad6e4696/organizations/The-Metropolitan-Museum-of-Art/clients/masters/6f51cf50-32a6-4ec5-a4cc-94ddc94ed7a7.glb")
+      ],
+      "The title, culture, period, date, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.9,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./final_neolithic_marble_female_figure.glb",
+      fallbackUrl: "./final_neolithic_marble_female_figure.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [0.98, 0.44, 1.02],
+      mobileViewVector: [0.78, 0.34, 0.92]
+    }
+  },
   "cycladic-marble-female-figure": {
     kind: "gltf",
     path: "/cycladic-marble-female-figure/",
@@ -2283,6 +2329,98 @@ export const museumPiecesExtension = {
       mobileViewVector: [0.84, 0.34, 1.12]
     }
   },
+  "limestone-head-of-a-bearded-man": {
+    kind: "gltf",
+    path: "/limestone-head-of-a-bearded-man/",
+    sectionId: "greek-classical",
+    sortOrder: 26.08,
+    viewerTitle: "Limestone Head of a Bearded Man (Cypriot, early 6th century BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Limestone",
+    dimensions: "35 × 14 × 23 in., 500 lb. (88.9 × 35.6 × 58.4 cm, 226.8 kg)",
+    locationLabel: "On view:",
+    location: "Gallery 515, The Metropolitan Museum of Art",
+    culture: "Cypriot",
+    region: "Cyprus",
+    period: "Archaic",
+    current_location: "Gallery 515, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Cypriot", "Archaic", "Limestone", "Head", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Limestone Head of a Bearded Man.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/242408"),
+        link("Original GLB", "https://api.vntana.com/assets/products/e38e7bc7-2e00-42c4-8232-6a39c89bd7b8/organizations/The-Metropolitan-Museum-of-Art/clients/masters/8eb5cc25-be28-48a5-907e-ec0308dc9eb5.glb")
+      ],
+      "The title, culture, date, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./limestone_head_of_a_bearded_man.glb",
+      fallbackUrl: "./limestone_head_of_a_bearded_man.glb"
+    },
+    scene: {
+      targetHeight: 0.86,
+      focusYRatio: 0.64,
+      defaultYaw: Math.PI * 0.03,
+      defaultViewVector: [0.94, 0.56, 0.98],
+      mobileViewVector: [0.76, 0.44, 0.86]
+    }
+  },
+  "marble-stele-youth-and-little-girl": {
+    kind: "gltf",
+    path: "/marble-stele-youth-and-little-girl/",
+    sectionId: "greek-classical",
+    sortOrder: 26.09,
+    viewerTitle: "Marble Stele with a Youth and Little Girl, with a Capital and Finial in the Form of a Sphinx (Greek, Attic, ca. 530 BCE)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Marble",
+    dimensions: "Total H. 13 ft. 10 11/16 in. (423.4 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 154, The Metropolitan Museum of Art",
+    culture: "Greek, Attic",
+    region: "Greek world",
+    period: "Archaic",
+    current_location: "Gallery 154, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Greek", "Attic", "Archaic", "Stele", "Marble", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Marble Stele with a Youth and Little Girl.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/256974"),
+        link("Original GLB", "https://api.vntana.com/assets/products/5556bd54-ea23-487a-bd79-4ef94c245aee/organizations/The-Metropolitan-Museum-of-Art/clients/masters/f5a1c73e-8f32-4c89-85b2-98b0dd68c568.glb")
+      ],
+      "The title, date, culture, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.84,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./marble_stele_youth_and_little_girl.glb",
+      fallbackUrl: "./marble_stele_youth_and_little_girl.glb"
+    },
+    scene: {
+      targetHeight: 0.94,
+      focusYRatio: 0.56,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.02, 0.46, 1.14],
+      mobileViewVector: [0.82, 0.36, 0.98]
+    }
+  },
   "marble-capital-sphinx": {
     kind: "gltf",
     path: "/marble-capital-sphinx/",
@@ -2511,6 +2649,98 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.06,
       defaultViewVector: [0.92, 0.42, 1.04],
       mobileViewVector: [0.74, 0.34, 0.92]
+    }
+  },
+  "pieta-with-donors": {
+    kind: "gltf",
+    path: "/pieta-with-donors/",
+    sectionId: "early-renaissance",
+    sortOrder: 74,
+    viewerTitle: "Pieta with Donors (French, ca. 1515)",
+    subtitle: "The Metropolitan Museum of Art, Department of Medieval Art",
+    medium: "Limestone, traces of polychromy",
+    dimensions: "Overall: 43 3/8 x 92 1/2 x 22 in. (110.2 x 235 x 55.9 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 306, The Metropolitan Museum of Art",
+    culture: "French",
+    region: "Europe",
+    period: "ca. 1515",
+    current_location: "Gallery 306, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["French", "Limestone", "Polychromy", "Pieta", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Medieval Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Pieta with Donors.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/463716"),
+        link("Original GLB", "https://api.vntana.com/assets/products/315550e8-4bc4-43b9-b802-d79561e6fa6f/organizations/The-Metropolitan-Museum-of-Art/clients/masters/64ab0781-c6c6-4a41-9f26-3223814df653.glb")
+      ],
+      "The title, date, culture, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.82,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./pieta_with_donors.glb",
+      fallbackUrl: "./pieta_with_donors.glb"
+    },
+    scene: {
+      targetHeight: 0.82,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.02, 0.42, 1.28],
+      mobileViewVector: [0.82, 0.34, 1.08]
+    }
+  },
+  "entombment-of-christ": {
+    kind: "gltf",
+    path: "/entombment-of-christ/",
+    sectionId: "early-renaissance",
+    sortOrder: 74.5,
+    viewerTitle: "Entombment of Christ (French, ca. 1515)",
+    subtitle: "The Metropolitan Museum of Art, Department of Medieval Art",
+    medium: "Limestone, polychromy",
+    dimensions: "Figurative area: 90 in. x 9 ft. 8 1/2 in. x 39 in. (228.6 x 295.9 x 99.1 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 306, The Metropolitan Museum of Art",
+    culture: "French",
+    region: "Europe",
+    period: "ca. 1515",
+    current_location: "Gallery 306, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["French", "Limestone", "Polychromy", "Entombment", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Medieval Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Entombment of Christ.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/463717"),
+        link("Original GLB", "https://api.vntana.com/assets/products/54718818-2977-4982-8843-804ad83a9fc3/organizations/The-Metropolitan-Museum-of-Art/clients/masters/c45a1e8b-ac0b-4bf5-a61a-c8a5f70a5e25.glb")
+      ],
+      "The title, date, culture, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.76,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./entombment_of_christ.glb",
+      fallbackUrl: "./entombment_of_christ.glb"
+    },
+    scene: {
+      targetHeight: 0.86,
+      focusYRatio: 0.52,
+      defaultYaw: Math.PI * 0.04,
+      defaultViewVector: [1.08, 0.42, 1.42],
+      mobileViewVector: [0.86, 0.34, 1.18]
     }
   },
   "mourning-victory-melvin-memorial": {
@@ -5517,6 +5747,52 @@ export const museumPiecesExtension = {
       defaultYaw: Math.PI * 0.04,
       defaultViewVector: [0.96, 0.52, 1.1],
       mobileViewVector: [0.78, 0.4, 0.98]
+    }
+  },
+  "narcissus-and-echo-puteal": {
+    kind: "gltf",
+    path: "/narcissus-and-echo-puteal/",
+    sectionId: "roman-world",
+    sortOrder: 115.5,
+    viewerTitle: "Puteal with Narcissus and Echo, and Hylas and the Nymphs (Roman, 2nd century)",
+    subtitle: "The Metropolitan Museum of Art, Department of Greek and Roman Art",
+    medium: "Marble",
+    dimensions: "Height: 40 15/16 in. (104 cm) | Diameter: 26 3/8 in. (67 cm)",
+    locationLabel: "On view:",
+    location: "Gallery 162, The Metropolitan Museum of Art",
+    culture: "Roman",
+    region: "Roman world",
+    period: "Antonine or Severan",
+    current_location: "Gallery 162, The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Roman", "Marble", "Narcissus", "Echo", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Greek and Roman Art",
+    source: source(
+      "Rendered from The Metropolitan Museum of Art's 3D model of Puteal with Narcissus and Echo, and Hylas and the Nymphs.",
+      [
+        link("Met object page", "https://www.metmuseum.org/art/collection/search/775805"),
+        link("Original GLB", "https://api.vntana.com/assets/products/b6d09950-3eec-4bb1-94a1-1fb77fe4c73d/organizations/The-Metropolitan-Museum-of-Art/clients/masters/eddda0f3-c593-4c79-9f4e-fbb45c16026b.glb")
+      ],
+      "The title, date, culture, period, medium, dimensions, department, and gallery location follow The Met collection record."
+    ),
+    defaults: {
+      zoom: 2.88,
+      lightAngle: 24,
+      lightPower: 2.02,
+      exposure: 0.42,
+      rough: 0.24
+    },
+    model: {
+      primaryUrl: "./narcissus_and_echo_puteal.glb",
+      fallbackUrl: "./narcissus_and_echo_puteal.glb"
+    },
+    scene: {
+      targetHeight: 0.96,
+      focusYRatio: 0.54,
+      defaultYaw: Math.PI * 0.06,
+      defaultViewVector: [0.96, 0.44, 1.04],
+      mobileViewVector: [0.78, 0.34, 0.92]
     }
   },
   "house-model-nayarit": {
