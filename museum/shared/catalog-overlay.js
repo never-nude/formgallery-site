@@ -351,7 +351,7 @@ export const museumPiecesExtension = {
       fallbackUrl: "./risen_christ_source_small.stl"
     },
     scene: {
-      rotateX: 0,
+      rotateX: -Math.PI * 0.5,
       targetHeight: 1.76,
       defaultYaw: Math.PI * 0.08
     }
