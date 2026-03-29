@@ -989,8 +989,8 @@ export const museumPieces = {
       fullUrl: "https://api.smk.dk/api/v1/download-3d/r207tt71x_142-inv-83-bacchus.stl"
     }),
     model: {
-      primaryUrl:  "https://github.com/never-nude/formgallery-site/releases/download/models-v1/bacchus_source.stl",
-      fallbackUrl:  "https://github.com/never-nude/formgallery-site/releases/download/models-v1/bacchus_source.stl"
+      primaryUrl: "./bacchus_source.stl",
+      fallbackUrl: "./bacchus_source.stl"
     }
   },
   "michelangelo-pieta": {
@@ -1076,7 +1076,7 @@ export const museumPieces = {
       note: "This route starts from the optimized local mirror for reliability."
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/n296x4001_smk46-kas2202-madonna-pitti.stl",
+      primaryUrl: "./tondo_pitti_source_small.stl",
       fallbackUrl: "./tondo_pitti_source_small.stl"
     },
     timeouts: {
@@ -1103,7 +1103,7 @@ export const museumPieces = {
       note: "This route starts from the optimized local mirror for reliability."
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/th83m3943_smk31-kas85-taddei-tondo.stl",
+      primaryUrl: "./tondo_taddei_source_small.stl",
       fallbackUrl: "./tondo_taddei_source_small.stl"
     },
     timeouts: {
@@ -1210,7 +1210,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/z029p939x_KAS114_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/x633f5719_smk-kas114-medici-madonna.stl",
+      primaryUrl: "./medici_madonna_source_small.stl",
       fallbackUrl: "./medici_madonna_source_small.stl"
     }
   },
@@ -1228,7 +1228,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/rx913v89s_KAS113-3_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/k643b617z_smk-kas113-3-allegory-of-dawn.stl",
+      primaryUrl: "./dawn_source_small.stl",
       fallbackUrl: "./dawn_source_small.stl"
     },
     scene: {
@@ -1250,7 +1250,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/8c97kv91g_KAS113-2_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/3n204405h_smk-kas113-2-allegory-of-dusk.stl",
+      primaryUrl: "./dusk_source_small.stl",
       fallbackUrl: "./dusk_source_small.stl"
     }
   },
@@ -1268,7 +1268,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/kw52jd84f_KAS112-2_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/mg74qr55m_smk-kas112-2-night.stl",
+      primaryUrl: "./night_source_small.stl",
       fallbackUrl: "./night_source_small.stl"
     },
     scene: {
@@ -1309,7 +1309,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/td96k687f_KAS112-1_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/dn39x6162_smk-kas112-1-guiliano-de-medici-decimated.stl",
+      primaryUrl: "./giuliano_source_small.stl",
       fallbackUrl: "./giuliano_source_small.stl"
     },
     scene: {
@@ -1330,7 +1330,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/8p58pj77n_KAS113-1_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/df65vd372_smk-kas113-1-lorenzo-de-medici-decimated.stl",
+      primaryUrl: "./lorenzo_source_small.stl",
       fallbackUrl: "./lorenzo_source_small.stl"
     },
     scene: {
@@ -1352,7 +1352,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/df65vd436_KAS105_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/pz50h1458_smk-kas105-brutus.stl",
+      primaryUrl: "./brutus_source_small.stl",
       fallbackUrl: "./brutus_source_small.stl"
     }
   },
@@ -1371,7 +1371,7 @@ export const museumPieces = {
       fallbackUrl: "https://api.smk.dk/api/v1/download-3d/bn999c493_KAS2361_small.stl"
     }),
     model: {
-      primaryUrl: "https://api.smk.dk/api/v1/download-3d/0z709169b_smk-kas2361-rondanini-pieta.stl",
+      primaryUrl: "./rondanini_pieta_source_small.stl",
       fallbackUrl: "./rondanini_pieta_source_small.stl"
     }
   },
