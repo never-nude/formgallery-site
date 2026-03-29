@@ -1,3 +1,5 @@
+import { metBatchPieces } from "./met-batch-20260329.js";
+
 function link(label, url) {
   return { label, url };
 }
@@ -5888,5 +5890,6 @@ export const museumPiecesExtension = {
       defaultViewVector: [0.98, 0.48, 1.02],
       mobileViewVector: [0.8, 0.38, 0.9]
     }
-  }
+  },
+  ...metBatchPieces
 };
