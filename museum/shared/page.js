@@ -1,4 +1,6 @@
-const MODULE_VERSION = "20260329-1522";
+import { LOCATION_OVERRIDES_BY_PIECE } from "./location-overrides.js";
+
+const MODULE_VERSION = "20260329-2140";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
@@ -329,34 +331,37 @@ function inferMediumFromText(piece) {
 
 function enrichPieceMetadata(pieceId, piece, sectionMeta = {}) {
   if (!piece) return piece;
-  const medium = piece.medium || MEDIUM_BY_PIECE[pieceId] || inferMediumFromText(piece);
-  const dimensions = piece.dimensions || DIMENSIONS_BY_PIECE[pieceId] || "";
-  const makerFields = parseMakerFields(piece.subtitle || "");
-  const yearFields = parseYearBoundsFromText(piece.viewerTitle || "");
-  const locationFields = normalizeLocationFields(piece);
-  const title = piece.title || simplifyCatalogTitle(piece.lobbyTitle || piece.viewerTitle || "");
-  const maker = piece.maker || makerFields.maker;
-  const maker_lifespan = piece.maker_lifespan || makerFields.maker_lifespan;
-  const workshop_or_attribution = piece.workshop_or_attribution || makerFields.workshop_or_attribution;
-  const region = piece.region || sectionMeta.regionLabel || "";
-  const period = piece.period || sectionMeta.spineTitle || sectionMeta.title || "";
-  const gallery = piece.gallery || sectionMeta.title || "";
-  const current_location = piece.current_location || locationFields.current_location;
-  const findspot_or_origin = piece.findspot_or_origin || locationFields.findspot_or_origin;
-  const scan_source = piece.scan_source || piece.lobbyMeta || "";
-  const license = piece.license || inferLicense(piece);
-  const mesh_format = inferMeshFormat(piece);
-  const enriched = { ...piece };
+  const resolvedPiece = LOCATION_OVERRIDES_BY_PIECE[pieceId]
+    ? { ...piece, ...LOCATION_OVERRIDES_BY_PIECE[pieceId] }
+    : piece;
+  const medium = resolvedPiece.medium || MEDIUM_BY_PIECE[pieceId] || inferMediumFromText(resolvedPiece);
+  const dimensions = resolvedPiece.dimensions || DIMENSIONS_BY_PIECE[pieceId] || "";
+  const makerFields = parseMakerFields(resolvedPiece.subtitle || "");
+  const yearFields = parseYearBoundsFromText(resolvedPiece.viewerTitle || "");
+  const locationFields = normalizeLocationFields(resolvedPiece);
+  const title = resolvedPiece.title || simplifyCatalogTitle(resolvedPiece.lobbyTitle || resolvedPiece.viewerTitle || "");
+  const maker = resolvedPiece.maker || makerFields.maker;
+  const maker_lifespan = resolvedPiece.maker_lifespan || makerFields.maker_lifespan;
+  const workshop_or_attribution = resolvedPiece.workshop_or_attribution || makerFields.workshop_or_attribution;
+  const region = resolvedPiece.region || sectionMeta.regionLabel || "";
+  const period = resolvedPiece.period || sectionMeta.spineTitle || sectionMeta.title || "";
+  const gallery = resolvedPiece.gallery || sectionMeta.title || "";
+  const current_location = resolvedPiece.current_location || locationFields.current_location;
+  const findspot_or_origin = resolvedPiece.findspot_or_origin || locationFields.findspot_or_origin;
+  const scan_source = resolvedPiece.scan_source || resolvedPiece.lobbyMeta || "";
+  const license = resolvedPiece.license || inferLicense(resolvedPiece);
+  const mesh_format = inferMeshFormat(resolvedPiece);
+  const enriched = { ...resolvedPiece };
 
   enriched.title = title;
   enriched.maker = maker;
   enriched.maker_lifespan = maker_lifespan;
   enriched.workshop_or_attribution = workshop_or_attribution;
-  enriched.culture = piece.culture || "";
+  enriched.culture = resolvedPiece.culture || "";
   enriched.region = region;
   enriched.period = period;
-  enriched.start_year = piece.start_year ?? yearFields.start_year;
-  enriched.end_year = piece.end_year ?? yearFields.end_year;
+  enriched.start_year = resolvedPiece.start_year ?? yearFields.start_year;
+  enriched.end_year = resolvedPiece.end_year ?? yearFields.end_year;
   enriched.current_location = current_location;
   enriched.findspot_or_origin = findspot_or_origin;
   enriched.scan_source = scan_source;
@@ -370,8 +375,8 @@ function enrichPieceMetadata(pieceId, piece, sectionMeta = {}) {
   if (dimensions) {
     enriched.dimensions = dimensions;
   }
-  enriched.tags = Array.isArray(piece.tags) && piece.tags.length
-    ? piece.tags
+  enriched.tags = Array.isArray(resolvedPiece.tags) && resolvedPiece.tags.length
+    ? resolvedPiece.tags
     : uniqueTags([
         gallery,
         period,
