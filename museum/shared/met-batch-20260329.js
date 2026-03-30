@@ -198,6 +198,38 @@ export const metBatchPieces = {
     },
     scene: MET_SCENE_PRESETS.head
   },
+  "head-of-gudea": {
+    kind: "gltf",
+    path: "/head-of-gudea/",
+    sectionId: "egypt-mesopotamia",
+    sortOrder: 12.16,
+    viewerTitle: "Head of Gudea (Neo-Sumerian, ca. 2090 BCE)",
+    subtitle: "Artist: Unknown Neo-Sumerian sculptor",
+    medium: "Diorite",
+    dimensions: "H. 10 1/16 x W. 7 9/16 x D. 9 15/16 in. (25.5 x 19.2 x 25.3 cm)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Neo-Sumerian",
+    region: "Mesopotamia",
+    period: "ca. 2090 BCE",
+    current_location: "The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Neo-Sumerian", "Mesopotamia", "Diorite", "The Met", "Gudea"],
+    lobbyMeta: "Source: The Met 3D / Department of Ancient West Asian Art",
+    source: metSource(
+      "Head of Gudea",
+      "https://www.metmuseum.org/art/collection/search/324061",
+      "https://api.vntana.com/assets/products/15542420-b22b-41e5-a19f-24422a6db8f7/organizations/The-Metropolitan-Museum-of-Art/clients/masters/a8519968-ffad-47aa-b55d-d3335db1c215.glb",
+      "The title, date, culture, medium, dimensions, and collection location follow The Met collection record."
+    ),
+    defaults: MET_DEFAULTS,
+    model: {
+      primaryUrl: "./head_of_gudea.glb",
+      fallbackUrl: "./head_of_gudea.glb"
+    },
+    scene: MET_SCENE_PRESETS.head
+  },
   "figure-of-a-man-with-an-oryx": {
     kind: "gltf",
     path: "/figure-of-a-man-with-an-oryx/",
@@ -229,6 +261,70 @@ export const metBatchPieces = {
       fallbackUrl: "./figure_of_a_man_with_an_oryx.glb"
     },
     scene: MET_SCENE_PRESETS.figure
+  },
+  "head-of-a-male-or-female-figure": {
+    kind: "gltf",
+    path: "/head-of-a-male-or-female-figure/",
+    sectionId: "egypt-mesopotamia",
+    sortOrder: 12.22,
+    viewerTitle: "Head of a male or female figure (Assyrian, ca. 9th–8th century BCE)",
+    subtitle: "Artist: Unknown Assyrian sculptor",
+    medium: "Ivory, Egyptian Blue",
+    dimensions: "H. 3 7/16 x W. 3 9/16 x D. 2 1/8 in. (8.7 x 9 x 5.4 cm)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Assyrian",
+    region: "Mesopotamia",
+    period: "Neo-Assyrian",
+    current_location: "The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Assyrian", "Mesopotamia", "Ivory", "Egyptian Blue", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Ancient West Asian Art",
+    source: metSource(
+      "Head of a male or female figure",
+      "https://www.metmuseum.org/art/collection/search/325563",
+      "https://api.vntana.com/assets/products/003bf659-30db-45ce-b8e6-fb15a93182dc/organizations/The-Metropolitan-Museum-of-Art/clients/masters/efb3e008-1541-43d5-ac21-083730ffd5d2.glb",
+      "The title, date, culture, medium, dimensions, and collection location follow The Met collection record."
+    ),
+    defaults: MET_DEFAULTS,
+    model: {
+      primaryUrl: "./head_of_a_male_or_female_figure.glb",
+      fallbackUrl: "./head_of_a_male_or_female_figure.glb"
+    },
+    scene: MET_SCENE_PRESETS.head
+  },
+  "head-of-a-female-or-goddess-wearing-a-necklace": {
+    kind: "gltf",
+    path: "/head-of-a-female-or-goddess-wearing-a-necklace/",
+    sectionId: "egypt-mesopotamia",
+    sortOrder: 12.23,
+    viewerTitle: "Head of a female or goddess wearing a necklace (Assyrian, ca. 9th–8th century BCE)",
+    subtitle: "Artist: Unknown Assyrian sculptor",
+    medium: "Ivory, gold",
+    dimensions: "5 3/8 x 3 3/16 x 1 15/16 in. (13.6 x 8.1 x 5 cm)",
+    locationLabel: "Collection:",
+    location: "The Metropolitan Museum of Art",
+    culture: "Assyrian",
+    region: "Mesopotamia",
+    period: "Neo-Assyrian",
+    current_location: "The Metropolitan Museum of Art",
+    scan_source: "The Met 3D / VNTANA",
+    mesh_format: "GLB",
+    tags: ["Assyrian", "Mesopotamia", "Ivory", "Gold", "The Met"],
+    lobbyMeta: "Source: The Met 3D / Department of Ancient West Asian Art",
+    source: metSource(
+      "Head of a female or goddess wearing a necklace",
+      "https://www.metmuseum.org/art/collection/search/324323",
+      "https://api.vntana.com/assets/products/46825ae5-3a9b-4e60-8292-0aec78bde78d/organizations/The-Metropolitan-Museum-of-Art/clients/masters/fb6e338b-3db1-4815-b6c8-953dd56fe3b4.glb",
+      "The title, date, culture, medium, dimensions, and collection location follow The Met collection record."
+    ),
+    defaults: MET_DEFAULTS,
+    model: {
+      primaryUrl: "./head_of_a_female_or_goddess_wearing_a_necklace.glb",
+      fallbackUrl: "./head_of_a_female_or_goddess_wearing_a_necklace.glb"
+    },
+    scene: MET_SCENE_PRESETS.head
   },
   "female-figure-with-raised-arm": {
     kind: "gltf",
