@@ -17,7 +17,7 @@
   --shadow-soft: #4e38180b;
   --shadow-deep: #4a351516;
   --font-ui: "IBM Plex Sans", "Avenir Next", sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-display: "Avenir Next", "Helvetica Neue", "IBM Plex Sans", sans-serif;
   --serif-display: var(--font-display);
 }
 
@@ -186,9 +186,9 @@ a {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(30px, 3vw, 34px);
-  line-height: 1.16;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: -0.045em;
   color: var(--text);
 }
 
@@ -346,8 +346,9 @@ a {
   margin-top: 14px;
   font-family: var(--font-display);
   font-size: clamp(42px, 5vw, 76px);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  font-weight: 700;
   color: var(--accent-graphite);
 }
 
@@ -372,7 +373,7 @@ a {
   min-height: 108px;
   padding: 18px 18px 16px;
   border: 1px solid #d9caba;
-  border-radius: 14px;
+  border-radius: 10px;
   background:
     linear-gradient(180deg, #fcfaf5 0%, #f3ebdf 100%);
   box-shadow:
@@ -398,8 +399,8 @@ a {
   font-family: var(--font-display);
   font-size: 40px;
   line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  letter-spacing: -0.05em;
   color: var(--accent-graphite);
 }
 
@@ -643,7 +644,7 @@ a {
   color: #66563f;
   background: #faf5ed;
   border: 1px solid #d8c9b6;
-  border-radius: 999px;
+  border-radius: 10px;
   padding: 8px 11px 7px;
   font-variant-numeric: tabular-nums;
   text-transform: uppercase;
@@ -669,7 +670,7 @@ a {
   text-decoration: none;
   color: inherit;
   border: 1px solid #e0d4c4;
-  border-radius: 12px;
+  border-radius: 10px;
   background: linear-gradient(180deg, #fcfaf6 0%, #f6eee4 100%);
   padding: 14px 15px 14px;
   box-shadow:
@@ -712,8 +713,9 @@ a {
   color: #2c241d;
   font-family: var(--font-display);
   font-size: 19px;
-  line-height: 1.1;
-  letter-spacing: -0.024em;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 700;
 }
 
 .piece:hover .piece-title,
@@ -874,12 +876,14 @@ a {
 
 .btn {
   border: 1px solid #a18f73;
-  border-radius: 999px;
-  background: #f4e9d8;
+  border-radius: 10px;
+  background: #efe2cf;
   color: #2d261f;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 14px;
   cursor: pointer;
   transition:
     background 160ms ease,
@@ -896,7 +900,7 @@ a {
 .source-card {
   margin: 0 0 10px;
   border: 1px solid var(--card-border);
-  border-radius: 10px;
+  border-radius: 8px;
   background: linear-gradient(180deg, #f4ebdc 0%, #eee2cf 100%);
   overflow: hidden;
 }
@@ -1022,8 +1026,9 @@ canvas {
   color: #3b3127;
   font-family: var(--font-display);
   font-size: clamp(24px, 2.6vw, 30px);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 700;
 }
 
 .loading-message {
@@ -1057,7 +1062,7 @@ canvas {
   gap: 16px;
   padding: 28px;
   border: 1px solid #d8c8b4;
-  border-radius: 24px;
+  border-radius: 16px;
   background:
     linear-gradient(180deg, #faf6ef 0%, #f2e8da 100%);
   box-shadow:
@@ -1078,8 +1083,9 @@ canvas {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(34px, 4vw, 46px);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
   color: var(--accent-graphite);
 }
 
@@ -1386,9 +1392,10 @@ canvas {
 .page-title {
   margin: 0 0 14px;
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.18em;
+  font-weight: 700;
   color: var(--accent-graphite);
 }
 
@@ -1412,9 +1419,10 @@ canvas {
 .page-heading {
   margin: 0 0 16px;
   font-family: var(--font-display);
-  font-size: clamp(3.45rem, 7vw, 5.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
+  font-size: clamp(3.2rem, 6.2vw, 5.2rem);
+  line-height: 0.88;
+  letter-spacing: -0.07em;
+  font-weight: 700;
   color: rgba(48, 41, 34, 0.96);
 }
 
@@ -1460,9 +1468,10 @@ canvas {
 .lobby-app .section-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.6vw, 3.2rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.85rem, 3vw, 2.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
   color: var(--text);
   text-transform: none;
 }
@@ -1503,11 +1512,11 @@ canvas {
 .featured-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(42px, 4.5vw, 56px);
-  line-height: 1.04;
+  font-size: clamp(40px, 4.2vw, 52px);
+  line-height: 0.94;
   margin-bottom: 8px;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+  letter-spacing: -0.06em;
+  font-weight: 700;
 }
 
 .featured-artist {
@@ -1520,16 +1529,16 @@ canvas {
 .explore-button {
   width: fit-content;
   border: 1px solid #bfa98a;
-  border-radius: 999px;
-  padding: 11px 18px;
+  border-radius: 10px;
+  padding: 12px 16px;
   font-size: 12px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   background: #f7f0e6;
   cursor: pointer;
   color: #433629;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   transition:
     background 160ms ease,
     border-color 160ms ease,
@@ -1632,7 +1641,7 @@ canvas {
   height: 100%;
   padding: 16px 16px 18px;
   border: 1px solid #d7c8b4;
-  border-radius: 18px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #faf6ef 0%, #f3ebdf 100%);
   box-shadow:
     inset 0 1px 0 #fffaf4,
@@ -1652,7 +1661,7 @@ canvas {
   position: relative;
   display: block;
   min-height: 340px;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   background:
     linear-gradient(180deg, #f8f1e3 0%, #ece1cf 100%);
@@ -1688,9 +1697,9 @@ canvas {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 700;
 }
 
 .new-addition-creator,
@@ -1727,11 +1736,12 @@ canvas {
 .browse-reset {
   padding: 8px 14px;
   border: 1px solid #b7a489;
-  border-radius: 999px;
+  border-radius: 10px;
   background: transparent;
   color: #5b4a35;
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
+  font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -1749,7 +1759,7 @@ canvas {
   align-content: start;
   padding: 18px 18px 16px;
   border: 1px solid #d7c8b4;
-  border-radius: 18px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #faf6ef 0%, #f3ebdf 100%);
   box-shadow:
     inset 0 1px 0 #fffaf4,
@@ -1778,7 +1788,7 @@ canvas {
   gap: 12px;
   width: 100%;
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 8px 10px;
   background: none;
   color: #433628;
@@ -1855,9 +1865,9 @@ canvas {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3vw, 2.7rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
   color: var(--accent-graphite);
 }
 
@@ -1879,7 +1889,7 @@ canvas {
   gap: 28px;
   padding: 26px 22px 24px;
   border: 1px solid #c3b091;
-  border-radius: 22px;
+  border-radius: 16px;
   background: linear-gradient(180deg, #f2e7d8 0%, #ebdecb 100%);
   scroll-margin-top: 24px;
   box-shadow:
@@ -1914,9 +1924,9 @@ canvas {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 2.6vw, 2.3rem);
-  line-height: 0.98;
-  letter-spacing: -0.02em;
-  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
 }
 
 .gallery-description {
@@ -1990,7 +2000,9 @@ canvas {
   margin: 0;
   font-family: var(--font-display);
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+  font-weight: 700;
   color: var(--text);
 }
 
