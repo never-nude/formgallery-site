@@ -186,9 +186,9 @@ a {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(30px, 3vw, 34px);
-  line-height: 1.04;
-  font-weight: 700;
-  letter-spacing: -0.045em;
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.035em;
   color: var(--text);
 }
 
@@ -346,9 +346,9 @@ a {
   margin-top: 14px;
   font-family: var(--font-display);
   font-size: clamp(42px, 5vw, 76px);
-  line-height: 0.88;
-  letter-spacing: -0.065em;
-  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 600;
   color: var(--accent-graphite);
 }
 
@@ -399,8 +399,8 @@ a {
   font-family: var(--font-display);
   font-size: 40px;
   line-height: 1;
-  font-weight: 700;
-  letter-spacing: -0.05em;
+  font-weight: 600;
+  letter-spacing: -0.035em;
   color: var(--accent-graphite);
 }
 
@@ -714,8 +714,8 @@ a {
   font-family: var(--font-display);
   font-size: 19px;
   line-height: 1.02;
-  letter-spacing: -0.045em;
-  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
 .piece:hover .piece-title,
@@ -880,7 +880,7 @@ a {
   background: #efe2cf;
   color: #2d261f;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 9px 14px;
@@ -1027,8 +1027,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(24px, 2.6vw, 30px);
   line-height: 0.98;
-  letter-spacing: -0.045em;
-  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
 .loading-message {
@@ -1084,8 +1084,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(34px, 4vw, 46px);
   line-height: 0.92;
-  letter-spacing: -0.05em;
-  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-weight: 600;
   color: var(--accent-graphite);
 }
 
@@ -1395,7 +1395,7 @@ canvas {
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   line-height: 1;
   letter-spacing: 0.18em;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent-graphite);
 }
 
@@ -1421,8 +1421,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(3.2rem, 6.2vw, 5.2rem);
   line-height: 0.88;
-  letter-spacing: -0.07em;
-  font-weight: 700;
+  letter-spacing: -0.05em;
+  font-weight: 600;
   color: rgba(48, 41, 34, 0.96);
 }
 
@@ -1470,8 +1470,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(1.85rem, 3vw, 2.75rem);
   line-height: 0.92;
-  letter-spacing: -0.05em;
-  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-weight: 600;
   color: var(--text);
   text-transform: none;
 }
@@ -1513,10 +1513,10 @@ canvas {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(40px, 4.2vw, 52px);
-  line-height: 0.94;
+  line-height: 0.98;
   margin-bottom: 8px;
-  letter-spacing: -0.06em;
-  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-weight: 600;
 }
 
 .featured-artist {
@@ -1538,7 +1538,7 @@ canvas {
   cursor: pointer;
   color: #433629;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   transition:
     background 160ms ease,
     border-color 160ms ease,
@@ -1698,8 +1698,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 1.8vw, 1.55rem);
   line-height: 0.98;
-  letter-spacing: -0.05em;
-  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-weight: 600;
 }
 
 .new-addition-creator,
@@ -1741,7 +1741,7 @@ canvas {
   color: #5b4a35;
   font-size: 12px;
   letter-spacing: 0.14em;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -1866,8 +1866,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3vw, 2.7rem);
   line-height: 0.92;
-  letter-spacing: -0.05em;
-  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-weight: 600;
   color: var(--accent-graphite);
 }
 
@@ -1925,8 +1925,8 @@ canvas {
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 2.6vw, 2.3rem);
   line-height: 0.92;
-  letter-spacing: -0.05em;
-  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-weight: 600;
 }
 
 .gallery-description {
@@ -2001,8 +2001,8 @@ canvas {
   font-family: var(--font-display);
   font-size: 17px;
   line-height: 1.16;
-  letter-spacing: -0.04em;
-  font-weight: 700;
+  letter-spacing: -0.028em;
+  font-weight: 600;
   color: var(--text);
 }
 
