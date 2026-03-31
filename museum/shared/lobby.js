@@ -367,16 +367,47 @@ function buildSectionGroups(lobby, sections) {
     .filter(Boolean);
 }
 
+function isPreviewableEntry(entry) {
+  const href = entry?.href || "";
+  const piece = entry?.piece;
+  const primaryUrl = piece?.model?.primaryUrl || piece?.model?.url || "";
+
+  if (!piece || !href || /^https?:\/\//.test(href) || piece.kind === "sketchfab") {
+    return false;
+  }
+
+  if (piece.kind === "gltf") {
+    return true;
+  }
+
+  if (piece.kind === "stl") {
+    return /_small\.stl(?:$|\?)/i.test(primaryUrl);
+  }
+
+  return false;
+}
+
+function previewPriority(entry) {
+  if (!entry?.piece) return 99;
+  if (entry.piece.kind === "gltf") return 0;
+  if (entry.piece.kind === "stl") return 1;
+  return 2;
+}
+
 function buildRecentAdditions(pieces, sections, count = 5) {
   const visibleEntries = new Map(
     sections.flatMap((section) => section.items.map((item) => [item.id, item]))
   );
 
-  return Object.entries(pieces)
+  const orderedEntries = Object.entries(pieces)
     .filter(([pieceId, piece]) => piece && !piece.hiddenFromLobby && visibleEntries.has(pieceId))
-    .slice(-count)
-    .reverse()
     .map(([pieceId]) => visibleEntries.get(pieceId));
+  const previewableEntries = orderedEntries.filter(isPreviewableEntry);
+  const candidatePool = previewableEntries.length >= count
+    ? previewableEntries
+    : [...previewableEntries, ...orderedEntries.filter((entry) => !previewableEntries.includes(entry))];
+
+  return candidatePool.slice(-count).reverse();
 }
 
 function startOfUtcDay(date) {
@@ -401,21 +432,56 @@ function resolveFeaturedPieceId(lobby) {
 }
 
 function pickFeaturedPiece(lobby, sections) {
+  const allEntries = sections.flatMap((section) => section.items);
+  const itemsById = new Map(allEntries.map((item) => [item.id, item]));
   const featuredId = resolveFeaturedPieceId(lobby);
-  for (const section of sections) {
-    const directMatch = section.items.find((item) => item.id === featuredId);
-    if (directMatch) return directMatch;
+  const preferredIds = [
+    featuredId,
+    ...((Array.isArray(lobby.featuredPieceIds) ? lobby.featuredPieceIds : []).filter(Boolean))
+  ];
+
+  for (const pieceId of preferredIds) {
+    const directMatch = itemsById.get(pieceId);
+    if (directMatch && isPreviewableEntry(directMatch)) {
+      return directMatch;
+    }
   }
-  for (const section of sections) {
-    const previewable = section.items.find((item) => item.piece?.kind !== "sketchfab" && !/^https?:\/\//.test(item.href || ""));
-    if (previewable) return previewable;
+
+  const previewable = allEntries
+    .filter(isPreviewableEntry)
+    .sort((a, b) => previewPriority(a) - previewPriority(b));
+
+  if (previewable.length) {
+    return previewable[0];
   }
-  return sections[0]?.items[0] || null;
+
+  return allEntries[0] || null;
 }
 
 function heroPreviewHref(href) {
   if (!href || /^https?:\/\//.test(href)) return "";
-  return href.includes("?") ? `${href}&embed=hero` : `${href}?embed=hero`;
+  return href.includes("?") ? `${href}&embed=hero&preview=1` : `${href}?embed=hero&preview=1`;
+}
+
+function hydrateLobbyPreviews() {
+  const queue = [
+    ...Array.from(document.querySelectorAll("iframe.hero-frame[data-preview-src]")),
+    ...Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"))
+  ];
+
+  function loadNext(index) {
+    if (index >= queue.length) return;
+    const frame = queue[index];
+    const src = frame.dataset.previewSrc;
+    if (!src) {
+      loadNext(index + 1);
+      return;
+    }
+    frame.src = src;
+    window.setTimeout(() => loadNext(index + 1), index === 0 ? 4400 : 1700);
+  }
+
+  loadNext(0);
 }
 
 function renderBrowseGroup(group) {
@@ -623,7 +689,7 @@ export function renderMuseumLobby(lobby, pieces) {
             ${previewFrame ? `
               <iframe
                 class="new-addition-frame"
-                src="${previewFrame}"
+                data-preview-src="${previewFrame}"
                 tabindex="-1"
                 loading="lazy"
                 title="${entry.title} preview"
@@ -682,7 +748,7 @@ export function renderMuseumLobby(lobby, pieces) {
               ${heroFrame ? `
                 <iframe
                   class="hero-frame"
-                  src="${heroFrame}"
+                  data-preview-src="${heroFrame}"
                   tabindex="-1"
                   loading="eager"
                   title="${featuredPiece.title} preview"
@@ -733,5 +799,6 @@ export function renderMuseumLobby(lobby, pieces) {
   `;
 
   bindLobbyFilters();
+  hydrateLobbyPreviews();
   restoreHashPosition();
 }

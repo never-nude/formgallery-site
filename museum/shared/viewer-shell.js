@@ -56,8 +56,11 @@ export function renderViewerShell(config) {
   const pageTitle = config.pageTitle || `${config.viewerTitle} — Form Gallery`;
   const searchParams = new URLSearchParams(window.location.search);
   const embedMode = config.embedMode || searchParams.get("embed") || searchParams.get("mode") || "";
+  const isHeroEmbed = embedMode === "hero";
   const viewerClasses = ["app", "viewer-app"];
   const sourceCard = renderSourceCard(config.source);
+  const loadingEyebrow = isHeroEmbed ? "Preview" : "Preparing Viewer";
+  const loadingTitle = isHeroEmbed ? "Loading sculpture preview" : "Building the gallery stage";
 
   if (embedMode) {
     viewerClasses.push(`viewer-app--${embedMode}`);
@@ -121,8 +124,8 @@ export function renderViewerShell(config) {
       <section class="viewer-stage-shell" aria-label="3D sculpture viewer">
         <div id="stage" tabindex="-1" aria-busy="true">
           <div class="loading" id="loading" role="status" aria-live="polite" data-state="loading">
-            <span class="loading-eyebrow">Preparing Viewer</span>
-            <strong class="loading-title" data-loading-title>Building the gallery stage</strong>
+            <span class="loading-eyebrow">${loadingEyebrow}</span>
+            <strong class="loading-title" data-loading-title>${loadingTitle}</strong>
             <span class="loading-message" data-loading-message>${loadingText}</span>
           </div>
         </div>
@@ -141,6 +144,7 @@ export function createViewerUi(defaults) {
   const loading = document.getElementById("loading");
   const loadingTitle = document.querySelector("[data-loading-title]");
   const loadingMessage = document.querySelector("[data-loading-message]");
+  const defaultLoadingTitle = loadingTitle?.textContent || "Building the gallery stage";
 
   function n(id) {
     return Number(document.getElementById(id).value);
@@ -169,7 +173,7 @@ export function createViewerUi(defaults) {
     if (loadingTitle) {
       loadingTitle.textContent =
         options.title ||
-        (state === "error" ? "Unable to load this sculpture" : "Building the gallery stage");
+        (state === "error" ? "Unable to load this sculpture" : defaultLoadingTitle);
     }
     if (loadingMessage) {
       loadingMessage.textContent = message;

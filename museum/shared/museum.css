@@ -23,21 +23,21 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg0: #0c1017;
-  --bg1: #101722;
-  --bg2: #253244;
-  --panel: #111722f0;
-  --panel-border: #33425a;
-  --text: #f4f7fb;
-  --muted: #aab7c9;
-  --card: #131924;
-  --card-border: #36465c;
-  --link: #f4f7fb;
-  --accent-bronze: #9eb6d3;
-  --accent-graphite: #f4f7fb;
-  --surface-paper: #101620;
-  --surface-plaster: #161d2a;
-  --surface-stone: #1d2634;
+  --bg0: #111017;
+  --bg1: #17141c;
+  --bg2: #362c3d;
+  --panel: #16131bf0;
+  --panel-border: #433748;
+  --text: #f7f1ee;
+  --muted: #c1b4bb;
+  --card: #18151d;
+  --card-border: #4a3e51;
+  --link: #fff8f4;
+  --accent-bronze: #f0c0a4;
+  --accent-graphite: #f7f1ee;
+  --surface-paper: #16131a;
+  --surface-plaster: #1d1921;
+  --surface-stone: #241e29;
   --shadow-soft: #0000002b;
   --shadow-deep: #00000052;
 }
@@ -70,8 +70,10 @@ body {
 html[data-theme="dark"],
 :root[data-theme="dark"] body {
   background:
-    radial-gradient(circle at 16% 0%, #7bb7ff1c 0%, transparent 28%),
-    linear-gradient(180deg, #0c1017 0%, #090d13 100%);
+    radial-gradient(circle at 16% 0%, #f0b6a91f 0%, transparent 28%),
+    radial-gradient(circle at 84% 12%, #b8e4d51a 0%, transparent 24%),
+    radial-gradient(circle at 50% 100%, #d9c1ee14 0%, transparent 28%),
+    linear-gradient(180deg, #111017 0%, #0b0a10 100%);
   color: var(--text);
 }
 
@@ -556,14 +558,7 @@ a {
 }
 
 .lobby-app .stage::before {
-  content: "";
-  position: fixed;
-  inset: 120px 0 auto;
-  height: 180px;
-  background:
-    linear-gradient(180deg, #f8f3ea00 0%, #f3eadb66 55%, #efe6d800 100%);
-  pointer-events: none;
-  z-index: 0;
+  content: none;
 }
 
 .lobby-section {
@@ -1330,7 +1325,8 @@ canvas {
   }
 }
 
-.viewer-app--hero {
+.app.viewer-app.viewer-app--hero {
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 1fr;
 }
 
@@ -1351,25 +1347,44 @@ canvas {
 }
 
 .viewer-app--hero .loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: end;
+  gap: 6px;
+  padding: 18px;
   font-size: 13px;
   letter-spacing: 0.03em;
 }
 
 .viewer-app--hero .loading[data-state="loading"] {
-  width: auto;
-  min-height: 0;
-  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  padding: 18px;
   border: 0;
   border-radius: 0;
-  background: none;
+  background: linear-gradient(180deg, #ffffff06 0%, #00000000 40%, #00000014 100%);
   box-shadow: none;
 }
 
-.viewer-app--hero .loading[data-state="loading"]::before,
-.viewer-app--hero .loading[data-state="loading"] .loading-eyebrow,
-.viewer-app--hero .loading[data-state="loading"] .loading-title,
-.viewer-app--hero .loading[data-state="loading"] .loading-message {
+.viewer-app--hero .loading[data-state="loading"]::before {
   display: none;
+}
+
+.viewer-app--hero .loading[data-state="loading"] .loading-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+.viewer-app--hero .loading[data-state="loading"] .loading-title {
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.viewer-app--hero .loading[data-state="loading"] .loading-message {
+  font-size: 11px;
+  line-height: 1.45;
+  max-width: 22ch;
 }
 
 .app.lobby-app {
@@ -1598,9 +1613,9 @@ canvas {
 
 .hero-frame {
   position: absolute;
-  inset: -4% -3% -6%;
-  width: auto;
-  height: auto;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   border: 0;
   pointer-events: none;
   background: transparent;
@@ -2061,13 +2076,14 @@ canvas {
 
 :root[data-theme="dark"] .viewer-app .panel {
   background:
-    linear-gradient(180deg, #111823 0%, #0d131c 100%);
+    linear-gradient(180deg, #18141b 0%, #120f15 100%);
   box-shadow: inset -1px 0 0 #ffffff0d;
 }
 
 :root[data-theme="dark"] .viewer-stage-shell {
   background:
-    radial-gradient(circle at 12% 12%, #8ab8ff16 0%, transparent 28%);
+    radial-gradient(circle at 12% 12%, #f0bdbe14 0%, transparent 26%),
+    radial-gradient(circle at 80% 16%, #c2e4d518 0%, transparent 24%);
 }
 
 :root[data-theme="dark"] .viewer-meta,
@@ -2090,7 +2106,7 @@ canvas {
 :root[data-theme="dark"] .chronology-meta,
 :root[data-theme="dark"] .piece-date,
 :root[data-theme="dark"] .new-addition-gallery {
-  color: #b8c8dc;
+  color: #d1bcc7;
 }
 
 :root[data-theme="dark"] .viewer-artist,
@@ -2108,7 +2124,7 @@ canvas {
 :root[data-theme="dark"] .source-copy,
 :root[data-theme="dark"] .source-links,
 :root[data-theme="dark"] .source-note {
-  color: #aab7c9;
+  color: #bcaeb7;
 }
 
 :root[data-theme="dark"] .viewer-title,
@@ -2120,7 +2136,7 @@ canvas {
 :root[data-theme="dark"] .piece-title,
 :root[data-theme="dark"] .new-addition-title,
 :root[data-theme="dark"] .loading-title {
-  color: #f5f8fd;
+  color: #fbf4ef;
 }
 
 :root[data-theme="dark"] .control label,
@@ -2132,58 +2148,60 @@ canvas {
 :root[data-theme="dark"] .meta-label,
 :root[data-theme="dark"] .browse-group-title,
 :root[data-theme="dark"] .browse-chip {
-  color: #d9e5f2;
+  color: #f0e4eb;
 }
 
 :root[data-theme="dark"] .page-title-form {
-  color: rgba(244, 247, 251, 0.34);
+  color: rgba(247, 241, 238, 0.38);
 }
 
 :root[data-theme="dark"] .page-title-gallery {
-  color: rgba(244, 247, 251, 0.88);
+  color: rgba(247, 241, 238, 0.9);
 }
 
 :root[data-theme="dark"] .btn,
 :root[data-theme="dark"] .explore-button,
 :root[data-theme="dark"] .browse-reset {
-  border-color: #587194;
-  background: #182232;
-  color: #f4f7fb;
+  border-color: #745c70;
+  background: #241c29;
+  color: #fbf4ef;
 }
 
 :root[data-theme="dark"] .btn:hover,
 :root[data-theme="dark"] .explore-button:hover {
-  background: #223145;
-  border-color: #7f9fc7;
+  background: #322638;
+  border-color: #efc0aa;
 }
 
 :root[data-theme="dark"] .source-card summary,
 :root[data-theme="dark"] .browse-chip.is-active,
 :root[data-theme="dark"] .browse-chip:hover,
 :root[data-theme="dark"] .browse-chip:focus-visible {
-  background: #1c2636;
+  background: #2a2230;
 }
 
 :root[data-theme="dark"] .source-card summary::after,
 :root[data-theme="dark"] .browse-count {
-  color: #aac0d7;
+  color: #f0c0a4;
 }
 
 :root[data-theme="dark"] .loading[data-state="error"] {
   background:
-    linear-gradient(180deg, #1b2431 0%, #121924 100%);
+    linear-gradient(180deg, #261d29 0%, #18131b 100%);
 }
 
 :root[data-theme="dark"] .loading::before {
   background:
-    radial-gradient(circle at 35% 35%, #f5f9ff 0%, #9fbfe6 44%, #466487 100%);
+    radial-gradient(circle at 35% 35%, #fff6f1 0%, #e6bfc8 42%, #685269 100%);
   box-shadow: 0 10px 20px #00000044;
 }
 
 :root[data-theme="dark"] .app.lobby-app {
   background:
-    radial-gradient(circle at top, #7eb8ff14 0%, transparent 34%),
-    linear-gradient(180deg, #0d121a 0%, #090d13 100%);
+    radial-gradient(circle at 8% 0%, #efb7aa17 0%, transparent 26%),
+    radial-gradient(circle at 88% 14%, #bfe3d617 0%, transparent 24%),
+    radial-gradient(circle at 64% 80%, #dcc2ee12 0%, transparent 28%),
+    linear-gradient(180deg, #121118 0%, #0b0a10 100%);
 }
 
 :root[data-theme="dark"] .museum-header {
@@ -2193,8 +2211,8 @@ canvas {
 :root[data-theme="dark"] .sculpture-stage,
 :root[data-theme="dark"] .new-addition-stage,
 :root[data-theme="dark"] #stage {
-  border-color: #39485e;
-  background: radial-gradient(ellipse at center, #1c2634 0%, #0f141d 100%);
+  border-color: #4b3d4e;
+  background: radial-gradient(ellipse at center, #251f27 0%, #141118 100%);
   box-shadow:
     0 22px 44px #00000044,
     inset 0 1px 0 #ffffff08;
@@ -2202,7 +2220,7 @@ canvas {
 
 :root[data-theme="dark"] .viewer-app--hero #stage,
 :root[data-theme="dark"] .viewer-app--hero .loading[data-state="loading"] {
-  background: radial-gradient(ellipse at center, #d8e1ec 0%, #b7c3d2 55%, #8d99aa 100%);
+  background: radial-gradient(ellipse at center, #efe7e1 0%, #d9cfca 55%, #b3a8a7 100%);
 }
 
 :root[data-theme="dark"] .viewer-app--hero .loading[data-state="error"] {
@@ -2211,13 +2229,12 @@ canvas {
   margin: 0;
   border: 0;
   border-radius: 0;
-  background: linear-gradient(180deg, #172131 0%, #101722 100%);
+  background: linear-gradient(180deg, #261d29 0%, #18131b 100%);
   box-shadow: none;
 }
 
-:root[data-theme="dark"] .sculpture-stage::after,
-:root[data-theme="dark"] .lobby-app .stage::before {
-  background: radial-gradient(circle, #9fc4ff1a 0%, transparent 72%);
+:root[data-theme="dark"] .sculpture-stage::after {
+  background: radial-gradient(circle, #f3d2c31c 0%, transparent 72%);
 }
 
 :root[data-theme="dark"] .lobby-app .stage,
@@ -2311,7 +2328,7 @@ canvas {
     min-height: 100svh;
   }
 
-  .viewer-app--hero {
+  .app.viewer-app.viewer-app--hero {
     display: grid;
     height: 100%;
     min-height: 100%;

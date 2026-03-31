@@ -9,28 +9,28 @@ const DEFAULT_PRIMARY_LOADING_TEXT = "Loading high-fidelity source model...";
 const DEFAULT_FALLBACK_LOADING_TEXT = "Loading optimized source model...";
 const DEFAULT_SWITCH_LOADING_TEXT = "Primary source unavailable; switching to fallback model...";
 const DEFAULT_DARK_STAGE = Object.freeze({
-  background: 0x0c1118,
-  fog: 0x0c1118,
-  hemiSky: 0xc9dbf0,
-  hemiGround: 0x121924,
-  key: 0xf3f8ff,
-  fill: 0x6f8bb4,
-  rim: 0xb9d1ff,
-  bounce: 0x5a7696,
-  floor: 0x1c2531,
-  pedestal: 0x2b3645
+  background: 0x111018,
+  fog: 0x111018,
+  hemiSky: 0xf0e7e4,
+  hemiGround: 0x17131b,
+  key: 0xfff6f0,
+  fill: 0xd8b2c5,
+  rim: 0xbfe1d3,
+  bounce: 0x8e79a6,
+  floor: 0x201b23,
+  pedestal: 0x2c2530
 });
 const HERO_PREVIEW_STAGE = Object.freeze({
-  background: 0xdfe6ef,
-  fog: 0xd8e0ea,
-  hemiSky: 0xffffff,
-  hemiGround: 0x7c8798,
-  key: 0xfafcff,
-  fill: 0xb3c9e8,
-  rim: 0xe2efff,
-  bounce: 0x9bb6d4,
-  floor: 0xc7d0db,
-  pedestal: 0xe6ebf1
+  background: 0xe9e1dc,
+  fog: 0xe1d6d2,
+  hemiSky: 0xfffcf8,
+  hemiGround: 0x8e807d,
+  key: 0xfffcf8,
+  fill: 0xe8c7d4,
+  rim: 0xcfe4d7,
+  bounce: 0xcabddc,
+  floor: 0xd6cbc6,
+  pedestal: 0xebe4de
 });
 
 let threeModulesPromise = null;
@@ -106,14 +106,17 @@ function chooseInitialModelUrls(model, hasDistinctFallback) {
   const primaryUrls = normalizeUrls(model.primaryUrl || model.url);
   const fallbackUrls = normalizeUrls(model.fallbackUrl || model.primaryUrl || model.url);
   const fullQueryParam = model.fullQueryParam;
+  const params = new URLSearchParams(window.location.search);
 
   if (fullQueryParam) {
-    const params = new URLSearchParams(window.location.search);
     if (params.get(fullQueryParam) === "1") {
       return primaryUrls;
     }
   }
 
+  if (params.get("preview") === "1" && hasDistinctFallback) {
+    return fallbackUrls;
+  }
   if (model.preferFallback && hasDistinctFallback) {
     return fallbackUrls;
   }
@@ -325,6 +328,7 @@ export async function initGltfMuseumPage(piece) {
   const searchParams = new URLSearchParams(window.location.search);
   const embedMode = searchParams.get("embed") || searchParams.get("mode") || "";
   const isHeroEmbed = embedMode === "hero";
+  const isPreviewMode = isHeroEmbed || searchParams.get("preview") === "1";
   const stagePalette = isHeroEmbed ? HERO_PREVIEW_STAGE : DEFAULT_DARK_STAGE;
   const exposureBoost = isHeroEmbed ? 0.34 : 0;
   const defaultYaw = sceneConfig.defaultYaw ?? DEFAULT_MODEL_YAW;
@@ -355,7 +359,7 @@ export async function initGltfMuseumPage(piece) {
     let modelByteLength = await fetchModelByteLength(modelUrlsInUse);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobileRender ? 1.15 : 1.8));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isPreviewMode ? 1 : isMobileRender ? 1.15 : 1.8));
     renderer.setSize(stage.clientWidth, stage.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -378,7 +382,8 @@ export async function initGltfMuseumPage(piece) {
 
     const keyLight = new THREE.DirectionalLight(stagePalette.key, defaults.lightPower);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.set(isMobileRender ? 1024 : 2048, isMobileRender ? 1024 : 2048);
+    const shadowMapSize = isPreviewMode ? 768 : isMobileRender ? 1024 : 2048;
+    keyLight.shadow.mapSize.set(shadowMapSize, shadowMapSize);
     keyLight.shadow.camera.near = 0.1;
     keyLight.shadow.camera.far = 16;
     keyLight.shadow.camera.left = -3.2;
