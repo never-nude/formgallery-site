@@ -8,6 +8,18 @@ const DEFAULT_MODEL_YAW = 0;
 const DEFAULT_PRIMARY_LOADING_TEXT = "Loading high-fidelity source model...";
 const DEFAULT_FALLBACK_LOADING_TEXT = "Loading optimized source model...";
 const DEFAULT_SWITCH_LOADING_TEXT = "Primary source unavailable; switching to fallback model...";
+const DEFAULT_DARK_STAGE = Object.freeze({
+  background: 0x14110f,
+  fog: 0x14110f,
+  hemiSky: 0xcdb79b,
+  hemiGround: 0x1f1813,
+  key: 0xffe8c7,
+  fill: 0x756759,
+  rim: 0xb3c4e1,
+  bounce: 0xb7844b,
+  floor: 0x2b241e,
+  pedestal: 0x3a3128
+});
 
 let threeModulesPromise = null;
 
@@ -335,8 +347,8 @@ export async function initGltfMuseumPage(piece) {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xe8dfd0);
-    scene.fog = new THREE.Fog(0xe8dfd0, 7.0, 12.0);
+    scene.background = new THREE.Color(DEFAULT_DARK_STAGE.background);
+    scene.fog = new THREE.Fog(DEFAULT_DARK_STAGE.fog, 7.0, 12.0);
 
     const camera = new THREE.PerspectiveCamera(44, stage.clientWidth / stage.clientHeight, 0.01, 120);
     camera.position.set(2.3, 1.6, defaults.zoom);
@@ -344,10 +356,10 @@ export async function initGltfMuseumPage(piece) {
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.03).texture;
 
-    const hemi = new THREE.HemisphereLight(0xfff7e9, 0xbcad98, 0.95);
+    const hemi = new THREE.HemisphereLight(DEFAULT_DARK_STAGE.hemiSky, DEFAULT_DARK_STAGE.hemiGround, 0.95);
     scene.add(hemi);
 
-    const keyLight = new THREE.DirectionalLight(0xfff7ea, defaults.lightPower);
+    const keyLight = new THREE.DirectionalLight(DEFAULT_DARK_STAGE.key, defaults.lightPower);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.set(isMobileRender ? 1024 : 2048, isMobileRender ? 1024 : 2048);
     keyLight.shadow.camera.near = 0.1;
@@ -358,19 +370,19 @@ export async function initGltfMuseumPage(piece) {
     keyLight.shadow.camera.bottom = -3.2;
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xf4efe7, defaults.lightPower * 0.82);
+    const fillLight = new THREE.DirectionalLight(DEFAULT_DARK_STAGE.fill, defaults.lightPower * 0.82);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xdde4f4, defaults.lightPower * 0.66);
+    const rimLight = new THREE.DirectionalLight(DEFAULT_DARK_STAGE.rim, defaults.lightPower * 0.66);
     scene.add(rimLight);
 
-    const bounceLight = new THREE.PointLight(0xffead1, defaults.lightPower * 0.34, 12, 2);
+    const bounceLight = new THREE.PointLight(DEFAULT_DARK_STAGE.bounce, defaults.lightPower * 0.34, 12, 2);
     bounceLight.position.set(0.0, 0.9, 1.25);
     scene.add(bounceLight);
 
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(12, 12),
-      new THREE.MeshStandardMaterial({ color: 0xd2c5b2, roughness: 0.96, metalness: 0.0 })
+      new THREE.MeshStandardMaterial({ color: DEFAULT_DARK_STAGE.floor, roughness: 0.96, metalness: 0.0 })
     );
     floor.rotation.x = -Math.PI * 0.5;
     floor.position.y = 0;
@@ -480,7 +492,17 @@ export async function initGltfMuseumPage(piece) {
       sculpture = wrapper;
       const scale = targetHeight / size.y;
       if (showPedestal) {
-        scene.add(createPedestalMesh(THREE, resolveObjectPedestalRadius(rawGroup, rawBox, scale, THREE, sceneConfig), pedestalHeight, sceneConfig));
+        scene.add(
+          createPedestalMesh(
+            THREE,
+            resolveObjectPedestalRadius(rawGroup, rawBox, scale, THREE, sceneConfig),
+            pedestalHeight,
+            {
+              ...sceneConfig,
+              pedestalColor: sceneConfig.pedestalColor ?? DEFAULT_DARK_STAGE.pedestal
+            }
+          )
+        );
       }
       sculpture.scale.setScalar(scale);
       sculpture.rotation.y = defaultYaw;

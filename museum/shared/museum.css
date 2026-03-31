@@ -21,6 +21,27 @@
   --serif-display: var(--font-display);
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg0: #14110f;
+  --bg1: #1a1714;
+  --bg2: #342d26;
+  --panel: #181411f0;
+  --panel-border: #454038;
+  --text: #f5efe5;
+  --muted: #b7ab9d;
+  --card: #1b1714;
+  --card-border: #474138;
+  --link: #f5efe5;
+  --accent-bronze: #c7b39a;
+  --accent-graphite: #f5efe5;
+  --surface-paper: #171411;
+  --surface-plaster: #1b1714;
+  --surface-stone: #24201c;
+  --shadow-soft: #00000032;
+  --shadow-deep: #00000052;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -44,6 +65,14 @@ body {
   font-family: var(--font-ui);
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
+}
+
+html[data-theme="dark"],
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 16% 0%, #f6cf8220 0%, transparent 26%),
+    linear-gradient(180deg, #14110f 0%, #110f0d 100%);
+  color: var(--text);
 }
 
 html {
@@ -1320,6 +1349,23 @@ canvas {
   letter-spacing: 0.03em;
 }
 
+.viewer-app--hero .loading[data-state="loading"] {
+  width: auto;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.viewer-app--hero .loading[data-state="loading"]::before,
+.viewer-app--hero .loading[data-state="loading"] .loading-eyebrow,
+.viewer-app--hero .loading[data-state="loading"] .loading-title,
+.viewer-app--hero .loading[data-state="loading"] .loading-message {
+  display: none;
+}
+
 .app.lobby-app {
   min-height: 100%;
   background:
@@ -1530,12 +1576,7 @@ canvas {
 }
 
 .sculpture-stage::before {
-  content: "";
-  position: absolute;
-  inset: auto 12% 15% 12%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #a88f6e80, transparent);
-  z-index: 1;
+  content: none;
 }
 
 .sculpture-stage::after {
@@ -1548,9 +1589,9 @@ canvas {
 
 .hero-frame {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: -4% -3% -6%;
+  width: auto;
+  height: auto;
   border: 0;
   pointer-events: none;
   background: transparent;
@@ -1984,6 +2025,171 @@ canvas {
   text-transform: uppercase;
 }
 
+:root[data-theme="dark"] .skip-link {
+  border-color: #7b6448;
+  background: #1f1814;
+  color: #f3ebde;
+}
+
+:root[data-theme="dark"] .viewer-app .panel,
+:root[data-theme="dark"] .museum-header--simple,
+:root[data-theme="dark"] .source-card,
+:root[data-theme="dark"] .loading,
+:root[data-theme="dark"] .piece,
+:root[data-theme="dark"] .new-addition-card,
+:root[data-theme="dark"] .browse-group,
+:root[data-theme="dark"] .gallery-card {
+  border-color: #514435;
+  background:
+    linear-gradient(180deg, #201a17 0%, #171310 100%);
+  box-shadow:
+    inset 0 1px 0 #ffffff08,
+    0 18px 34px #00000033;
+}
+
+:root[data-theme="dark"] .viewer-app .panel {
+  background:
+    linear-gradient(180deg, #1d1815 0%, #151210 100%);
+  box-shadow: inset -1px 0 0 #ffffff0d;
+}
+
+:root[data-theme="dark"] .viewer-meta,
+:root[data-theme="dark"] .viewer-controls,
+:root[data-theme="dark"] .viewer-action-row,
+:root[data-theme="dark"] .viewer-controls-hint,
+:root[data-theme="dark"] .section-head,
+:root[data-theme="dark"] .gallery-head {
+  border-color: #584938;
+}
+
+:root[data-theme="dark"] .viewer-kicker,
+:root[data-theme="dark"] .viewer-section-label,
+:root[data-theme="dark"] .viewer-stats,
+:root[data-theme="dark"] .section-kicker,
+:root[data-theme="dark"] .page-meta,
+:root[data-theme="dark"] .browse-status,
+:root[data-theme="dark"] .gallery-region,
+:root[data-theme="dark"] .chronology-kicker,
+:root[data-theme="dark"] .chronology-meta,
+:root[data-theme="dark"] .piece-date,
+:root[data-theme="dark"] .new-addition-gallery {
+  color: #c6b19a;
+}
+
+:root[data-theme="dark"] .viewer-artist,
+:root[data-theme="dark"] .viewer-medium,
+:root[data-theme="dark"] .viewer-dimensions,
+:root[data-theme="dark"] .viewer-location,
+:root[data-theme="dark"] .section-sub,
+:root[data-theme="dark"] .page-subtitle,
+:root[data-theme="dark"] .featured-artist,
+:root[data-theme="dark"] .new-addition-creator,
+:root[data-theme="dark"] .new-addition-date,
+:root[data-theme="dark"] .gallery-description,
+:root[data-theme="dark"] .piece-creator,
+:root[data-theme="dark"] .viewer-controls-hint,
+:root[data-theme="dark"] .source-copy,
+:root[data-theme="dark"] .source-links,
+:root[data-theme="dark"] .source-note {
+  color: #baa994;
+}
+
+:root[data-theme="dark"] .viewer-title,
+:root[data-theme="dark"] .page-heading,
+:root[data-theme="dark"] .featured-title,
+:root[data-theme="dark"] .section-title,
+:root[data-theme="dark"] .gallery-title,
+:root[data-theme="dark"] .chronology-title,
+:root[data-theme="dark"] .piece-title,
+:root[data-theme="dark"] .new-addition-title,
+:root[data-theme="dark"] .loading-title {
+  color: #f4ede1;
+}
+
+:root[data-theme="dark"] .control label,
+:root[data-theme="dark"] .row label,
+:root[data-theme="dark"] .viewer-controls label,
+:root[data-theme="dark"] .viewer-toggle-row label,
+:root[data-theme="dark"] .control output,
+:root[data-theme="dark"] .viewer-controls summary,
+:root[data-theme="dark"] .meta-label,
+:root[data-theme="dark"] .browse-group-title,
+:root[data-theme="dark"] .browse-chip {
+  color: #dcc8ae;
+}
+
+:root[data-theme="dark"] .btn,
+:root[data-theme="dark"] .explore-button,
+:root[data-theme="dark"] .browse-reset {
+  border-color: #6b5846;
+  background: #251f1a;
+  color: #f3eadf;
+}
+
+:root[data-theme="dark"] .btn:hover,
+:root[data-theme="dark"] .explore-button:hover {
+  background: #302722;
+  border-color: #8c7356;
+}
+
+:root[data-theme="dark"] .source-card summary,
+:root[data-theme="dark"] .browse-chip.is-active,
+:root[data-theme="dark"] .browse-chip:hover,
+:root[data-theme="dark"] .browse-chip:focus-visible {
+  background: #2b231d;
+}
+
+:root[data-theme="dark"] .source-card summary::after,
+:root[data-theme="dark"] .browse-count {
+  color: #baa994;
+}
+
+:root[data-theme="dark"] .loading[data-state="error"] {
+  background:
+    linear-gradient(180deg, #241714 0%, #1a1210 100%);
+}
+
+:root[data-theme="dark"] .loading::before {
+  background:
+    radial-gradient(circle at 35% 35%, #fff6ea 0%, #d8ab6d 42%, #7f5b37 100%);
+  box-shadow: 0 10px 20px #00000044;
+}
+
+:root[data-theme="dark"] .app.lobby-app {
+  background:
+    radial-gradient(circle at top, #f6cf8216 0%, transparent 34%),
+    linear-gradient(180deg, #15110f 0%, #100d0c 100%);
+}
+
+:root[data-theme="dark"] .museum-header {
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .sculpture-stage,
+:root[data-theme="dark"] .new-addition-stage,
+:root[data-theme="dark"] #stage {
+  border-color: #4d4135;
+  background: radial-gradient(ellipse at center, #27211d 0%, #171412 100%);
+  box-shadow:
+    0 22px 44px #00000044,
+    inset 0 1px 0 #ffffff08;
+}
+
+:root[data-theme="dark"] .sculpture-stage::after,
+:root[data-theme="dark"] .lobby-app .stage::before {
+  background: radial-gradient(circle, #f6d6a114 0%, transparent 72%);
+}
+
+:root[data-theme="dark"] .lobby-app .stage,
+:root[data-theme="dark"] .piece:hover,
+:root[data-theme="dark"] .new-addition-card:hover,
+:root[data-theme="dark"] .new-addition-card:focus-visible,
+:root[data-theme="dark"] .sculpture-stage--link:hover {
+  box-shadow:
+    inset 0 1px 0 #ffffff0d,
+    0 16px 28px #00000040;
+}
+
 @supports (padding: max(0px)) {
   .museum-header {
     padding-top: max(0px, env(safe-area-inset-top));
@@ -2095,6 +2301,11 @@ canvas {
     border-radius: 0;
     border: 0;
     box-shadow: none;
+  }
+
+  .viewer-app--hero #stage {
+    min-height: 100%;
+    height: 100%;
   }
 
   .viewer-app .panel {

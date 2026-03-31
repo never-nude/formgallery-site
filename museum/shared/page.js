@@ -1,9 +1,23 @@
 import { LOCATION_OVERRIDES_BY_PIECE } from "./location-overrides.js";
 
-const MODULE_VERSION = "20260330-2258";
+const MODULE_VERSION = "20260331-1215";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
+const DEFAULT_THEME = "dark";
+const DEFAULT_THEME_COLOR = "#14110f";
+
+function applyDefaultDarkTheme() {
+  document.documentElement.dataset.theme = DEFAULT_THEME;
+  document.documentElement.style.colorScheme = DEFAULT_THEME;
+  if (document.body) {
+    document.body.dataset.theme = DEFAULT_THEME;
+  }
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute("content", DEFAULT_THEME_COLOR);
+  }
+}
 
 const MEDIUM_BY_PIECE = Object.freeze({
   sphinx: "Limestone",
@@ -617,6 +631,7 @@ export async function initMuseumPiecePage(pieceId) {
 
 export async function initMuseumPageForCurrentPath() {
   try {
+    applyDefaultDarkTheme();
     const { museumRouteMap } = await loadCatalog();
     const currentPath = normalizePath(window.location.pathname);
 
