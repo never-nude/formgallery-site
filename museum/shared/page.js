@@ -1,11 +1,11 @@
 import { LOCATION_OVERRIDES_BY_PIECE } from "./location-overrides.js";
 
-const MODULE_VERSION = "20260331-1215";
+const MODULE_VERSION = "20260331-1424";
 
 let catalogPromise = null;
 const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
 const DEFAULT_THEME = "dark";
-const DEFAULT_THEME_COLOR = "#14110f";
+const DEFAULT_THEME_COLOR = "#0c1017";
 
 function applyDefaultDarkTheme() {
   document.documentElement.dataset.theme = DEFAULT_THEME;

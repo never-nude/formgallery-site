@@ -20,16 +20,28 @@ const DEFAULT_MATERIAL = Object.freeze({
   reflectivity: 0.38
 });
 const DEFAULT_DARK_STAGE = Object.freeze({
-  background: 0x14110f,
-  fog: 0x14110f,
-  hemiSky: 0xcdb79b,
-  hemiGround: 0x1f1813,
-  key: 0xffe8c7,
-  fill: 0x756759,
-  rim: 0xb3c4e1,
-  bounce: 0xb7844b,
-  floor: 0x2b241e,
-  pedestal: 0x3a3128
+  background: 0x0c1118,
+  fog: 0x0c1118,
+  hemiSky: 0xc9dbf0,
+  hemiGround: 0x121924,
+  key: 0xf3f8ff,
+  fill: 0x6f8bb4,
+  rim: 0xb9d1ff,
+  bounce: 0x5a7696,
+  floor: 0x1c2531,
+  pedestal: 0x2b3645
+});
+const HERO_PREVIEW_STAGE = Object.freeze({
+  background: 0xdfe6ef,
+  fog: 0xd8e0ea,
+  hemiSky: 0xffffff,
+  hemiGround: 0x7c8798,
+  key: 0xfafcff,
+  fill: 0xb3c9e8,
+  rim: 0xe2efff,
+  bounce: 0x9bb6d4,
+  floor: 0xc7d0db,
+  pedestal: 0xe6ebf1
 });
 
 let threeModulesPromise = null;
@@ -147,6 +159,11 @@ export async function initStlMuseumPage(piece) {
 
   const primaryTimeoutMs = piece.timeouts?.primaryMs || DEFAULT_PRIMARY_TIMEOUT_MS;
   const fallbackTimeoutMs = piece.timeouts?.fallbackMs || DEFAULT_FALLBACK_TIMEOUT_MS;
+  const searchParams = new URLSearchParams(window.location.search);
+  const embedMode = searchParams.get("embed") || searchParams.get("mode") || "";
+  const isHeroEmbed = embedMode === "hero";
+  const stagePalette = isHeroEmbed ? HERO_PREVIEW_STAGE : DEFAULT_DARK_STAGE;
+  const exposureBoost = isHeroEmbed ? 0.34 : 0;
   const defaultYaw = sceneConfig.defaultYaw ?? DEFAULT_MODEL_YAW;
   const rotateX = sceneConfig.rotateX ?? DEFAULT_ROTATE_X;
   const rotateY = sceneConfig.rotateY ?? 0;
@@ -178,13 +195,13 @@ export async function initStlMuseumPage(piece) {
     renderer.setSize(stage.clientWidth, stage.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = defaults.exposure;
+    renderer.toneMappingExposure = defaults.exposure + exposureBoost;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(DEFAULT_DARK_STAGE.background);
-    scene.fog = new THREE.Fog(DEFAULT_DARK_STAGE.fog, 7.0, 12.0);
+    scene.background = new THREE.Color(stagePalette.background);
+    scene.fog = new THREE.Fog(stagePalette.fog, 7.0, 12.0);
 
     const camera = new THREE.PerspectiveCamera(44, stage.clientWidth / stage.clientHeight, 0.01, 120);
     camera.position.set(2.3, 1.6, defaults.zoom);
@@ -192,10 +209,10 @@ export async function initStlMuseumPage(piece) {
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.03).texture;
 
-    const hemi = new THREE.HemisphereLight(DEFAULT_DARK_STAGE.hemiSky, DEFAULT_DARK_STAGE.hemiGround, 0.95);
+    const hemi = new THREE.HemisphereLight(stagePalette.hemiSky, stagePalette.hemiGround, 0.95);
     scene.add(hemi);
 
-    const keyLight = new THREE.DirectionalLight(DEFAULT_DARK_STAGE.key, defaults.lightPower);
+    const keyLight = new THREE.DirectionalLight(stagePalette.key, defaults.lightPower);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.set(isMobileRender ? 1024 : 2048, isMobileRender ? 1024 : 2048);
     keyLight.shadow.camera.near = 0.1;
@@ -206,19 +223,19 @@ export async function initStlMuseumPage(piece) {
     keyLight.shadow.camera.bottom = -3.2;
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(DEFAULT_DARK_STAGE.fill, defaults.lightPower * 0.82);
+    const fillLight = new THREE.DirectionalLight(stagePalette.fill, defaults.lightPower * 0.82);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(DEFAULT_DARK_STAGE.rim, defaults.lightPower * 0.66);
+    const rimLight = new THREE.DirectionalLight(stagePalette.rim, defaults.lightPower * 0.66);
     scene.add(rimLight);
 
-    const bounceLight = new THREE.PointLight(DEFAULT_DARK_STAGE.bounce, defaults.lightPower * 0.34, 12, 2);
+    const bounceLight = new THREE.PointLight(stagePalette.bounce, defaults.lightPower * 0.34, 12, 2);
     bounceLight.position.set(0.0, 0.9, 1.25);
     scene.add(bounceLight);
 
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(12, 12),
-      new THREE.MeshStandardMaterial({ color: DEFAULT_DARK_STAGE.floor, roughness: 0.96, metalness: 0.0 })
+      new THREE.MeshStandardMaterial({ color: stagePalette.floor, roughness: 0.96, metalness: 0.0 })
     );
     floor.rotation.x = -Math.PI * 0.5;
     floor.position.y = 0;
@@ -292,7 +309,7 @@ export async function initStlMuseumPage(piece) {
             pedestalHeight,
             {
               ...sceneConfig,
-              pedestalColor: sceneConfig.pedestalColor ?? DEFAULT_DARK_STAGE.pedestal
+              pedestalColor: sceneConfig.pedestalColor ?? stagePalette.pedestal
             }
           )
         );
@@ -368,7 +385,7 @@ export async function initStlMuseumPage(piece) {
     }
 
     function updateLook() {
-      renderer.toneMappingExposure = ui.n("exposure");
+      renderer.toneMappingExposure = ui.n("exposure") + exposureBoost;
       if (sculptureMaterial) {
         sculptureMaterial.roughness = ui.n("rough");
         sculptureMaterial.wireframe = document.getElementById("wire").checked;
