@@ -516,7 +516,27 @@ function upsertMetaTag(key, value, attribute = "name") {
   tag.setAttribute("content", value);
 }
 
-function setPageMetadata({ title, description }) {
+function setCanonicalUrl(url) {
+  let link = document.head.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", url);
+  upsertMetaTag("og:url", url, "property");
+}
+
+function injectJsonLd(data) {
+  const existing = document.head.querySelector('script[type="application/ld+json"]');
+  if (existing) existing.remove();
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
+}
+
+function setPageMetadata({ title, description, canonicalPath, jsonLd }) {
   if (title) {
     document.title = title;
     upsertMetaTag("og:title", title, "property");
@@ -528,6 +548,72 @@ function setPageMetadata({ title, description }) {
     upsertMetaTag("og:description", description, "property");
     upsertMetaTag("twitter:description", description);
   }
+
+  if (canonicalPath) {
+    setCanonicalUrl(`https://formgallery.org${canonicalPath}`);
+  }
+
+  if (jsonLd) {
+    injectJsonLd(jsonLd);
+  }
+}
+
+function buildLobbyJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Form Gallery — Digital Sculpture Collection",
+    description: COLLECTION_DESCRIPTION,
+    url: "https://formgallery.org/museum/"
+  };
+}
+
+function buildPieceJsonLd(piece) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    name: cleanMetadataText(piece.viewerTitle || ""),
+    artform: "Sculpture",
+    url: `https://formgallery.org${piece.path || ""}`
+  };
+  const artist = cleanMetadataText(piece.subtitle || "");
+  if (artist && !/unknown|workshop/i.test(artist)) {
+    data.creator = { "@type": "Person", name: artist };
+  }
+  if (piece.medium) data.artMedium = piece.medium;
+  if (piece.dimensions) data.size = piece.dimensions;
+  return data;
+}
+
+export function findRelatedWorks(pieceId, museumPieces, count = 8) {
+  const piece = museumPieces[pieceId];
+  if (!piece) return [];
+
+  const scored = Object.entries(museumPieces)
+    .filter(([id, p]) => id !== pieceId && p && !p.hiddenFromLobby && p.path)
+    .map(([id, p]) => {
+      let score = 0;
+      if (p.sectionId && p.sectionId === piece.sectionId) score += 3;
+      if (p.region && p.region === piece.region) score += 2;
+      if (p.maker && piece.maker && p.maker === piece.maker) score += 4;
+      if (p.medium && piece.medium && p.medium.split(",")[0] === piece.medium.split(",")[0]) score += 1;
+      if (p.start_year != null && piece.start_year != null) {
+        const gap = Math.abs(p.start_year - piece.start_year);
+        if (gap <= 100) score += 2;
+        else if (gap <= 500) score += 1;
+      }
+      return { id, piece: p, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, count);
+
+  return scored.map(({ id, piece: p }) => ({
+    id,
+    href: p.path,
+    title: simplifyWorkTitle(p.viewerTitle || ""),
+    medium: p.medium || ""
+  }));
 }
 
 function simplifyWorkTitle(value = "") {
@@ -579,7 +665,9 @@ export async function initMuseumLobbyPage() {
     renderMuseumLobby(lobbyConfig, museumPieces);
     setPageMetadata({
       title: lobbyConfig.pageTitle,
-      description: COLLECTION_DESCRIPTION
+      description: COLLECTION_DESCRIPTION,
+      canonicalPath: "/museum/",
+      jsonLd: buildLobbyJsonLd()
     });
   } catch (error) {
     renderBootError("Failed to load the museum lobby.", error);
@@ -595,14 +683,18 @@ export async function initMuseumPiecePage(pieceId) {
   }
 
   try {
+    const relatedWorks = findRelatedWorks(pieceId, museumPieces);
     const pagePiece = {
       ...piece,
-      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Form Gallery`
+      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Form Gallery`,
+      relatedWorks
     };
 
     setPageMetadata({
       title: pagePiece.pageTitle,
-      description: buildPiecePageDescription(pagePiece)
+      description: buildPiecePageDescription(pagePiece),
+      canonicalPath: piece.path || "",
+      jsonLd: buildPieceJsonLd(pagePiece)
     });
 
     if (pagePiece.kind === "stl") {

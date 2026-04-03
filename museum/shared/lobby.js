@@ -463,100 +463,6 @@ function heroPreviewHref(href) {
   return href.includes("?") ? `${href}&embed=hero&preview=1` : `${href}?embed=hero&preview=1`;
 }
 
-function hydrateLobbyPreviews() {
-  const queue = [
-    ...Array.from(document.querySelectorAll("iframe.hero-frame[data-preview-src]")),
-    ...Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"))
-  ];
-
-  function loadNext(index) {
-    if (index >= queue.length) return;
-    const frame = queue[index];
-    const src = frame.dataset.previewSrc;
-    if (!src) {
-      loadNext(index + 1);
-      return;
-    }
-    frame.src = src;
-    window.setTimeout(() => loadNext(index + 1), index === 0 ? 4400 : 1700);
-  }
-
-  loadNext(0);
-}
-
-function renderBrowseGroup(group) {
-  const itemsHtml = group.items
-    .map(
-      (item) => `
-        <button class="browse-chip" type="button" data-filter-group="${group.id}" data-filter-value="${item.value}" aria-controls="rooms" aria-pressed="false">
-          <span>${item.label}</span>
-          <span class="browse-count">${item.count}</span>
-        </button>
-      `
-    )
-    .join("");
-
-  return `
-    <section class="browse-group" aria-labelledby="browse-${group.id}">
-      <h3 class="browse-group-title" id="browse-${group.id}">${group.title}</h3>
-      <div class="browse-chip-row">${itemsHtml}</div>
-    </section>
-  `;
-}
-
-function renderEntry(entry) {
-  const linkLabel = entry.linkLabel || "View Piece";
-  const linkArrow = "&rarr;";
-  const linkAttrs = "";
-
-  return `
-    <li class="work-item" id="work-${entry.id}" data-era="${entry.era}" data-region="${entry.region}" data-artist="${entry.artist}" data-gallery="${entry.gallery}">
-      <a class="piece" href="${entry.href}"${linkAttrs}>
-        <h4 class="piece-title">${entry.title}</h4>
-        ${entry.creator ? `<p class="piece-creator">${entry.creator}</p>` : ""}
-        ${entry.date ? `<p class="piece-date">${entry.date}</p>` : ""}
-        <span class="piece-link">${linkLabel} <span aria-hidden="true">${linkArrow}</span></span>
-      </a>
-    </li>
-  `;
-}
-
-function renderSection(section) {
-  const itemsHtml = section.items.map((entry) => renderEntry(entry)).join("");
-  return `
-    <article class="gallery-card" id="rooms-${section.id}" data-work-count-label="${formatWorkCount(section.workCount)}">
-      <div class="gallery-head">
-        ${section.region ? `<p class="gallery-region">${section.region}</p>` : ""}
-        <h3 class="gallery-title">${section.title}</h3>
-        ${section.subtitle ? `<p class="gallery-description">${section.subtitle}</p>` : ""}
-        <div class="gallery-meta">
-          ${section.dateRange ? `<span>${section.dateRange}</span>` : ""}
-          <span class="gallery-work-count" data-work-count>${formatWorkCount(section.workCount)}</span>
-        </div>
-      </div>
-      <ul class="work-list">${itemsHtml}</ul>
-    </article>
-  `;
-}
-
-function renderSectionGroup(group) {
-  const sectionsHtml = group.sections.map((section) => renderSection(section)).join("");
-  const galleryLabel = group.galleryCount === 1 ? "gallery" : "galleries";
-
-  return `
-    <section class="chronology-group" id="sequence-${group.id}">
-      ${group.showHeading ? `
-        <div class="chronology-head">
-          <p class="chronology-kicker">Chronology</p>
-          <h3 class="chronology-title">${group.title}</h3>
-          <p class="chronology-meta">${group.workCount} works • ${group.galleryCount} ${galleryLabel}</p>
-        </div>
-      ` : ""}
-      <div class="gallery-grid">${sectionsHtml}</div>
-    </section>
-  `;
-}
-
 function restoreHashPosition() {
   const hash = (window.location.hash || "").replace(/^#/, "");
   if (!hash) return;
@@ -567,235 +473,501 @@ function restoreHashPosition() {
   });
 }
 
+/* ---------------------------------------------------------------
+   Rendering helpers
+   --------------------------------------------------------------- */
+
+function escapeAttr(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function renderHeader(lobby) {
+  return `
+    <header class="fg-header">
+      <a class="fg-brand" href="/museum/" aria-label="Form Gallery">
+        <span class="fg-brand-form">FORM</span>
+        <span class="fg-brand-gallery">GALLERY</span>
+      </a>
+      <nav class="fg-nav" aria-label="Museum navigation">
+        <a class="fg-nav-link" href="#fg-hero">Featured</a>
+        <a class="fg-nav-link" href="#fg-collection">Collection</a>
+        <a class="fg-nav-link" href="#fg-timeline">Timeline</a>
+      </nav>
+    </header>
+  `;
+}
+
+function renderHero(lobby, featuredPiece) {
+  if (!featuredPiece) return "";
+  const heroFrame = heroPreviewHref(featuredPiece.href);
+  const attribution = featuredPiece.attribution || "";
+  const date = featuredPiece.date || "";
+
+  return `
+    <section class="fg-hero" id="fg-hero">
+      <div class="fg-hero-stage">
+        ${heroFrame ? `<iframe class="hero-frame" data-preview-src="${escapeAttr(heroFrame)}" tabindex="-1" loading="eager" title="${escapeAttr(featuredPiece.title)} preview"></iframe>` : ""}
+      </div>
+      <div class="fg-hero-scrim"></div>
+      <div class="fg-hero-content">
+        <p class="fg-hero-kicker">${lobby.featuredLabel || "Featured Sculpture"}</p>
+        <h1 class="fg-hero-title">${featuredPiece.title}</h1>
+        <p class="fg-hero-artist">${attribution}${attribution && date ? " \u00b7 " : ""}${date}</p>
+        <a class="fg-btn fg-btn-primary fg-hero-cta" href="${escapeAttr(featuredPiece.href)}">${lobby.featuredCtaLabel || "Explore"}</a>
+      </div>
+    </section>
+  `;
+}
+
+function renderRecentCard(entry) {
+  const previewFrame = heroPreviewHref(entry.href);
+  return `
+    <a class="fg-recent-card" href="${escapeAttr(entry.href)}">
+      <span class="fg-recent-thumb" data-medium="${escapeAttr(entry.piece?.medium || "")}">
+        ${previewFrame ? `<iframe class="new-addition-frame" data-preview-src="${escapeAttr(previewFrame)}" tabindex="-1" loading="lazy" title="${escapeAttr(entry.title)} preview"></iframe>` : ""}
+      </span>
+      <span class="fg-recent-info">
+        <span class="fg-recent-gallery">${entry.gallery}</span>
+        <span class="fg-recent-title">${entry.title}</span>
+        ${entry.creator ? `<span class="fg-recent-creator">${entry.creator}</span>` : ""}
+        ${entry.date ? `<span class="fg-recent-date">${entry.date}</span>` : ""}
+      </span>
+    </a>
+  `;
+}
+
+function renderRecentSection(recentAdditions) {
+  if (!recentAdditions.length) return "";
+  const cardsHtml = recentAdditions.map((entry) => renderRecentCard(entry)).join("");
+  return `
+    <section class="fg-recent" aria-labelledby="fg-recent-title">
+      <div class="fg-section-head">
+        <p class="fg-kicker">Recent Works</p>
+        <h2 class="fg-section-title" id="fg-recent-title">New Additions</h2>
+      </div>
+      <div class="fg-recent-scroll">
+        ${cardsHtml}
+      </div>
+    </section>
+  `;
+}
+
+function renderFacetDropdown(group) {
+  const optionsHtml = group.items.map((item) => `
+    <button class="fg-facet-option" type="button" data-filter-group="${escapeAttr(group.id)}" data-filter-value="${escapeAttr(item.value)}">
+      <span>${item.label}</span>
+      <span class="fg-facet-count">${item.count}</span>
+    </button>
+  `).join("");
+
+  return `
+    <div class="fg-facet" data-facet="${escapeAttr(group.id)}">
+      <button class="fg-facet-btn" type="button" aria-expanded="false" aria-controls="facet-${escapeAttr(group.id)}">${group.title}</button>
+      <div class="fg-facet-dropdown" id="facet-${escapeAttr(group.id)}" hidden>
+        ${optionsHtml}
+      </div>
+    </div>
+  `;
+}
+
+function renderFilterSection(lobby, browseGroups) {
+  const facetsHtml = browseGroups.map((group) => renderFacetDropdown(group)).join("");
+  return `
+    <section class="fg-filter-section" id="fg-collection">
+      <div class="fg-section-head">
+        <div>
+          <p class="fg-kicker">Collection Guide</p>
+          <h2 class="fg-section-title">${lobby.browseTitle || "Browse the Collection"}</h2>
+        </div>
+      </div>
+      <div class="fg-filter-bar">
+        <input class="fg-search-input" type="search" placeholder="Search works..." aria-label="Search the collection" data-filter-search />
+        <div class="fg-facet-row">
+          ${facetsHtml}
+        </div>
+        <div class="fg-active-filters" data-active-filters></div>
+      </div>
+      <p class="fg-filter-status" id="filterStatus" aria-live="polite">Viewing the full collection</p>
+      <button class="fg-btn fg-btn-ghost fg-filter-reset" type="button" data-filter-reset hidden>${lobby.browseResetLabel || "Show all works"}</button>
+    </section>
+  `;
+}
+
+function renderTimeline(sectionGroups) {
+  const erasHtml = sectionGroups.map((group) => `
+    <a class="fg-timeline-era" href="#fg-chrono-${escapeAttr(group.id)}" style="--era-weight: ${group.workCount}">
+      <span class="fg-timeline-era-title">${group.title}</span>
+      <span class="fg-timeline-era-count">${group.workCount} works</span>
+    </a>
+  `).join("");
+
+  return `
+    <section class="fg-timeline-section" id="fg-timeline">
+      <div class="fg-section-head">
+        <p class="fg-kicker">Timeline</p>
+        <h2 class="fg-section-title">Through the Ages</h2>
+      </div>
+      <div class="fg-timeline" role="navigation" aria-label="Historical timeline">
+        ${erasHtml}
+      </div>
+    </section>
+  `;
+}
+
+function renderPieceCard(entry) {
+  const searchable = [
+    entry.title,
+    entry.creator,
+    entry.date,
+    entry.era,
+    entry.region,
+    entry.gallery,
+    entry.piece?.medium || ""
+  ].join(" ").toLowerCase();
+
+  return `
+    <a class="fg-piece-card" href="${escapeAttr(entry.href)}" id="fg-work-${escapeAttr(entry.id)}" data-era="${escapeAttr(entry.era)}" data-region="${escapeAttr(entry.region)}" data-artist="${escapeAttr(entry.artist)}" data-gallery="${escapeAttr(entry.gallery)}" data-searchable="${escapeAttr(searchable)}">
+      <span class="fg-piece-thumb" data-medium="${escapeAttr(entry.piece?.medium || "")}"></span>
+      <span class="fg-piece-info">
+        <span class="fg-piece-title">${entry.title}</span>
+        ${entry.creator ? `<span class="fg-piece-creator">${entry.creator}</span>` : ""}
+        ${entry.date ? `<span class="fg-piece-date">${entry.date}</span>` : ""}
+      </span>
+    </a>
+  `;
+}
+
+function renderGallery(section) {
+  const piecesHtml = section.items.map((entry) => renderPieceCard(entry)).join("");
+  return `
+    <article class="fg-gallery" id="fg-gallery-${escapeAttr(section.id)}" data-work-count-label="${escapeAttr(formatWorkCount(section.workCount))}">
+      <div class="fg-gallery-head">
+        ${section.region ? `<p class="fg-gallery-region">${section.region}</p>` : ""}
+        <h4 class="fg-gallery-title">${section.title}</h4>
+        ${section.subtitle ? `<p class="fg-gallery-desc">${section.subtitle}</p>` : ""}
+        <div class="fg-gallery-meta">
+          ${section.dateRange ? `<span>${section.dateRange}</span>` : ""}
+          <span class="fg-gallery-work-count" data-work-count>${formatWorkCount(section.workCount)}</span>
+        </div>
+      </div>
+      <div class="fg-piece-grid">
+        ${piecesHtml}
+      </div>
+    </article>
+  `;
+}
+
+function renderChronoGroup(group) {
+  const galleriesHtml = group.sections.map((section) => renderGallery(section)).join("");
+  const galleryLabel = group.galleryCount === 1 ? "gallery" : "galleries";
+
+  return `
+    <div class="fg-chrono-group" id="fg-chrono-${escapeAttr(group.id)}">
+      ${group.showHeading ? `
+        <div class="fg-chrono-head">
+          <p class="fg-kicker">Chronology</p>
+          <h3 class="fg-chrono-title">${group.title}</h3>
+          <p class="fg-chrono-meta">${group.workCount} works \u00b7 ${group.galleryCount} ${galleryLabel}</p>
+        </div>
+      ` : ""}
+      <div class="fg-gallery-grid">
+        ${galleriesHtml}
+      </div>
+    </div>
+  `;
+}
+
+function renderCollection(sectionGroups) {
+  const groupsHtml = sectionGroups.map((group) => renderChronoGroup(group)).join("");
+  return `
+    <section class="fg-collection" id="fg-rooms" aria-label="Collection galleries">
+      ${groupsHtml}
+    </section>
+  `;
+}
+
+/* ---------------------------------------------------------------
+   Filter binding
+   --------------------------------------------------------------- */
+
 function bindLobbyFilters() {
-  const browseButtons = Array.from(document.querySelectorAll(".browse-chip"));
+  const searchInput = document.querySelector("[data-filter-search]");
   const resetButton = document.querySelector("[data-filter-reset]");
-  const galleryCards = Array.from(document.querySelectorAll(".gallery-card"));
-  const chronologyGroups = Array.from(document.querySelectorAll(".chronology-group"));
-  const status = document.getElementById("browseStatus");
+  const activeFiltersContainer = document.querySelector("[data-active-filters]");
+  const status = document.getElementById("filterStatus");
+  const pieceCards = Array.from(document.querySelectorAll(".fg-piece-card"));
+  const galleries = Array.from(document.querySelectorAll(".fg-gallery"));
+  const chronoGroups = Array.from(document.querySelectorAll(".fg-chrono-group"));
+  const facetBtns = Array.from(document.querySelectorAll(".fg-facet-btn"));
+  const facetOptions = Array.from(document.querySelectorAll(".fg-facet-option"));
 
-  let activeGroup = "";
-  let activeValue = "";
+  const activeFilters = new Map();
+  let searchQuery = "";
+  let debounceTimer = null;
 
-  function applyFilter(group = "", value = "") {
-    activeGroup = group;
-    activeValue = value;
-
-    const hasActiveFilter = Boolean(group && value);
-    if (status) {
-      status.textContent = hasActiveFilter ? `Showing ${value}` : "Viewing the full collection";
-    }
-    if (resetButton) {
-      resetButton.hidden = !hasActiveFilter;
-    }
-
-    for (const button of browseButtons) {
-      const isActive = button.dataset.filterGroup === group && button.dataset.filterValue === value;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-    }
-
-    for (const card of galleryCards) {
-      const works = Array.from(card.querySelectorAll(".work-item"));
-      let visibleCount = 0;
-
-      for (const work of works) {
-        const isVisible = !hasActiveFilter || work.dataset[group] === value;
-        work.hidden = !isVisible;
-        if (isVisible) {
-          visibleCount += 1;
-        }
-      }
-
-      card.hidden = visibleCount === 0;
-
-      const countNode = card.querySelector("[data-work-count]");
-      if (countNode) {
-        countNode.textContent = hasActiveFilter
-          ? formatWorkCount(visibleCount, true)
-          : card.dataset.workCountLabel || "";
-      }
-    }
-
-    for (const groupNode of chronologyGroups) {
-      const visibleCards = Array.from(groupNode.querySelectorAll(".gallery-card")).filter((card) => !card.hidden);
-      groupNode.hidden = visibleCards.length === 0;
+  function closeAllDropdowns() {
+    for (const btn of facetBtns) {
+      btn.setAttribute("aria-expanded", "false");
+      const dropdown = document.getElementById(btn.getAttribute("aria-controls"));
+      if (dropdown) dropdown.hidden = true;
     }
   }
 
-  for (const button of browseButtons) {
-    button.addEventListener("click", () => {
-      const nextGroup = button.dataset.filterGroup || "";
-      const nextValue = button.dataset.filterValue || "";
-      const isSameFilter = nextGroup === activeGroup && nextValue === activeValue;
+  function renderActiveChips() {
+    if (!activeFiltersContainer) return;
+    const chips = [];
+    for (const [group, value] of activeFilters) {
+      chips.push(`
+        <button class="fg-filter-chip" type="button" data-chip-group="${escapeAttr(group)}" data-chip-value="${escapeAttr(value)}">
+          <span>${value}</span>
+          <span class="fg-filter-chip-x" aria-hidden="true">\u00d7</span>
+        </button>
+      `);
+    }
+    activeFiltersContainer.innerHTML = chips.join("");
 
-      applyFilter(isSameFilter ? "" : nextGroup, isSameFilter ? "" : nextValue);
+    const chipButtons = activeFiltersContainer.querySelectorAll(".fg-filter-chip");
+    for (const chip of chipButtons) {
+      chip.addEventListener("click", () => {
+        const group = chip.dataset.chipGroup;
+        activeFilters.delete(group);
+        applyFilters();
+      });
+    }
+  }
 
-      if (!isSameFilter) {
-        const firstVisibleGallery = galleryCards.find((card) => !card.hidden);
-        firstVisibleGallery?.scrollIntoView({ behavior: "smooth", block: "start" });
+  function applyFilters() {
+    const hasSearch = searchQuery.length > 0;
+    const hasFacet = activeFilters.size > 0;
+    const hasAnyFilter = hasSearch || hasFacet;
+
+    if (resetButton) {
+      resetButton.hidden = !hasAnyFilter;
+    }
+
+    renderActiveChips();
+
+    for (const option of facetOptions) {
+      const group = option.dataset.filterGroup;
+      const value = option.dataset.filterValue;
+      const isActive = activeFilters.get(group) === value;
+      option.classList.toggle("is-active", isActive);
+    }
+
+    for (const card of pieceCards) {
+      let visible = true;
+
+      if (hasSearch) {
+        const searchable = card.dataset.searchable || "";
+        visible = searchable.includes(searchQuery);
+      }
+
+      if (visible && hasFacet) {
+        for (const [group, value] of activeFilters) {
+          if (card.dataset[group] !== value) {
+            visible = false;
+            break;
+          }
+        }
+      }
+
+      card.classList.toggle("fg-piece-card--hidden", !visible);
+    }
+
+    let totalVisible = 0;
+
+    for (const gallery of galleries) {
+      const cards = Array.from(gallery.querySelectorAll(".fg-piece-card"));
+      const visibleCount = cards.filter((c) => !c.classList.contains("fg-piece-card--hidden")).length;
+      gallery.hidden = visibleCount === 0;
+      totalVisible += visibleCount;
+
+      const countNode = gallery.querySelector("[data-work-count]");
+      if (countNode) {
+        countNode.textContent = hasAnyFilter
+          ? formatWorkCount(visibleCount, true)
+          : gallery.dataset.workCountLabel || "";
+      }
+    }
+
+    for (const group of chronoGroups) {
+      const visibleGalleries = Array.from(group.querySelectorAll(".fg-gallery")).filter((g) => !g.hidden);
+      group.hidden = visibleGalleries.length === 0;
+    }
+
+    if (status) {
+      if (!hasAnyFilter) {
+        status.textContent = "Viewing the full collection";
+      } else {
+        const parts = [];
+        if (hasSearch) parts.push(`"${searchQuery}"`);
+        for (const [, value] of activeFilters) parts.push(value);
+        status.textContent = `Showing ${totalVisible} ${totalVisible === 1 ? "work" : "works"} matching ${parts.join(" + ")}`;
+      }
+    }
+  }
+
+  // Search input with debounce
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        searchQuery = (searchInput.value || "").trim().toLowerCase();
+        applyFilters();
+      }, 200);
+    });
+  }
+
+  // Facet button toggles
+  for (const btn of facetBtns) {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const wasExpanded = btn.getAttribute("aria-expanded") === "true";
+      closeAllDropdowns();
+      if (!wasExpanded) {
+        btn.setAttribute("aria-expanded", "true");
+        const dropdown = document.getElementById(btn.getAttribute("aria-controls"));
+        if (dropdown) dropdown.hidden = false;
       }
     });
   }
 
-  resetButton?.addEventListener("click", () => {
-    applyFilter();
+  // Facet option clicks
+  for (const option of facetOptions) {
+    option.addEventListener("click", () => {
+      const group = option.dataset.filterGroup;
+      const value = option.dataset.filterValue;
+
+      if (activeFilters.get(group) === value) {
+        activeFilters.delete(group);
+      } else {
+        activeFilters.set(group, value);
+      }
+
+      closeAllDropdowns();
+      applyFilters();
+    });
+  }
+
+  // Close dropdowns on outside click
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".fg-facet")) {
+      closeAllDropdowns();
+    }
   });
 
-  applyFilter();
+  // Reset button
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      activeFilters.clear();
+      searchQuery = "";
+      if (searchInput) searchInput.value = "";
+      applyFilters();
+    });
+  }
+
+  applyFilters();
 }
+
+/* ---------------------------------------------------------------
+   Preview hydration (IntersectionObserver)
+   --------------------------------------------------------------- */
+
+function hydrateLobbyPreviews() {
+  // Immediately load hero iframe
+  const heroFrames = Array.from(document.querySelectorAll("iframe.hero-frame[data-preview-src]"));
+  for (const frame of heroFrames) {
+    const src = frame.dataset.previewSrc;
+    if (src) {
+      frame.src = src;
+      delete frame.dataset.previewSrc;
+    }
+  }
+
+  // Use IntersectionObserver for lazy-loaded iframes
+  const lazyFrames = Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"));
+  if (!lazyFrames.length) return;
+
+  let loadIndex = 0;
+  const STAGGER_DELAY = 200;
+
+  function loadFrame(frame) {
+    const src = frame.dataset.previewSrc;
+    if (!src) return;
+
+    const delay = loadIndex * STAGGER_DELAY;
+    loadIndex++;
+
+    if (delay === 0) {
+      frame.src = src;
+      delete frame.dataset.previewSrc;
+    } else {
+      setTimeout(() => {
+        frame.src = src;
+        delete frame.dataset.previewSrc;
+      }, delay);
+    }
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const ioEntry of entries) {
+          if (ioEntry.isIntersecting) {
+            observer.unobserve(ioEntry.target);
+            loadFrame(ioEntry.target);
+          }
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+
+    for (const frame of lazyFrames) {
+      observer.observe(frame);
+    }
+  } else {
+    // Fallback: load all with stagger
+    for (const frame of lazyFrames) {
+      loadFrame(frame);
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Main export
+   --------------------------------------------------------------- */
 
 export function renderMuseumLobby(lobby, pieces) {
   const sections = buildSections(lobby, pieces);
   const sectionGroups = buildSectionGroups(lobby, sections);
-  const entries = sections.flatMap((section) => section.items);
+  const entries = sections.flatMap((s) => s.items);
   const recentAdditions = buildRecentAdditions(pieces, sections);
   const featuredPiece = pickFeaturedPiece(lobby, sections);
   const browseGroups = [
-    {
-      id: "era",
-      title: "By Era",
-      items: buildBrowseItems("era", ERA_ORDER, entries)
-    },
-    {
-      id: "region",
-      title: "By Region",
-      items: buildBrowseItems("region", REGION_ORDER, entries)
-    },
-    {
-      id: "artist",
-      title: "By Maker",
-      items: buildBrowseItems("artist", ARTIST_ORDER, entries)
-    },
+    { id: "era", title: "Era", items: buildBrowseItems("era", ERA_ORDER, entries) },
+    { id: "region", title: "Region", items: buildBrowseItems("region", REGION_ORDER, entries) },
+    { id: "artist", title: "Maker", items: buildBrowseItems("artist", ARTIST_ORDER, entries) },
     {
       id: "gallery",
-      title: "By Gallery",
-      items: sections.map((section) => ({
-        label: section.title,
-        value: section.title,
-        count: section.workCount
-      }))
+      title: "Gallery",
+      items: sections.map((s) => ({ label: s.title, value: s.title, count: s.workCount }))
     }
   ];
 
-  const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
-  const sectionsHtml = sectionGroups.map((group) => renderSectionGroup(group)).join("");
-  const recentAdditionsHtml = recentAdditions.map((entry) => {
-    const previewFrame = heroPreviewHref(entry.href);
-    return `
-      <li class="new-addition-item">
-        <a class="new-addition-card" href="${entry.href}" aria-label="Open ${entry.title}">
-          <span class="new-addition-stage">
-            ${previewFrame ? `
-              <iframe
-                class="new-addition-frame"
-                data-preview-src="${previewFrame}"
-                tabindex="-1"
-                loading="lazy"
-                title="${entry.title} preview"
-              ></iframe>
-            ` : ""}
-          </span>
-          <span class="new-addition-meta">
-            <span class="new-addition-gallery">${entry.gallery}</span>
-            <span class="new-addition-title">${entry.title}</span>
-            ${entry.creator ? `<span class="new-addition-creator">${entry.creator}</span>` : ""}
-            ${entry.date ? `<span class="new-addition-date">${entry.date}</span>` : ""}
-            <span class="piece-link">${entry.linkLabel || "View Piece"} <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </a>
-      </li>
-    `;
-  }).join("");
-  const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
-  const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
-  const brandForm = brandWords[0] || "FORM";
-  const brandGallery = brandWords.slice(1).join(" ") || "GALLERY";
-  const titleText = lobby.title || "Atrium";
-  const regionCount = browseGroups.find((group) => group.id === "region")?.items.length || 0;
-  const makerCount = browseGroups.find((group) => group.id === "artist")?.items.length || 0;
-  const collectionMeta = `${entries.length} works • ${sections.length} galleries • ${regionCount} regions • ${makerCount} makers`;
-
   document.body.innerHTML = `
-    <a class="skip-link" href="#main-content">Skip to collection content</a>
-    <div class="app lobby-app">
-      <header class="museum-header museum-header--simple">
-        <p class="page-title page-title--progressive" aria-label="${lobby.brand || "FORM GALLERY"}">
-          <span class="page-title-form">${brandForm}</span>
-          <span class="page-title-gallery">${brandGallery}</span>
-        </p>
-        <h1 class="page-heading">${titleText}</h1>
-        <p class="page-subtitle">${lobby.subtitle || ""}</p>
-        <p class="page-meta">${collectionMeta}</p>
-      </header>
-
-      <main class="stage" id="main-content">
-        ${featuredPiece ? `
-          <section class="featured-work" aria-labelledby="featured-work-title">
-            <div class="featured-copy">
-              <p class="featured-label">${lobby.featuredLabel || "Featured Sculpture"}</p>
-              <h2 class="featured-title" id="featured-work-title">${featuredPiece.title}</h2>
-              ${(featuredPiece.attribution || featuredPiece.date) ? `
-                <p class="featured-artist">
-                  ${featuredPiece.attribution || ""}
-                  ${featuredPiece.attribution && featuredPiece.date ? " • " : ""}
-                  ${featuredPiece.date || ""}
-                </p>
-              ` : ""}
-              <a class="explore-button" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
-            </div>
-            <a class="sculpture-stage sculpture-stage--link" href="${featuredPiece.href}" aria-label="Open ${featuredPiece.title}">
-              ${heroFrame ? `
-                <iframe
-                  class="hero-frame"
-                  data-preview-src="${heroFrame}"
-                  tabindex="-1"
-                  loading="eager"
-                  title="${featuredPiece.title} preview"
-                ></iframe>
-              ` : ""}
-            </a>
-          </section>
-        ` : ""}
-
-        ${recentAdditions.length ? `
-          <section class="new-additions-section" aria-labelledby="new-additions-title">
-            <div class="section-head">
-              <div>
-                <p class="section-kicker">Recent Works</p>
-                <h2 class="section-title" id="new-additions-title">New Additions</h2>
-              </div>
-            </div>
-            <ul class="new-additions-grid" aria-label="Recent additions gallery walk">
-              ${recentAdditionsHtml}
-            </ul>
-          </section>
-        ` : ""}
-
-        <section class="browse-section" aria-labelledby="browse-title">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Collection Guide</p>
-              <h2 class="section-title" id="browse-title">${lobby.browseTitle || "Browse the Collection"}</h2>
-            </div>
-            <button class="browse-reset" type="button" data-filter-reset aria-controls="rooms" hidden>${lobby.browseResetLabel || "Show all works"}</button>
-          </div>
-          <p class="section-sub">${lobby.browseSubtitle || ""}</p>
-          <p class="browse-status" id="browseStatus" aria-live="polite">Viewing the full collection</p>
-          <div class="browse-grid">${browseGroupsHtml}</div>
-        </section>
-
-        <section class="rooms-section" id="rooms" aria-labelledby="rooms-title">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Chronology</p>
-              <h2 class="section-title" id="rooms-title">Collection Sequence</h2>
-            </div>
-          </div>
-          ${sectionsHtml}
-        </section>
-      </main>
-    </div>
+    <a class="skip-link" href="#fg-collection">Skip to collection</a>
+    ${renderHeader(lobby)}
+    <main class="fg-main">
+      ${renderHero(lobby, featuredPiece)}
+      ${renderRecentSection(recentAdditions)}
+      ${renderFilterSection(lobby, browseGroups)}
+      ${renderTimeline(sectionGroups)}
+      ${renderCollection(sectionGroups)}
+    </main>
   `;
 
   bindLobbyFilters();
