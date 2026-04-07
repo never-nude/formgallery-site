@@ -9,28 +9,28 @@ const DEFAULT_PRIMARY_LOADING_TEXT = "Loading high-fidelity source model...";
 const DEFAULT_FALLBACK_LOADING_TEXT = "Loading optimized source model...";
 const DEFAULT_SWITCH_LOADING_TEXT = "Primary source unavailable; switching to fallback model...";
 const DEFAULT_DARK_STAGE = Object.freeze({
-  background: 0x0c0a06,
-  fog: 0x0c0a06,
-  hemiSky: 0xf4edda,
-  hemiGround: 0x17130c,
-  key: 0xfff7ea,
-  fill: 0xd7ccb7,
-  rim: 0xc8b89a,
-  bounce: 0x85745b,
-  floor: 0x1b1610,
-  pedestal: 0x2a2219
+  background: 0x111018,
+  fog: 0x111018,
+  hemiSky: 0xf0e7e4,
+  hemiGround: 0x17131b,
+  key: 0xfff6f0,
+  fill: 0xd8b2c5,
+  rim: 0xbfe1d3,
+  bounce: 0x8e79a6,
+  floor: 0x201b23,
+  pedestal: 0x2c2530
 });
 const HERO_PREVIEW_STAGE = Object.freeze({
-  background: 0xede3d2,
-  fog: 0xe6dac7,
-  hemiSky: 0xfffcf5,
-  hemiGround: 0x968776,
-  key: 0xfffcf6,
-  fill: 0xe9dbc7,
-  rim: 0xd8ccb7,
-  bounce: 0xc8b89c,
-  floor: 0xd8ccb9,
-  pedestal: 0xefe6d8
+  background: 0xe9e1dc,
+  fog: 0xe1d6d2,
+  hemiSky: 0xfffcf8,
+  hemiGround: 0x8e807d,
+  key: 0xfffcf8,
+  fill: 0xe8c7d4,
+  rim: 0xcfe4d7,
+  bounce: 0xcabddc,
+  floor: 0xd6cbc6,
+  pedestal: 0xebe4de
 });
 
 let threeModulesPromise = null;
@@ -100,11 +100,6 @@ function bootError(message, error) {
   if (!document.body.innerHTML.trim()) {
     document.body.textContent = message;
   }
-}
-
-function checkboxChecked(id, fallback) {
-  const control = document.getElementById(id);
-  return control ? control.checked : fallback;
 }
 
 function chooseInitialModelUrls(model, hasDistinctFallback) {
@@ -552,7 +547,6 @@ export async function initGltfMuseumPage(piece) {
         state: "error",
         title: "Unable to load this source model"
       });
-      ui.notifyPreviewState("error");
       return;
     }
 
@@ -587,7 +581,7 @@ export async function initGltfMuseumPage(piece) {
       rimLight.position.set(-Math.cos(angle) * 2.7, 2.7, -Math.sin(angle) * 2.9);
 
       const power = ui.n("lightPower");
-      const multi = checkboxChecked("multiLight", defaults.multiLight);
+      const multi = document.getElementById("multiLight").checked;
 
       keyLight.intensity = power;
       fillLight.intensity = multi ? power * 0.82 : 0;
@@ -610,7 +604,7 @@ export async function initGltfMuseumPage(piece) {
         if (roughness !== null) {
           material.roughness = Math.max(0, Math.min(1, roughnessValue));
         }
-        material.wireframe = checkboxChecked("wire", defaults.wire) ? true : wireframe;
+        material.wireframe = document.getElementById("wire").checked ? true : wireframe;
         material.needsUpdate = true;
       }
     }
@@ -630,7 +624,7 @@ export async function initGltfMuseumPage(piece) {
         }
       },
       onCheckboxChange: () => {
-        controls.enabled = checkboxChecked("canManipulate", defaults.canManipulate);
+        controls.enabled = document.getElementById("canManipulate").checked;
         updateLight();
         updateLook();
       },
@@ -655,21 +649,16 @@ export async function initGltfMuseumPage(piece) {
     controls.enabled = defaults.canManipulate;
 
     const clock = new THREE.Clock();
-    let previewReadySent = false;
 
     function render() {
       const dt = clock.getDelta();
 
-      if (sculpture && checkboxChecked("autoRotate", defaults.autoRotate)) {
+      if (sculpture && document.getElementById("autoRotate").checked) {
         sculpture.rotation.y += dt * ui.n("spin");
       }
 
       controls.update();
       renderer.render(scene, camera);
-      if (!previewReadySent && isPreviewMode) {
-        previewReadySent = true;
-        ui.notifyPreviewState("ready");
-      }
       requestAnimationFrame(render);
     }
 
@@ -700,6 +689,5 @@ export async function initGltfMuseumPage(piece) {
       state: "error",
       title: "Viewer startup failed"
     });
-    ui.notifyPreviewState("error");
   }
 }

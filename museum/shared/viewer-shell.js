@@ -13,7 +13,6 @@ export const DEFAULT_VIEWER_DEFAULTS = Object.freeze({
 
 export const RANGE_IDS = Object.freeze(["spin", "zoom", "lightAngle", "lightPower", "exposure", "rough"]);
 export const CHECKBOX_IDS = Object.freeze(["canManipulate", "autoRotate", "multiLight", "wire"]);
-const SITE_NAME = "Atrium";
 
 function checkedAttr(value) {
   return value ? " checked" : "";
@@ -54,15 +53,14 @@ export function renderViewerShell(config) {
   const defaults = createViewerDefaults(config.defaults);
   const statsLoading = config.statsLoading || "Loading high-fidelity STL sculpture...";
   const loadingText = config.loadingText || statsLoading;
-  const pageTitle = config.pageTitle || `${config.viewerTitle} — ${SITE_NAME}`;
+  const pageTitle = config.pageTitle || `${config.viewerTitle} — Form Gallery`;
   const searchParams = new URLSearchParams(window.location.search);
   const embedMode = config.embedMode || searchParams.get("embed") || searchParams.get("mode") || "";
   const isHeroEmbed = embedMode === "hero";
-  const isPreviewEmbed = Boolean(embedMode);
   const viewerClasses = ["app", "viewer-app"];
   const sourceCard = renderSourceCard(config.source);
-  const loadingEyebrow = isPreviewEmbed ? "Preview" : "Preparing Viewer";
-  const loadingTitle = isPreviewEmbed ? "Loading 3D preview" : "Building the gallery stage";
+  const loadingEyebrow = isHeroEmbed ? "Preview" : "Preparing Viewer";
+  const loadingTitle = isHeroEmbed ? "Loading sculpture preview" : "Building the gallery stage";
 
   if (embedMode) {
     viewerClasses.push(`viewer-app--${embedMode}`);
@@ -74,7 +72,7 @@ export function renderViewerShell(config) {
       <section class="panel">
         <div class="viewer-header">
           <div class="viewer-object">
-            <p class="viewer-kicker">${SITE_NAME}</p>
+            <p class="viewer-kicker">Form Gallery</p>
             <h1 class="viewer-title" id="viewerTitle">${config.viewerTitle}</h1>
             ${titleParagraph("viewer-artist", config.subtitle)}
             ${labeledParagraph("viewer-medium", "Medium:", config.medium)}
@@ -194,18 +192,6 @@ export function createViewerUi(defaults) {
     loading?.remove();
   }
 
-  function notifyPreviewState(state) {
-    if (window.parent === window) return;
-    window.parent.postMessage(
-      {
-        type: "atrium-preview-state",
-        state,
-        path: window.location.pathname
-      },
-      "*"
-    );
-  }
-
   function bindControls(handlers = {}) {
     for (const id of RANGE_IDS) {
       document.getElementById(id).addEventListener("input", () => {
@@ -245,7 +231,6 @@ export function createViewerUi(defaults) {
     n,
     setLoadingState,
     clearLoading,
-    notifyPreviewState,
     refreshReadouts,
     setDefaults,
     bindControls

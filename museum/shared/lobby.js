@@ -40,106 +40,6 @@ const ARTIST_ORDER = Object.freeze([
   "Rodin"
 ]);
 
-const SITE_NAME = "Atrium";
-
-function countLabel(count, singular, plural = `${singular}s`) {
-  return `${count} ${count === 1 ? singular : plural}`;
-}
-
-function escapeSvgText(value = "") {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
-function wrapPosterText(value = "", maxChars = 18, maxLines = 3) {
-  const words = String(value || "").trim().split(/\s+/).filter(Boolean);
-  if (!words.length) return [];
-
-  const lines = [];
-  let line = "";
-
-  for (const word of words) {
-    const next = line ? `${line} ${word}` : word;
-    if (next.length <= maxChars || !line) {
-      line = next;
-      continue;
-    }
-
-    lines.push(line);
-    if (lines.length === maxLines - 1) {
-      line = word;
-      break;
-    }
-    line = word;
-  }
-
-  if (line && lines.length < maxLines) {
-    lines.push(line);
-  }
-
-  if (lines.length > maxLines) {
-    return lines.slice(0, maxLines);
-  }
-
-  if (lines.length === maxLines && words.join(" ").length > lines.join(" ").length) {
-    lines[maxLines - 1] = `${lines[maxLines - 1].replace(/[.…]+$/, "")}…`;
-  }
-
-  return lines;
-}
-
-function buildPosterDataUrl(entry, variant = "card") {
-  const isHero = variant === "hero";
-  const isRail = variant === "rail";
-  const width = isHero ? 1600 : isRail ? 1200 : 900;
-  const height = isHero ? 1000 : isRail ? 900 : 900;
-  const titleLines = wrapPosterText(entry.title, isHero ? 18 : 16, isHero ? 2 : 3);
-  const detailLine = escapeSvgText(
-    [entry.creator, entry.date].filter(Boolean).join(" • ") || entry.gallery || SITE_NAME
-  );
-  const titleBlock = titleLines
-    .map((line, index) => `<tspan x="76" dy="${index === 0 ? 0 : 58}">${escapeSvgText(line)}</tspan>`)
-    .join("");
-
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-hidden="true">
-      <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f2e7d8" />
-          <stop offset="55%" stop-color="#eadfcd" />
-          <stop offset="100%" stop-color="#d9ccb8" />
-        </linearGradient>
-        <radialGradient id="glow" cx="50%" cy="34%" r="46%">
-          <stop offset="0%" stop-color="#fff8ef" stop-opacity="0.95" />
-          <stop offset="65%" stop-color="#f0e2cf" stop-opacity="0.55" />
-          <stop offset="100%" stop-color="#eadbc7" stop-opacity="0" />
-        </radialGradient>
-        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d4c6b1" />
-          <stop offset="100%" stop-color="#beaf9b" />
-        </linearGradient>
-      </defs>
-      <rect width="${width}" height="${height}" fill="url(#bg)" />
-      <rect y="${Math.round(height * 0.58)}" width="${width}" height="${Math.round(height * 0.42)}" fill="url(#floor)" />
-      <ellipse cx="${Math.round(width * 0.5)}" cy="${Math.round(height * 0.68)}" rx="${Math.round(width * 0.22)}" ry="${Math.round(height * 0.055)}" fill="#a99984" opacity="0.22" />
-      <circle cx="${Math.round(width * 0.5)}" cy="${Math.round(height * 0.31)}" r="${Math.round(height * 0.11)}" fill="url(#glow)" opacity="0.8" />
-      <g opacity="0.98">
-        <circle cx="${Math.round(width * 0.5)}" cy="${Math.round(height * 0.34)}" r="${Math.round(height * 0.075)}" fill="#f7f0e3" />
-        <path d="M ${Math.round(width * 0.455)} ${Math.round(height * 0.43)} C ${Math.round(width * 0.44)} ${Math.round(height * 0.54)}, ${Math.round(width * 0.44)} ${Math.round(height * 0.64)}, ${Math.round(width * 0.49)} ${Math.round(height * 0.7)} L ${Math.round(width * 0.51)} ${Math.round(height * 0.7)} C ${Math.round(width * 0.56)} ${Math.round(height * 0.64)}, ${Math.round(width * 0.56)} ${Math.round(height * 0.54)}, ${Math.round(width * 0.545)} ${Math.round(height * 0.43)} Z" fill="#f1e7d6" />
-        <rect x="${Math.round(width * 0.44)}" y="${Math.round(height * 0.7)}" width="${Math.round(width * 0.12)}" height="${Math.round(height * 0.085)}" rx="${Math.round(height * 0.01)}" fill="#ddcfbc" />
-      </g>
-      <text x="76" y="${Math.round(height * 0.84)}" fill="#2f261c" font-family="Georgia, 'Times New Roman', serif" font-size="${isHero ? 82 : isRail ? 58 : 52}" font-weight="700" letter-spacing="-1.2">${titleBlock}</text>
-      <text x="76" y="${Math.round(height * 0.94)}" fill="#625446" font-family="'IBM Plex Sans', 'Avenir Next', sans-serif" font-size="${isHero ? 30 : 24}" letter-spacing="1.6">${detailLine}</text>
-    </svg>
-  `;
-
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-}
-
 function resolveLobbyEntry(entry, pieces) {
   if (typeof entry === "string") {
     const piece = pieces[entry];
@@ -287,7 +187,7 @@ function formatYearRange(entries) {
 }
 
 function formatWorkCount(count, active) {
-  return active ? countLabel(count, "matching work", "matching works") : countLabel(count, "work");
+  return `${count} ${active ? "matching works" : count === 1 ? "work" : "works"}`;
 }
 
 function getRegionLabel(piece) {
@@ -494,7 +394,7 @@ function previewPriority(entry) {
   return 2;
 }
 
-function buildRecentAdditions(pieces, sections, count = 8) {
+function buildRecentAdditions(pieces, sections, count = 5) {
   const visibleEntries = new Map(
     sections.flatMap((section) => section.items.map((item) => [item.id, item]))
   );
@@ -558,87 +458,30 @@ function pickFeaturedPiece(lobby, sections) {
   return allEntries[0] || null;
 }
 
-function previewHref(href, embedMode = "preview") {
+function heroPreviewHref(href) {
   if (!href || /^https?:\/\//.test(href)) return "";
-  return href.includes("?") ? `${href}&embed=${embedMode}&preview=1` : `${href}?embed=${embedMode}&preview=1`;
+  return href.includes("?") ? `${href}&embed=hero&preview=1` : `${href}?embed=hero&preview=1`;
 }
 
-function bindPreviewFrames() {
-  const frames = Array.from(document.querySelectorAll("iframe[data-preview-src]"));
-  if (!frames.length) return;
+function hydrateLobbyPreviews() {
+  const queue = [
+    ...Array.from(document.querySelectorAll("iframe.hero-frame[data-preview-src]")),
+    ...Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"))
+  ];
 
-  const loadedFrames = new WeakSet();
-
-  function hostForFrame(frame) {
-    return frame.closest("[data-preview-host]");
-  }
-
-  function markFrameState(frame, state) {
-    const host = hostForFrame(frame);
-    if (!host) return;
-    host.classList.toggle("is-loading", state === "loading");
-    host.classList.toggle("is-ready", state === "ready");
-    host.classList.toggle("has-error", state === "error");
-  }
-
-  function loadFrame(frame) {
-    if (!frame || loadedFrames.has(frame)) return;
+  function loadNext(index) {
+    if (index >= queue.length) return;
+    const frame = queue[index];
     const src = frame.dataset.previewSrc;
-    if (!src) return;
-    loadedFrames.add(frame);
-    markFrameState(frame, "loading");
-    frame.src = src;
-  }
-
-  const eagerFrames = [
-    document.querySelector("iframe.hero-frame[data-preview-src]"),
-    ...Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]")).slice(0, 6),
-    ...Array.from(document.querySelectorAll("iframe.piece-frame[data-preview-src]")).slice(0, 8)
-  ].filter(Boolean);
-  const eagerSet = new Set(eagerFrames);
-
-  eagerFrames.forEach((frame, index) => {
-    window.setTimeout(() => loadFrame(frame), index === 0 ? 0 : Math.min(800, index * 120));
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        loadFrame(entry.target);
-        observer.unobserve(entry.target);
-      }
-    },
-    { rootMargin: "420px 0px" }
-  );
-
-  for (const frame of frames) {
-    frame.addEventListener("load", () => {
-      markFrameState(frame, "loading");
-    });
-    if (!eagerSet.has(frame)) {
-      observer.observe(frame);
+    if (!src) {
+      loadNext(index + 1);
+      return;
     }
+    frame.src = src;
+    window.setTimeout(() => loadNext(index + 1), index === 0 ? 4400 : 1700);
   }
 
-  window.addEventListener("message", (event) => {
-    if (event.data?.type !== "atrium-preview-state") return;
-    const frame = frames.find((candidate) => candidate.contentWindow === event.source);
-    if (!frame) return;
-    markFrameState(frame, event.data.state === "ready" ? "ready" : "error");
-  });
-}
-
-function bindLobbyHeader() {
-  const nav = document.querySelector(".site-nav");
-  if (!nav) return;
-
-  const syncScrolledState = () => {
-    nav.classList.toggle("is-scrolled", window.scrollY > 80);
-  };
-
-  syncScrolledState();
-  window.addEventListener("scroll", syncScrolledState, { passive: true });
+  loadNext(0);
 }
 
 function renderBrowseGroup(group) {
@@ -665,31 +508,14 @@ function renderEntry(entry) {
   const linkLabel = entry.linkLabel || "View Piece";
   const linkArrow = "&rarr;";
   const linkAttrs = "";
-  const previewFrame = isPreviewableEntry(entry) ? previewHref(entry.href, "preview") : "";
-  const posterUrl = buildPosterDataUrl(entry, "card");
 
   return `
     <li class="work-item" id="work-${entry.id}" data-era="${entry.era}" data-region="${entry.region}" data-artist="${entry.artist}" data-gallery="${entry.gallery}">
       <a class="piece" href="${entry.href}"${linkAttrs}>
-        <span class="piece-thumb" data-preview-host>
-          <img class="piece-poster-image" src="${posterUrl}" alt="" loading="lazy" decoding="async" />
-          ${previewFrame ? `
-            <iframe
-              class="piece-frame"
-              data-preview-src="${previewFrame}"
-              tabindex="-1"
-              loading="lazy"
-              title="${entry.title} preview"
-              aria-label="Interactive 3D model of ${entry.title}"
-            ></iframe>
-          ` : ""}
-        </span>
-        <span class="piece-copy">
-          <h4 class="piece-title">${entry.title}</h4>
-          ${entry.creator ? `<p class="piece-creator">${entry.creator}</p>` : ""}
-          ${entry.date ? `<p class="piece-date">${entry.date}</p>` : ""}
-          <span class="piece-link">${linkLabel} <span aria-hidden="true">${linkArrow}</span></span>
-        </span>
+        <h4 class="piece-title">${entry.title}</h4>
+        ${entry.creator ? `<p class="piece-creator">${entry.creator}</p>` : ""}
+        ${entry.date ? `<p class="piece-date">${entry.date}</p>` : ""}
+        <span class="piece-link">${linkLabel} <span aria-hidden="true">${linkArrow}</span></span>
       </a>
     </li>
   `;
@@ -698,10 +524,10 @@ function renderEntry(entry) {
 function renderSection(section) {
   const itemsHtml = section.items.map((entry) => renderEntry(entry)).join("");
   return `
-    <section class="gallery-card" id="rooms-${section.id}" data-work-count-label="${formatWorkCount(section.workCount)}" aria-labelledby="gallery-${section.id}-title">
+    <article class="gallery-card" id="rooms-${section.id}" data-work-count-label="${formatWorkCount(section.workCount)}">
       <div class="gallery-head">
         ${section.region ? `<p class="gallery-region">${section.region}</p>` : ""}
-        <h3 class="gallery-title" id="gallery-${section.id}-title">${section.title}</h3>
+        <h3 class="gallery-title">${section.title}</h3>
         ${section.subtitle ? `<p class="gallery-description">${section.subtitle}</p>` : ""}
         <div class="gallery-meta">
           ${section.dateRange ? `<span>${section.dateRange}</span>` : ""}
@@ -709,7 +535,7 @@ function renderSection(section) {
         </div>
       </div>
       <ul class="work-list">${itemsHtml}</ul>
-    </section>
+    </article>
   `;
 }
 
@@ -723,7 +549,7 @@ function renderSectionGroup(group) {
         <div class="chronology-head">
           <p class="chronology-kicker">Chronology</p>
           <h3 class="chronology-title">${group.title}</h3>
-          <p class="chronology-meta">${countLabel(group.workCount, "work")} • ${group.galleryCount} ${galleryLabel}</p>
+          <p class="chronology-meta">${group.workCount} works • ${group.galleryCount} ${galleryLabel}</p>
         </div>
       ` : ""}
       <div class="gallery-grid">${sectionsHtml}</div>
@@ -854,22 +680,19 @@ export function renderMuseumLobby(lobby, pieces) {
 
   const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
   const sectionsHtml = sectionGroups.map((group) => renderSectionGroup(group)).join("");
-  const recentAdditionsHtml = recentAdditions.map((entry, index) => {
-    const previewFrame = isPreviewableEntry(entry) ? previewHref(entry.href, "preview") : "";
-    const posterUrl = buildPosterDataUrl(entry, "rail");
+  const recentAdditionsHtml = recentAdditions.map((entry) => {
+    const previewFrame = heroPreviewHref(entry.href);
     return `
       <li class="new-addition-item">
         <a class="new-addition-card" href="${entry.href}" aria-label="Open ${entry.title}">
-          <span class="new-addition-stage" data-preview-host>
-            <img class="piece-poster-image piece-poster-image--rail" src="${posterUrl}" alt="" loading="${index < 6 ? "eager" : "lazy"}" decoding="async" ${index < 3 ? 'fetchpriority="high"' : ""} />
+          <span class="new-addition-stage">
             ${previewFrame ? `
               <iframe
                 class="new-addition-frame"
                 data-preview-src="${previewFrame}"
                 tabindex="-1"
-                loading="${index < 6 ? "eager" : "lazy"}"
+                loading="lazy"
                 title="${entry.title} preview"
-                aria-label="Interactive 3D model of ${entry.title}"
               ></iframe>
             ` : ""}
           </span>
@@ -884,45 +707,22 @@ export function renderMuseumLobby(lobby, pieces) {
       </li>
     `;
   }).join("");
-  const heroFrame = featuredPiece ? previewHref(featuredPiece.href, "hero") : "";
-  const heroPosterUrl = featuredPiece ? buildPosterDataUrl(featuredPiece, "hero") : "";
+  const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
   const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
-  const brandPrimary = brandWords[0] || SITE_NAME.toUpperCase();
-  const brandSecondary = brandWords.slice(1).join(" ");
+  const brandForm = brandWords[0] || "FORM";
+  const brandGallery = brandWords.slice(1).join(" ") || "GALLERY";
   const titleText = lobby.title || "Atrium";
   const regionCount = browseGroups.find((group) => group.id === "region")?.items.length || 0;
   const makerCount = browseGroups.find((group) => group.id === "artist")?.items.length || 0;
-  const collectionMeta = [
-    countLabel(entries.length, "work"),
-    countLabel(sections.length, "gallery"),
-    countLabel(regionCount, "region"),
-    countLabel(makerCount, "maker")
-  ].join(" • ");
-  const featuredArtistLine = featuredPiece?.id === "kongo-maternity-figure"
-    ? "Kongo artist, c. 1850–1910"
-    : [featuredPiece?.attribution, featuredPiece?.date].filter(Boolean).join(", ");
+  const collectionMeta = `${entries.length} works • ${sections.length} galleries • ${regionCount} regions • ${makerCount} makers`;
 
   document.body.innerHTML = `
     <a class="skip-link" href="#main-content">Skip to collection content</a>
     <div class="app lobby-app">
-      <header class="site-nav" aria-label="Primary">
-        <div class="site-nav__inner">
-          <a class="site-nav__brand" href="/museum/" aria-current="page">
-            <span class="site-nav__brand-title">${SITE_NAME}</span>
-          </a>
-          <nav class="site-nav__menu" aria-label="Section navigation">
-            <a href="/museum/" aria-current="page">Atrium</a>
-            <a href="#new-additions-title">New Additions</a>
-            <a href="#browse-title">Browse</a>
-            <a href="#rooms-title">Collection</a>
-          </nav>
-        </div>
-      </header>
-
       <header class="museum-header museum-header--simple">
-        <p class="page-title page-title--progressive" aria-label="${lobby.brand || SITE_NAME.toUpperCase()}">
-          <span class="page-title-form">${brandPrimary}</span>
-          ${brandSecondary ? `<span class="page-title-gallery">${brandSecondary}</span>` : ""}
+        <p class="page-title page-title--progressive" aria-label="${lobby.brand || "FORM GALLERY"}">
+          <span class="page-title-form">${brandForm}</span>
+          <span class="page-title-gallery">${brandGallery}</span>
         </p>
         <h1 class="page-heading">${titleText}</h1>
         <p class="page-subtitle">${lobby.subtitle || ""}</p>
@@ -935,15 +735,16 @@ export function renderMuseumLobby(lobby, pieces) {
             <div class="featured-copy">
               <p class="featured-label">${lobby.featuredLabel || "Featured Sculpture"}</p>
               <h2 class="featured-title" id="featured-work-title">${featuredPiece.title}</h2>
-              ${featuredArtistLine ? `
+              ${(featuredPiece.attribution || featuredPiece.date) ? `
                 <p class="featured-artist">
-                  ${featuredArtistLine}
+                  ${featuredPiece.attribution || ""}
+                  ${featuredPiece.attribution && featuredPiece.date ? " • " : ""}
+                  ${featuredPiece.date || ""}
                 </p>
               ` : ""}
               <a class="explore-button" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
             </div>
-            <a class="sculpture-stage sculpture-stage--link" href="${featuredPiece.href}" aria-label="Open ${featuredPiece.title}" data-preview-host>
-              <img class="piece-poster-image piece-poster-image--hero" src="${heroPosterUrl}" alt="" loading="eager" decoding="async" fetchpriority="high" />
+            <a class="sculpture-stage sculpture-stage--link" href="${featuredPiece.href}" aria-label="Open ${featuredPiece.title}">
               ${heroFrame ? `
                 <iframe
                   class="hero-frame"
@@ -951,7 +752,6 @@ export function renderMuseumLobby(lobby, pieces) {
                   tabindex="-1"
                   loading="eager"
                   title="${featuredPiece.title} preview"
-                  aria-label="Interactive 3D model of ${featuredPiece.title}"
                 ></iframe>
               ` : ""}
             </a>
@@ -999,7 +799,6 @@ export function renderMuseumLobby(lobby, pieces) {
   `;
 
   bindLobbyFilters();
-  bindPreviewFrames();
-  bindLobbyHeader();
+  hydrateLobbyPreviews();
   restoreHashPosition();
 }
