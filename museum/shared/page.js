@@ -1,9 +1,15 @@
 import { LOCATION_OVERRIDES_BY_PIECE } from "./location-overrides.js";
+import { posterForPiece } from "./posters.js";
 
-const MODULE_VERSION = "20260331-1502";
+const MODULE_VERSION = "20260407-1838";
+const SITE_NAME = "Atrium";
+const SITE_URL = "https://atrium.earth";
+const DEFAULT_SOCIAL_IMAGE = "/museum/posters/hero/kongo-maternity-figure.webp";
+const PREVIEW_READY_TYPE = "atrium-preview-ready";
+const HERO_PREVIEW_TIMEOUT_MS = 900;
 
 let catalogPromise = null;
-const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
+const COLLECTION_DESCRIPTION = "Atrium is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
 const DEFAULT_THEME = "dark";
 const DEFAULT_THEME_COLOR = "#111017";
 
@@ -497,7 +503,7 @@ function renderBootError(message, error) {
     <a class="skip-link" href="#system-state">Skip to message</a>
     <main class="system-state" id="system-state">
       <section class="system-state-card" role="alert">
-        <p class="system-state-kicker">Form Gallery</p>
+        <p class="system-state-kicker">Atrium</p>
         <h1 class="system-state-title">${escapeHtml(message)}</h1>
         <p class="system-state-copy">The page shell loaded, but this view could not be prepared. Refresh the page or return to the atrium and try again.</p>
         <a class="explore-button" href="/museum/">Return to Atrium</a>
@@ -516,7 +522,86 @@ function upsertMetaTag(key, value, attribute = "name") {
   tag.setAttribute("content", value);
 }
 
-function setPageMetadata({ title, description }) {
+function upsertLinkTag(rel, href, attributes = {}) {
+  let link = document.head.querySelector(`link[rel="${rel}"]`);
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", rel);
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", href);
+  for (const [key, value] of Object.entries(attributes)) {
+    if (value == null || value === false) {
+      link.removeAttribute(key);
+      continue;
+    }
+    link.setAttribute(key, String(value));
+  }
+}
+
+function absoluteSiteUrl(pathname = "/") {
+  return new URL(pathname, SITE_URL).toString();
+}
+
+function metadataImageForPiece(pieceId) {
+  const poster = posterForPiece(pieceId);
+  return poster?.hero || poster?.thumb || DEFAULT_SOCIAL_IMAGE;
+}
+
+function bindBootHeroPreview() {
+  const heroFrame = document.querySelector("iframe.hero-frame[data-preview-src]");
+  const heroStage = heroFrame?.closest(".sculpture-stage");
+  if (!heroFrame || !heroStage) return;
+
+  const prefersAutomaticHeroPreview = window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine)").matches;
+  let mounted = false;
+  let ready = false;
+
+  const cleanupCallbacks = [];
+  const cleanup = () => {
+    while (cleanupCallbacks.length) {
+      cleanupCallbacks.pop()?.();
+    }
+  };
+
+  const markReady = () => {
+    if (ready) return;
+    ready = true;
+    heroStage.classList.add("is-live");
+    heroFrame.classList.add("is-live");
+    cleanup();
+  };
+
+  const handleReadyMessage = (event) => {
+    if (event.origin !== window.location.origin) return;
+    if (event.data?.type !== PREVIEW_READY_TYPE) return;
+    if (event.source !== heroFrame.contentWindow) return;
+    markReady();
+  };
+  window.addEventListener("message", handleReadyMessage);
+  cleanupCallbacks.push(() => window.removeEventListener("message", handleReadyMessage));
+
+  const mountPreview = () => {
+    if (mounted || !heroFrame.dataset.previewSrc) return;
+    mounted = true;
+    heroFrame.src = heroFrame.dataset.previewSrc;
+  };
+
+  if (prefersAutomaticHeroPreview) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(mountPreview, { timeout: HERO_PREVIEW_TIMEOUT_MS });
+    } else {
+      window.setTimeout(mountPreview, 180);
+    }
+  }
+
+  const activatePreview = () => mountPreview();
+  heroStage.addEventListener("mouseenter", activatePreview, { once: true });
+  heroStage.addEventListener("focusin", activatePreview, { once: true });
+  heroStage.addEventListener("pointerdown", activatePreview, { once: true });
+}
+
+function setPageMetadata({ title, description, image, url, preloadImage }) {
   if (title) {
     document.title = title;
     upsertMetaTag("og:title", title, "property");
@@ -527,6 +612,28 @@ function setPageMetadata({ title, description }) {
     upsertMetaTag("description", description);
     upsertMetaTag("og:description", description, "property");
     upsertMetaTag("twitter:description", description);
+  }
+
+  upsertMetaTag("og:site_name", SITE_NAME, "property");
+  upsertMetaTag("og:type", "website", "property");
+  upsertMetaTag("twitter:card", image ? "summary_large_image" : "summary");
+
+  if (url) {
+    upsertMetaTag("og:url", url, "property");
+    upsertLinkTag("canonical", url);
+  }
+
+  if (image) {
+    const absoluteImage = absoluteSiteUrl(image);
+    upsertMetaTag("og:image", absoluteImage, "property");
+    upsertMetaTag("twitter:image", absoluteImage);
+  }
+
+  if (preloadImage) {
+    upsertLinkTag("preload", preloadImage, {
+      as: "image",
+      fetchpriority: "high"
+    });
   }
 }
 
@@ -561,29 +668,79 @@ function buildPiecePageDescription(piece) {
     segments.push(medium);
   }
 
-  segments.push("Viewable in Form Gallery, a digital sculpture collection spanning antiquity through the twenty-first century.");
+  segments.push("Viewable in Atrium, a digital sculpture collection spanning antiquity through the twenty-first century.");
   return segments.join(". ").replace(/\.\s*$/, "") + ".";
 }
 
 export async function initMuseumLobbyPage() {
-  try {
-    const [{ museumLobby, museumPieces }, { renderMuseumLobby }] = await Promise.all([
-      loadCatalog(),
-      import(`./lobby.js?v=${MODULE_VERSION}`)
-    ]);
-    const lobbyConfig = {
-      ...museumLobby,
-      title: museumLobby.title || "Atrium",
-      pageTitle: "Atrium — Form Gallery"
-    };
-    renderMuseumLobby(lobbyConfig, museumPieces);
-    setPageMetadata({
-      title: lobbyConfig.pageTitle,
-      description: COLLECTION_DESCRIPTION
-    });
-  } catch (error) {
-    renderBootError("Failed to load the museum lobby.", error);
+  const featuredPoster = DEFAULT_SOCIAL_IMAGE;
+  setPageMetadata({
+    title: "Atrium — Digital Sculpture Collection",
+    description: COLLECTION_DESCRIPTION,
+    image: featuredPoster,
+    url: absoluteSiteUrl("/"),
+    preloadImage: featuredPoster
+  });
+  bindBootHeroPreview();
+
+  let hydrationStarted = false;
+  const cleanupCallbacks = [];
+
+  const cleanup = () => {
+    while (cleanupCallbacks.length) {
+      const callback = cleanupCallbacks.pop();
+      try {
+        callback?.();
+      } catch (error) {
+        console.warn("Failed to clean up lobby hydration listener.", error);
+      }
+    }
+  };
+
+  const hydrateLobby = async () => {
+    if (hydrationStarted) return;
+    hydrationStarted = true;
+    cleanup();
+
+    try {
+      const [{ museumLobby, museumPieces }, { renderMuseumLobby }] = await Promise.all([
+        loadCatalog(),
+        import(`./lobby.js?v=${MODULE_VERSION}`)
+      ]);
+      const lobbyConfig = {
+        ...museumLobby,
+        title: museumLobby.title || "Atrium",
+        pageTitle: "Atrium — Digital Sculpture Collection"
+      };
+      renderMuseumLobby(lobbyConfig, museumPieces);
+      const hydratedFeaturedPoster = metadataImageForPiece(lobbyConfig.featuredPieceId);
+      setPageMetadata({
+        title: lobbyConfig.pageTitle,
+        description: COLLECTION_DESCRIPTION,
+        image: hydratedFeaturedPoster,
+        url: absoluteSiteUrl("/"),
+        preloadImage: hydratedFeaturedPoster
+      });
+    } catch (error) {
+      renderBootError("Failed to load the museum lobby.", error);
+    }
+  };
+
+  const queueHydration = () => {
+    if (hydrationStarted) return;
+    hydrateLobby();
+  };
+
+  const interactionEvents = ["scroll", "pointerdown", "keydown", "touchstart", "focusin"];
+  for (const eventName of interactionEvents) {
+    const target = eventName === "focusin" ? document : window;
+    const handler = () => queueHydration();
+    target.addEventListener(eventName, handler, { once: true, passive: eventName !== "keydown" && eventName !== "focusin" });
+    cleanupCallbacks.push(() => target.removeEventListener(eventName, handler));
   }
+
+  const timeoutId = window.setTimeout(queueHydration, 10000);
+  cleanupCallbacks.push(() => window.clearTimeout(timeoutId));
 }
 
 export async function initMuseumPiecePage(pieceId) {
@@ -597,12 +754,14 @@ export async function initMuseumPiecePage(pieceId) {
   try {
     const pagePiece = {
       ...piece,
-      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Form Gallery`
+      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Atrium`
     };
 
     setPageMetadata({
       title: pagePiece.pageTitle,
-      description: buildPiecePageDescription(pagePiece)
+      description: buildPiecePageDescription(pagePiece),
+      image: metadataImageForPiece(pieceId),
+      url: absoluteSiteUrl(normalizePath(pagePiece.path))
     });
 
     if (pagePiece.kind === "stl") {
@@ -632,7 +791,6 @@ export async function initMuseumPiecePage(pieceId) {
 export async function initMuseumPageForCurrentPath() {
   try {
     applyDefaultDarkTheme();
-    const { museumRouteMap } = await loadCatalog();
     const currentPath = normalizePath(window.location.pathname);
 
     if (currentPath === "/museum/") {
@@ -640,6 +798,7 @@ export async function initMuseumPageForCurrentPath() {
       return;
     }
 
+    const { museumRouteMap } = await loadCatalog();
     const pieceId = museumRouteMap[currentPath];
     if (!pieceId) {
       renderBootError(`No museum entry is registered for ${currentPath}`, new Error(`Unknown museum route: ${currentPath}`));

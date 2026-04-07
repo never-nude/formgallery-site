@@ -53,7 +53,7 @@ export function renderViewerShell(config) {
   const defaults = createViewerDefaults(config.defaults);
   const statsLoading = config.statsLoading || "Loading high-fidelity STL sculpture...";
   const loadingText = config.loadingText || statsLoading;
-  const pageTitle = config.pageTitle || `${config.viewerTitle} — Form Gallery`;
+  const pageTitle = config.pageTitle || `${config.viewerTitle} — Atrium`;
   const searchParams = new URLSearchParams(window.location.search);
   const embedMode = config.embedMode || searchParams.get("embed") || searchParams.get("mode") || "";
   const isHeroEmbed = embedMode === "hero";
@@ -72,7 +72,7 @@ export function renderViewerShell(config) {
       <section class="panel">
         <div class="viewer-header">
           <div class="viewer-object">
-            <p class="viewer-kicker">Form Gallery</p>
+            <p class="viewer-kicker">Atrium</p>
             <h1 class="viewer-title" id="viewerTitle">${config.viewerTitle}</h1>
             ${titleParagraph("viewer-artist", config.subtitle)}
             ${labeledParagraph("viewer-medium", "Medium:", config.medium)}

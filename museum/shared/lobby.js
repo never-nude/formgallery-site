@@ -1,9 +1,16 @@
+import { posterForPiece } from "./posters.js";
+
 const ANCIENT_ROOM_IDS = Object.freeze([
   "egypt-mesopotamia",
   "greek-classical",
   "hellenistic-world",
   "roman-world"
 ]);
+
+const PREVIEW_READY_TYPE = "atrium-preview-ready";
+const HERO_PREVIEW_TIMEOUT_MS = 2200;
+const RECENT_EAGER_COUNT = 2;
+const POSTER_FALLBACK_SIZE = 480;
 
 const ERA_ORDER = Object.freeze([
   "Ancient Origins",
@@ -190,6 +197,71 @@ function formatWorkCount(count, active) {
   return `${count} ${active ? "matching works" : count === 1 ? "work" : "works"}`;
 }
 
+function pluralize(count, singular, plural = `${singular}s`) {
+  return `${count} ${count === 1 ? singular : plural}`;
+}
+
+function formatCollectionMeta(entries, sections, regionCount, makerCount) {
+  return [
+    pluralize(entries.length, "work"),
+    pluralize(sections.length, "gallery", "galleries"),
+    pluralize(regionCount, "region"),
+    pluralize(makerCount, "maker")
+  ].join(" • ");
+}
+
+function imageAttrs({ eager = false, highPriority = false } = {}) {
+  const attrs = [
+    `loading="${eager ? "eager" : "lazy"}"`,
+    'decoding="async"'
+  ];
+
+  if (highPriority) {
+    attrs.push('fetchpriority="high"');
+  }
+
+  return attrs.join(" ");
+}
+
+function renderPosterImage(entry, className, { eager = false, highPriority = false } = {}) {
+  const poster = posterForPiece(entry.id);
+  if (!poster?.thumb) {
+    return "";
+  }
+
+  return `
+    <img
+      class="${className}"
+      src="${poster.thumb}"
+      alt=""
+      width="${poster.thumbWidth || POSTER_FALLBACK_SIZE}"
+      height="${poster.thumbHeight || POSTER_FALLBACK_SIZE}"
+      ${imageAttrs({ eager, highPriority })}
+    />
+  `;
+}
+
+function renderHeroPoster(entry) {
+  const poster = posterForPiece(entry.id);
+  const src = poster?.hero || poster?.thumb;
+  const width = poster?.hero ? poster.heroWidth : poster?.thumbWidth;
+  const height = poster?.hero ? poster.heroHeight : poster?.thumbHeight;
+  if (!src) return "";
+
+  return `
+    <picture class="hero-poster-shell" aria-hidden="true">
+      <img
+        class="hero-poster"
+        src="${src}"
+        alt=""
+        width="${width || POSTER_FALLBACK_SIZE}"
+        height="${height || POSTER_FALLBACK_SIZE}"
+        ${imageAttrs({ eager: true, highPriority: true })}
+      />
+    </picture>
+  `;
+}
+
 function getRegionLabel(piece) {
   if (piece?.region) return piece.region;
   const text = `${piece?.viewerTitle || ""} ${piece?.subtitle || ""} ${piece?.lobbyMeta || ""}`.toLowerCase();
@@ -303,6 +375,7 @@ function presentEntry(entry, section) {
     date: piece?.lobbyDate || titleParts.date || formatApproxYear(parseApproxYear(piece)),
     linkLabel: piece?.lobbyLinkLabel || "",
     attribution: piece?.heroAttribution || creator,
+    heroLine: piece?.heroLine || "",
     era: getEraLabel(piece),
     region: getRegionLabel(piece),
     artist: getArtistLabel(piece),
@@ -463,25 +536,81 @@ function heroPreviewHref(href) {
   return href.includes("?") ? `${href}&embed=hero&preview=1` : `${href}?embed=hero&preview=1`;
 }
 
-function hydrateLobbyPreviews() {
-  const queue = [
-    ...Array.from(document.querySelectorAll("iframe.hero-frame[data-preview-src]")),
-    ...Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"))
-  ];
-
-  function loadNext(index) {
-    if (index >= queue.length) return;
-    const frame = queue[index];
-    const src = frame.dataset.previewSrc;
-    if (!src) {
-      loadNext(index + 1);
-      return;
-    }
-    frame.src = src;
-    window.setTimeout(() => loadNext(index + 1), index === 0 ? 4400 : 1700);
+function activatePreviewStage(stage) {
+  if (!stage || stage.dataset.previewMounted === "1") {
+    return;
   }
 
-  loadNext(0);
+  const src = stage.dataset.previewSrc;
+  if (!src) return;
+
+  const iframe = document.createElement("iframe");
+  iframe.className = "new-addition-frame";
+  iframe.title = stage.dataset.previewTitle || "Sculpture preview";
+  iframe.loading = "lazy";
+  iframe.tabIndex = -1;
+  iframe.setAttribute("aria-hidden", "true");
+  iframe.dataset.previewSrc = src;
+  iframe.dataset.previewPieceId = stage.dataset.previewPieceId || "";
+
+  stage.appendChild(iframe);
+  stage.dataset.previewMounted = "1";
+  iframe.src = src;
+}
+
+function bindLobbyPreviews() {
+  const heroFrame = document.querySelector("iframe.hero-frame[data-preview-src]");
+  const heroStage = heroFrame?.closest(".sculpture-stage");
+  const recentStages = Array.from(document.querySelectorAll(".new-addition-stage[data-preview-src]"));
+  const prefersAutomaticHeroPreview = window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine)").matches;
+  let heroMounted = false;
+
+  function markReady(frame) {
+    const stage = frame?.closest(".sculpture-stage, .new-addition-stage");
+    if (!stage) return;
+    stage.classList.add("is-live");
+    frame.classList.add("is-live");
+  }
+
+  function handlePreviewReady(event) {
+    if (event.origin !== window.location.origin) return;
+    if (event.data?.type !== PREVIEW_READY_TYPE) return;
+
+    const frame = [heroFrame, ...document.querySelectorAll("iframe.new-addition-frame")]
+      .filter(Boolean)
+      .find((candidate) => candidate.contentWindow === event.source);
+
+    if (!frame) return;
+    markReady(frame);
+  }
+
+  window.addEventListener("message", handlePreviewReady);
+
+  function mountHeroFrame() {
+    if (!heroFrame?.dataset.previewSrc || heroMounted) return;
+    heroMounted = true;
+    heroFrame.src = heroFrame.dataset.previewSrc;
+  }
+
+  if (heroFrame?.dataset.previewSrc) {
+    if (prefersAutomaticHeroPreview) {
+      const scheduleHeroPreview = window.requestIdleCallback
+        ? () => window.requestIdleCallback(mountHeroFrame, { timeout: HERO_PREVIEW_TIMEOUT_MS })
+        : () => window.setTimeout(mountHeroFrame, 320);
+      scheduleHeroPreview();
+    }
+
+    const activateHeroPreview = () => mountHeroFrame();
+    heroStage?.addEventListener("mouseenter", activateHeroPreview, { once: true });
+    heroStage?.addEventListener("focusin", activateHeroPreview, { once: true });
+  }
+
+  for (const stage of recentStages) {
+    const activate = () => activatePreviewStage(stage);
+    stage.addEventListener("mouseenter", activate, { once: true });
+    stage.addEventListener("focusin", activate, { once: true });
+    stage.addEventListener("pointerdown", activate, { once: true });
+  }
 }
 
 function renderBrowseGroup(group) {
@@ -508,13 +637,19 @@ function renderEntry(entry) {
   const linkLabel = entry.linkLabel || "View Piece";
   const linkArrow = "&rarr;";
   const linkAttrs = "";
+  const posterHtml = renderPosterImage(entry, "piece-thumb-image");
 
   return `
     <li class="work-item" id="work-${entry.id}" data-era="${entry.era}" data-region="${entry.region}" data-artist="${entry.artist}" data-gallery="${entry.gallery}">
       <a class="piece" href="${entry.href}"${linkAttrs}>
-        <h4 class="piece-title">${entry.title}</h4>
-        ${entry.creator ? `<p class="piece-creator">${entry.creator}</p>` : ""}
-        ${entry.date ? `<p class="piece-date">${entry.date}</p>` : ""}
+        <span class="piece-thumb" aria-hidden="true">
+          ${posterHtml}
+        </span>
+        <span class="piece-copy">
+          <h4 class="piece-title">${entry.title}</h4>
+          ${entry.creator ? `<p class="piece-creator">${entry.creator}</p>` : ""}
+          ${entry.date ? `<p class="piece-date">${entry.date}</p>` : ""}
+        </span>
         <span class="piece-link">${linkLabel} <span aria-hidden="true">${linkArrow}</span></span>
       </a>
     </li>
@@ -524,10 +659,10 @@ function renderEntry(entry) {
 function renderSection(section) {
   const itemsHtml = section.items.map((entry) => renderEntry(entry)).join("");
   return `
-    <article class="gallery-card" id="rooms-${section.id}" data-work-count-label="${formatWorkCount(section.workCount)}">
+    <section class="gallery-card" id="rooms-${section.id}" data-work-count-label="${formatWorkCount(section.workCount)}" aria-labelledby="gallery-${section.id}-title">
       <div class="gallery-head">
         ${section.region ? `<p class="gallery-region">${section.region}</p>` : ""}
-        <h3 class="gallery-title">${section.title}</h3>
+        <h3 class="gallery-title" id="gallery-${section.id}-title">${section.title}</h3>
         ${section.subtitle ? `<p class="gallery-description">${section.subtitle}</p>` : ""}
         <div class="gallery-meta">
           ${section.dateRange ? `<span>${section.dateRange}</span>` : ""}
@@ -535,13 +670,12 @@ function renderSection(section) {
         </div>
       </div>
       <ul class="work-list">${itemsHtml}</ul>
-    </article>
+    </section>
   `;
 }
 
 function renderSectionGroup(group) {
   const sectionsHtml = group.sections.map((section) => renderSection(section)).join("");
-  const galleryLabel = group.galleryCount === 1 ? "gallery" : "galleries";
 
   return `
     <section class="chronology-group" id="sequence-${group.id}">
@@ -549,7 +683,7 @@ function renderSectionGroup(group) {
         <div class="chronology-head">
           <p class="chronology-kicker">Chronology</p>
           <h3 class="chronology-title">${group.title}</h3>
-          <p class="chronology-meta">${group.workCount} works • ${group.galleryCount} ${galleryLabel}</p>
+          <p class="chronology-meta">${pluralize(group.workCount, "work")} • ${pluralize(group.galleryCount, "gallery", "galleries")}</p>
         </div>
       ` : ""}
       <div class="gallery-grid">${sectionsHtml}</div>
@@ -565,6 +699,18 @@ function restoreHashPosition() {
   requestAnimationFrame(() => {
     target.scrollIntoView({ block: "start" });
   });
+}
+
+function bindSiteHeader() {
+  const header = document.querySelector("[data-site-header]");
+  if (!header) return;
+
+  const sync = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 80);
+  };
+
+  sync();
+  window.addEventListener("scroll", sync, { passive: true });
 }
 
 function bindLobbyFilters() {
@@ -649,7 +795,7 @@ export function renderMuseumLobby(lobby, pieces) {
   const sections = buildSections(lobby, pieces);
   const sectionGroups = buildSectionGroups(lobby, sections);
   const entries = sections.flatMap((section) => section.items);
-  const recentAdditions = buildRecentAdditions(pieces, sections);
+  const recentAdditions = buildRecentAdditions(pieces, sections, 8);
   const featuredPiece = pickFeaturedPiece(lobby, sections);
   const browseGroups = [
     {
@@ -680,21 +826,19 @@ export function renderMuseumLobby(lobby, pieces) {
 
   const browseGroupsHtml = browseGroups.map((group) => renderBrowseGroup(group)).join("");
   const sectionsHtml = sectionGroups.map((group) => renderSectionGroup(group)).join("");
-  const recentAdditionsHtml = recentAdditions.map((entry) => {
+  const recentAdditionsHtml = recentAdditions.map((entry, index) => {
     const previewFrame = heroPreviewHref(entry.href);
+    const eager = index < RECENT_EAGER_COUNT;
     return `
       <li class="new-addition-item">
         <a class="new-addition-card" href="${entry.href}" aria-label="Open ${entry.title}">
-          <span class="new-addition-stage">
-            ${previewFrame ? `
-              <iframe
-                class="new-addition-frame"
-                data-preview-src="${previewFrame}"
-                tabindex="-1"
-                loading="lazy"
-                title="${entry.title} preview"
-              ></iframe>
-            ` : ""}
+          <span
+            class="new-addition-stage"
+            ${previewFrame ? `data-preview-src="${previewFrame}"` : ""}
+            data-preview-title="${entry.title} preview"
+            data-preview-piece-id="${entry.id}"
+          >
+            ${renderPosterImage(entry, "new-addition-poster", { eager, highPriority: false })}
           </span>
           <span class="new-addition-meta">
             <span class="new-addition-gallery">${entry.gallery}</span>
@@ -708,97 +852,146 @@ export function renderMuseumLobby(lobby, pieces) {
     `;
   }).join("");
   const heroFrame = featuredPiece ? heroPreviewHref(featuredPiece.href) : "";
-  const brandWords = String(lobby.brand || "FORM GALLERY").trim().split(/\s+/);
+  const brandWords = String(lobby.brand || "ATRIUM").trim().split(/\s+/);
   const brandForm = brandWords[0] || "FORM";
   const brandGallery = brandWords.slice(1).join(" ") || "GALLERY";
   const titleText = lobby.title || "Atrium";
   const regionCount = browseGroups.find((group) => group.id === "region")?.items.length || 0;
   const makerCount = browseGroups.find((group) => group.id === "artist")?.items.length || 0;
-  const collectionMeta = `${entries.length} works • ${sections.length} galleries • ${regionCount} regions • ${makerCount} makers`;
-
-  document.body.innerHTML = `
-    <a class="skip-link" href="#main-content">Skip to collection content</a>
-    <div class="app lobby-app">
-      <header class="museum-header museum-header--simple">
-        <p class="page-title page-title--progressive" aria-label="${lobby.brand || "FORM GALLERY"}">
-          <span class="page-title-form">${brandForm}</span>
-          <span class="page-title-gallery">${brandGallery}</span>
-        </p>
-        <h1 class="page-heading">${titleText}</h1>
-        <p class="page-subtitle">${lobby.subtitle || ""}</p>
-        <p class="page-meta">${collectionMeta}</p>
-      </header>
-
-      <main class="stage" id="main-content">
-        ${featuredPiece ? `
-          <section class="featured-work" aria-labelledby="featured-work-title">
-            <div class="featured-copy">
-              <p class="featured-label">${lobby.featuredLabel || "Featured Sculpture"}</p>
-              <h2 class="featured-title" id="featured-work-title">${featuredPiece.title}</h2>
-              ${(featuredPiece.attribution || featuredPiece.date) ? `
-                <p class="featured-artist">
-                  ${featuredPiece.attribution || ""}
-                  ${featuredPiece.attribution && featuredPiece.date ? " • " : ""}
-                  ${featuredPiece.date || ""}
-                </p>
-              ` : ""}
-              <a class="explore-button" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
-            </div>
-            <a class="sculpture-stage sculpture-stage--link" href="${featuredPiece.href}" aria-label="Open ${featuredPiece.title}">
-              ${heroFrame ? `
-                <iframe
-                  class="hero-frame"
-                  data-preview-src="${heroFrame}"
-                  tabindex="-1"
-                  loading="eager"
-                  title="${featuredPiece.title} preview"
-                ></iframe>
-              ` : ""}
-            </a>
-          </section>
-        ` : ""}
-
-        ${recentAdditions.length ? `
-          <section class="new-additions-section" aria-labelledby="new-additions-title">
-            <div class="section-head">
-              <div>
-                <p class="section-kicker">Recent Works</p>
-                <h2 class="section-title" id="new-additions-title">New Additions</h2>
-              </div>
-            </div>
-            <ul class="new-additions-grid" aria-label="Recent additions gallery walk">
-              ${recentAdditionsHtml}
-            </ul>
-          </section>
-        ` : ""}
-
-        <section class="browse-section" aria-labelledby="browse-title">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Collection Guide</p>
-              <h2 class="section-title" id="browse-title">${lobby.browseTitle || "Browse the Collection"}</h2>
-            </div>
-            <button class="browse-reset" type="button" data-filter-reset aria-controls="rooms" hidden>${lobby.browseResetLabel || "Show all works"}</button>
-          </div>
-          <p class="section-sub">${lobby.browseSubtitle || ""}</p>
-          <p class="browse-status" id="browseStatus" aria-live="polite">Viewing the full collection</p>
-          <div class="browse-grid">${browseGroupsHtml}</div>
-        </section>
-
-        <section class="rooms-section" id="rooms" aria-labelledby="rooms-title">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Chronology</p>
-              <h2 class="section-title" id="rooms-title">Collection Sequence</h2>
-            </div>
-          </div>
-          ${sectionsHtml}
-        </section>
-      </main>
-    </div>
+  const collectionMeta = formatCollectionMeta(entries, sections, regionCount, makerCount);
+  const featuredLine = featuredPiece?.heroLine
+    || [
+      featuredPiece?.attribution || "",
+      featuredPiece?.date || ""
+    ].filter(Boolean).join(" • ");
+  const browseSectionHtml = `
+    <section class="browse-section" aria-labelledby="browse-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Collection Guide</p>
+          <h2 class="section-title" id="browse-title">${lobby.browseTitle || "Browse the Collection"}</h2>
+        </div>
+        <button class="browse-reset" type="button" data-filter-reset aria-controls="rooms" hidden>${lobby.browseResetLabel || "Show all works"}</button>
+      </div>
+      <p class="section-sub">${lobby.browseSubtitle || ""}</p>
+      <p class="browse-status" id="browseStatus" aria-live="polite">Viewing the full collection</p>
+      <div class="browse-grid">${browseGroupsHtml}</div>
+    </section>
   `;
 
+  const roomsSectionHtml = `
+    <section class="rooms-section" id="rooms" aria-labelledby="rooms-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Chronology</p>
+          <h2 class="section-title" id="rooms-title">Collection Sequence</h2>
+        </div>
+      </div>
+      ${sectionsHtml}
+    </section>
+  `;
+
+  const app = document.querySelector(".app.lobby-app");
+  const stage = app?.querySelector(".stage");
+
+  if (app && stage) {
+    const siteHeaderBrand = app.querySelector(".site-header-brand");
+    const siteHeaderMeta = app.querySelector(".site-header-meta");
+    const pageTitle = app.querySelector(".page-title");
+    const pageHeading = app.querySelector(".page-heading");
+    const pageSubtitle = app.querySelector(".page-subtitle");
+    const pageMeta = app.querySelector(".page-meta");
+
+    if (siteHeaderBrand) siteHeaderBrand.textContent = "Atrium";
+    if (siteHeaderMeta) siteHeaderMeta.textContent = collectionMeta;
+    if (pageTitle) pageTitle.setAttribute("aria-label", lobby.brand || "ATRIUM");
+    if (pageHeading) pageHeading.textContent = titleText;
+    if (pageSubtitle) pageSubtitle.textContent = lobby.subtitle || "";
+    if (pageMeta) pageMeta.textContent = collectionMeta;
+
+    const existingBrowse = stage.querySelector(".browse-section");
+    const existingRooms = stage.querySelector(".rooms-section");
+
+    if (existingBrowse) {
+      existingBrowse.outerHTML = browseSectionHtml;
+    } else {
+      stage.insertAdjacentHTML("beforeend", browseSectionHtml);
+    }
+
+    const refreshedBrowse = stage.querySelector(".browse-section");
+    if (existingRooms) {
+      existingRooms.outerHTML = roomsSectionHtml;
+    } else if (refreshedBrowse) {
+      refreshedBrowse.insertAdjacentHTML("afterend", roomsSectionHtml);
+    } else {
+      stage.insertAdjacentHTML("beforeend", roomsSectionHtml);
+    }
+  } else {
+    document.body.innerHTML = `
+      <a class="skip-link" href="#main-content">Skip to collection content</a>
+      <div class="app lobby-app">
+        <header class="site-header" data-site-header>
+          <a class="site-header-brand" href="/museum/" aria-label="Atrium home">Atrium</a>
+          <p class="site-header-meta">${collectionMeta}</p>
+        </header>
+        <header class="museum-header museum-header--simple">
+          <p class="page-title page-title--progressive" aria-label="${lobby.brand || "ATRIUM"}">
+            <span class="page-title-form">${brandForm}</span>
+            <span class="page-title-gallery">${brandGallery}</span>
+          </p>
+          <h1 class="page-heading">${titleText}</h1>
+          <p class="page-subtitle">${lobby.subtitle || ""}</p>
+          <p class="page-meta">${collectionMeta}</p>
+        </header>
+
+        <main class="stage" id="main-content">
+          ${featuredPiece ? `
+            <section class="featured-work" aria-labelledby="featured-work-title">
+              <div class="featured-copy">
+                <p class="featured-label">${lobby.featuredLabel || "Featured Sculpture"}</p>
+                <h2 class="featured-title" id="featured-work-title">${featuredPiece.title}</h2>
+                ${featuredLine ? `<p class="featured-artist">${featuredLine}</p>` : ""}
+                <a class="explore-button" href="${featuredPiece.href}">${lobby.featuredCtaLabel || "Explore the Work"}</a>
+              </div>
+              <a class="sculpture-stage sculpture-stage--link" href="${featuredPiece.href}" aria-label="Open ${featuredPiece.title}">
+                ${renderHeroPoster(featuredPiece)}
+                ${heroFrame ? `
+                  <iframe
+                    class="hero-frame"
+                    data-preview-src="${heroFrame}"
+                    tabindex="-1"
+                    loading="eager"
+                    aria-label="Interactive 3D model of ${featuredPiece.title}"
+                    title="${featuredPiece.title} preview"
+                  ></iframe>
+                ` : ""}
+              </a>
+            </section>
+          ` : ""}
+
+          ${recentAdditions.length ? `
+            <section class="new-additions-section" aria-labelledby="new-additions-title">
+              <div class="section-head">
+                <div>
+                  <p class="section-kicker">Recent Works</p>
+                  <h2 class="section-title" id="new-additions-title">New Additions</h2>
+                </div>
+              </div>
+              <ul class="new-additions-grid" aria-label="Recent additions gallery walk">
+                ${recentAdditionsHtml}
+              </ul>
+            </section>
+          ` : ""}
+
+          ${browseSectionHtml}
+          ${roomsSectionHtml}
+        </main>
+      </div>
+    `;
+  }
+
   bindLobbyFilters();
-  hydrateLobbyPreviews();
+  bindSiteHeader();
+  bindLobbyPreviews();
   restoreHashPosition();
 }

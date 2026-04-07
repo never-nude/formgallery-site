@@ -3,15 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Form Gallery</title>
+    <title>Atrium</title>
     <meta http-equiv="refresh" content="0; url=/museum/" />
     <style>
       :root {
-        color-scheme: light;
-        --bg: #efe7da;
-        --text: #2c251d;
-        --muted: #6d6152;
-        --line: #ccbaa0;
+        color-scheme: dark;
+        --bg: #111017;
+        --text: #f7f1ee;
+        --muted: #c1b4bb;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #f0c0a4;
       }
 
       * {
@@ -24,7 +25,10 @@
         display: grid;
         place-items: center;
         padding: 24px;
-        background: radial-gradient(circle at top right, #ddc39f3d 0%, transparent 28%), var(--bg);
+        background:
+          radial-gradient(circle at 16% 0%, #f0b6a91f 0%, transparent 28%),
+          radial-gradient(circle at 84% 12%, #b8e4d51a 0%, transparent 24%),
+          linear-gradient(180deg, #111017 0%, #0b0a10 100%);
         color: var(--text);
         font-family: "IBM Plex Sans", "Avenir Next", sans-serif;
       }
@@ -34,8 +38,8 @@
         padding: 28px 30px;
         border: 1px solid var(--line);
         border-radius: 18px;
-        background: #f7efe4f2;
-        box-shadow: 0 18px 36px #5d452415, inset 0 1px 0 #fff8;
+        background: rgba(22, 19, 27, 0.94);
+        box-shadow: 0 18px 36px #00000052, inset 0 1px 0 rgba(255, 255, 255, 0.04);
       }
 
       p {
@@ -44,7 +48,7 @@
       }
 
       a {
-        color: inherit;
+        color: var(--accent);
       }
     </style>
     <script>
@@ -53,9 +57,9 @@
   </head>
   <body>
     <main>
-      <p><strong>Form Gallery</strong></p>
+      <p><strong>Atrium</strong></p>
       <p>Opening the digital sculpture collection.</p>
-      <p><a href="/museum/">Open Form Gallery</a></p>
+      <p><a href="/museum/">Open Atrium</a></p>
     </main>
   </body>
 </html>

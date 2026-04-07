@@ -544,6 +544,7 @@ export const museumPieces = {
       exposure: 0.5,
       rough: 0.2
     },
+    heroLine: "Kongo artist, c. 1850–1910",
     model: {
       primaryUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-4096-high.glb",
       fallbackUrl: "https://3d-api.si.edu/content/document/8335af2d-b54c-40b5-a8e7-89c1c147244a/nmafa-8336-figure-100k-2048-medium.glb"
@@ -643,7 +644,7 @@ export const museumPieces = {
     subtitle: "Artist: Unknown Ancient Greek bronze sculptor",
     lobbyMeta: "Source: SMK Open cast scan (KAS2100); bronze material pass",
     source: source(
-      "Rendered from SMK's public-domain cast scan of the Artemision bronze type, with a bronze material pass in the Form Gallery viewer to better evoke the surviving original.",
+      "Rendered from SMK's public-domain cast scan of the Artemision bronze type, with a bronze material pass in the Atrium viewer to better evoke the surviving original.",
       [
         link("SMK API", "https://api.smk.dk/api/v1/art?object_number=KAS2100"),
         link("SMK Open record", "https://open.smk.dk/artwork/image/KAS2100"),
@@ -687,7 +688,7 @@ export const museumPieces = {
     subtitle: "Traditional attribution: Pheidias; current mesh from SMK's Furtwangler reconstruction",
     lobbyMeta: "Source: SMK Open reconstruction scan (KAS40); bronze material pass",
     source: source(
-      "Rendered from SMK's public-domain plaster-cast scan of Furtwangler's reconstruction of the Athena Lemnia type, with a bronze material pass in the Form Gallery viewer to better evoke the lost original bronze.",
+      "Rendered from SMK's public-domain plaster-cast scan of Furtwangler's reconstruction of the Athena Lemnia type, with a bronze material pass in the Atrium viewer to better evoke the lost original bronze.",
       [
         link("SMK Open record", "https://open.smk.dk/artwork/image/KAS40"),
         link("Full STL", "https://api.smk.dk/api/v1/download-3d/cz30pz12n_20-smk-lemniam-athena-deci.stl"),
@@ -816,7 +817,7 @@ export const museumPieces = {
         link("Full STL", "https://api.smk.dk/api/v1/download-3d/4f16c782s_smk-190-inv-dying-gladiator.stl"),
         link("Optimized STL", "https://api.smk.dk/api/v1/download-3d/5t34sq60f_KAS1312_small.stl")
       ],
-      "The Form Gallery route now serves a local optimized mirror for reliability."
+      "The Atrium route now serves a local optimized mirror for reliability."
     ),
     model: {
       primaryUrl: "./dying_gaul_source_small.stl",
@@ -939,7 +940,7 @@ export const museumPieces = {
     subtitle: "Artist: Donatello (c. 1386-1466)",
     lobbyMeta: "Source: Sketchfab model",
     source: source(
-      "Sketchfab model used in the Form Gallery viewer pipeline.",
+      "Sketchfab model used in the Atrium viewer pipeline.",
       [
         link("Sketchfab model", "https://sketchfab.com/3d-models/saint-george-donatellosan-jorge-b637727d39544f6d998ab996ded86f0c")
       ],
@@ -1458,11 +1459,11 @@ function sectionItems(sectionId) {
 }
 
 export const museumLobby = {
-  pageTitle: "Atrium — Form Gallery",
-  brand: "FORM GALLERY",
+  pageTitle: "Atrium — Digital Sculpture Collection",
+  brand: "ATRIUM",
   title: "Atrium",
   contextLabel: "Collection Entrance",
-  subtitle: "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse the collection by gallery, era, region, or maker.",
+  subtitle: "Atrium is a digital sculpture collection spanning antiquity through the twenty-first century. Browse the collection by gallery, era, region, or maker.",
   featuredPieceId: "kongo-maternity-figure",
   featuredPieceIds: [
     "kongo-maternity-figure",
