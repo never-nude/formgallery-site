@@ -1,11 +1,13 @@
 import { LOCATION_OVERRIDES_BY_PIECE } from "./location-overrides.js";
 
-const MODULE_VERSION = "20260331-1502";
+const MODULE_VERSION = "20260407-2345";
+const SITE_NAME = "Atrium";
+const SITE_ORIGIN = "https://atrium.earth";
 
 let catalogPromise = null;
-const COLLECTION_DESCRIPTION = "Form Gallery is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
+const COLLECTION_DESCRIPTION = "Atrium is a digital sculpture collection spanning antiquity through the twenty-first century. Browse by gallery, era, region, or maker.";
 const DEFAULT_THEME = "dark";
-const DEFAULT_THEME_COLOR = "#111017";
+const DEFAULT_THEME_COLOR = "#0c0a06";
 
 function applyDefaultDarkTheme() {
   document.documentElement.dataset.theme = DEFAULT_THEME;
@@ -497,7 +499,7 @@ function renderBootError(message, error) {
     <a class="skip-link" href="#system-state">Skip to message</a>
     <main class="system-state" id="system-state">
       <section class="system-state-card" role="alert">
-        <p class="system-state-kicker">Form Gallery</p>
+        <p class="system-state-kicker">${SITE_NAME}</p>
         <h1 class="system-state-title">${escapeHtml(message)}</h1>
         <p class="system-state-copy">The page shell loaded, but this view could not be prepared. Refresh the page or return to the atrium and try again.</p>
         <a class="explore-button" href="/museum/">Return to Atrium</a>
@@ -516,10 +518,31 @@ function upsertMetaTag(key, value, attribute = "name") {
   tag.setAttribute("content", value);
 }
 
+function upsertLinkTag(rel, href) {
+  let tag = document.head.querySelector(`link[rel="${rel}"]`);
+  if (!tag) {
+    tag = document.createElement("link");
+    tag.setAttribute("rel", rel);
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("href", href);
+}
+
+function publishedPathname(pathname) {
+  return pathname === "/museum/" ? "/" : pathname;
+}
+
+function buildPublishedUrl(pathname = window.location.pathname) {
+  return `${SITE_ORIGIN}${publishedPathname(normalizePath(pathname))}`;
+}
+
 function setPageMetadata({ title, description }) {
+  const canonical = buildPublishedUrl();
+
   if (title) {
     document.title = title;
     upsertMetaTag("og:title", title, "property");
+    upsertMetaTag("og:site_name", SITE_NAME, "property");
     upsertMetaTag("twitter:title", title);
   }
 
@@ -528,6 +551,10 @@ function setPageMetadata({ title, description }) {
     upsertMetaTag("og:description", description, "property");
     upsertMetaTag("twitter:description", description);
   }
+
+  upsertMetaTag("og:url", canonical, "property");
+  upsertMetaTag("twitter:url", canonical);
+  upsertLinkTag("canonical", canonical);
 }
 
 function simplifyWorkTitle(value = "") {
@@ -561,7 +588,7 @@ function buildPiecePageDescription(piece) {
     segments.push(medium);
   }
 
-  segments.push("Viewable in Form Gallery, a digital sculpture collection spanning antiquity through the twenty-first century.");
+  segments.push("Viewable in Atrium, a digital sculpture collection spanning antiquity through the twenty-first century.");
   return segments.join(". ").replace(/\.\s*$/, "") + ".";
 }
 
@@ -574,7 +601,7 @@ export async function initMuseumLobbyPage() {
     const lobbyConfig = {
       ...museumLobby,
       title: museumLobby.title || "Atrium",
-      pageTitle: "Atrium — Form Gallery"
+      pageTitle: museumLobby.pageTitle || "Atrium — Digital Sculpture Collection"
     };
     renderMuseumLobby(lobbyConfig, museumPieces);
     setPageMetadata({
@@ -597,7 +624,7 @@ export async function initMuseumPiecePage(pieceId) {
   try {
     const pagePiece = {
       ...piece,
-      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Form Gallery`
+      pageTitle: `${simplifyWorkTitle(piece.viewerTitle)} — Atrium`
     };
 
     setPageMetadata({
