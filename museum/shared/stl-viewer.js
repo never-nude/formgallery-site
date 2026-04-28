@@ -167,7 +167,7 @@ export async function initStlMuseumPage(piece) {
   const isHeroEmbed = embedMode === "hero";
   const isPreviewMode = isHeroEmbed || searchParams.get("preview") === "1";
   const stagePalette = isHeroEmbed ? HERO_PREVIEW_STAGE : DEFAULT_DARK_STAGE;
-  const exposureBoost = isHeroEmbed ? 0.86 : 0;
+  const exposureBoost = isHeroEmbed ? 0.48 : 0;
   const defaultYaw = sceneConfig.defaultYaw ?? DEFAULT_MODEL_YAW;
   const rotateX = sceneConfig.rotateX ?? DEFAULT_ROTATE_X;
   const rotateY = sceneConfig.rotateY ?? 0;
