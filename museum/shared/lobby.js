@@ -464,24 +464,56 @@ function heroPreviewHref(href) {
 }
 
 function hydrateLobbyPreviews() {
-  const queue = [
-    ...Array.from(document.querySelectorAll("iframe.hero-frame[data-preview-src]")),
-    ...Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"))
-  ];
+  const heroFrame = document.querySelector("iframe.hero-frame[data-preview-src]");
+  const additionFrames = Array.from(document.querySelectorAll("iframe.new-addition-frame[data-preview-src]"));
 
-  function loadNext(index) {
-    if (index >= queue.length) return;
-    const frame = queue[index];
-    const src = frame.dataset.previewSrc;
-    if (!src) {
-      loadNext(index + 1);
-      return;
-    }
-    frame.src = src;
-    window.setTimeout(() => loadNext(index + 1), index === 0 ? 4400 : 1700);
+  if (heroFrame?.dataset.previewSrc) {
+    heroFrame.src = heroFrame.dataset.previewSrc;
+    heroFrame.removeAttribute("data-preview-src");
   }
 
-  loadNext(0);
+  const MAX_CONCURRENT = 3;
+  const pending = [];
+  let inFlight = 0;
+
+  function startNext() {
+    while (inFlight < MAX_CONCURRENT && pending.length) {
+      const frame = pending.shift();
+      const src = frame.dataset.previewSrc;
+      if (!src) continue;
+      frame.removeAttribute("data-preview-src");
+      inFlight += 1;
+      const release = () => {
+        inFlight = Math.max(0, inFlight - 1);
+        frame.removeEventListener("load", release);
+        frame.removeEventListener("error", release);
+        startNext();
+      };
+      frame.addEventListener("load", release);
+      frame.addEventListener("error", release);
+      frame.src = src;
+    }
+  }
+
+  if (typeof IntersectionObserver === "function") {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer.unobserve(entry.target);
+        if (entry.target.dataset.previewSrc) {
+          pending.push(entry.target);
+        }
+      }
+      startNext();
+    }, { rootMargin: "320px 0px" });
+
+    for (const frame of additionFrames) {
+      observer.observe(frame);
+    }
+  } else {
+    pending.push(...additionFrames);
+    startNext();
+  }
 }
 
 function renderBrowseGroup(group) {

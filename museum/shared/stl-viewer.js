@@ -32,16 +32,16 @@ const DEFAULT_DARK_STAGE = Object.freeze({
   pedestal: 0x2c2530
 });
 const HERO_PREVIEW_STAGE = Object.freeze({
-  background: 0xe9e1dc,
-  fog: 0xe1d6d2,
-  hemiSky: 0xfffcf8,
-  hemiGround: 0x8e807d,
-  key: 0xfffcf8,
-  fill: 0xe8c7d4,
-  rim: 0xcfe4d7,
-  bounce: 0xcabddc,
-  floor: 0xd6cbc6,
-  pedestal: 0xebe4de
+  background: 0x07060c,
+  fog: 0x07060c,
+  hemiSky: 0xfff6e8,
+  hemiGround: 0x100d18,
+  key: 0xfffaf0,
+  fill: 0xc7a8da,
+  rim: 0xb7e0c9,
+  bounce: 0x8d77b4,
+  floor: 0x110d18,
+  pedestal: 0x1c1626
 });
 
 let threeModulesPromise = null;
@@ -167,7 +167,7 @@ export async function initStlMuseumPage(piece) {
   const isHeroEmbed = embedMode === "hero";
   const isPreviewMode = isHeroEmbed || searchParams.get("preview") === "1";
   const stagePalette = isHeroEmbed ? HERO_PREVIEW_STAGE : DEFAULT_DARK_STAGE;
-  const exposureBoost = isHeroEmbed ? 0.34 : 0;
+  const exposureBoost = isHeroEmbed ? 0.86 : 0;
   const defaultYaw = sceneConfig.defaultYaw ?? DEFAULT_MODEL_YAW;
   const rotateX = sceneConfig.rotateX ?? DEFAULT_ROTATE_X;
   const rotateY = sceneConfig.rotateY ?? 0;
