@@ -2220,7 +2220,7 @@ canvas {
 
 :root[data-theme="dark"] .viewer-app--hero #stage,
 :root[data-theme="dark"] .viewer-app--hero .loading[data-state="loading"] {
-  background: radial-gradient(ellipse at center, #efe7e1 0%, #d9cfca 55%, #b3a8a7 100%);
+  background: #07060c;
 }
 
 :root[data-theme="dark"] .viewer-app--hero .loading[data-state="error"] {
